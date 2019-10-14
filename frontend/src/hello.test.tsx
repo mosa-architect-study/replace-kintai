@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { Hello } from './hello';
-import { shallow } from 'enzyme';
+import * as React from "react";
+import { Hello } from "./hello";
+import { shallow } from "enzyme";
 
-it('hello', () => {
+it("hello", () => {
   const result = shallow(<Hello />);
-  expect(result.text()).toBe('Hello World')
+  expect(result.text()).toBe("Hello React");
 });
