@@ -9,6 +9,7 @@
       // JSXの書式を有効に設定
       "jsx": "react",
       "moduleResolution": "node",
+      "esModuleInterop": true,
       "lib": [
         "es2017",
         "dom"

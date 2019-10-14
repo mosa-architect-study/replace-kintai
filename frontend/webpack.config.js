@@ -5,7 +5,7 @@ const file = (...args) => path.resolve(__dirname, ...args);
 module.exports = {
   mode: "development",
   entry: {
-    main: ["@babel/polyfill", file("src", "index.tsx")]
+    main: ["@babel/polyfill", file("src", "index.ts")]
   },
   output: {
     path: file("dist"),

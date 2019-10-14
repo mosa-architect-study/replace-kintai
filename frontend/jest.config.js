@@ -11,5 +11,7 @@ module.exports = {
       tsConfigFile: "tsconfig.json"
     }
   },
-  testMatch: ["**/*.test.+(ts|tsx|js)"]
+  testMatch: ["**/*.test.+(ts|tsx|js)"],
+  verbose: true,
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts']
 };
