@@ -1,3 +1,8 @@
 import * as React from "react";
+import { css } from '@emotion/core';
 
-export const Hello: React.FC = () => <p>Hello React</p>;
+const style = css({
+  color: 'blue'
+});
+
+export const Hello: React.FC = () => <p css={style}>Hello React</p>;
