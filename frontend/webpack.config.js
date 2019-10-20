@@ -16,7 +16,7 @@ module.exports = {
       {
         test: [/\.js$/, /\.ts$/, /\.tsx$/],
         exclude: /node_modules/,
-        loader: ["babel-loader","ts-loader"]
+        loader: ["babel-loader"]
       }
     ]
   },

@@ -16,11 +16,11 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
-    "@babel/preset-typescript": "^7.3.3",
     "@storybook/addon-actions": "^5.2.4",
     "@storybook/addon-links": "^5.2.4",
     "@storybook/addons": "^5.2.4",
     "@storybook/react": "^5.2.4",
+    "@babel/preset-typescript": "^7.6.0",
     "@types/jest": "^24.0.15",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
