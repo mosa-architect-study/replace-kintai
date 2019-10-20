@@ -6,8 +6,8 @@ export interface CaptionProps {
 }
 
 const sizeDict: { [P in CaptionSize]: number } = {
-  1: 12,
-  2: 20,
+  1: 20,
+  2: 28,
   3: 36
 };
 
