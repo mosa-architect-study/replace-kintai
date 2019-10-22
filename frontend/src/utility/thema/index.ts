@@ -13,7 +13,6 @@ thema.pcFonts = {
 
 thema.spFonts = {
   base: "7px",
-  xs: "9px",
   s: "10px",
   m: "12px",
   l: "14px",
