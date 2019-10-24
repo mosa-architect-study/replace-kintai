@@ -6,7 +6,7 @@ const theme = {
     baseBlue: "#4676AB",
     // 濃い青 ホバーなどアクセントに使用
     darkBlue: "#3C5E96",
-    // PC アイコンホバー用 変更する可能性あり
+    // SP アイコンホバー用 変更する可能性あり
     grayBlue: "#B2C6DF",
     white: "#FFFFFF",
     black: "#868181",
