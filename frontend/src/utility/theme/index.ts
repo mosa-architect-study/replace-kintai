@@ -1,9 +1,14 @@
 const theme = {
   palette: {
-    lightblue: "#5FA6F2",
-    baseblue: "#4676AB",
-    darkblue: "#3C5E96",
-    white: "#F2F8FB",
+    // 薄い青 ボタンに使用
+    lightBlue: "#93C1EE",
+    // 標準色 ヘッダやプルダウンに使用
+    baseBlue: "#4676AB",
+    // 濃い青 ホバーなどアクセントに使用
+    darkBlue: "#3C5E96",
+    // PC アイコンホバー用 変更する可能性あり
+    grayBlue: "#B2C6DF",
+    white: "#FFFFFF",
     black: "#868181",
     red: "#DD4444"
   },
