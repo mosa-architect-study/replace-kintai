@@ -1,5 +1,6 @@
 import * as React from "react";
 import { css } from "@emotion/core";
+import "ress";
 
 const style = css({
   color: "blue"
