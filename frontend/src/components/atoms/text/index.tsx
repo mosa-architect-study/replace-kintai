@@ -7,14 +7,14 @@ export interface TextProps {
 }
 
 const pcSizeDict: { [P in TextSize]: string } = {
-	1: theme.pcFonts.s,
-	2: theme.pcFonts.m,
-	3: theme.pcFonts.l
+  1: theme.pcFonts.s,
+  2: theme.pcFonts.m,
+  3: theme.pcFonts.l
 };
 const spSizeDict: { [P in TextSize]: string } = {
-	1: theme.spFonts.s,
-	2: theme.spFonts.m,
-	3: theme.spFonts.l
+  1: theme.spFonts.s,
+  2: theme.spFonts.m,
+  3: theme.spFonts.l
 };
 
 export const Text = styled.p<TextProps>`
