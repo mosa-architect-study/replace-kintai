@@ -17,10 +17,16 @@ module.exports = {
         test: [/\.js$/, /\.ts$/, /\.tsx$/],
         exclude: /node_modules/,
         loader: ["babel-loader"]
+      },
+      {
+        test:/\.css/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ],
       }
     ]
   },
-
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     modules: ["node_modules"],
