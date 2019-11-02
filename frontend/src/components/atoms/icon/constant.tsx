@@ -25,11 +25,10 @@ export interface IconSizeProps {
 }
 
 export interface IconProps {
-  size: IconSize;
   name: IconList;
 }
 
-export const iconSizeDict: { [P in IconSize]: string } = {
+export const IconSizeDict: { [P in IconSize]: string } = {
   //FIX ME どっかで調整する
   s: "30px",
   l: "40px"

@@ -2,7 +2,6 @@ type IconSize = "l" | "s";
 
 export interface IconProps {
   url?: string;
-  size: IconSize;
 }
 
 export const userIconSizeDict: { [P in IconSize]: string } = {

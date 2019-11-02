@@ -4,15 +4,14 @@ import { Icon } from ".";
 
 storiesOf("Icon", module).add("icon", () => (
   <div>
-    <Icon name="calendar" size="l"></Icon>
-    <Icon name="calendar" size="s"></Icon>
-    <Icon name="file" size="l"></Icon>
-    <Icon name="folder" size="l"></Icon>
-    <Icon name="lock" size="l"></Icon>
-    <Icon name="logout" size="l"></Icon>
-    <Icon name="pen" size="l"></Icon>
-    <Icon name="pencilThin" size="l"></Icon>
-    <Icon name="user" size="l"></Icon>
-    <Icon name="xMark" size="l"></Icon>
+    <Icon name="calendar"></Icon>
+    <Icon name="file"></Icon>
+    <Icon name="folder"></Icon>
+    <Icon name="lock"></Icon>
+    <Icon name="logout"></Icon>
+    <Icon name="pen"></Icon>
+    <Icon name="pencilThin"></Icon>
+    <Icon name="user"></Icon>
+    <Icon name="xMark"></Icon>
   </div>
 ));

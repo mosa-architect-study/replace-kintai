@@ -12,23 +12,21 @@ const StyledUserIcon = styled.img<IconProps>`
   border-radius: 50%;
   background: white;
   border: solid 1px;
-  width: ${({ size }): string => userIconSizeDict[size]};
-  height: ${({ size }): string => userIconSizeDict[size]};
+  width: ${userIconSizeDict["l"]};
+  height: ${userIconSizeDict["l"]};
+  @media (max-width: 480px) {
+    width: ${userIconSizeDict["s"]};
+    height: ${userIconSizeDict["s"]};
+  }
 `;
 
 const UserIcon: React.FC<IconProps> = (props: IconProps) => {
-  const { url, size } = props;
+  const { url } = props;
   return (
     <StyledWrapper>
-      {url && (
-        <StyledUserIcon src={url} alt="usericon" size={size}></StyledUserIcon>
-      )}
+      {url && <StyledUserIcon src={url} alt="usericon"></StyledUserIcon>}
       {!url && (
-        <StyledUserIcon
-          src={IconListDict["user"]}
-          alt="icon"
-          size={size}
-        ></StyledUserIcon>
+        <StyledUserIcon src={IconListDict["user"]} alt="icon"></StyledUserIcon>
       )}
     </StyledWrapper>
   );

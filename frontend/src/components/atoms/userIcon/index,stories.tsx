@@ -4,7 +4,6 @@ import { UserIcon } from ".";
 
 storiesOf("UseIcon", module).add("user icon", () => (
   <div>
-    <UserIcon size="l"></UserIcon>
-    <UserIcon size="s"></UserIcon>
+    <UserIcon></UserIcon>
   </div>
 ));
