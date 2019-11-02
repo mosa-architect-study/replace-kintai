@@ -18,6 +18,7 @@ type Space =
   | "xl"
   | "xxl"
   | "xxxl";
+type Size = "base" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
 
 export interface PaletteProps {
   color: Palette;
@@ -29,6 +30,10 @@ export interface OpacityProps {
 
 export interface SpaceProps {
   space: Space;
+}
+
+export interface SizeProps {
+  fontSize: Size;
 }
 
 export const paletteDist: { [P in Palette]: string } = {
@@ -62,4 +67,28 @@ export const spaceDist: { [P in Space]: string } = {
   xl: "48px",
   xxl: "64px",
   xxxl: "80px"
+};
+
+export const PcFontSize: { [P in Size]: string } = {
+  //FIX ME どっかで調整する
+  base: "14px",
+  xs: "18px",
+  s: "20px",
+  m: "24px",
+  l: "28px",
+  xl: "32px",
+  xxl: "36px",
+  xxxl: "48px"
+};
+
+export const SpFontSize: { [P in Size]: string } = {
+  //FIX ME どっかで調整する
+  base: "7px",
+  xs: "9px",
+  s: "10px",
+  m: "12px",
+  l: "14px",
+  xl: "16px",
+  xxl: "18px",
+  xxxl: "24px"
 };
