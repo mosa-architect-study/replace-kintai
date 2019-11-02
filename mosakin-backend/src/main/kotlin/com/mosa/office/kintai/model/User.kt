@@ -1,3 +1,3 @@
 package com.mosa.office.kintai.model
 
-data class User(val name:String,val age:Int)
+data class User(val userName:String,val userId:String,val adminFlag:AdminFlg)
