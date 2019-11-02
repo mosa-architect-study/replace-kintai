@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: "file-loader?name=/accset/images/[name].[ext]",
+        loader: "file-loader",
       },
     ]
   },

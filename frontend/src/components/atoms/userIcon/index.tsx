@@ -34,4 +34,4 @@ const UserIcon: React.FC<IconProps> = (props: IconProps) => {
   );
 };
 
-export default UserIcon;
+export { UserIcon };

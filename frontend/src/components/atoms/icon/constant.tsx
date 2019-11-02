@@ -1,3 +1,13 @@
+import calendar from "../../../static/calendar.svg";
+import file from "../../../static/file.svg";
+import folder from "../../../static/folder.svg";
+import lock from "../../../static/lock.svg";
+import logout from "../../../static/logout.svg";
+import pen from "../../../static/pen.svg";
+import pencilThin from "../../../static/pencil-thin.svg";
+import user from "../../../static/user.svg";
+import xMark from "../../../static/x-mark.svg";
+
 type IconSize = "l" | "s";
 type IconList =
   | "calendar"
@@ -10,28 +20,29 @@ type IconList =
   | "user"
   | "xMark";
 
-export interface IconProps {
+export interface IconSizeProps {
   size: IconSize;
 }
 
-export interface IconListProps {
+export interface IconProps {
+  size: IconSize;
   name: IconList;
 }
 
 export const iconSizeDict: { [P in IconSize]: string } = {
   //FIX ME どっかで調整する
-  l: "30px",
-  s: "40px"
+  s: "30px",
+  l: "40px"
 };
 
 export const IconListDict: { [P in IconList]: string } = {
-  calendar: "../../../static/calendar.svg",
-  file: "../../../static/file.svg",
-  folder: "../../../static/folder.svg",
-  lock: "../../../static/lock.svg",
-  logout: "../../../static/logout.svg",
-  pen: "../../../static/pen.svg",
-  pencilThin: "../../../static/pencil-thin.svg",
-  user: "../../../static/user.svg",
-  xMark: "../../../static/x-mark.svg"
+  calendar: calendar,
+  file: file,
+  folder: folder,
+  lock: lock,
+  logout: logout,
+  pen: pen,
+  pencilThin: pencilThin,
+  user: user,
+  xMark: xMark
 };
