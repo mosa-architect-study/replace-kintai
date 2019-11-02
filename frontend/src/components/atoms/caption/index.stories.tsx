@@ -5,8 +5,8 @@ export default {
   title: "Caption"
 };
 
-export const size1 = (): JSX.Element => <Caption size="1">Caption 1</Caption>;
+export const h1 = (): JSX.Element => <Caption lv="h1">新規申請</Caption>;
 
-export const size2 = (): JSX.Element => <Caption size="2">Caption 2</Caption>;
+export const h2 = (): JSX.Element => <Caption lv="h2">有給時間種別</Caption>;
 
-export const size3 = (): JSX.Element => <Caption size="3">Caption 3</Caption>;
+export const h3 = (): JSX.Element => <Caption lv="h3">ホゲホゲ</Caption>;

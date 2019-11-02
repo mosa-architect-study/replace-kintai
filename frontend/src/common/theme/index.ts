@@ -18,7 +18,7 @@ type Space =
   | "xl"
   | "xxl"
   | "xxxl";
-type Size = "base" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
+export type FontSize = "base" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
 
 export interface PaletteProps {
   color: Palette;
@@ -33,7 +33,7 @@ export interface SpaceProps {
 }
 
 export interface SizeProps {
-  fontSize: Size;
+  fontSize: FontSize;
 }
 
 export const paletteDist: { [P in Palette]: string } = {
@@ -69,7 +69,7 @@ export const spaceDist: { [P in Space]: string } = {
   xxxl: "80px"
 };
 
-export const PcFontSize: { [P in Size]: string } = {
+export const PcFontSize: { [P in FontSize]: string } = {
   //FIX ME どっかで調整する
   base: "14px",
   xs: "18px",
@@ -81,7 +81,7 @@ export const PcFontSize: { [P in Size]: string } = {
   xxxl: "48px"
 };
 
-export const SpFontSize: { [P in Size]: string } = {
+export const SpFontSize: { [P in FontSize]: string } = {
   //FIX ME どっかで調整する
   base: "7px",
   xs: "9px",
