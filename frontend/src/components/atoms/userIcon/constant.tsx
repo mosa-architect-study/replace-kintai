@@ -1,11 +1,12 @@
 type IconSize = "l" | "s";
 
 export interface IconProps {
+  url?: string;
   size: IconSize;
 }
 
 export const userIconSizeDict: { [P in IconSize]: string } = {
-  //FIX ME どっかで調整する
+  // FIX ME
   l: "62px",
   s: "62px"
 };

@@ -1,45 +1,34 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { css, SerializedStyles } from "@emotion/core";
-
-interface UseIconProps {
-  url?: string;
-  device: "pc" | "sp";
-}
-
-interface DeviceProps {
-  device: "pc" | "sp";
-}
+import { IconListDict } from "../icon/constant";
+import { IconProps, userIconSizeDict } from "./constant";
 
 const StyledWrapper = styled.div`
   position: relative;
 `;
 
-const StyledDevice = (props: DeviceProps): SerializedStyles => css`
-  width: ${props.device === "pc" ? "50px" : "25px"};
-  height: ${props.device === "pc" ? "50px" : "25px"};
-`;
-
-const StyledUserIcon = styled.img<DeviceProps>`
+const StyledUserIcon = styled.img<IconProps>`
   display: inline-block;
   border-radius: 50%;
-  background: gray;
-  ${StyledDevice}
+  background: white;
+  border: solid 1px;
+  width: ${({ size }): string => userIconSizeDict[size]};
+  height: ${({ size }): string => userIconSizeDict[size]};
 `;
 
-const UserIcon: React.FC<UseIconProps> = (props: UseIconProps) => {
-  const { url, device } = props;
+const UserIcon: React.FC<IconProps> = (props: IconProps) => {
+  const { url, size } = props;
   return (
     <StyledWrapper>
       {url && (
-        <StyledUserIcon
-          src={url}
-          alt="usericon"
-          device={device}
-        ></StyledUserIcon>
+        <StyledUserIcon src={url} alt="usericon" size={size}></StyledUserIcon>
       )}
       {!url && (
-        <StyledUserIcon src="" alt="icon" device={device}></StyledUserIcon>
+        <StyledUserIcon
+          src={IconListDict["user"]}
+          alt="icon"
+          size={size}
+        ></StyledUserIcon>
       )}
     </StyledWrapper>
   );
