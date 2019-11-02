@@ -1,5 +1,3 @@
-type CaptionSize = "h1" | "h2" | "h3" | "h4" | "h5";
-type IconSize = "l" | "s";
 type Palette =
   | "light"
   | "base"
@@ -20,15 +18,6 @@ type Space =
   | "xl"
   | "xxl"
   | "xxxl";
-type TextSize = "base" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
-
-export interface CaptionProps {
-  lv: CaptionSize;
-}
-
-export interface IconProps {
-  size: IconSize;
-}
 
 export interface PaletteProps {
   color: Palette;
@@ -41,54 +30,6 @@ export interface OpacityProps {
 export interface SpaceProps {
   space: Space;
 }
-
-export interface TextProps {
-  fontSize: TextSize;
-}
-
-export const captionSizeDict: { [P in CaptionSize]: string } = {
-  h1: "48px",
-  h2: "30px",
-  h3: "24px",
-  h4: "20px",
-  h5: "17px"
-};
-
-export const userIconSizeDict: { [P in IconSize]: string } = {
-  //FIX ME どっかで調整する
-  l: "62px",
-  s: "62px"
-};
-
-export const iconSizeDict: { [P in IconSize]: string } = {
-  //FIX ME どっかで調整する
-  l: "30px",
-  s: "40px"
-};
-
-export const PcFontSize: { [P in TextSize]: string } = {
-  //FIX ME どっかで調整する
-  base: "14px",
-  xs: "18px",
-  s: "20px",
-  m: "24px",
-  l: "28px",
-  xl: "32px",
-  xxl: "36px",
-  xxxl: "48px"
-};
-
-export const SpFontSize: { [P in TextSize]: string } = {
-  //FIX ME どっかで調整する
-  base: "7px",
-  xs: "9px",
-  s: "10px",
-  m: "12px",
-  l: "14px",
-  xl: "16px",
-  xxl: "18px",
-  xxxl: "24px"
-};
 
 export const paletteDist: { [P in Palette]: string } = {
   // 薄い青 ボタンに使用
