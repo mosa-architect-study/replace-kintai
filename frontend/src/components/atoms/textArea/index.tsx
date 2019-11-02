@@ -21,9 +21,9 @@ export const InnerTextArea = styled.textarea`
   }
 `;
 
-export const TextArea = (props: TextAreaProps): JSX.Element => (
+export const TextArea = (props: TextAreaProps) => (
   <InnerTextArea
     value={props.value}
-    onChange={(e): void => props.onChange(e.target.value)}
+    onChange={e => props.onChange(e.target.value)}
   ></InnerTextArea>
 );
