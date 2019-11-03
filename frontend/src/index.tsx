@@ -1,6 +1,5 @@
-import * as React from "react";
-import { render } from "react-dom";
-import { Hello } from "./sample/hello";
-import "ress";
+import React from "react";
+import ReactDOM from "react-dom";
+import { App } from "./sample/react-router";
 
-render(<Hello />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));
