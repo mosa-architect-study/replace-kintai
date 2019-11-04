@@ -1,13 +1,13 @@
 import React from "react";
 import { mount } from "enzyme";
-import { SumpleRouter } from "./react-router";
+import { SampleRouter } from "./react-router";
 import { MemoryRouter } from "react-router-dom";
 
 it("react-router", () => {
   const wrapper = mount(
-    <MemoryRouter initialEntries={["/sumple2"]}>
-      <SumpleRouter />
+    <MemoryRouter initialEntries={["/sample2"]}>
+      <SampleRouter />
     </MemoryRouter>
   );
-  expect(wrapper.find("Sumple2").text()).toBe("sumple2");
+  expect(wrapper.find("Sample2").text()).toBe("sample2");
 });
