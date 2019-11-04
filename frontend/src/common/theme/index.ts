@@ -3,6 +3,7 @@ type Palette =
   | "base"
   | "accent"
   | "spIconHover"
+  | "border"
   | "white"
   | "black"
   | "red";
@@ -45,6 +46,7 @@ export const paletteDict: { [P in Palette]: string } = {
   accent: "#3C5E96",
   // SP アイコンホバー用 変更する可能性あり
   spIconHover: "#B2C6DF",
+  border: "#DADADF",
   white: "#FFFFFF",
   black: "#868181",
   red: "#DD4444"

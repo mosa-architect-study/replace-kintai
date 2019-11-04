@@ -11,8 +11,10 @@ const Input = styled.input`
   width: 295px;
   height: 38px;
   background: ${paletteDict.white};
-  border: 1px solid #dadadf;
+  border: 1px solid ${paletteDict.border};
   border-radius: 5px;
+  color: ${paletteDict.black};
+  padding: 4px 10px;
 `;
 
 const InputDate = (props: InputDateprops): JSX.Element => (
