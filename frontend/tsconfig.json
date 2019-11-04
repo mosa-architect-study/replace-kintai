@@ -2,7 +2,7 @@
     "compilerOptions": {
       "sourceMap": true,
       // TSはECMAScript 5に変換
-      "strict": true, 
+      "strict": true,
       "target": "ESNEXT",
       // TSのモジュールはES Modulesとして出力
       "module": "ESNEXT",
@@ -19,7 +19,7 @@
       "paths": {
         "@/*": ["src/*"]
       },
-      "typeRoots": ["node_modules/@types"]
+      "typeRoots": ["types", "node_modules/@types"]
     },
     "exclude": [
       "node_modules"

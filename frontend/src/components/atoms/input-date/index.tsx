@@ -1,5 +1,5 @@
 import React from "react";
-import { paletteDist } from "@/common/theme";
+import { paletteDict } from "@/common/theme";
 import styled from "@emotion/styled";
 
 interface InputDateprops {
@@ -10,7 +10,7 @@ interface InputDateprops {
 const Input = styled.input`
   width: 295px;
   height: 38px;
-  background: ${paletteDist.white};
+  background: ${paletteDict.white};
   border: 1px solid #dadadf;
   border-radius: 5px;
 `;
