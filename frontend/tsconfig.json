@@ -5,7 +5,7 @@
       "strict": true,
       "target": "ESNEXT",
       // TSのモジュールはES Modulesとして出力
-      "module": "ESNEXT",
+      "module": "commonjs",
       // JSXの書式を有効に設定
       "jsx": "preserve",
       "moduleResolution": "node",
@@ -19,7 +19,8 @@
       "paths": {
         "@/*": ["src/*"]
       },
-      "typeRoots": ["types", "node_modules/@types"]
+      "typeRoots": ["types", "node_modules/@types"],
+      "resolveJsonModule": true
     },
     "exclude": [
       "node_modules"

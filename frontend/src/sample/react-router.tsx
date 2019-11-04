@@ -1,5 +1,6 @@
 import * as React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AuthButton } from "./auth";
 
 export const SampleRouter = (): JSX.Element => {
   return (
@@ -27,9 +28,12 @@ export const SampleRouter = (): JSX.Element => {
 
 export const App = (): JSX.Element => {
   return (
-    <Router>
-      <SampleRouter />
-    </Router>
+    <>
+      <Router>
+        <SampleRouter />
+      </Router>
+      <AuthButton />
+    </>
   );
 };
 
