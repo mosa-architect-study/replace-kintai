@@ -1,17 +1,24 @@
+import * as React from "react";
 import styled from "@emotion/styled";
+import { CaptionLevel, captionLevelToFrontSize } from "./constant";
+import { paletteDist, PcFontSize, SpFontSize } from "@/common/theme";
 
-export type CaptionSize = "1" | "2" | "3";
 export interface CaptionProps {
-  size: CaptionSize;
+  lv: CaptionLevel;
 }
 
-const sizeDict: { [P in CaptionSize]: number } = {
-  1: 20,
-  2: 28,
-  3: 36
-};
+type InnerProps = React.PropsWithChildren<{
+  className?: string;
+  lv: CaptionLevel;
+}>;
 
-export const Caption = styled.span<CaptionProps>`
-  font-size: ${({ size }): number => sizeDict[size]}px;
-  color: #868181;
+const CaptionInner = (props: InnerProps): JSX.Element =>
+  React.createElement(props.lv, props);
+
+export const Caption = styled(CaptionInner)<CaptionProps>`
+  color: ${paletteDist.black};
+  font-size: ${({ lv }) => PcFontSize[captionLevelToFrontSize[lv]]};
+  @media (max-width: 480px) {
+    font-size: ${({ lv }) => SpFontSize[captionLevelToFrontSize[lv]]};
+  }
 `;
