@@ -1,20 +1,24 @@
 import React from "react";
 import { useModalAnimation } from "./useModalAnimation";
-import { ModalRenderer, ANIMATION_MS } from "./renderer";
+import {
+  ModalRenderer,
+  ANIMATION_MS,
+  ModalRendererPropsFromParent
+} from "./renderer";
 import { ModalCloseProvider, useModalClose } from "./close";
 
 export { useModalClose };
-export type ModalProps = React.PropsWithChildren<{
+export type ModalProps = {
   onClose: () => void;
   isOpen: boolean;
-  backgroundColor?: string;
-}>;
+} & ModalRendererPropsFromParent;
 
 export const Modal: React.FC<ModalProps> = ({
   onClose,
   children,
   isOpen,
-  backgroundColor = "rgba(0, 0, 0, 0.5)"
+  contentClass,
+  backgroundColor
 }) => {
   const trans = useModalAnimation(isOpen, ANIMATION_MS);
   return (
@@ -22,6 +26,7 @@ export const Modal: React.FC<ModalProps> = ({
       <ModalRenderer
         trans={trans}
         onClickBackground={onClose}
+        contentClass={contentClass}
         backgroundColor={backgroundColor}
       >
         {children}

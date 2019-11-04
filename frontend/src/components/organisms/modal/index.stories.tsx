@@ -1,6 +1,14 @@
 import { Modal, useModalClose } from ".";
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "emotion";
+
+const contentClass = css`
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  margin: 8% auto;
+`;
 
 export default {
   title: "Modal"
@@ -18,21 +26,14 @@ const Button = styled.button`
   }
 `;
 
-const ModalContentWapper = styled.section`
-  background-color: white;
-  width: 500px;
-  height: 500px;
-  margin: 8% auto;
-`;
-
 const ModalContent = () => {
   const close = useModalClose();
   console.log("render modal content");
   return (
-    <ModalContentWapper>
+    <section>
       <h3>Modal</h3>
       <Button onClick={close}>Close</Button>
-    </ModalContentWapper>
+    </section>
   );
 };
 
@@ -45,7 +46,11 @@ export const modalTest = (): JSX.Element => {
   return (
     <>
       <Button onClick={(): void => toggle(true)}>Open</Button>
-      <Modal isOpen={isOpen} onClose={(): void => toggle(false)}>
+      <Modal
+        contentClass={contentClass}
+        isOpen={isOpen}
+        onClose={(): void => toggle(false)}
+      >
         <ModalContent></ModalContent>
       </Modal>
     </>
