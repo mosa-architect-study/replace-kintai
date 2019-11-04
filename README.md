@@ -7,7 +7,7 @@
 - Visual Studio Code  
 - ESLintプラグイン  
     lintを実行するために`/frontend`ディレクトリでVSCodeを開くこと
-- Node.js(10系)
+- Node.js(12系)
 
 ### 開発手順
 ```bash
