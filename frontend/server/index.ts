@@ -3,6 +3,7 @@ import cors from "cors";
 import Admin from "firebase-admin";
 
 const admin = Admin.initializeApp();
+console.log("FIREBASE_CONFIG", process.env.FIREBASE_CONFIG);
 
 const app = express();
 app.use(cors());
@@ -21,7 +22,7 @@ app.get("/verify", async (req, res) => {
 });
 
 app.listen(8000, () => {
-  console.log("server");
+  console.log("Server is running!!");
 });
 
 export default app;

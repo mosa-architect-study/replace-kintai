@@ -10,7 +10,7 @@
     "lint": "eslint '**/*.+(ts|tsx)'",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "server": "GOOGLE_CLOUD_PROJECT=mosakin-trial ts-node server"
+    "server": "FIREBASE_CONFIG=$(grep -ril firebase-adminsdk ./secret) GOOGLE_CLOUD_PROJECT=mosakin-trial ts-node server"
   },
   "author": "",
   "license": "ISC",
