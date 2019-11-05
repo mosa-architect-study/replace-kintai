@@ -1,27 +1,23 @@
-import firebase from "firebase/app";
 import express from "express";
 import cors from "cors";
-import firebaseConfig from "../config/firebase-project.json";
-import "firebase/auth";
+import Admin from "firebase-admin";
 
-firebase.initializeApp(firebaseConfig);
+const admin = Admin.initializeApp();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/auth", async (req, res) => {
-  const cred = firebase.auth.GoogleAuthProvider.credential(
-    req.body.credential.oauthIdToken
-  );
-  const auth = await firebase.auth().signInWithCredential(cred);
-  const { user } = auth;
-  if (user) {
-    const { email, uid, displayName, photoURL } = user;
-    console.log("Login!", email, uid, displayName);
-    res.json({ email, displayName, photoURL });
+app.get("/verify", async (req, res) => {
+  const idToken = req.header("Authorization");
+  if (idToken) {
+    console.log("Verify...", new Date());
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    console.log("Verified!", new Date(), decoded.uid);
+    res.json(decoded);
   }
+  res.status(403).send();
 });
 
 app.listen(8000, () => {

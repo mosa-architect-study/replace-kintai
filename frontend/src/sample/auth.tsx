@@ -14,6 +14,8 @@ interface User {
   photoURL: string;
 }
 
+type UserState = User | null | "Loading";
+
 const Button = styled.button`
   background-color: #00cccc;
   color: white;
@@ -26,27 +28,47 @@ const Button = styled.button`
   }
 `;
 
+const testes = async (setUser: (user: UserState) => void) => {
+  await firebase.auth().getRedirectResult();
+  const currentUser = firebase.auth().currentUser;
+  if (currentUser) {
+    const { photoURL, email, displayName } = currentUser;
+    if (photoURL && email && displayName) {
+      setUser({
+        photoURL,
+        email,
+        displayName
+      });
+    } else {
+      console.error(currentUser);
+      throw new Error("Error");
+    }
+    console.log("Start:getIdToken", new Date());
+    const idToken = await currentUser.getIdToken();
+    console.log("Done:getIdToken", new Date());
+    const verifyResult = await axios.get("http://localhost:8000/verify", {
+      headers: {
+        Authorization: idToken
+      }
+    });
+    console.log(verifyResult.data);
+  } else {
+    setUser(null);
+  }
+};
+
 export const AuthButton = () => {
   const [user, setUser] = React.useState<User | null | "Loading">("Loading");
   React.useEffect(() => {
-    const redirectResult = firebase.auth().getRedirectResult();
-    redirectResult.then(result => {
-      if (result.credential) {
-        axios
-          .post("http://localhost:8000/auth", {
-            credential: result.credential.toJSON()
-          })
-          .then(res => {
-            setUser(res.data);
-          });
-      } else {
-        setUser(null);
-      }
-    });
+    testes(setUser);
   }, []);
   const redirect = () => {
     setUser("Loading");
     firebase.auth().signInWithRedirect(provider);
+  };
+  const logout = () => {
+    firebase.auth().signOut();
+    setUser(null);
   };
   return user ? (
     user === "Loading" ? (
@@ -65,6 +87,9 @@ export const AuthButton = () => {
           </div>
         </div>
         <img style={{ height: "100px" }} src={user.photoURL}></img>
+        <div>
+          <Button onClick={logout}>Logout</Button>
+        </div>
       </section>
     )
   ) : (
