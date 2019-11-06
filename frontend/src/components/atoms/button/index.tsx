@@ -13,9 +13,8 @@ const ButtonStyle = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   &:hover {
-    box-shadow: none;
-    transform: translate3d(0, 3px, 0);
-    transition-duration: 0.25s;
+    background-color: ${paletteDict.accent};
+    transition-duration: 1s;
   }
   &:focus {
     outline: 0;
