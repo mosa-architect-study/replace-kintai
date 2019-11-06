@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-export const SampleRouter = (): JSX.Element => {
+export const SampleRoutes = (): JSX.Element => {
   return (
     <div>
       <ul>
@@ -25,11 +25,13 @@ export const SampleRouter = (): JSX.Element => {
   );
 };
 
-export const App = (): JSX.Element => {
+export const RouterSample = (): JSX.Element => {
   return (
-    <Router>
-      <SampleRouter />
-    </Router>
+    <>
+      <Router>
+        <SampleRoutes />
+      </Router>
+    </>
   );
 };
 
