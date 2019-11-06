@@ -28,9 +28,10 @@ const Button = styled.button`
   }
 `;
 
-const testes = async (setUser: (user: UserState) => void) => {
-  await firebase.auth().getRedirectResult();
-  const currentUser = firebase.auth().currentUser;
+const onUserFetched = async (
+  currentUser: firebase.User | null,
+  setUser: (user: UserState) => void
+) => {
   if (currentUser) {
     const { photoURL, email, displayName } = currentUser;
     if (photoURL && email && displayName) {
@@ -43,15 +44,13 @@ const testes = async (setUser: (user: UserState) => void) => {
       console.error(currentUser);
       throw new Error("Error");
     }
-    console.log("Start:getIdToken", new Date());
     const idToken = await currentUser.getIdToken();
-    console.log("Done:getIdToken", new Date());
     const verifyResult = await axios.get("http://localhost:8000/verify", {
       headers: {
         Authorization: idToken
       }
     });
-    console.log(verifyResult.data);
+    console.log("User Verified!", verifyResult.data);
   } else {
     setUser(null);
   }
@@ -60,7 +59,9 @@ const testes = async (setUser: (user: UserState) => void) => {
 export const AuthButton = () => {
   const [user, setUser] = React.useState<User | null | "Loading">("Loading");
   React.useEffect(() => {
-    testes(setUser);
+    firebase.auth().onAuthStateChanged(currentUser => {
+      onUserFetched(currentUser, setUser);
+    });
   }, []);
   const redirect = () => {
     setUser("Loading");
