@@ -1,7 +1,7 @@
 import { Modal, useModalClose } from ".";
 import React from "react";
 import styled from "@emotion/styled";
-import { css } from "emotion";
+import { css } from "@emotion/core";
 
 const contentClass = css`
   background-color: white;
