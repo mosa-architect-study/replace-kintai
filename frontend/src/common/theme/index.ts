@@ -3,6 +3,7 @@ type Palette =
   | "base"
   | "accent"
   | "spIconHover"
+  | "border"
   | "white"
   | "black"
   | "red";
@@ -18,7 +19,7 @@ type Space =
   | "xl"
   | "xxl"
   | "xxxl";
-type Size = "base" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
+export type FontSize = "base" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
 
 export interface PaletteProps {
   color: Palette;
@@ -33,10 +34,10 @@ export interface SpaceProps {
 }
 
 export interface SizeProps {
-  fontSize: Size;
+  fontSize: FontSize;
 }
 
-export const paletteDist: { [P in Palette]: string } = {
+export const paletteDict: { [P in Palette]: string } = {
   // 薄い青 ボタンに使用
   light: "#93C1EE",
   // 標準色 ヘッダやプルダウンに使用
@@ -45,18 +46,19 @@ export const paletteDist: { [P in Palette]: string } = {
   accent: "#3C5E96",
   // SP アイコンホバー用 変更する可能性あり
   spIconHover: "#B2C6DF",
+  border: "#DADADF",
   white: "#FFFFFF",
   black: "#868181",
   red: "#DD4444"
 };
 
-export const opacityDist: { [P in Opacity]: number } = {
+export const opacityDict: { [P in Opacity]: number } = {
   nomal: 1,
   half: 0.5,
   low: 0.2
 };
 
-export const spaceDist: { [P in Space]: string } = {
+export const spaceDict: { [P in Space]: string } = {
   nothing: "0px",
   xxxs: "2px",
   xxs: "4px",
@@ -69,7 +71,7 @@ export const spaceDist: { [P in Space]: string } = {
   xxxl: "80px"
 };
 
-export const PcFontSize: { [P in Size]: string } = {
+export const PcFontSizeDict: { [P in FontSize]: string } = {
   //FIX ME どっかで調整する
   base: "14px",
   xs: "18px",
@@ -81,7 +83,7 @@ export const PcFontSize: { [P in Size]: string } = {
   xxxl: "48px"
 };
 
-export const SpFontSize: { [P in Size]: string } = {
+export const SpFontSizeDict: { [P in FontSize]: string } = {
   //FIX ME どっかで調整する
   base: "7px",
   xs: "9px",

@@ -1,6 +1,7 @@
-import * as React from "react";
-import { render } from "react-dom";
-import { Hello } from "./sample/hello";
+import React from "react";
+import ReactDOM from "react-dom";
 import "ress";
+import "./static/global.css";
+import { App } from "./sample";
 
-render(<Hello />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));

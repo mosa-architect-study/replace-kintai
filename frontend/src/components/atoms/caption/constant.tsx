@@ -1,13 +1,11 @@
-type CaptionSize = "h1" | "h2" | "h3" | "h4" | "h5";
+import { FontSize } from "@/common/theme";
 
-export interface CaptionProps {
-  lv: CaptionSize;
-}
+export type CaptionLevel = "h1" | "h2" | "h3" | "h4" | "h5";
 
-export const captionSizeDict: { [P in CaptionSize]: string } = {
-  h1: "48px",
-  h2: "30px",
-  h3: "24px",
-  h4: "20px",
-  h5: "17px"
+export const captionLevelToFrontSize: { [P in CaptionLevel]: FontSize } = {
+  h1: "xxxl",
+  h2: "xl",
+  h3: "m",
+  h4: "s",
+  h5: "xs"
 };
