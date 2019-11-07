@@ -14,7 +14,12 @@ const ButtonStyle = styled.button`
   border-radius: 10px;
   &:hover {
     background-color: ${paletteDict.accent};
-    transition-duration: 1s;
+    transition-duration: 0.5s;
+  }
+  &:active {
+    box-shadow: none;
+    transform: translate3d(0, 3px, 0);
+    transition-duration: 0.25s;
   }
   &:focus {
     outline: 0;
