@@ -1,23 +1,25 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { paletteDist, PcFontSize, SpFontSize } from "@/common/theme";
+import { paletteDict, PcFontSizeDict, SpFontSizeDict } from "@/common/theme";
 
 interface TextAreaProps {
   value: string;
   onChange: (value: string) => void;
 }
 
-export const InnerTextArea = styled.textarea`
-  width: 341px;
-  height: 86px;
+const InnerTextArea = styled.textarea`
+  width: 479px;
+  height: 76px;
   resize: both;
-  background: ${paletteDist.white};
+  background: ${paletteDict.white};
   border: 1px solid #dadadf;
   border-radius: 5px;
-  color: ${paletteDist.black};
-  font-size: ${PcFontSize.base};
+  color: ${paletteDict.black};
+  font-size: ${PcFontSizeDict.base};
   @media (max-width: 480px) {
-    font-size: ${SpFontSize.base};
+    font-size: ${SpFontSizeDict.base};
+    width: 341px;
+    height: 86px;
   }
 `;
 
