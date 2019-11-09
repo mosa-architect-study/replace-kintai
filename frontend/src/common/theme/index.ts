@@ -1,4 +1,4 @@
-type Palette =
+export type Palette =
   | "light"
   | "base"
   | "accent"
