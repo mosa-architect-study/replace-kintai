@@ -61,7 +61,7 @@ export const ModalRenderer: React.FC<ModalRendererProps> = ({
       >
         <ModalContent
           className={contentClass}
-          onClick={e => e.preventDefault()}
+          onClick={e => e.stopPropagation()}
         >
           {trans !== "close" && children}
         </ModalContent>
