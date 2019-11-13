@@ -58,10 +58,14 @@ export const ModalRenderer: React.FC<ModalRendererProps> = ({
         trans={trans}
         backgroundColor={backgroundColor}
         onClick={() => trans === "open" && onClickBackground()}
-      ></ModalBackground>
-      <ModalContent className={contentClass} onClick={e => e.preventDefault()}>
-        {trans !== "close" && children}
-      </ModalContent>
+      >
+        <ModalContent
+          className={contentClass}
+          onClick={e => e.stopPropagation()}
+        >
+          {trans !== "close" && children}
+        </ModalContent>
+      </ModalBackground>
     </ModalWapper>
   );
 };

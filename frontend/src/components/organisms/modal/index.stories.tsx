@@ -4,6 +4,8 @@ import styled from "@emotion/styled";
 import { css } from "emotion";
 
 const contentClass = css`
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+  border-radius: 5px;
   background-color: white;
   width: 500px;
   height: 500px;
