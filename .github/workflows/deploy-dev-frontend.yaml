@@ -19,6 +19,7 @@ jobs:
       run: |
         cd mosakin-frontend
         npm ci
+        npm test
         npm run build:dev
         npm run deploy:dev
       env:
