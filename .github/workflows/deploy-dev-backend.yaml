@@ -13,8 +13,6 @@ jobs:
         java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
         architecture: x64 # (x64 or x86) - defaults to x64
     - uses: actions/heroku@master
-      with:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     - name: Install Heroku Java
       run: heroku plugins:install java
     - name: Build to .jar
@@ -23,4 +21,4 @@ jobs:
         sh gradlew build
         heroku jar:deploy build/libs/kintai-0.0.1-SNAPSHOT.jar --app mosakin-ktln-trial
       env:
-        CI: true
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
