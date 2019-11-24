@@ -21,7 +21,7 @@ app.get("/verify", async (req, res) => {
   res.status(403).send();
 });
 
-app.listen(8000, () => {
+app.listen(8080, () => {
   console.log("Server is running!!");
 });
 

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server",
+    "local": "BACKEND_SERVICE_BASE_URL='http://localhost:8080' webpack-dev-server",
     "test": "jest",
     "lint": "eslint '**/*.+(ts|tsx)'",
     "storybook": "start-storybook -p 6006",

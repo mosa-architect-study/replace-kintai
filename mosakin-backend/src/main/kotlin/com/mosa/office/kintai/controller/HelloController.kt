@@ -15,7 +15,12 @@ class HelloController {
 
     @GetMapping("/user")
     fun user(): User {
-        return User("Bob","00000001",AdminFlg.AdminUser);
+        return User("Bob", "00000001", AdminFlg.AdminUser);
+    }
+
+    @GetMapping("/verify")
+    fun verify(): String {
+        return "まだ認証処理は実装されてません。誰か！";
     }
 
 }
