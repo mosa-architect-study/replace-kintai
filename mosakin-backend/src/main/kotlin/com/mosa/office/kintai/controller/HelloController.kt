@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class HelloController {
 
-    @GetMapping("/hello")
-    fun hello(): User {
+    @GetMapping("/")
+    fun hello(): String {
+        return "Hello MosaKin World!";
+    }
+
+    @GetMapping("/user")
+    fun user(): User {
         return User("Bob","00000001",AdminFlg.AdminUser);
     }
 

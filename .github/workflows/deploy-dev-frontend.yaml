@@ -1,7 +1,7 @@
 name: Deploy Development (Frontend)
 on:
-  push:	
-    branches:	
+  push:
+    branches:
       - master
 jobs:
   build:
