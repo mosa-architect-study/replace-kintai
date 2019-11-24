@@ -1,7 +1,8 @@
-name: Deploy (Backend)
-
-on: [push]
-
+name: Deploy Development (Backend)
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
