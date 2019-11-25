@@ -46,11 +46,14 @@ const onUserFetched = async (
       throw new Error("Error");
     }
     const idToken = await currentUser.getIdToken();
-    const verifyResult = await axios.get(BACKEND_SERVICE_BASE_URL + "/verify", {
-      headers: {
-        Authorization: idToken
+    const verifyResult = await axios.get(
+      BACKEND_SERVICE_BASE_URL + "/authenticated/verify",
+      {
+        headers: {
+          Authorization: idToken
+        }
       }
-    });
+    );
     console.log("User Verified!", verifyResult.data);
   } else {
     setUser(null);
