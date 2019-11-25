@@ -18,9 +18,14 @@ class HelloController {
         return User("Bob", "00000001", AdminFlg.AdminUser);
     }
 
-    @GetMapping("/verify")
-    fun verify(): String {
-        return "まだ認証処理は実装されてません。誰か！";
+    @GetMapping("/err")
+    fun err(): String {
+        throw Exception("Err");
+    }
+
+    @GetMapping("/authenticated/verify")
+    fun authenticated(): String {
+        return "このアカウントは認証済みです。";
     }
 
 }
