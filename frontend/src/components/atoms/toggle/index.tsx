@@ -1,12 +1,13 @@
 import React from "react";
-import { Text } from "../text";
-import { paletteDict } from "@/common/theme";
+import { Text, TextSize, TextPosition } from "../text";
 import styled from "@emotion/styled";
 
 interface Toggleprops {
   value: string;
-  id: string;
+  size: TextSize;
   group: string;
+  position: TextPosition;
+  onClick: (value: string) => void;
 }
 
 const Input = styled.input`
@@ -14,38 +15,32 @@ const Input = styled.input`
 `;
 
 const Label = styled.label`
-  height: 44px;
+  display: inline-block;
+  width: 85px;
+  padding: 5px 0;
   border-top: solid 1px #dadadf;
   border-bottom: solid 1px #dadadf;
   border-right: solid 1px #dadadf;
   background-color: #ffffff;
   color: #868181;
-  /* padding: 10px 0; */
-  input:checked + span {
-    background-color: ${paletteDict.light};
-  }
-  &#right {
+  :first-child {
     border-radius: 30px 0 0 30px;
   }
-  &#left {
-    border-radius: 0 30px 30px 0;
-  }
-`;
-
-const Span = styled.span`
-  /* padding: 10px 20px; */
-  &#right {
-    border-radius: 30px 0 0 30px;
-  }
-  &#left {
+  :last-child {
     border-radius: 0 30px 30px 0;
   }
 `;
 
 const Toggle = (props: Toggleprops): JSX.Element => (
-  <Label id={props.id}>
-    <Input type="radio" name={props.group}></Input>
-    <Span id={props.id}>{props.value}</Span>
+  <Label>
+    <Input
+      type="radio"
+      name={props.group}
+      onClick={(): void => props.onClick("PUSH")}
+    ></Input>
+    <Text size={props.size} position={props.position}>
+      {props.value}
+    </Text>
   </Label>
 );
 
