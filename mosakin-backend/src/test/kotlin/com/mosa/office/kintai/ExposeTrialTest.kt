@@ -15,7 +15,7 @@ object Users: IntIdTable("user_info","user_id") {
 
 data class User(val id : Int,val name : String)
 
-class ExposeTrial {
+class ExposeTrialTest {
 
     @Test
     fun trial1() {
