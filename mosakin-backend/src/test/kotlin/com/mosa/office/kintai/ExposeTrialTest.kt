@@ -33,11 +33,14 @@ class ExposeTrialTest {
     fun trial1() {
         transaction {
             addLogger(StdOutSqlLogger)
+            // データを追加
             val name = Users.insert {
                 it[name] = "ほげ太郎"
             } get Users.name
             assertThat(name).isEqualTo("ほげ太郎");
+            // データを取得
             val users = Users.selectAll().map {
+                // 結果をオブジェクトに詰め替え
                 User(it[Users.id].value, it[Users.name])
             }
             assertThat(users)
