@@ -6,6 +6,7 @@ import org.h2.tools.RunScript
 import org.jetbrains.exposed.dao.IntIdTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import java.io.InputStreamReader
 
@@ -17,24 +18,30 @@ data class User(val id : Int,val name : String)
 
 class ExposeTrialTest {
 
+    companion object {
+        @BeforeAll
+        @JvmStatic
+        fun initDataSource () {
+            val ds = JdbcDataSource()
+            val ddl = "classpath:sql/sample.sql"
+            ds.setURL("jdbc:h2:mem:;MODE=MYSQL;INIT=RUNSCRIPT FROM '$ddl'");
+            Database.connect(ds);
+        }
+    }
+
     @Test
     fun trial1() {
-        val ds = JdbcDataSource()
-        ds.setURL("jdbc:h2:mem:;MODE=MYSQL;INIT=RUNSCRIPT FROM 'classpath:sql/sample.sql'");
-        ds.user = "sa";
-        ds.password = "sa";
-        Database.connect(ds);
         transaction {
             addLogger(StdOutSqlLogger)
             val name = Users.insert {
                 it[name] = "ほげ太郎"
             } get Users.name
             assertThat(name).isEqualTo("ほげ太郎");
-            val users = Users.selectAll().map{
-                User(it[Users.id].value,it[Users.name])
+            val users = Users.selectAll().map {
+                User(it[Users.id].value, it[Users.name])
             }
             assertThat(users)
-                .containsAll(listOf(User(1,"ほげ太郎")))
+                .containsAll(listOf(User(1, "ほげ太郎")))
         }
     }
 
