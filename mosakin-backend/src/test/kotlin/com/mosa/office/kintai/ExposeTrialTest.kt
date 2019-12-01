@@ -2,13 +2,11 @@ package com.mosa.office.kintai
 
 import org.assertj.core.api.Assertions.assertThat
 import org.h2.jdbcx.JdbcDataSource
-import org.h2.tools.RunScript
 import org.jetbrains.exposed.dao.IntIdTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import java.io.InputStreamReader
 
 object Users: IntIdTable("user_info","user_id") {
     val name = varchar("user_name", 50)
