@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 class AppExceptionHandler : ResponseEntityExceptionHandler() {
     @ExceptionHandler(Exception::class)
     fun handleAllException(ex: Exception, request: WebRequest): ResponseEntity<Any> {
-        println(ex)
+        ex.printStackTrace()
         return super.handleExceptionInternal(ex, "Internal Server Error", HttpHeaders.EMPTY , HttpStatus.INTERNAL_SERVER_ERROR, request)
     }
 }

@@ -1,12 +1,14 @@
 package com.mosa.office.kintai.controller
 
 import com.mosa.office.kintai.model.*
+import com.mosa.office.kintai.usecase.GetPaidListUseCase
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
-import java.time.LocalDateTime
 
 @RestController
-class HelloController {
+class HelloController(_useCase: GetPaidListUseCase) {
+
+    val useCase = _useCase;
 
     @GetMapping("/")
     fun hello(): String {
@@ -18,14 +20,9 @@ class HelloController {
         return User(UserName("Bob") , UserId("00000001"), AdminFlg.ADMIN);
     }
 
-    @GetMapping("/paid")
-    fun paid(): Paid {
-        return Paid(
-            PaidAcquisitionDate(LocalDateTime.now()),
-            PaidTimeType.ALL_DAY,
-            UserId("00000002"),
-            PaidReason("腹痛のため")
-        );
+    @GetMapping("/list")
+    fun paid(): List<Paid> {
+        return useCase.getPaidList(UserId("00000001"))
     }
 
     @GetMapping("/err")

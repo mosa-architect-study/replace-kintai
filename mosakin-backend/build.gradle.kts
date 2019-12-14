@@ -34,7 +34,7 @@ dependencies {
 	}
 	testCompile("org.assertj:assertj-core:3.9.0")
 	compile("org.jetbrains.exposed","exposed","0.17.7")
-	testImplementation("com.h2database","h2", "1.4.199")
+	compile("com.h2database","h2", "1.4.199")
 }
 
 tasks.withType<Test> {
