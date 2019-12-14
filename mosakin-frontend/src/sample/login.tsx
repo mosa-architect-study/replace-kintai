@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import React from "react";
 import styled from "@emotion/styled";
+import { BACKEND_SERVICE_BASE_URL } from "@/constants/enviroment";
 
 firebase.initializeApp(firebaseConfig);
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -45,11 +46,14 @@ const onUserFetched = async (
       throw new Error("Error");
     }
     const idToken = await currentUser.getIdToken();
-    const verifyResult = await axios.get("http://localhost:8000/verify", {
-      headers: {
-        Authorization: idToken
+    const verifyResult = await axios.get(
+      BACKEND_SERVICE_BASE_URL + "/authenticated/verify",
+      {
+        headers: {
+          Authorization: idToken
+        }
       }
-    });
+    );
     console.log("User Verified!", verifyResult.data);
   } else {
     setUser(null);

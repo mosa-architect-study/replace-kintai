@@ -20,6 +20,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven(url = "https://dl.bintray.com/kotlin/exposed")
 }
 
 dependencies {
@@ -31,6 +32,9 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
+	testCompile("org.assertj:assertj-core:3.9.0")
+	compile("org.jetbrains.exposed","exposed","0.17.7")
+	compile("com.h2database","h2", "1.4.199")
 }
 
 tasks.withType<Test> {

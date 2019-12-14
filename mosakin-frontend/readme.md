@@ -1,6 +1,6 @@
 ### Firebase Authenticationの検証方法
 
-- 秘密鍵JSONを取得し、`frontend/secret`ディレクトリにファイル名は適当でいいので保存する。（検証用のものはSlackで配ります。）  
+- 秘密鍵JSONを取得し、`mosakin-frontend/secret`ディレクトリにファイル名は適当でいいので保存する。（検証用のものはSlackで配ります。）  
 - 別々のターミナルから以下のコマンドを実行 
   - `npm run server`
   - `npm run dev`

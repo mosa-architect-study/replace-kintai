@@ -1,19 +1,21 @@
 # replace-kintai
 
-## /frontend
+## /mosakin-frontend
 フロントのプロジェクトです。  
 
 ### 必要ツール
 - Visual Studio Code  
 - ESLintプラグイン  
-    lintを実行するために`/frontend`ディレクトリでVSCodeを開くこと
+    lintを実行するために`/mosakin-frontend`ディレクトリでVSCodeを開くこと
 - Node.js(12系)
 
 ### 開発手順
 ```bash
+#cd mosakin-frontend
 npm i
 npm run dev #devサーバーの立ち上げ
 npm run build #プロジェクトのビルド
+npm run storybook #storybookの立ち上げ
 ```
 
 ## /mosakin-backend  

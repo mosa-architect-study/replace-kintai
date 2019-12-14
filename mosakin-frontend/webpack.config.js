@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const file = (...args) => path.resolve(__dirname, ...args);
 const merge = require("webpack-merge")
@@ -22,6 +23,9 @@ const config = {
     new HtmlWebpackPlugin({
       template: file("src", "index.html"),
       filename: "index.html"
+    }),
+    new webpack.EnvironmentPlugin({
+      BACKEND_SERVICE_BASE_URL:"https://mosakin-ktln-trial.herokuapp.com"
     })
   ]
 };
