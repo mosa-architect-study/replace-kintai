@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TextSize } from "../text";
-import {paletteDict} from "@/common/theme";
+import { paletteDict } from "@/common/theme";
 import styled from "@emotion/styled";
 
 interface Toggleprops {
@@ -15,7 +15,7 @@ interface Labelprops {
 }
 
 const TextWrapper = styled.div`
-  text-align: center
+  text-align: center;
 `;
 
 const Input = styled.input`
@@ -29,7 +29,8 @@ const Label = styled.label<Labelprops>`
   border-top: solid 1px ${paletteDict.border};
   border-bottom: solid 1px ${paletteDict.border};
   border-right: solid 1px ${paletteDict.border};
-  background-color: ${({selected}):string => selected ? paletteDict.light : paletteDict.white};
+  background-color: ${({ selected }): string =>
+    selected ? paletteDict.light : paletteDict.white};
   color: ${paletteDict.black};
   :first-child {
     border-radius: 30px 0 0 30px;
@@ -41,14 +42,9 @@ const Label = styled.label<Labelprops>`
 
 const Toggle = (props: Toggleprops): JSX.Element => (
   <Label selected={props.selected}>
-    <Input
-      type="radio"
-      name={props.group}
-    ></Input>
+    <Input type="radio" name={props.group}></Input>
     <TextWrapper>
-      <Text size={props.size}>
-        {props.value}
-      </Text>
+      <Text size={props.size}>{props.value}</Text>
     </TextWrapper>
   </Label>
 );
