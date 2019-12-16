@@ -10,8 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 class WebConfig(private val auth: AuthenticationInterceptor ) : WebMvcConfigurer {
 
     override fun addInterceptors(registry: InterceptorRegistry) {
-        registry.addInterceptor(auth)
-                .addPathPatterns("/authenticated/**") // 適用対象のパス(パターン)を指定する
+        registry.addInterceptor(auth).addPathPatterns("/**") // 適用対象のパス(パターン)を指定する
     }
 
     override fun addCorsMappings(registry: CorsRegistry) {
