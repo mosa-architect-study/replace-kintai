@@ -5,11 +5,12 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
+
 @Configuration
-class WebConfig : WebMvcConfigurer {
+class WebConfig(private val auth: AuthenticationInterceptor ) : WebMvcConfigurer {
 
     override fun addInterceptors(registry: InterceptorRegistry) {
-        registry.addInterceptor(AuthenticationInterceptor())
+        registry.addInterceptor(auth)
                 .addPathPatterns("/authenticated/**") // 適用対象のパス(パターン)を指定する
     }
 
@@ -19,4 +20,5 @@ class WebConfig : WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
+
 }
