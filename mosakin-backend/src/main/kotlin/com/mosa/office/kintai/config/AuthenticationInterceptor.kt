@@ -13,9 +13,11 @@ class AuthenticationInterceptor(private val service: AuthenticationService) : Ha
             return true;
         }
         val token = request.getHeader("Authorization");
-        if(token != null){
-            return service.verifyToken(token);
+        if(token != null && service.verifyToken(token)){
+            return true;
         }
-        throw Exception("Auth")
+        throw AuthenticationException();
     }
 }
+
+class AuthenticationException : Exception() {}

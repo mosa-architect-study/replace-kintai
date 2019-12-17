@@ -16,4 +16,9 @@ class AppExceptionHandler : ResponseEntityExceptionHandler() {
         ex.printStackTrace()
         return super.handleExceptionInternal(ex, "Internal Server Error", HttpHeaders.EMPTY , HttpStatus.INTERNAL_SERVER_ERROR, request)
     }
+
+    @ExceptionHandler(AuthenticationException::class)
+    fun handleAuthenticationException(ex: AuthenticationException,request :WebRequest) : ResponseEntity<Any> {
+        return super.handleExceptionInternal(ex,"Authentication Error", HttpHeaders.EMPTY, HttpStatus.FORBIDDEN,request)
+    }
 }
