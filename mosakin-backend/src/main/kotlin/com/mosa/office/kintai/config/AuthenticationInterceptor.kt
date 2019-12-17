@@ -4,8 +4,8 @@ import org.springframework.web.servlet.HandlerInterceptor
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+class AuthenticationInterceptor(private val service: AuthenticationService) : HandlerInterceptor {
 
-class AuthenticationInterceptor : HandlerInterceptor {
     @Throws(Exception::class)
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         //プリフライトはtrue
@@ -13,11 +13,11 @@ class AuthenticationInterceptor : HandlerInterceptor {
             return true;
         }
         val token = request.getHeader("Authorization");
-        //FIXME
-        println(token);
-        if(token != null){
-            return true
+        if(token != null && service.verifyToken(token)){
+            return true;
         }
-        throw Exception("Auth")
+        throw AuthenticationException();
     }
 }
+
+class AuthenticationException : Exception() {}
