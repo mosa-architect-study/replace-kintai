@@ -32,5 +32,10 @@ npm run storybook #storybookの立ち上げ
 - /mosakin-backendをOpen
 - `import project from external model` -> `Gradle`
 
+### サーバーの起動
+```bash
+ ./gradlew bootRun
+```
+
 
 
