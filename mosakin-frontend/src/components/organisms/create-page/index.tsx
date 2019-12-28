@@ -28,28 +28,16 @@ const InnerDiv = styled.div`
   display: block;
   :nth-of-type(n + 1) {
     margin-bottom: 43px;
-    /* margin-left: 40px; */
   }
-  /* display: block; */
-  /* vertical-align: middle; */
   @media (max-width: 480px) {
     :nth-of-type(n + 2) {
       margin-bottom: 43px;
-      /* margin-left: 40px; */
     }
-    /* display: block; */
   }
 `;
 const OuterDiv = styled.div`
   width: 479px;
   margin: auto;
-  /* margin: auto; */
-  /* max-width: 479px; */
-  /* display: flex;
-  justify-content: space-between; */
-  @media (max-width: 480px) {
-    /* display: block; */
-  }
 `;
 const ButtonArea = styled.div`
   text-align: center;

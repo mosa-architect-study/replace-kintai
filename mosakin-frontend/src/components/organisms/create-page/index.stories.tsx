@@ -14,7 +14,7 @@ storiesOf("CreatePage", module).add("CreatePage", () => {
     reasonValue: reasonValue,
     reasonOnChange: reasonSetValue,
     adminFlg: true,
-    onClick: action("ポッチとな")
+    onClick: action("ポチッとな")
   };
   return (
     <div>
