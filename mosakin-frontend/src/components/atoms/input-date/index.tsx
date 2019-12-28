@@ -15,6 +15,9 @@ const Input = styled.input`
   border-radius: 5px;
   color: ${paletteDict.black};
   padding: 4px 10px;
+  @media (max-width: 480px) {
+    width: 244px;
+  }
 `;
 
 const InputDate = (props: InputDateprops): JSX.Element => (
