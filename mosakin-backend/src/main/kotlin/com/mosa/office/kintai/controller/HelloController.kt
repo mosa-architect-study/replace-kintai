@@ -20,7 +20,7 @@ class HelloController(_useCase: GetPaidListUseCase) {
         return User(UserName("Bob") , UserId("00000001"), AdminFlg.ADMIN);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/orm-sample")
     fun paid(): List<Paid> {
         return useCase.getPaidList(UserId("00000001"))
     }
