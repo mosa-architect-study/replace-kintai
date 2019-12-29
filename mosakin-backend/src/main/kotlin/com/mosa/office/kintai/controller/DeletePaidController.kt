@@ -1,6 +1,6 @@
 package com.mosa.office.kintai.controller
 
-import com.mosa.office.kintai.controller.model.DeletePaidResultModal
+import com.mosa.office.kintai.controller.model.DeletePaidModel
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController
 class DeletePaidController {
 
     @GetMapping("/delete")
-    fun delete() :DeletePaidResultModal {
+    fun delete() :DeletePaidModel {
         val success: Boolean = true
         val message: String = "君の指定した有給取得日はきちんと削除されたよ★ミ"
-        return DeletePaidResultModal(success, message)
+        return DeletePaidModel(success, message)
     }
 }
