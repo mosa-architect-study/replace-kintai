@@ -10,7 +10,6 @@
     "test": "jest",
     "lint": "eslint '**/*.+(ts|tsx)'",
     "storybook": "start-storybook -p 6006",
-    "server": "FIREBASE_CONFIG=$(grep -ril firebase-adminsdk ./secret) GOOGLE_CLOUD_PROJECT=mosakin-trial ts-node server",
     "build:dev": "rm -rf ./dist && webpack && build-storybook -o dist/storybook",
     "deploy:dev": "firebase deploy --project mosakin-trial --token $FIREBASE_TOKEN"
   },
