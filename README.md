@@ -1,5 +1,8 @@
 # replace-kintai
 
+## Docs
+- [認証について](/docs/authentication.md)
+
 ## /mosakin-frontend
 フロントのプロジェクトです。  
 
@@ -13,7 +16,8 @@
 ```bash
 #cd mosakin-frontend
 npm i
-npm run dev #devサーバーの立ち上げ
+npm run dev #devサーバーの立ち上げ（向いてるサーバーAPIのホストがHerokuになる。）
+npm run local #devサーバーの立ち上げ（向いてるサーバーAPIのホストがlocalhost:8080になる）
 npm run build #プロジェクトのビルド
 npm run storybook #storybookの立ち上げ
 ```
@@ -33,9 +37,14 @@ npm run storybook #storybookの立ち上げ
 - `import project from external model` -> `Gradle`
 
 ### サーバーの起動
+
 ```bash
  ./gradlew bootRun
 ```
+
+#### 確認方法
+
+http://localhost:8080 にアクセスすること
 
 
 
