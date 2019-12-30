@@ -1,6 +1,6 @@
 import React from "react";
 import { getUser, logout, login } from "@/common/auth/wappers";
-import { useAuthRequiredAPI } from "@/common/auth/useAuthorizedAPI";
+import { useAxios } from "@/common/api/useAxios";
 import { Button } from "@/components/atoms/button";
 
 interface User {
@@ -15,7 +15,7 @@ export const AuthButton = () => {
       setUser(user);
     });
   }, []);
-  useAuthRequiredAPI(axios => {
+  useAxios(axios => {
     axios.get("/authenticated/verify").then(verifyResult => {
       console.log(verifyResult.data);
     });

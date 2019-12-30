@@ -1,6 +1,6 @@
-import { useEffect, EffectCallback, DependencyList } from "react";
+import { useEffect, DependencyList } from "react";
 import Axios, { AxiosInstance } from "axios";
-import { getUser } from "./wappers";
+import { getUser } from "../auth/wappers";
 import { BACKEND_SERVICE_BASE_URL } from "@/constants/enviroment";
 
 let axiosSingleton: AxiosInstance | null = null;
@@ -13,8 +13,8 @@ let axiosSingleton: AxiosInstance | null = null;
  * 認証トークンをHTTPヘッダーに付与して通信を行います。
  *
  */
-export const useAuthRequiredAPI = (
-  cb: (axios: AxiosInstance) => ReturnType<EffectCallback>,
+export const useAxios = (
+  cb: (axios: AxiosInstance) => void,
   deps?: DependencyList
 ) => {
   useEffect(() => {

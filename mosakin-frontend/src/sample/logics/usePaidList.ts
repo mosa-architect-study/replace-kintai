@@ -1,7 +1,7 @@
 import { LoadableViewModel } from "../models/common";
 import { PaidListViewModel } from "../models/paidList";
 import { useState } from "react";
-import { useAuthRequiredAPI } from "@/common/auth/useAuthorizedAPI";
+import { useAxios } from "@/common/api/useAxios";
 
 /**
  * hooksのサンプル
@@ -10,7 +10,7 @@ import { useAuthRequiredAPI } from "@/common/auth/useAuthorizedAPI";
 export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
   const [model, setModel] = useState<PaidListViewModel | null>(null);
 
-  useAuthRequiredAPI(axios => {
+  useAxios(axios => {
     axios.get("/list").then(res => {
       setModel(res.data);
     });
