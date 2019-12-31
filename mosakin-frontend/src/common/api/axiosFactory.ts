@@ -2,6 +2,8 @@ import Axios, { AxiosInstance } from "axios";
 import { getUser } from "../auth/wappers";
 import { BACKEND_SERVICE_BASE_URL } from "@/constants/enviroment";
 
+// FIXME: テスタビリティ悪いので修正
+
 let axiosSingleton: AxiosInstance | null = null;
 
 const setAxiosSingleton = (axios: AxiosInstance) => {
