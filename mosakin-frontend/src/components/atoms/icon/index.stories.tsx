@@ -13,5 +13,6 @@ storiesOf("Icon", module).add("icon", () => (
     <Icon name="pencilThin"></Icon>
     <Icon name="user"></Icon>
     <Icon name="xMark"></Icon>
+    <Icon name="pageTitle"></Icon>
   </div>
 ));
