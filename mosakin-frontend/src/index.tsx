@@ -7,6 +7,7 @@ import { PaidListPage } from "./components/pages/PaidListPage";
 import { NewPaidPage } from "./components/pages/NewPaidPage";
 import { AdminPage } from "./components/pages/AdminPage";
 import { AuthButton } from "./sample/login";
+import { NotFoundPage } from "./components/pages/404";
 
 export const App: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ export const App: React.FC = () => {
         <Route exact path="/" component={PaidListPage} />
         <Route path="/new" component={NewPaidPage} />
         <Route path="/admin" component={AdminPage} />
+        <Route component={NotFoundPage}></Route>
       </Switch>
     </Router>
   );
