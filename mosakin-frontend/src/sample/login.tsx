@@ -49,14 +49,14 @@ export const AuthButton = () => {
           <img style={{ height: "44px" }} src={user.photoURL}></img>
         )}
         <div>
-          <Button color="1" onClick={_logout} backgroundColor="1">
+          <Button onClick={_logout} backgroundColor="1" height="s" width="s">
             Logout
           </Button>
         </div>
       </UserInfoWrapper>
     )
   ) : (
-    <Button color="1" backgroundColor="1" onClick={login}>
+    <Button backgroundColor="1" onClick={login} height="s" width="s">
       Login With Google
     </Button>
   );
