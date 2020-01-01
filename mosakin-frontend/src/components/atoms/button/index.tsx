@@ -7,7 +7,7 @@ interface ButtonProps {
   backgroundColor: Constant.ButtonBackColorType;
 }
 
-const ButtonStyle = styled.button`
+const StyledButton = styled.button`
   width: 98px;
   height: 44px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -26,7 +26,7 @@ const ButtonStyle = styled.button`
   }
 `;
 
-export const Button = styled(ButtonStyle)<ButtonProps>`
+export const Button = styled(StyledButton)<ButtonProps>`
   color: ${({ color }) => paletteDict[Constant.ButtonFontColor[color]]};
   background-color: ${({ backgroundColor }) =>
     paletteDict[Constant.ButtonBackColor[backgroundColor]]};
