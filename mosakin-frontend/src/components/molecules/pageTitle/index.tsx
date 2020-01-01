@@ -7,21 +7,26 @@ export interface PageTitleProps {
   title: string;
 }
 
-const InnerDiv = styled.div`
+const IconDiv = styled.div`
   display: inline-block;
-  vertical-align: middle;
-  :first-of-type {
-    margin-right: 27px;
-  }
+  margin-right: 27px;
+`;
+const TitleDiv = styled.div`
+  display: inline-block;
+  vertical-align: top;
+`;
+
+const OuterDiv = styled.div`
+  display: inline-block;
 `;
 
 export const PageTitle = (props: PageTitleProps) => (
-  <div>
-    <InnerDiv>
+  <OuterDiv>
+    <IconDiv>
       <Icon name="pageTitle"></Icon>
-    </InnerDiv>
-    <InnerDiv>
+    </IconDiv>
+    <TitleDiv>
       <Caption lv="h3">{props.title}</Caption>
-    </InnerDiv>
-  </div>
+    </TitleDiv>
+  </OuterDiv>
 );
