@@ -2,12 +2,14 @@ import React from "react";
 import { getUser, logout, login } from "@/common/auth/wappers";
 import { useAxios } from "@/common/api/useAxios";
 import { Button } from "@/components/atoms/button";
+import styled from "@emotion/styled";
 
 interface User {
   email: string | null;
   displayName: string | null;
   photoURL: string | null;
 }
+
 export const AuthButton = () => {
   const [user, setUser] = React.useState<User | null | "Loading">("Loading");
   React.useEffect(() => {
