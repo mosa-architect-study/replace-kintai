@@ -1,19 +1,9 @@
-import { usePaidList } from "../logics/usePaidList";
-
 import React from "react";
-import { LoadableViewModel } from "../models/common";
-import { PaidListViewModel } from "../models/paidList";
+import { LoadableViewModel } from "../../models/models/common";
+import { PaidListViewModel } from "../../models/models/paidList";
 import styled from "@emotion/styled";
 
-/**
- * Containerはhooksから取得したデータをコンポーネントに流す。
- */
-export const PaidListContainer: React.FC = () => {
-  const model = usePaidList();
-  return <PaidListPresenter {...model}></PaidListPresenter>;
-};
-
-const PaidListFrame = styled.p`
+const PaidListFrame = styled.section`
   background-color: green;
   color: whitesmoke;
 `;
@@ -26,7 +16,7 @@ const PaidListFrame = styled.p`
  *
  * @param model ViewModel
  */
-const PaidListPresenter: React.FC<
+export const PaidListTemplate: React.FC<
   LoadableViewModel<PaidListViewModel>
 > = model => {
   if (model.status == "Loading") {
@@ -36,7 +26,7 @@ const PaidListPresenter: React.FC<
     return (
       <PaidListFrame>
         <p>有給リスト</p>
-        {JSON.stringify(model.data)}
+        <p>{JSON.stringify(model.data)}</p>
       </PaidListFrame>
     );
   }

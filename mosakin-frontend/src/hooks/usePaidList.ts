@@ -1,5 +1,5 @@
-import { LoadableViewModel } from "../models/common";
-import { PaidListViewModel } from "../models/paidList";
+import { LoadableViewModel } from "../models/models/common";
+import { PaidListViewModel } from "../models/models/paidList";
 import { useState } from "react";
 import { useAxios } from "@/common/api/useAxios";
 
