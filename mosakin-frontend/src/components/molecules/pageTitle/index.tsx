@@ -23,7 +23,7 @@ const OuterDiv = styled.div`
 export const PageTitle = (props: PageTitleProps) => (
   <OuterDiv>
     <IconDiv>
-      <Icon name="pageTitle"></Icon>
+      <Icon name="pageTitle" width="l" height="l"></Icon>
     </IconDiv>
     <TitleDiv>
       <Caption lv="h3">{props.title}</Caption>
