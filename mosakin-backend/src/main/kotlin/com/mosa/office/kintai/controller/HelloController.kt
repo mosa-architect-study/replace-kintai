@@ -15,17 +15,12 @@ class HelloController(_useCase: GetPaidListUseCase) {
         return "Hello MosaKin World!";
     }
 
-    @GetMapping("/user")
-    fun user(): User {
-        return User(UserName("Bob") , UserId("00000001"), AdminFlg.ADMIN);
-    }
-
-    @GetMapping("/orm-sample")
+    @GetMapping("/test/database")
     fun paid(): List<Paid> {
         return useCase.getPaidList(UserId("00000001"))
     }
 
-    @GetMapping("/err")
+    @GetMapping("/test/err")
     fun err(): String {
         throw Exception("Err");
     }
