@@ -23,8 +23,8 @@ class AppConfig(
 
     @PostConstruct
     fun connectExposedToDatabase()  {
-        println("DB Connect to $url $user $password")
-        Database.connect("jdbc:$url",driverClassName,user,password)
+        println("DB Connect to $url")
+        Database.connect(url,driverClassName,user,password)
     }
 
     @Bean
