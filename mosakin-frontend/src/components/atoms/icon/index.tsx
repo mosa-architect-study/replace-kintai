@@ -1,17 +1,23 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { IconProps, IconSizeDict, IconListDict } from "./constant";
+import {
+  IconProps,
+  IconSizeProps,
+  PcIconSizeDict,
+  SpIconSizeDict,
+  IconListDict
+} from "./constant";
 
 const StyledWrapper = styled.div`
   display: inline-block;
 `;
 
-const StyledIcon = styled.img`
-  width: ${IconSizeDict["l"]};
-  height: ${IconSizeDict["l"]};
+const StyledIcon = styled.img<IconSizeProps>`
+  width: ${({ width }): string => PcIconSizeDict[width]};
+  height: ${({ height }): string => PcIconSizeDict[height]};
   @media (max-width: 480px) {
-    width: ${IconSizeDict["s"]};
-    height: ${IconSizeDict["s"]};
+    width: ${({ width }): string => SpIconSizeDict[width]};
+    height: ${({ height }): string => SpIconSizeDict[height]};
   }
 `;
 
@@ -19,7 +25,12 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
   const { name } = props;
   return (
     <StyledWrapper>
-      <StyledIcon src={IconListDict[name]} alt={name}></StyledIcon>
+      <StyledIcon
+        src={IconListDict[name]}
+        alt={name}
+        width={props.width}
+        height={props.height}
+      ></StyledIcon>
     </StyledWrapper>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { getUser, logout, login } from "@/common/auth/wappers";
 import { useAxios } from "@/common/api/useAxios";
 import { Button } from "@/components/atoms/button";
+import { Text } from "@/components/atoms/text";
 import styled from "@emotion/styled";
 
 interface User {
@@ -50,14 +51,18 @@ export const AuthButton = () => {
         )}
         <div>
           <Button onClick={_logout} backgroundColor="1" height="s" width="s">
-            Logout
+            <Text color="2" size="1">
+              Logout
+            </Text>
           </Button>
         </div>
       </UserInfoWrapper>
     )
   ) : (
     <Button backgroundColor="1" onClick={login} height="s" width="s">
-      Login With Google
+      <Text color="2" size="1">
+        Login With Google
+      </Text>
     </Button>
   );
 };
