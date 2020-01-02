@@ -1,0 +1,6 @@
+env:
+  datasource:
+    url: postgresql://[::1]:5432/postgres
+    driverClassName: org.postgresql.Driver
+    user: postgres
+    password: mosamosa
