@@ -32,11 +32,16 @@ const Label = styled.label<Labelprops>`
   background-color: ${({ selected }): string =>
     selected ? paletteDict.light : paletteDict.white};
   color: ${paletteDict.black};
+  cursor: pointer;
   :first-child {
     border-radius: 30px 0 0 30px;
   }
   :last-child {
     border-radius: 0 30px 30px 0;
+  }
+  :hover {
+    background-color: ${({ selected }): string =>
+      selected ? paletteDict.light : paletteDict.whitesmoke};
   }
 `;
 

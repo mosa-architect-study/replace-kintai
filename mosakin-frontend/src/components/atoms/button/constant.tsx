@@ -1,12 +1,20 @@
 import { Palette } from "@/common/theme";
 
-export type ButtonFontColorType = "1";
-export type ButtonBackColorType = "1";
-
-export const ButtonFontColor: { [P in ButtonFontColorType]: Palette } = {
-  1: "white"
-};
+export type ButtonBackColorType = "1" | "2";
+export type ButtonWidthType = "s" | "l";
+export type ButtonHeightType = "s" | "l";
 
 export const ButtonBackColor: { [P in ButtonBackColorType]: Palette } = {
-  1: "light"
+  1: "light",
+  2: "white"
+};
+
+export const ButtonWidth: { [P in ButtonWidthType]: string } = {
+  s: "98px",
+  l: "248px"
+};
+
+export const ButtonHeight: { [P in ButtonHeightType]: string } = {
+  s: "44px",
+  l: "60px"
 };

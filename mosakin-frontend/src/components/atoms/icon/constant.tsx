@@ -7,6 +7,7 @@ import pen from "../../../static/pen.svg";
 import pencilThin from "../../../static/pencil-thin.svg";
 import user from "../../../static/user.svg";
 import xMark from "../../../static/x-mark.svg";
+import pageTitle from "../../../static/page-title.svg";
 
 type IconSize = "l" | "s";
 type IconList =
@@ -18,7 +19,8 @@ type IconList =
   | "pen"
   | "pencilThin"
   | "user"
-  | "xMark";
+  | "xMark"
+  | "pageTitle";
 
 export interface IconSizeProps {
   size: IconSize;
@@ -43,5 +45,6 @@ export const IconListDict: { [P in IconList]: string } = {
   pen: pen,
   pencilThin: pencilThin,
   user: user,
-  xMark: xMark
+  xMark: xMark,
+  pageTitle: pageTitle
 };

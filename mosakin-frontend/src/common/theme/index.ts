@@ -6,7 +6,8 @@ export type Palette =
   | "border"
   | "white"
   | "black"
-  | "red";
+  | "red"
+  | "whitesmoke"; //fixme;
 type Opacity = "nomal" | "half" | "low";
 type Space =
   | "nothing"
@@ -49,7 +50,8 @@ export const paletteDict: { [P in Palette]: string } = {
   border: "#DADADF",
   white: "#FFFFFF",
   black: "#868181",
-  red: "#DD4444"
+  red: "#DD4444",
+  whitesmoke: "#F5F5F5" // fixme トグルホバー時の色
 };
 
 export const opacityDict: { [P in Opacity]: number } = {
