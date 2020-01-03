@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:11-alpine
+    container_name: mosakin-postgresql
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=mosamosa
+      - PGPASSWORD=mosamosa
+      - DATABASE_HOST=localhost
+    volumes:
+      - $PWD/sql:/docker-entrypoint-initdb.d

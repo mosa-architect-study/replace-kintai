@@ -20,10 +20,8 @@ class ExposeTrialTest {
         @BeforeAll
         @JvmStatic
         fun initDataSource () {
-            val ds = JdbcDataSource()
-            val ddl = "classpath:sql/sample.sql"
-            ds.setURL("jdbc:h2:mem:;MODE=MYSQL;INIT=RUNSCRIPT FROM '$ddl'");
-            Database.connect(ds);
+            val url = "jdbc:h2:mem:;MODE=MYSQL;INIT=RUNSCRIPT FROM 'classpath:sql/sample.sql'"
+            Database.connect(url,"org.h2.Driver");
         }
     }
 

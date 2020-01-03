@@ -9,8 +9,8 @@ import user from "../../../static/user.svg";
 import xMark from "../../../static/x-mark.svg";
 import pageTitle from "../../../static/page-title.svg";
 
-type IconSize = "l" | "s";
-type IconList =
+export type IconSize = "s" | "m" | "l";
+export type IconList =
   | "calendar"
   | "file"
   | "folder"
@@ -23,16 +23,27 @@ type IconList =
   | "pageTitle";
 
 export interface IconSizeProps {
-  size: IconSize;
+  width: IconSize;
+  height: IconSize;
 }
 
 export interface IconProps {
   name: IconList;
+  width: IconSize;
+  height: IconSize;
 }
 
-export const IconSizeDict: { [P in IconSize]: string } = {
+export const PcIconSizeDict: { [P in IconSize]: string } = {
+  //FIX ME どっかで調整する
+  s: "18px",
+  m: "22px",
+  l: "34px"
+};
+
+export const SpIconSizeDict: { [P in IconSize]: string } = {
   //FIX ME どっかで調整する
   s: "30px",
+  m: "38px",
   l: "40px"
 };
 

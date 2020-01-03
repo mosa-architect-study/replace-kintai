@@ -1,18 +1,26 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { Icon } from ".";
+import styled from "@emotion/styled";
+import { paletteDict } from "@/common/theme";
 
 storiesOf("Icon", module).add("icon", () => (
   <div>
-    <Icon name="calendar"></Icon>
-    <Icon name="file"></Icon>
-    <Icon name="folder"></Icon>
-    <Icon name="lock"></Icon>
-    <Icon name="logout"></Icon>
-    <Icon name="pen"></Icon>
-    <Icon name="pencilThin"></Icon>
-    <Icon name="user"></Icon>
-    <Icon name="xMark"></Icon>
-    <Icon name="pageTitle"></Icon>
+    <IconBackColor>
+      <Icon name="calendar" width="l" height="l"></Icon>
+      <Icon name="file" width="l" height="l"></Icon>
+      <Icon name="folder" width="l" height="l"></Icon>
+      <Icon name="lock" width="l" height="l"></Icon>
+      <Icon name="logout" width="l" height="l"></Icon>
+      <Icon name="pen" width="l" height="l"></Icon>
+      <Icon name="user" width="l" height="l"></Icon>
+    </IconBackColor>
+    <Icon name="pencilThin" width="l" height="l"></Icon>
+    <Icon name="xMark" width="l" height="l"></Icon>
+    <Icon name="pageTitle" width="l" height="l"></Icon>
   </div>
 ));
+
+const IconBackColor = styled.div`
+  background-color: ${paletteDict.base};
+`;
