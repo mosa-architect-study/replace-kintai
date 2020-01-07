@@ -35,7 +35,9 @@ export const CommonUserNameArea = (props: CommonUserNameAreaProps) => (
       <Caption lv="h3">対象ユーザ</Caption>
     </InnerDiv>
     <InnerDiv>
-      <Text size="2">{props.value}</Text>
+      <Text color="1" size="2">
+        {props.value}
+      </Text>
     </InnerDiv>
   </OuterDiv>
 );

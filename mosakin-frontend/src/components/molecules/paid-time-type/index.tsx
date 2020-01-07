@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Caption } from "../../atoms/caption";
-import { InputDate } from "../../atoms/input-date";
+import { Toggle } from "../../atoms/toggle";
 
-export interface DateInputAreaProps {
+export interface PaidTimeAreaProps {
   value: string;
   onChange: (value: string) => void;
 }
@@ -32,13 +32,15 @@ const OuterDiv = styled.div`
   }
 `;
 
-export const DateInputArea = (props: DateInputAreaProps) => (
+export const PaidTimeArea = (props: PaidTimeAreaProps) => (
   <OuterDiv>
     <TitleDiv>
-      <Caption lv="h3">日付</Caption>
+      <Caption lv="h3">有給時間種別</Caption>
     </TitleDiv>
     <InputDiv>
-      <InputDate value={props.value} onChange={props.onChange}></InputDate>
+      <Toggle value="全日" group="group1" size="1" selected></Toggle>
+      <Toggle value="午前" group="group1" size="1" selected={false}></Toggle>
+      <Toggle value="午後" group="group1" size="1" selected={false}></Toggle>
     </InputDiv>
   </OuterDiv>
 );

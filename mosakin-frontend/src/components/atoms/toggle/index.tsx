@@ -49,7 +49,9 @@ const Toggle = (props: Toggleprops): JSX.Element => (
   <Label selected={props.selected}>
     <Input type="radio" name={props.group}></Input>
     <TextWrapper>
-      <Text size={props.size}>{props.value}</Text>
+      <Text color="1" size={props.size}>
+        {props.value}
+      </Text>
     </TextWrapper>
   </Label>
 );

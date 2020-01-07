@@ -8,13 +8,14 @@ export interface PaidReasonAreaProps {
   onChange: (value: string) => void;
 }
 
-const InnerDiv = styled.div`
+const TitleDiv = styled.div`
   display: block;
   @media (max-width: 480px) {
-    :nth-of-type(1) {
-      margin-bottom: 18px;
-    }
+    margin-bottom: 18px;
   }
+`;
+const InputDiv = styled.div`
+  display: block;
 `;
 const OuterDiv = styled.div`
   max-width: 479px;
@@ -22,11 +23,11 @@ const OuterDiv = styled.div`
 
 export const PaidReasonArea = (props: PaidReasonAreaProps) => (
   <OuterDiv>
-    <InnerDiv>
+    <TitleDiv>
       <Caption lv="h3">有給所得理由</Caption>
-    </InnerDiv>
-    <InnerDiv>
+    </TitleDiv>
+    <InputDiv>
       <TextArea value={props.value} onChange={props.onChange}></TextArea>
-    </InnerDiv>
+    </InputDiv>
   </OuterDiv>
 );

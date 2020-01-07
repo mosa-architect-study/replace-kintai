@@ -1,10 +1,12 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Caption } from "../../atoms/caption";
+import { PageTitle } from "../../molecules/pageTitle";
 import { CommonUserNameArea } from "../../molecules/common-user-name-area";
 import { DateInputArea } from "../../molecules/date-input-area";
 import { PaidReasonArea } from "../../molecules/paid-reason-area";
 import { Button } from "../../atoms/button";
+import { Text } from "../../atoms/text/index";
 
 export interface CreatePageProps {
   title: string;
@@ -38,6 +40,10 @@ const InnerDiv = styled.div`
 const OuterDiv = styled.div`
   width: 479px;
   margin: auto;
+  @media (max-width: 480px) {
+    width: 100%;
+    margin: 0px;
+  }
 `;
 const ButtonArea = styled.div`
   text-align: center;
@@ -46,7 +52,7 @@ const ButtonArea = styled.div`
 export const CreatePage = (props: CreateDateProps) => (
   <OuterDiv>
     <TitleArea>
-      <Caption lv="h3">{props.data.title}</Caption>
+      <PageTitle title={props.data.title}></PageTitle>
     </TitleArea>
     {props.data.adminFlg && (
       <InnerDiv>
@@ -66,8 +72,16 @@ export const CreatePage = (props: CreateDateProps) => (
       ></PaidReasonArea>
     </InnerDiv>
     <ButtonArea>
-      <Button color="1" backgroundColor="1" onClick={props.data.onClick}>
-        ボタン
+      <Button
+        color="1"
+        backgroundColor="1"
+        width="s"
+        height="s"
+        onClick={props.data.onClick}
+      >
+        <Text color="2" size="1">
+          登録
+        </Text>
       </Button>
     </ButtonArea>
   </OuterDiv>
