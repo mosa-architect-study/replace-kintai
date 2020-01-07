@@ -1,25 +1,16 @@
 package com.mosa.office.kintai.model
 
+import java.time.LocalDate
+
 data class Paid (
-    val paidId : PaidId,
-    val paidAcquisitionDate : PaidAcquisitionDate,
+    val paidId : String,
+    val paidAcquisitionDate : LocalDate,
     val paidTimeType : PaidTimeType,
-    val paidAcquisitionUserId : UserId,
-    val paidReason : PaidReason
+    val paidAcquisitionUserId : String,
+    val paidReason : String
 )
 
 enum class PaidTimeType {
     ALL_DAY,AM,PM
 }
-
-data class PaidId(val value:Int);
-
-interface PaidAcquisitionDate {
-    val date : Int;
-    val month : Int;
-    val year : Int
-}
-
-data class PaidReason(val value:String) ;
-
 

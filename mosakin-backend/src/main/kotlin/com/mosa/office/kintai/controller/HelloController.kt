@@ -17,7 +17,7 @@ class HelloController(_useCase: GetPaidListUseCase) {
 
     @GetMapping("/test/database")
     fun paid(): List<Paid> {
-        return useCase.getPaidList(UserId("00000001"))
+        return useCase.getPaidList("00000001")
     }
 
     @GetMapping("/test/err")
