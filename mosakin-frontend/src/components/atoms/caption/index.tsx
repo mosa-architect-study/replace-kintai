@@ -5,11 +5,13 @@ import { paletteDict, fontSizeDict } from "@/common/theme";
 
 export interface CaptionProps {
   lv: CaptionLevel;
+  color: CaptionColorType;
 }
 
 type InnerProps = React.PropsWithChildren<{
   className?: string;
   lv: CaptionLevel;
+  color: CaptionColorType;
 }>;
 
 const CaptionInner = (props: InnerProps): JSX.Element =>
