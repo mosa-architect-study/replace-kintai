@@ -33,10 +33,9 @@ Heroku上のDBに対してSQLを発行するにはHeroku CLIとPostgreSQL CLIが
 
 ```bash
 cd moskain-backend/database
-## Dockerイメージのビルド　このイメージはHeroku CLIと PostgreSQL CLIをインストールしている
-docker build . -t heroku-psql -f ./heroku_psql.Dockerfile
+## hagaitski/heroku-psql-cliイメージはherokuコマンドとpsqlコマンドが使えるDocker Image
 ## sqlディレクトリの内容をコンテナにマウントしつつコンテナを起動し、bashを起動。
-docker run -it --rm -v $PWD/sql:/sql heroku-psql /bin/bash
+docker run -it --rm -v $PWD/sql:/sql hagaitski/heroku-psql-cli /bin/bash
 
 ## Dockerコンテナ内
 heroku login -i # herokuログイン
