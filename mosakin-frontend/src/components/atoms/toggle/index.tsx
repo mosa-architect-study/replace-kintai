@@ -4,10 +4,10 @@ import { paletteDict } from "@/common/theme";
 import styled from "@emotion/styled";
 
 interface Toggleprops {
-  value: string;
+  label: string;
   size: TextSize;
-  group: string;
   selected: boolean;
+  onClick: () => void;
 }
 
 interface Labelprops {
@@ -41,10 +41,10 @@ const Label = styled.label<Labelprops>`
 `;
 
 const Toggle = (props: Toggleprops): JSX.Element => (
-  <Label selected={props.selected}>
-    <Input type="radio" name={props.group}></Input>
+  <Label selected={props.selected} onClick={props.onClick}>
+    <Input type="radio"></Input>
     <TextWrapper>
-      <Text size={props.size}>{props.value}</Text>
+      <Text size={props.size}>{props.label}</Text>
     </TextWrapper>
   </Label>
 );
