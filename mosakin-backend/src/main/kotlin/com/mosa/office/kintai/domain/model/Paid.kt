@@ -1,4 +1,4 @@
-package com.mosa.office.kintai.model
+package com.mosa.office.kintai.domain.model
 
 import java.time.LocalDate
 
@@ -12,5 +12,9 @@ data class Paid (
 
 enum class PaidTimeType {
     ALL_DAY,AM,PM
+}
+
+interface PaidListRepository {
+    fun getAllByUserId(userId:String) : List<Paid>
 }
 

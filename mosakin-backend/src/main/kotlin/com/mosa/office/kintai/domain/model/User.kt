@@ -1,4 +1,4 @@
-package com.mosa.office.kintai.model
+package com.mosa.office.kintai.domain.model
 
 data class User(
     val userName:String,

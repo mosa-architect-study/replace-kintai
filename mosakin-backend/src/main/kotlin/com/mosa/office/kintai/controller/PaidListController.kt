@@ -3,7 +3,7 @@ package com.mosa.office.kintai.controller
 import com.mosa.office.kintai.controller.model.PaidListHeaderViewModel
 import com.mosa.office.kintai.controller.model.PaidListItemViewModel
 import com.mosa.office.kintai.controller.model.PaidListViewModel
-import com.mosa.office.kintai.model.PaidTimeType
+import com.mosa.office.kintai.domain.model.PaidTimeType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
