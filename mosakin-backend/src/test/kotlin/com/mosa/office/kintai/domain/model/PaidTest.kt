@@ -25,17 +25,18 @@ internal class PaidTest {
 
     @Test
     fun Paid_assertNotDuplicated_同日の場合に重複となるPaidがある場合例外を投げる() {
-        val list = listOf<HasPaidTime>(
-            HasPaidTime(LocalDate.of(2019,1,1),PaidTimeType.PM),
-            HasPaidTime(LocalDate.of(2019,1,1),PaidTimeType.AM)
-        )
+
         val testes1 = HasPaidTime(LocalDate.of(2019,1,1),PaidTimeType.PM)
+        val testes2 = HasPaidTime(LocalDate.of(2019,1,1),PaidTimeType.AM)
+        val testes3 = HasPaidTime(LocalDate.of(2019,1,2),PaidTimeType.PM)
+        val testes4 = HasPaidTime(LocalDate.of(2019,1,1),PaidTimeType.ALL_DAY)
+
+        testes1.assertNotDuplicated(testes2)
+        testes1.assertNotDuplicated(testes3)
         assertThatThrownBy {
-            testes1.assertNotDuplicated(list)
+            testes1.assertNotDuplicated(testes4)
         }.isInstanceOf(DuplicatedPaidException::class.java)
 
-        val testes2 = HasPaidTime(LocalDate.of(2019,1,2),PaidTimeType.PM)
-        testes2.assertNotDuplicated(list)
     }
 
 }

@@ -23,13 +23,19 @@ open class HasPaidTime internal constructor(
     open val paidAcquisitionDate : LocalDate,
     open val paidTimeType : PaidTimeType
 ) {
-    fun assertNotDuplicated(list: List<HasPaidTime>) {
-        val sameDate = list.filter {
-            it.paidAcquisitionDate == this.paidAcquisitionDate &&
-            !it.paidTimeType.isDuplicated(this.paidTimeType)
-        }
-        sameDate.isNotEmpty() && throw DuplicatedPaidException();
+    private fun isDuplicated(other:HasPaidTime) : Boolean{
+        return this.paidAcquisitionDate == other.paidAcquisitionDate
+                && this.paidTimeType.isDuplicated(other.paidTimeType)
     }
+    /**
+     * otherに対して、日付として被っているかをチェックします。
+     * @param other
+     * @exception DuplicatedPaidException 被っている場合
+     */
+    fun assertNotDuplicated(other:HasPaidTime) {
+        isDuplicated(other) && throw DuplicatedPaidException()
+    }
+
 }
 
 interface PaidRepository {
