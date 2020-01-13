@@ -1,8 +1,8 @@
-package com.mosa.office.kintai.repository
+package com.mosa.office.kintai.gateway
 
-import com.mosa.office.kintai.model.Paid
-import com.mosa.office.kintai.model.PaidTimeType
-import com.mosa.office.kintai.usecase.PaidListRepository
+import com.mosa.office.kintai.domain.model.Paid
+import com.mosa.office.kintai.domain.model.PaidListRepository
+import com.mosa.office.kintai.domain.model.PaidTimeType
 import com.mosa.office.kintai.util.jodaLocalDateTimeToJavaTImeLocalDate
 import org.jetbrains.exposed.dao.IntIdTable
 import org.jetbrains.exposed.sql.ResultRow
@@ -21,7 +21,7 @@ private object PaidTable : IntIdTable("t_paid","paid_id") {
 // PaidListRepositoryの実装
 @Service
 class PaidListRepositoryImpl : PaidListRepository {
-    override fun getAll(userId: String): List<Paid> {
+    override fun getAllByUserId(userId: String): List<Paid> {
         return transaction {
             val query = PaidTable.select {
                 PaidTable.userId eq userId
