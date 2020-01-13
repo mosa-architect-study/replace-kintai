@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 import org.assertj.core.api.Assertions.assertThat
 
-internal class PaidListRepositoryImplTest {
+internal class PaidRepositoryImplTest {
 
     companion object {
         @BeforeAll
@@ -26,7 +26,7 @@ internal class PaidListRepositoryImplTest {
 
     @Test
     fun add() {
-        val repository = PaidListRepositoryImpl()
+        val repository = PaidRepositoryImpl()
         transaction {
             addLogger(StdOutSqlLogger)
             // データを追加

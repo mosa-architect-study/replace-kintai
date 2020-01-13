@@ -41,7 +41,7 @@ docker run -it --rm -v $PWD/sql:/sql hagaitski/heroku-psql-cli /bin/bash
 heroku login -i # herokuログイン
 export HEROKU_APP=mosakin-ktln-trial # ターゲットのアプリ名を設定
 ## SQLを実行したりできる
-heroku pg:psql -c 'select * from m_user;'
+heroku pg:psql -c 'select * from m_user;' 
 heroku pg:psql -c '\i /sql/02_sampledata.sql;' #マウントしたSQLファイルを実行できる
 ```
 

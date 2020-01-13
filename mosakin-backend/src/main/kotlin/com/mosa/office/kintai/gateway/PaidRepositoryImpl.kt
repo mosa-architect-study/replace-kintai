@@ -1,7 +1,7 @@
 package com.mosa.office.kintai.gateway
 
 import com.mosa.office.kintai.domain.model.Paid
-import com.mosa.office.kintai.domain.model.PaidListRepository
+import com.mosa.office.kintai.domain.model.PaidRepository
 import com.mosa.office.kintai.domain.model.PaidTimeType
 import com.mosa.office.kintai.gateway.table.PaidTable
 import com.mosa.office.kintai.util.javaLocalDateToJodaDateTime
@@ -15,7 +15,7 @@ import java.time.LocalDate
 
 // PaidListRepositoryの実装
 @Service
-class PaidListRepositoryImpl : PaidListRepository {
+class PaidRepositoryImpl : PaidRepository {
     override fun getAllByUserId(userId: String): List<Paid> {
         return transaction {
             val query = PaidTable.select {
