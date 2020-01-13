@@ -30,7 +30,7 @@ class PaidRepositoryImpl : PaidRepository {
             PaidTable.insert {
                 it[PaidTable.userId] = paid.paidAcquisitionUserId
                 it[PaidTable.comment] = paid.paidReason
-                it[PaidTable.timeType] = toPaidTimeTypeDb[PaidTimeType.ALL_DAY] ?: throw Exception("予期せぬエラー")
+                it[PaidTable.timeType] = toPaidTimeTypeDb[paid.paidTimeType] ?: throw Exception("予期せぬエラー")
                 it[PaidTable.acquisitionDate] = javaLocalDateToJodaDateTime(paid.paidAcquisitionDate)
             }
         }
