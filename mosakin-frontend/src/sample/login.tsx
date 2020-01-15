@@ -19,6 +19,10 @@ export const AuthButton = () => {
   const [user, setUser] = React.useState<User | null | "Loading">("Loading");
   React.useEffect(() => {
     getUser().then(user => {
+      user &&
+        user.getIdToken().then(token => {
+          console.log("token↓", token);
+        });
       setUser(user);
     });
   }, []);
