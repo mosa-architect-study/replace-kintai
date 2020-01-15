@@ -1,6 +1,6 @@
 import { useEffect, DependencyList } from "react";
 import { AxiosInstance } from "axios";
-import { getAxios } from "./axiosFactory";
+import { axios } from "./axios";
 
 /**
  *
@@ -11,8 +11,4 @@ import { getAxios } from "./axiosFactory";
 export const useAxios = (
   cb: (axios: AxiosInstance) => void,
   deps?: DependencyList
-) => {
-  useEffect(() => {
-    getAxios().then(cb);
-  }, deps);
-};
+) => useEffect(() => cb(axios), deps);
