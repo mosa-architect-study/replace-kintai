@@ -16,7 +16,7 @@ const Toggles: React.FC<TogglesProps> = ({ options, value, onClick }) => {
           size={option.size}
           key={option.value}
           onClick={() => onClick(option.value)}
-          selected={value === option.value ? true : false}
+          selected={value === option.value}
         ></Toggle>
       ))}
     </div>
