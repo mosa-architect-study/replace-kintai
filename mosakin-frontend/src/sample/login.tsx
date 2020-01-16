@@ -18,16 +18,16 @@ const UserInfoWrapper = styled.section`
 
 export const UseInfo = () => {
   const [user, setUser] = React.useState<User | null | "Loading">("Loading");
+  const history = useHistory();
   React.useEffect(() => {
     getUser().then(user => {
-      user &&
+      user ?
         user.getIdToken().then(token => {
           console.log("token↓", token);
-        });
+        }) : history.push("/login");;
       setUser(user);
     });
   }, []);
-  const history = useHistory();
   const _logout = () => {
     logout();
     history.push("/login");
