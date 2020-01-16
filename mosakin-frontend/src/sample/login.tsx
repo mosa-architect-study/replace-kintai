@@ -1,6 +1,5 @@
 import React from "react";
-import { getUser, logout, login } from "@/common/auth/wappers";
-import { useAxios } from "@/common/api/useAxios";
+import { getUser, logout } from "@/common/auth/wappers";
 import { Button } from "@/components/atoms/button";
 import { Text } from "@/components/atoms/text";
 import styled from "@emotion/styled";
@@ -21,10 +20,11 @@ export const UseInfo = () => {
   const history = useHistory();
   React.useEffect(() => {
     getUser().then(user => {
-      user ?
-        user.getIdToken().then(token => {
-          console.log("token↓", token);
-        }) : history.push("/login");;
+      user
+        ? user.getIdToken().then(token => {
+            console.log("token↓", token);
+          })
+        : history.push("/login");
       setUser(user);
     });
   }, []);
