@@ -4,6 +4,7 @@ import { useAxios } from "@/common/api/useAxios";
 import { Button } from "@/components/atoms/button";
 import { Text } from "@/components/atoms/text";
 import styled from "@emotion/styled";
+import { useHistory } from "react-router-dom";
 
 interface User {
   email: string | null;
@@ -15,7 +16,7 @@ const UserInfoWrapper = styled.section`
   display: flex;
 `;
 
-export const AuthButton = () => {
+export const UseInfo = () => {
   const [user, setUser] = React.useState<User | null | "Loading">("Loading");
   React.useEffect(() => {
     getUser().then(user => {
@@ -26,13 +27,10 @@ export const AuthButton = () => {
       setUser(user);
     });
   }, []);
-  useAxios(axios => {
-    axios.get("/authenticated/verify").then(verifyResult => {
-      console.log(verifyResult.data);
-    });
-  });
+  const history = useHistory();
   const _logout = () => {
     logout();
+    history.push("/login");
     setUser(null);
   };
   return user ? (
@@ -62,11 +60,5 @@ export const AuthButton = () => {
         </div>
       </UserInfoWrapper>
     )
-  ) : (
-    <Button backgroundColor="1" onClick={login} height="s" width="s">
-      <Text color="2" size="1">
-        Login With Google
-      </Text>
-    </Button>
-  );
+  ) : null;
 };

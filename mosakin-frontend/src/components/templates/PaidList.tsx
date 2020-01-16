@@ -20,7 +20,7 @@ export const PaidListTemplate: React.FC<
   LoadableViewModel<PaidListViewModel>
 > = model => {
   if (model.status == "Loading") {
-    return <p>Loading</p>;
+    return <p>Loading...</p>;
   } else {
     // TODO: JSON.stringifyはあくまで仮
     return (
