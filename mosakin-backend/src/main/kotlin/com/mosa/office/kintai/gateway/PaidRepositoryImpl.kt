@@ -17,23 +17,23 @@ import java.time.LocalDate
 @Service
 class PaidRepositoryImpl : PaidRepository {
     override fun getAllByUserId(userId: String): List<Paid> {
-        return transaction {
-            val query = PaidTable.select {
-                PaidTable.userId eq userId
-            }
-            query.map { convertToPaid(it) }
+
+        val query = PaidTable.select {
+            PaidTable.userId eq userId
         }
+        return query.map { convertToPaid(it) }
+
     }
 
     override fun add(paid: Paid) {
-        transaction {
-            PaidTable.insert {
-                it[PaidTable.userId] = paid.paidAcquisitionUserId
-                it[PaidTable.comment] = paid.paidReason
-                it[PaidTable.timeType] = toPaidTimeTypeDb[paid.paidTimeType] ?: throw Exception("予期せぬエラー")
-                it[PaidTable.acquisitionDate] = javaLocalDateToJodaDateTime(paid.paidAcquisitionDate)
-            }
+
+        PaidTable.insert {
+            it[PaidTable.userId] = paid.paidAcquisitionUserId
+            it[PaidTable.comment] = paid.paidReason
+            it[PaidTable.timeType] = toPaidTimeTypeDb[paid.paidTimeType] ?: throw Exception("予期せぬエラー")
+            it[PaidTable.acquisitionDate] = javaLocalDateToJodaDateTime(paid.paidAcquisitionDate)
         }
+
     }
 }
 
