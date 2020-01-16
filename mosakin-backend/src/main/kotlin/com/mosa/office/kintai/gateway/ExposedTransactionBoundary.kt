@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class ExposedTransactionBoundary : TransactionBoundary {
-    override fun <T> transaction(process: () -> T): T {
+    override fun <T> start(process: () -> T): T {
         return org.jetbrains.exposed.sql.transactions.transaction {
             process()
         }
