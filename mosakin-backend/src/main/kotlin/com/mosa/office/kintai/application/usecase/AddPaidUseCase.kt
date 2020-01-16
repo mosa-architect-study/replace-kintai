@@ -1,6 +1,7 @@
 package com.mosa.office.kintai.application.usecase
 
 import com.mosa.office.kintai.application.service.UniqueIdGenerator
+import com.mosa.office.kintai.application.transaction.transaction
 import com.mosa.office.kintai.domain.model.Paid
 import com.mosa.office.kintai.domain.model.PaidTimeType
 import com.mosa.office.kintai.domain.model.User
@@ -30,7 +31,10 @@ class AddPaidUseCase(
             user.userId,
             input.paidReason
         )
-        paidService.add(paid)
+        // トランザクション境界を設定
+        transaction {
+            paidService.add(paid)
+        }
         // TODO Slackへの通知
     }
 
