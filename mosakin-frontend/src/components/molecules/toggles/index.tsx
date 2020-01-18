@@ -1,13 +1,22 @@
 import React from "react";
 import { Toggle } from "../../atoms/toggle";
 import { TextSize } from "@/components/atoms/text";
-interface TogglesProps {
-  options: { value: string; label: string; size: TextSize }[];
-  value: string;
-  onClick: (value: string) => void;
+interface TogglesProps<T extends string> {
+  options: TogglesOption<T>[];
+  value: T;
+  onClick: (value: T) => void;
+}
+interface TogglesOption<T extends string> {
+  value: T;
+  label: string;
+  size: TextSize;
 }
 
-const Toggles: React.FC<TogglesProps> = ({ options, value, onClick }) => {
+const Toggles = <T extends string>({
+  options,
+  value,
+  onClick
+}: TogglesProps<T>): JSX.Element => {
   return (
     <div>
       {options.map(option => (
@@ -23,4 +32,4 @@ const Toggles: React.FC<TogglesProps> = ({ options, value, onClick }) => {
   );
 };
 
-export { Toggles };
+export { Toggles, TogglesOption };
