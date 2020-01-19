@@ -4,7 +4,6 @@ import * as Constant from "./constant";
 import { paletteDict } from "@/common/theme";
 
 interface ButtonProps {
-  type: "button" | "submit" | "reset";
   backgroundColor: Constant.ButtonBackColorType;
   width: Constant.ButtonWidthType;
   height: Constant.ButtonHeightType;
@@ -46,11 +45,11 @@ const StyledButton = styled.button<ButtonProps>`
 `;
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const { type, backgroundColor, width, height, onClick, children } = props;
+  const { backgroundColor, width, height, onClick, children } = props;
   return (
     <div>
       <StyledButton
-        type={type}
+        type="button"
         backgroundColor={backgroundColor}
         width={width}
         height={height}

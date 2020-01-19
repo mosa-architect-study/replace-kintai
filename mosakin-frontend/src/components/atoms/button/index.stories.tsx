@@ -8,7 +8,6 @@ storiesOf("atoms/button", module).add("button", () => {
   return (
     <div>
       <Button
-        type="button"
         backgroundColor="1"
         width="s"
         height="s"
@@ -20,7 +19,6 @@ storiesOf("atoms/button", module).add("button", () => {
       </Button>
 
       <Button
-        type="button"
         backgroundColor="2"
         width="l"
         height="l"
