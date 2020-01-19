@@ -7,17 +7,15 @@ export interface CommonUserNameAreaProps {
   value: string;
 }
 
-const InnerDiv = styled.div`
-  /* display: inline-block; */
+const CaptionDiv = styled.div`
   vertical-align: middle;
-  :nth-of-type(2) {
-    width: 295px;
-    text-align: left;
-  }
+`;
+const TextDiv = styled.div`
+  vertical-align: middle;
+  width: 295px;
+  text-align: left;
   @media (max-width: 480px) {
-    :nth-of-type(2) {
-      width: 146px;
-    }
+    width: 146px;
   }
 `;
 const OuterDiv = styled.div`
@@ -31,13 +29,13 @@ const OuterDiv = styled.div`
 
 export const CommonUserNameArea = (props: CommonUserNameAreaProps) => (
   <OuterDiv>
-    <InnerDiv>
+    <CaptionDiv>
       <Caption lv="h3">対象ユーザ</Caption>
-    </InnerDiv>
-    <InnerDiv>
+    </CaptionDiv>
+    <TextDiv>
       <Text color="1" size="2">
         {props.value}
       </Text>
-    </InnerDiv>
+    </TextDiv>
   </OuterDiv>
 );
