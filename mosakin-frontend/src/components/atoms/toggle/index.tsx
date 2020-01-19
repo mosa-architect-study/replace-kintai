@@ -49,6 +49,7 @@ const Toggle = (props: Toggleprops): JSX.Element => (
   <Label selected={props.selected} onClick={props.onClick}>
     <Input type="radio"></Input>
     <TextWrapper>
+      {/* FIX ME */}
       <Text color="1" size={props.size}>
         {props.label}
       </Text>

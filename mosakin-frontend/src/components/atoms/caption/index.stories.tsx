@@ -2,7 +2,7 @@ import { Caption } from ".";
 import React from "react";
 
 export default {
-  title: "Caption"
+  title: "atoms/Caption"
 };
 
 export const h1 = (): JSX.Element => <Caption lv="h1">Caption h1</Caption>;
