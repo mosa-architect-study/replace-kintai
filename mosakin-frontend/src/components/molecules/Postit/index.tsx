@@ -1,30 +1,35 @@
 import React from "react";
 import styled from "@emotion/styled";
-import * as Constant from "./constant";
 import { paletteDict } from "@/common/theme";
-import { Text } from "../../atoms/text";
-import { Caption } from "../../atoms/caption";
-
-interface PostitSizeProps {
-  width: Constant.PostitSizeType;
-}
+import { Text } from "@/components/atoms/text";
+import { Caption } from "@/components/atoms/caption";
 
 interface PostitProps {
-  value: string;
-  width: Constant.PostitSizeType;
-  paid: string;
+  title: string;
+  number: string;
 }
 
-const StyledPostit = styled.div<PostitSizeProps>`
-  background: ${paletteDict.white};
-  width: ${({ width }): string => Constant.PcPostitWidth[width]};
+const StyledPostit = styled.div`
+  display: inline-block;
   height: 92px;
-  border: 1px solid ${paletteDict.border};
+  margin-right: 2px;
+  padding: 0 1.5%;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid ${paletteDict.border};
+  background: ${paletteDict.white};
   @media (max-width: 480px) {
     height: 82px;
-    width: ${({ width }) => Constant.SpPostitWidth[width]};
+  }
+`;
+
+const PostitWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+  @media (max-width: 480px) {
+    margin-top: 30%;
   }
 `;
 
@@ -51,7 +56,7 @@ const PinBorder = styled.div`
   }
 `;
 
-const Pin = (): JSX.Element => {
+const Pin = () => {
   return (
     <>
       <PinRound />
@@ -66,27 +71,21 @@ const PinWrapper = styled.div`
   align-items: center;
 `;
 
-const PostitWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 5%;
-  @media (max-width: 480px) {
-    margin-top: 15%;
-  }
 `;
 
-export const Postit = (props: PostitProps): JSX.Element => (
-  <StyledPostit width={props.width}>
+export const Postit = (props: PostitProps) => (
+  <StyledPostit>
     <PinWrapper>
       <Pin />
     </PinWrapper>
     <PostitWrapper>
       <Caption color="2" lv="h4">
-        {props.value}
+        {props.title}
       </Caption>
       <Text color="1" size="1">
-        {props.paid}日
+        {props.number}日
       </Text>
     </PostitWrapper>
   </StyledPostit>
