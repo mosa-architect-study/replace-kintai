@@ -4,7 +4,7 @@ import { Icon } from ".";
 import styled from "@emotion/styled";
 import { paletteDict } from "@/common/theme";
 
-storiesOf("Icon", module).add("icon", () => (
+storiesOf("atoms/Icon", module).add("icon", () => (
   <div>
     <IconBackColor>
       <Icon name="calendar" width="l" height="l"></Icon>

@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { Toggles } from ".";
 
-storiesOf("Toggles", module).add("Toggles", () => {
+storiesOf("molecules/Toggles", module).add("Toggles", () => {
   const [value, setState] = React.useState("all-day");
   return (
     <Toggles
