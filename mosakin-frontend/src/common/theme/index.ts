@@ -51,7 +51,8 @@ export const paletteDict: { [P in Palette]: string } = {
   white: "#FFFFFF",
   black: "#868181",
   red: "#DD4444",
-  whitesmoke: "#F5F5F5" // fixme トグルホバー時の色
+  // ホバー用
+  whitesmoke: "rgba(245, 245, 245, 0.3)"
 };
 
 export const opacityDict: { [P in Opacity]: number } = {
