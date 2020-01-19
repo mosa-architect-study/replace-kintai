@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Text } from "../text/index";
 
-storiesOf("components/atoms/button", module).add("button", () => {
+storiesOf("atoms/button", module).add("button", () => {
   return (
     <div>
       <Button
