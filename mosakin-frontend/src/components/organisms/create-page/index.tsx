@@ -78,7 +78,6 @@ export const CreatePage = (props: CreateDateProps) => (
     </PaidReasonDiv>
     <ButtonArea>
       <Button
-        color="1"
         backgroundColor="1"
         width="s"
         height="s"
