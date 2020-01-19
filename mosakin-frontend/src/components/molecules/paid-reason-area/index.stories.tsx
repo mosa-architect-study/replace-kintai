@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { PaidReasonArea } from ".";
 
-storiesOf("PaidReasonArea", module).add("PaidReasonArea", () => {
+storiesOf("molecules/PaidReasonArea", module).add("PaidReasonArea", () => {
   const [value, setValue] = React.useState("");
   return (
     <div>

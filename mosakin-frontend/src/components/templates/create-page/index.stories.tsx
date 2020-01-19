@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { CreatePage } from ".";
 import { action } from "@storybook/addon-actions";
 
-storiesOf("CreatePage", module).add("CreatePage", () => {
+storiesOf("templates/CreatePage", module).add("CreatePage", () => {
   const [dateValue, dateSetValue] = React.useState("2019-07-22");
   const [padeTimeValue, padeTimeOnChange] = React.useState("all-day");
   const [reasonValue, reasonSetValue] = React.useState("寝坊");

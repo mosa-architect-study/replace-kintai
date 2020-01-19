@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { DateInputArea } from ".";
 
-storiesOf("DateInputArea", module).add("DateInputArea", () => {
+storiesOf("molecules/DateInputArea", module).add("DateInputArea", () => {
   const [value, setValue] = React.useState("2019-07-22");
   return (
     <div>
