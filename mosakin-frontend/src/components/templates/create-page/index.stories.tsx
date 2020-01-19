@@ -5,19 +5,18 @@ import { action } from "@storybook/addon-actions";
 
 storiesOf("templates/CreatePage", module).add("CreatePage", () => {
   const [dateValue, dateSetValue] = React.useState("2019-07-22");
-  const [padeTimeValue, padeTimeOnChange] = React.useState("all-day");
+  const [paidTimeValue, paidTimeOnChange] = React.useState("ALL_DAY");
   const [reasonValue, reasonSetValue] = React.useState("寝坊");
   const createData = {
-    title: "新規申請",
     userName: "芳賀樹生",
     dateValue: dateValue,
     dateOnChange: dateSetValue,
-    padeTimeValue: padeTimeValue,
-    padeTimeOnChange: padeTimeOnChange,
+    paidTimeValue: paidTimeValue,
+    paidTimeOnChange: paidTimeOnChange,
     reasonValue: reasonValue,
     reasonOnChange: reasonSetValue,
     adminFlg: true,
-    onClick: action("ポチッとな")
+    onSubmit: action("ポチッとな")
   };
   return (
     <div>

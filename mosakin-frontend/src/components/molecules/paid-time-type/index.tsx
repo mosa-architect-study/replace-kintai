@@ -42,17 +42,17 @@ export const PaidTimeType = (props: PaidTimeTypeProps) => (
       <Toggles
         options={[
           {
-            value: "all-day",
+            value: "ALL_DAY",
             label: "全日",
             size: "1"
           },
           {
-            value: "am",
+            value: "AM",
             label: "午前",
             size: "1"
           },
           {
-            value: "pm",
+            value: "PM",
             label: "午後",
             size: "1"
           }

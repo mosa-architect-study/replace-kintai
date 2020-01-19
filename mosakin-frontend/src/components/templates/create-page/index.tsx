@@ -9,16 +9,15 @@ import { Button } from "../../atoms/button";
 import { Text } from "../../atoms/text/index";
 
 export interface CreatePageProps {
-  title: string;
   userName: string;
   dateValue: string;
   dateOnChange: (value: string) => void;
-  padeTimeValue: string;
-  padeTimeOnChange: (value: string) => void;
+  paidTimeValue: string;
+  paidTimeOnChange: (value: string) => void;
   reasonValue: string;
   reasonOnChange: (value: string) => void;
   adminFlg: boolean;
-  onClick: () => void;
+  onSubmit: () => void;
 }
 
 export interface CreateDateProps {
@@ -51,7 +50,7 @@ const ButtonArea = styled.div`
 export const CreatePage = (props: CreateDateProps) => (
   <OuterDiv>
     <TitleArea>
-      <PageTitle title={props.data.title}></PageTitle>
+      <PageTitle title="新規申請"></PageTitle>
     </TitleArea>
     {props.data.adminFlg && (
       <InnerDiv>
@@ -66,8 +65,8 @@ export const CreatePage = (props: CreateDateProps) => (
     </InnerDiv>
     <InnerDiv>
       <PaidTimeType
-        value={props.data.padeTimeValue}
-        onClick={props.data.padeTimeOnChange}
+        value={props.data.paidTimeValue}
+        onClick={props.data.paidTimeOnChange}
       ></PaidTimeType>
     </InnerDiv>
     <PaidReasonDiv>
@@ -81,7 +80,7 @@ export const CreatePage = (props: CreateDateProps) => (
         backgroundColor="1"
         width="s"
         height="s"
-        onClick={props.data.onClick}
+        onClick={props.data.onSubmit}
       >
         <Text color="2" size="1">
           登録
