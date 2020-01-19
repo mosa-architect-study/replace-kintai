@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { CaptionLevel, captionLevelToFrontSize } from "./constant";
-import { paletteDict, PcFontSizeDict, SpFontSizeDict } from "@/common/theme";
+import { paletteDict, fontSizeDict } from "@/common/theme";
 
 export interface CaptionProps {
   lv: CaptionLevel;
@@ -17,8 +17,5 @@ const CaptionInner = (props: InnerProps): JSX.Element =>
 
 export const Caption = styled(CaptionInner)<CaptionProps>`
   color: ${paletteDict.black};
-  font-size: ${({ lv }) => PcFontSizeDict[captionLevelToFrontSize[lv]]};
-  @media (max-width: 480px) {
-    font-size: ${({ lv }) => SpFontSizeDict[captionLevelToFrontSize[lv]]};
-  }
+  font-size: ${({ lv }) => fontSizeDict[captionLevelToFrontSize[lv]]};
 `;

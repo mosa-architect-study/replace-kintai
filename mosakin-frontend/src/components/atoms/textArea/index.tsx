@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { paletteDict, PcFontSizeDict, SpFontSizeDict } from "@/common/theme";
+import { paletteDict, fontSizeDict } from "@/common/theme";
 
 interface TextAreaProps {
   value: string;
@@ -15,9 +15,8 @@ const InnerTextArea = styled.textarea`
   border: 1px solid #dadadf;
   border-radius: 5px;
   color: ${paletteDict.black};
-  font-size: ${PcFontSizeDict.base};
+  font-size: ${fontSizeDict._20px};
   @media (max-width: 480px) {
-    font-size: ${SpFontSizeDict.base};
     width: 341px;
     height: 86px;
   }

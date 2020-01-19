@@ -1,5 +1,5 @@
 import React from "react";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, fontSizeDict } from "@/common/theme";
 import styled from "@emotion/styled";
 
 interface InputDateprops {
@@ -10,6 +10,7 @@ interface InputDateprops {
 const Input = styled.input`
   width: 295px;
   height: 38px;
+  padding: 4px 10px;
   background: ${paletteDict.white};
   border: 1px solid ${paletteDict.border};
   border-radius: 5px;
@@ -18,6 +19,7 @@ const Input = styled.input`
   @media (max-width: 480px) {
     width: 244px;
   }
+  font-size: ${fontSizeDict._20px};
 `;
 
 const InputDate = (props: InputDateprops): JSX.Element => (
