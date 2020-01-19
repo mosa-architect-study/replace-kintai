@@ -1,11 +1,11 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Caption } from "../../atoms/caption";
-import { Toggle } from "../../atoms/toggle";
+import { Toggles } from "../../molecules/toggles";
 
-export interface PaidTimeAreaProps {
+export interface PaidTimeTypeProps {
   value: string;
-  onChange: (value: string) => void;
+  onClick: (value: string) => void;
 }
 
 const TitleDiv = styled.div`
@@ -13,6 +13,7 @@ const TitleDiv = styled.div`
   vertical-align: middle;
   @media (max-width: 480px) {
     display: block;
+    margin-bottom: 18px;
   }
 `;
 const InputDiv = styled.div`
@@ -32,15 +33,33 @@ const OuterDiv = styled.div`
   }
 `;
 
-export const PaidTimeArea = (props: PaidTimeAreaProps) => (
+export const PaidTimeType = (props: PaidTimeTypeProps) => (
   <OuterDiv>
     <TitleDiv>
       <Caption lv="h3">有給時間種別</Caption>
     </TitleDiv>
     <InputDiv>
-      <Toggle value="全日" group="group1" size="1" selected></Toggle>
-      <Toggle value="午前" group="group1" size="1" selected={false}></Toggle>
-      <Toggle value="午後" group="group1" size="1" selected={false}></Toggle>
+      <Toggles
+        options={[
+          {
+            value: "all-day",
+            label: "全日",
+            size: "1"
+          },
+          {
+            value: "am",
+            label: "午前",
+            size: "1"
+          },
+          {
+            value: "pm",
+            label: "午後",
+            size: "1"
+          }
+        ]}
+        value={props.value}
+        onClick={props.onClick}
+      ></Toggles>
     </InputDiv>
   </OuterDiv>
 );

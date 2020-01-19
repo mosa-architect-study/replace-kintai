@@ -10,6 +10,7 @@ export interface PaidReasonAreaProps {
 
 const TitleDiv = styled.div`
   display: block;
+  margin-bottom: 6px;
   @media (max-width: 480px) {
     margin-bottom: 18px;
   }

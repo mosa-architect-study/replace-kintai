@@ -1,12 +1,12 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { PaidTimeArea } from ".";
+import { PaidTimeType } from ".";
 
 storiesOf("PaidTimeArea", module).add("PaidTimeArea", () => {
-  const [value, setValue] = React.useState("2019-07-22");
+  const [value, setValue] = React.useState("all-day");
   return (
     <div>
-      <PaidTimeArea value={value} onChange={setValue}></PaidTimeArea>
+      <PaidTimeType value={value} onClick={setValue}></PaidTimeType>
     </div>
   );
 });

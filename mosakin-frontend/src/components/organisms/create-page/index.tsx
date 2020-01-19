@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import { Caption } from "../../atoms/caption";
 import { PageTitle } from "../../molecules/pageTitle";
 import { CommonUserNameArea } from "../../molecules/common-user-name-area";
 import { DateInputArea } from "../../molecules/date-input-area";
+import { PaidTimeType } from "../../molecules/paid-time-type";
 import { PaidReasonArea } from "../../molecules/paid-reason-area";
 import { Button } from "../../atoms/button";
 import { Text } from "../../atoms/text/index";
@@ -13,6 +13,8 @@ export interface CreatePageProps {
   userName: string;
   dateValue: string;
   dateOnChange: (value: string) => void;
+  padeTimeValue: string;
+  padeTimeOnChange: (value: string) => void;
   reasonValue: string;
   reasonOnChange: (value: string) => void;
   adminFlg: boolean;
@@ -24,25 +26,22 @@ export interface CreateDateProps {
 }
 const TitleArea = styled.div`
   text-align: center;
+  margin-bottom: 28px;
 `;
-
 const InnerDiv = styled.div`
   display: block;
-  :nth-of-type(n + 1) {
-    margin-bottom: 43px;
-  }
-  @media (max-width: 480px) {
-    :nth-of-type(n + 2) {
-      margin-bottom: 43px;
-    }
-  }
+  margin-bottom: 43px;
+`;
+const PaidReasonDiv = styled.div`
+  display: block;
+  margin-bottom: 21px;
 `;
 const OuterDiv = styled.div`
   width: 479px;
   margin: auto;
   @media (max-width: 480px) {
-    width: 100%;
-    margin: 0px;
+    width: 90%;
+    margin: auto;
   }
 `;
 const ButtonArea = styled.div`
@@ -66,11 +65,17 @@ export const CreatePage = (props: CreateDateProps) => (
       ></DateInputArea>
     </InnerDiv>
     <InnerDiv>
+      <PaidTimeType
+        value={props.data.padeTimeValue}
+        onClick={props.data.padeTimeOnChange}
+      ></PaidTimeType>
+    </InnerDiv>
+    <PaidReasonDiv>
       <PaidReasonArea
         value={props.data.reasonValue}
         onChange={props.data.reasonOnChange}
       ></PaidReasonArea>
-    </InnerDiv>
+    </PaidReasonDiv>
     <ButtonArea>
       <Button
         color="1"

@@ -13,6 +13,7 @@ const TitleDiv = styled.div`
   vertical-align: middle;
   @media (max-width: 480px) {
     display: block;
+    margin-bottom: 7px;
   }
 `;
 const InputDiv = styled.div`
