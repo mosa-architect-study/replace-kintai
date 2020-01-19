@@ -1,9 +1,9 @@
 import React from "react";
-import { getUser, logout, login } from "@/common/auth/wappers";
-import { useAxios } from "@/common/api/useAxios";
+import { getUser, logout } from "@/common/auth/wappers";
 import { Button } from "@/components/atoms/button";
 import { Text } from "@/components/atoms/text";
 import styled from "@emotion/styled";
+import { useHistory } from "react-router-dom";
 
 interface User {
   email: string | null;
@@ -15,20 +15,22 @@ const UserInfoWrapper = styled.section`
   display: flex;
 `;
 
-export const AuthButton = () => {
+export const UseInfo = () => {
   const [user, setUser] = React.useState<User | null | "Loading">("Loading");
+  const history = useHistory();
   React.useEffect(() => {
     getUser().then(user => {
+      user
+        ? user.getIdToken().then(token => {
+            console.log("token↓", token);
+          })
+        : history.push("/login");
       setUser(user);
     });
   }, []);
-  useAxios(axios => {
-    axios.get("/authenticated/verify").then(verifyResult => {
-      console.log(verifyResult.data);
-    });
-  });
   const _logout = () => {
     logout();
+    history.push("/login");
     setUser(null);
   };
   return user ? (
@@ -58,11 +60,5 @@ export const AuthButton = () => {
         </div>
       </UserInfoWrapper>
     )
-  ) : (
-    <Button backgroundColor="1" onClick={login} height="s" width="s">
-      <Text color="2" size="1">
-        Login With Google
-      </Text>
-    </Button>
-  );
+  ) : null;
 };

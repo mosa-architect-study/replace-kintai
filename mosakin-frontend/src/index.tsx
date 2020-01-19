@@ -6,8 +6,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { PaidListPage } from "./components/pages/PaidListPage";
 import { NewPaidPage } from "./components/pages/NewPaidPage";
 import { AdminPage } from "./components/pages/AdminPage";
-import { AuthButton } from "./sample/login";
+import { UseInfo } from "./sample/login";
 import { NotFoundPage } from "./components/pages/404";
+import { LoginPage } from "./components/pages/LoginPage";
 
 export const App: React.FC = () => {
   return (
@@ -23,9 +24,10 @@ export const App: React.FC = () => {
           <Link to="/admin">管理画面</Link>
         </li>
       </ul>
-      <AuthButton />
+      <UseInfo />
       <Switch>
         <Route exact path="/" component={PaidListPage} />
+        <Route path="/login" component={LoginPage} />
         <Route path="/new" component={NewPaidPage} />
         <Route path="/admin" component={AdminPage} />
         <Route component={NotFoundPage}></Route>

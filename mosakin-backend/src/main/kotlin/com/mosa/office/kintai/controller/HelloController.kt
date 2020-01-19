@@ -1,7 +1,7 @@
 package com.mosa.office.kintai.controller
 
-import com.mosa.office.kintai.model.*
-import com.mosa.office.kintai.usecase.GetPaidListUseCase
+import com.mosa.office.kintai.domain.model.*
+import com.mosa.office.kintai.application.usecase.GetPaidListUseCase
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -17,7 +17,7 @@ class HelloController(_useCase: GetPaidListUseCase) {
 
     @GetMapping("/test/database")
     fun paid(): List<Paid> {
-        return useCase.getPaidList(UserId("00000001"))
+        return useCase.getPaidList("00000001")
     }
 
     @GetMapping("/test/err")
