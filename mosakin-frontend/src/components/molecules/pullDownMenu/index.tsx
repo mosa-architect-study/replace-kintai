@@ -2,28 +2,28 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import * as Constant from "./constant";
-import { Text } from "../../atoms/text";
-import { Icon } from "../../atoms/icon";
+import { Text } from "@/components/atoms/text";
+import { Icon } from "@/components/atoms/icon";
 import { paletteDict } from "@/common/theme";
-import { IconList } from "../../atoms/icon/constant";
-import { Logout } from "./sample";
+import { IconList } from "@/components/atoms/icon/constant";
+import { LoginPage } from "@/components/pages/LoginPage";
 
 interface PullDownProps {
   color: Constant.PullDownFontColorType;
   backgroundColor: Constant.PullDownBackColorType;
 }
 
-export type Menus = {
+type MenusProps = {
+  menus: Menus[];
+};
+
+type Menus = {
   id: string;
   menuItem: string;
   iconName: IconList;
 };
 
-export const users = {
-  userName: "ユーザ1"
-};
-
-export const menus: Menus[] = [
+const menus: Menus[] = [
   {
     id: "login",
     menuItem: "ログアウト",
@@ -31,24 +31,24 @@ export const menus: Menus[] = [
   }
 ];
 
-export const PullDown = (): JSX.Element => {
+const users = {
+  userName: "ユーザ1"
+};
+
+export const PullDown = () => {
   return (
     <>
       <Router>
         <PullDownItem />
         <Switch>
-          <Route
-            exact
-            path="/login"
-            component={(): JSX.Element => <Logout />}
-          />
+          <Route exact path="/login" component={LoginPage} />
         </Switch>
       </Router>
     </>
   );
 };
 
-const PullDownItem = (): JSX.Element => {
+const PullDownItem = () => {
   return (
     <>
       <PullDownWrapper>
@@ -60,8 +60,8 @@ const PullDownItem = (): JSX.Element => {
   );
 };
 
-const PullDownMenuItemList = (props: { menus: Menus[] }): JSX.Element => {
-  const menuItemList = props.menus.map((menu: Menus) => (
+const PullDownMenuItemList: React.FC<MenusProps> = ({ menus }) => {
+  const menuItemList = menus.map((menu: Menus) => (
     <li key={menu.id}>
       <StyledLink to={`/${menu.id}`}>
         <PullDownMenuItem
@@ -87,6 +87,7 @@ const StyledPullDownUser = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 3px 3px 0px 0px;
+  color: ${paletteDict.white};
   @media (max-width: 480px) {
     width: 433px;
     height: 66px;
@@ -95,16 +96,15 @@ const StyledPullDownUser = styled.div`
 `;
 
 const PullDownUser = styled(StyledPullDownUser)<PullDownProps>`
-  color: ${({ color }) => paletteDict[Constant.PullDownFontColor[color]]};
   background-color: ${({ backgroundColor }) =>
     paletteDict[Constant.PullDownBackColor[backgroundColor]]};
 `;
 
-const PullDownUserItem = (props: { value: string }): JSX.Element => {
+const PullDownUserItem = (props: { value: string }) => {
   return (
     <>
       <PullDownUser color="1" backgroundColor="1">
-        <Text size="1" color="2">
+        <Text color="2" size="1">
           {props.value}
         </Text>
       </PullDownUser>
@@ -119,6 +119,7 @@ const StyledPullDownMenu = styled.li`
   align-items: center;
   padding: 0 15%;
   border-radius: 3px;
+  color: ${paletteDict.white};
   @media (max-width: 480px) {
     width: 433px;
     height: 64px;
@@ -131,22 +132,18 @@ const StyledPullDownMenu = styled.li`
 `;
 
 const PullDownMenu = styled(StyledPullDownMenu)<PullDownProps>`
-  color: ${({ color }) => paletteDict[Constant.PullDownFontColor[color]]};
   background-color: ${({ backgroundColor }) =>
     paletteDict[Constant.PullDownBackColor[backgroundColor]]};
 `;
 
-const PullDownMenuItem = (props: {
-  value: string;
-  name: IconList;
-}): JSX.Element => {
+const PullDownMenuItem = (props: { value: string; name: IconList }) => {
   return (
     <>
       <PullDownMenu color="1" backgroundColor="1">
         <PullDownIconWrapper>
           <Icon name={props.name} width="s" height="m" />
         </PullDownIconWrapper>
-        <Text size="1" color="2">
+        <Text color="2" size="1">
           {props.value}
         </Text>
       </PullDownMenu>
