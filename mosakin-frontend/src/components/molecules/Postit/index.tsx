@@ -10,7 +10,7 @@ interface PostitProps {
 }
 
 const StyledPostit = styled.div`
-  display: inline-block;
+  display: grid;
   height: 92px;
   margin-right: 2px;
   padding: 0 1.5%;
@@ -23,14 +23,9 @@ const StyledPostit = styled.div`
   }
 `;
 
-const PostitWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 5%;
-  @media (max-width: 480px) {
-    margin-top: 30%;
-  }
+const TextWrapper = styled.div`
+  text-align: center;
+  justify-content: center;
 `;
 
 const PinRound = styled.div`
@@ -80,13 +75,13 @@ export const Postit = (props: PostitProps) => (
     <PinWrapper>
       <Pin />
     </PinWrapper>
-    <PostitWrapper>
+    <TextWrapper>
       <Caption color="2" lv="h4">
         {props.title}
       </Caption>
       <Text color="1" size="1">
         {props.number}日
       </Text>
-    </PostitWrapper>
+    </TextWrapper>
   </StyledPostit>
 );
