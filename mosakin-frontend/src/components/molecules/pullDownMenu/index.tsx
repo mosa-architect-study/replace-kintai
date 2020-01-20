@@ -169,10 +169,6 @@ const PullDownIconWrapper = styled.div`
 const PullDownBorder = styled.div`
   display: flex;
   justify-content: center;
-  width: 259px;
-  @media (max-width: 480px) {
-    width: 433px;
-  }
   &:before {
     content: "";
     height: 1px;
