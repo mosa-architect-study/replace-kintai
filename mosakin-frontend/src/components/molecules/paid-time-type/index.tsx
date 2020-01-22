@@ -36,7 +36,7 @@ const OuterDiv = styled.div`
 export const PaidTimeType = (props: PaidTimeTypeProps) => (
   <OuterDiv>
     <TitleDiv>
-      <Caption lv="h3">有給時間種別</Caption>
+      <Caption lv="h2">有給時間種別</Caption>
     </TitleDiv>
     <InputDiv>
       <Toggles

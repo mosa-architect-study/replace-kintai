@@ -36,7 +36,7 @@ const OuterDiv = styled.div`
 export const DateInputArea = (props: DateInputAreaProps) => (
   <OuterDiv>
     <TitleDiv>
-      <Caption lv="h3">日付</Caption>
+      <Caption lv="h2">日付</Caption>
     </TitleDiv>
     <InputDiv>
       <InputDate value={props.value} onChange={props.onChange}></InputDate>

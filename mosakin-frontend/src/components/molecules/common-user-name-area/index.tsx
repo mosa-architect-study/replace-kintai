@@ -30,7 +30,7 @@ const OuterDiv = styled.div`
 export const CommonUserNameArea = (props: CommonUserNameAreaProps) => (
   <OuterDiv>
     <CaptionDiv>
-      <Caption lv="h3">対象ユーザ</Caption>
+      <Caption lv="h2">対象ユーザ</Caption>
     </CaptionDiv>
     <TextDiv>
       <Text color="1" size="2">
