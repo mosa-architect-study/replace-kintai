@@ -17,11 +17,11 @@ export interface CreatePageProps {
   reasonValue: string;
   reasonOnChange: (value: string) => void;
   adminFlg: boolean;
-  onSubmit: () => void;
 }
 
 export interface CreateDateProps {
   data: CreatePageProps;
+  onSubmit: () => void;
 }
 const TitleArea = styled.div`
   text-align: center;
@@ -76,12 +76,7 @@ export const CreatePage = (props: CreateDateProps) => (
       ></PaidReasonArea>
     </PaidReasonDiv>
     <ButtonArea>
-      <Button
-        backgroundColor="1"
-        width="s"
-        height="s"
-        onClick={props.data.onSubmit}
-      >
+      <Button backgroundColor="1" width="s" height="s" onClick={props.onSubmit}>
         <Text color="2" size="1">
           登録
         </Text>
