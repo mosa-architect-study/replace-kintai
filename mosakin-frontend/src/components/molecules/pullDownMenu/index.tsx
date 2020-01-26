@@ -80,12 +80,12 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledPullDownUser = styled.div`
-  width: 259px;
-  height: 57px;
-  list-style: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 259px;
+  height: 57px;
+  list-style: none;
   border-radius: 3px 3px 0px 0px;
   color: ${paletteDict.white};
   @media (max-width: 480px) {
@@ -113,10 +113,10 @@ const PullDownUserItem = (props: { value: string }) => {
 };
 
 const StyledPullDownMenu = styled.li`
-  width: 259px;
-  height: 46px;
   display: flex;
   align-items: center;
+  width: 259px;
+  height: 46px;
   padding: 0 15%;
   border-radius: 3px;
   color: ${paletteDict.white};
@@ -158,7 +158,6 @@ const PullDownWrapper = styled.div`
   list-style: none;
   @media (max-width: 480px) {
     width: 433px;
-    height: 195px;
   }
 `;
 
@@ -168,17 +167,13 @@ const PullDownIconWrapper = styled.div`
 `;
 
 const PullDownBorder = styled.div`
-  width: 259px;
   display: flex;
   justify-content: center;
-  @media (max-width: 480px) {
-    width: 433px;
-  }
   &:before {
     content: "";
-    background: ${paletteDict.white};
     height: 1px;
     width: 85%;
     bottom: 0;
+    background: ${paletteDict.white};
   }
 `;

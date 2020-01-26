@@ -17,6 +17,7 @@ const TitleDiv = styled.div`
 `;
 const InputDiv = styled.div`
   display: block;
+  width: 295px;
 `;
 const OuterDiv = styled.div`
   max-width: 479px;
@@ -25,7 +26,7 @@ const OuterDiv = styled.div`
 export const PaidReasonArea = (props: PaidReasonAreaProps) => (
   <OuterDiv>
     <TitleDiv>
-      <Caption lv="h3">有給所得理由</Caption>
+      <Caption lv="h2">有給所得理由</Caption>
     </TitleDiv>
     <InputDiv>
       <TextArea value={props.value} onChange={props.onChange}></TextArea>

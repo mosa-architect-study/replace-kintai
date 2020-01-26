@@ -26,7 +26,7 @@ export const PageTitle = (props: PageTitleProps) => (
       <Icon name="pageTitle" width="l" height="l"></Icon>
     </IconDiv>
     <TitleDiv>
-      <Caption lv="h3">{props.title}</Caption>
+      <Caption lv="h1">{props.title}</Caption>
     </TitleDiv>
   </OuterDiv>
 );
