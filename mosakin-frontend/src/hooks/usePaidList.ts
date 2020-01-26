@@ -1,7 +1,7 @@
 import { LoadableViewModel } from "../models/models/common";
 import { PaidListViewModel } from "../models/models/paidList";
-import { useState } from "react";
-import { useAxios } from "@/common/api/useAxios";
+import { useState, useEffect } from "react";
+import { axios } from "@/common/api/axios";
 
 /**
  * hooksのサンプル
@@ -10,7 +10,7 @@ import { useAxios } from "@/common/api/useAxios";
 export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
   const [model, setModel] = useState<PaidListViewModel | null>(null);
 
-  useAxios(axios => {
+  useEffect(() => {
     axios.get("/list").then(res => {
       setModel(res.data);
     });
