@@ -16,7 +16,7 @@ class AddPaidController(private val useCase: AddPaidUseCase) {
     fun add(@RequestBody input:AddPaidInputDto): String {
         // TODO アクセスしてきたユーザー情報の取得 UseCaseでやるべきか？
         try {
-            useCase.add(input,User("猛者彰人","00000001",AdminFlg.COMMON))
+            useCase.add(input)
         } catch(e:DuplicatedPaidException) {
             // TODO ここら辺はうまくException Handlerとかに逃がしたい
             return "君の登録しようとしてる有給は他の有給と日付が被っているよ！"
