@@ -29,5 +29,5 @@ export const useNewPaid = (): NewPaidViewModel => {
         console.log(res);
       });
   };
-  return { data: createData, action: onSubmit };
+  return { data: createData, onSubmit: onSubmit };
 };

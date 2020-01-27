@@ -6,7 +6,7 @@ export const NewPaidPage: React.FC = () => {
   const model = useNewPaid();
   return (
     <div>
-      <CreatePage data={model.data} onSubmit={model.action}></CreatePage>
+      <CreatePage data={model.data} onSubmit={model.onSubmit}></CreatePage>
     </div>
   );
 };

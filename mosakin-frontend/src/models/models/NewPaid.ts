@@ -2,7 +2,7 @@ import { DateValue } from "./common";
 
 export interface NewPaidViewModel {
   data: NewPaidItem;
-  action: () => void;
+  onSubmit: () => void;
 }
 
 export interface NewPaidItem {
