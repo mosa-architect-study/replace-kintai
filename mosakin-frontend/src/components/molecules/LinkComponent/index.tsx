@@ -5,13 +5,13 @@ import { IconList } from "@/components/atoms/icon/constant";
 
 interface LinkProps {
   name: IconList;
-  href: string;
+  to: string;
 }
 
-export const LinkComponent: React.FC<LinkProps> = ({ href, name }) => {
+export const LinkComponent: React.FC<LinkProps> = ({ to, name }) => {
   return (
     <>
-      <Link to={href}>
+      <Link to={to}>
         <Icon name={name} width="l" height="l" />
       </Link>
     </>

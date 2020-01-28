@@ -6,8 +6,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 storiesOf("molecules/LinkComponent", module).add("LinkComponent", () => (
   <>
     <Router>
-      <LinkComponent href="./edit" name="pencilThin" />
-      <LinkComponent href="./delete" name="xMark" />
+      <LinkComponent to="./edit" name="pencilThin" />
+      <LinkComponent to="./delete" name="xMark" />
       <Routes />
     </Router>
   </>
