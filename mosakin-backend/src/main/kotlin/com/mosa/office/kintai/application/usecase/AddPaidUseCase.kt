@@ -5,12 +5,10 @@ import com.mosa.office.kintai.application.service.UniqueIdGenerator
 import com.mosa.office.kintai.application.transaction.TransactionBoundary
 import com.mosa.office.kintai.domain.model.Paid
 import com.mosa.office.kintai.domain.model.PaidTimeType
-import com.mosa.office.kintai.domain.model.User
 import com.mosa.office.kintai.domain.service.PaidService
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 import com.mosa.office.kintai.domain.service.SlackService
-
 
 /**
  * UseCase層はアプリケーションとしての要求をDomainServiceやDomainModel、Repositoryを利用して実現します。
@@ -25,9 +23,8 @@ class AddPaidUseCase(
 ) {
     /**
      * @param input 追加する有給
-     * @param user 追加するユーザー
      */
-    fun add(input: AddPaidInputDto,user: User) {
+    fun add(input: AddPaidInputDto) {
         // TODO userをどう受け取るか考える
         val paid = Paid(
             idGene.generate(), // 採番はApplication層でやりたい
