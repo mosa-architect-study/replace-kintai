@@ -2,9 +2,8 @@ package com.mosa.office.kintai.controller
 
 import com.mosa.office.kintai.application.usecase.AddPaidInputDto
 import com.mosa.office.kintai.application.usecase.AddPaidUseCase
-import com.mosa.office.kintai.domain.model.AdminFlg
 import com.mosa.office.kintai.domain.model.DuplicatedPaidException
-import com.mosa.office.kintai.domain.model.User
+import com.mosa.office.kintai.domain.model.SlackMessageException
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -16,10 +15,14 @@ class AddPaidController(private val useCase: AddPaidUseCase) {
     fun add(@RequestBody input:AddPaidInputDto): String {
         // TODO アクセスしてきたユーザー情報の取得 UseCaseでやるべきか？
         try {
-            useCase.add(input,User("猛者彰人","00000001",AdminFlg.COMMON))
-        } catch(e:DuplicatedPaidException) {
-            // TODO ここら辺はうまくException Handlerとかに逃がしたい
-            return "君の登録しようとしてる有給は他の有給と日付が被っているよ！"
+            useCase.add(input)
+        } catch(e:Exception) {
+            return when(e){
+                // TODO ここら辺はうまくException Handlerとかに逃がしたい
+                is DuplicatedPaidException -> "君の登録しようとしてる有給は他の有給と日付が被っているよ！"
+                is SlackMessageException -> "slackのURLが設定されていないから送れませんでした〜"
+                else -> "謎のエラーだよ"
+            }
         }
         return "追加したよ！"
     }
