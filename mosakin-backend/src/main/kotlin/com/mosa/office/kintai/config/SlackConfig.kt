@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.core.io.ClassPathResource
 import java.io.InputStream
 
-const val SLACK_MESSAGE_WEBHOOK_URL_TEST = "SLACK_MESSAGE_WEBHOOK_URL_TEST"
-const val SLACK_MESSAGE_WEBHOOK_URL = "SLACK_MESSAGE_WEBHOOK_URL"
+const val SLACK_MESSAGE_WEBHOOK_URL = "SLACK_MESSAGE_WEBHOOK_URL"  // 本番用
+const val SLACK_MESSAGE_WEBHOOK_URL_TEST = "SLACK_MESSAGE_WEBHOOK_URL_TEST" // テスト用
 
 @Configuration
 class SlackConfig(
