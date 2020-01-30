@@ -1,10 +1,9 @@
-name: Deploy Development (Frontend)
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
+name: Deploy Development (Frontend)
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     strategy:
       matrix:
