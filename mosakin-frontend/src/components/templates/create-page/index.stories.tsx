@@ -15,12 +15,12 @@ storiesOf("templates/CreatePage", module).add("CreatePage", () => {
     paidTimeOnChange: paidTimeOnChange,
     reasonValue: reasonValue,
     reasonOnChange: reasonSetValue,
-    adminFlg: true,
-    onSubmit: action("ポチッとな")
+    adminFlg: true
   };
+  const onSubmit = () => action("ポチッとな");
   return (
     <div>
-      <CreatePage data={createData}></CreatePage>
+      <CreatePage data={createData} onSubmit={onSubmit}></CreatePage>
     </div>
   );
 });
