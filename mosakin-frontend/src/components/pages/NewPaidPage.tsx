@@ -1,7 +1,12 @@
 import React from "react";
+import { useNewPaid } from "../../hooks/useNewPaid";
+import { CreatePage } from "../templates/create-page";
 
-export const NewPaidPage: React.FC = () => (
-  <p>
-    ここは新規申請画面だよ！ｵｼﾞサンも、会社🏢、休んじゃおうｶﾅ〜🛌ﾅﾝﾁｬｯﾃ(^o^)😘
-  </p>
-);
+export const NewPaidPage: React.FC = () => {
+  const model = useNewPaid();
+  return (
+    <div>
+      <CreatePage data={model.data} onSubmit={model.onSubmit}></CreatePage>
+    </div>
+  );
+};

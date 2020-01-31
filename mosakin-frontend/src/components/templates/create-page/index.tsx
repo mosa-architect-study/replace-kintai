@@ -7,22 +7,8 @@ import { PaidTimeType } from "../../molecules/paid-time-type";
 import { PaidReasonArea } from "../../molecules/paid-reason-area";
 import { Button } from "../../atoms/button";
 import { Text } from "../../atoms/text/index";
+import { NewPaidViewModel } from "../../../models/models/newPaid";
 
-export interface CreatePageProps {
-  userName: string;
-  dateValue: string;
-  dateOnChange: (value: string) => void;
-  paidTimeValue: string;
-  paidTimeOnChange: (value: string) => void;
-  reasonValue: string;
-  reasonOnChange: (value: string) => void;
-  adminFlg: boolean;
-  onSubmit: () => void;
-}
-
-export interface CreateDateProps {
-  data: CreatePageProps;
-}
 const TitleArea = styled.div`
   text-align: center;
   margin-bottom: 28px;
@@ -47,7 +33,7 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
-export const CreatePage = (props: CreateDateProps) => (
+export const CreatePage = (props: NewPaidViewModel) => (
   <OuterDiv>
     <TitleArea>
       <PageTitle title="新規申請"></PageTitle>
@@ -76,12 +62,7 @@ export const CreatePage = (props: CreateDateProps) => (
       ></PaidReasonArea>
     </PaidReasonDiv>
     <ButtonArea>
-      <Button
-        backgroundColor="1"
-        width="s"
-        height="s"
-        onClick={props.data.onSubmit}
-      >
+      <Button backgroundColor="1" width="s" height="s" onClick={props.onSubmit}>
         <Text color="2" size="1">
           登録
         </Text>
