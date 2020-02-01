@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.mosa.office"
-version = "0.0.1-SNAPSHOT"
+version = project.findProperty("VERSION") ?: "NO_VERSION_SPECIFIED"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 val developmentOnly by configurations.creating

@@ -16,11 +16,7 @@ jobs:
     - name: Install Heroku Java
       run: heroku plugins:install java
     - name: Deploy Heroku
-      run: |
-        cd mosakin-backend
-        sh gradlew build
-        heroku jar:deploy $ARTIFACT_NAME
+      run: BACKEND_VERSION=${GITHUB_REF/refs\/tags\//} ./scripts/deploy-dev-backend.sh
       env:
-        ARTIFACT_NAME: build/libs/kintai-0.0.1-SNAPSHOT.jar
         HEROKU_APP: mosakin-ktln-trial
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
