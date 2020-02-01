@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.io.ClassPathResource
+import java.io.BufferedReader
 import java.io.InputStream
 
 const val SLACK_MESSAGE_WEBHOOK_URL = "SLACK_MESSAGE_WEBHOOK_URL"  // 本番用
@@ -19,9 +20,14 @@ class SlackConfig(
 
     @Bean
     fun slack (
-    ) : InputStream? {
-        return testUrlStr?.byteInputStream() ?: // HEROKUからは環境変数でJSONが渡ってくるはず。。
-        if(testClassPath.exists()) testClassPath.inputStream else
+    ) : String? {
+        return testUrlStr ?: // HEROKUからは環境変数でJSONが渡ってくるはず。。
+        if(testClassPath.exists()) {
+            val reader = BufferedReader(testClassPath.inputStream.reader())
+            val sb = StringBuilder()
+            sb.append(reader.readLine())
+            sb.toString()
+        } else
             return null
     }
 }

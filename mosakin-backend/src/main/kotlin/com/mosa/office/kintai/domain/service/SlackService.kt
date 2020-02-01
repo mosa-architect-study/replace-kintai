@@ -23,8 +23,7 @@ class SlackService(
     fun postSlackMessage(message: String?) {
         val text: Text = Text(message);
         val mapper = jacksonObjectMapper()
-        val jsonData: InputStream = slackConfig.slack() ?: return throw SlackMessageException()
-        println(jsonData)
+        val jsonData:String = slackConfig.slack() ?: return throw SlackMessageException()
         val data = mapper.readValue<Slack>(jsonData)
         val request: RequestEntity<Text> = RequestEntity.post(URI(data.url)).accept(MediaType.APPLICATION_JSON).body(text);
         val restTemplate = RestTemplate()
