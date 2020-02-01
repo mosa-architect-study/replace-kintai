@@ -20,7 +20,7 @@ class SlackConfig(
     @Bean
     fun slack (
     ) : InputStream? {
-        return if(false) urlStr?.byteInputStream() else testUrlStr?.byteInputStream() ?: // HEROKUからは環境変数でJSONが渡ってくるはず。。
+        return testUrlStr?.byteInputStream() ?: // HEROKUからは環境変数でJSONが渡ってくるはず。。
         if(testClassPath.exists()) testClassPath.inputStream else
             return null
     }
