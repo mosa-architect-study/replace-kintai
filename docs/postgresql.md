@@ -49,6 +49,6 @@ heroku pg:psql -c '\i /sql/02_sampledata.sql;' #マウントしたSQLファイ�
 コンテナ内のHerokuログイン情報をホスト側に保存することでコンテナに出たり入ったりしてもログインしたままで操作が可能です。
 
 ```bash
-cd moskain-backend/database
-./scripts/heroku_psql.sh
+# リポジトリのルートで実行
+./scripts/heroku-psql.sh
 ```
