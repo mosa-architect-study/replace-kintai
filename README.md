@@ -3,6 +3,7 @@
 ## Docs
 - [認証について](/docs/authentication.md)
 - [PostgreSQL](/docs/postgresql.md)
+- [デプロイ](/docs/deployment.md)
 
 ## /mosakin-frontend
 フロントのプロジェクトです。  
