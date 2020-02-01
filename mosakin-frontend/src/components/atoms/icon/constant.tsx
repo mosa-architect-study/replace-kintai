@@ -8,6 +8,7 @@ import pencilThin from "../../../static/pencil-thin.svg";
 import user from "../../../static/user.svg";
 import xMark from "../../../static/x-mark.svg";
 import pageTitle from "../../../static/page-title.svg";
+import mosakin from "../../../static/mosakin.png";
 
 export type IconSize = "s" | "m" | "l";
 export type IconList =
@@ -20,7 +21,8 @@ export type IconList =
   | "pencilThin"
   | "user"
   | "xMark"
-  | "pageTitle";
+  | "pageTitle"
+  | "mosakin";
 
 export interface IconSizeProps {
   width: IconSize;
@@ -57,5 +59,6 @@ export const IconListDict: { [P in IconList]: string } = {
   pencilThin: pencilThin,
   user: user,
   xMark: xMark,
-  pageTitle: pageTitle
+  pageTitle: pageTitle,
+  mosakin: mosakin
 };
