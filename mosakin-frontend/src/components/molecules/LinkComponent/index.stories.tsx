@@ -1,14 +1,31 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { LinkComponent, Routes } from ".";
-import { BrowserRouter as Router } from "react-router-dom";
+import { LinkComponent } from ".";
+import { MemoryRouter as Router, Route } from "react-router-dom";
 
-storiesOf("molecules/LinkComponent", module).add("LinkComponent", () => (
-  <>
-    <Router>
-      <LinkComponent to="./edit" name="pencilThin" />
-      <LinkComponent to="./delete" name="xMark" />
-      <Routes />
-    </Router>
-  </>
-));
+storiesOf("molecules/LinkComponent", module).add("LinkComponent", () => {
+  const UpdatePage = () => {
+    return (
+      <>
+        <p>とりあえずの編集</p>
+      </>
+    );
+  };
+  const DeletePage = () => {
+    return (
+      <>
+        <p>とりあえずの削除</p>
+      </>
+    );
+  };
+  return (
+    <>
+      <Router>
+        <LinkComponent to="./edit" name="pencilThin" />
+        <LinkComponent to="./delete" name="xMark" />
+        <Route path="/update" component={UpdatePage} />
+        <Route path="/delete" component={DeletePage} />
+      </Router>
+    </>
+  );
+});
