@@ -1,12 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import * as Constant from "./constant";
 import { Text } from "@/components/atoms/text";
 import { Icon } from "@/components/atoms/icon";
 import { paletteDict } from "@/common/theme";
 import { IconList } from "@/components/atoms/icon/constant";
-import { LoginPage } from "@/components/pages/LoginPage";
 
 interface PullDownProps {
   color: Constant.PullDownFontColorType;
@@ -17,54 +16,17 @@ type MenusProps = {
   menus: Menus[];
 };
 
-type Menus = {
+export type Menus = {
   id: string;
   menuItem: string;
   iconName: IconList;
 };
 
-const menus: Menus[] = [
-  {
-    id: "login",
-    menuItem: "ログアウト",
-    iconName: "logout"
-  }
-];
-
-const users = {
-  userName: "ユーザ1"
-};
-
-export const PullDown = () => {
-  return (
-    <>
-      <Router>
-        <PullDownItem />
-        <Switch>
-          <Route exact path="/login" component={LoginPage} />
-        </Switch>
-      </Router>
-    </>
-  );
-};
-
-const PullDownItem = () => {
-  return (
-    <>
-      <PullDownWrapper>
-        <PullDownUserItem value={users.userName} />
-        <PullDownBorder />
-        <PullDownMenuItemList menus={menus} />
-      </PullDownWrapper>
-    </>
-  );
-};
-
-const PullDownMenuItemList: React.FC<MenusProps> = ({ menus }) => {
+export const PullDownMenuList: React.FC<MenusProps> = ({ menus }) => {
   const menuItemList = menus.map((menu: Menus) => (
     <li key={menu.id}>
       <StyledLink to={`/${menu.id}`}>
-        <PullDownMenuItem
+        <PullDownMenu
           key={menu.id}
           value={menu.menuItem}
           name={menu.iconName}
@@ -95,19 +57,20 @@ const StyledPullDownUser = styled.div`
   }
 `;
 
-const PullDownUser = styled(StyledPullDownUser)<PullDownProps>`
+const PullDownUserItem = styled(StyledPullDownUser)<PullDownProps>`
   background-color: ${({ backgroundColor }) =>
     paletteDict[Constant.PullDownBackColor[backgroundColor]]};
 `;
 
-const PullDownUserItem = (props: { value: string }) => {
+export const PullDownUser = (props: { value: string }) => {
   return (
     <>
-      <PullDownUser color="1" backgroundColor="1">
+      <PullDownUserItem color="1" backgroundColor="1">
         <Text color="2" size="1">
           {props.value}
         </Text>
-      </PullDownUser>
+      </PullDownUserItem>
+      <PullDownBorder />
     </>
   );
 };
@@ -131,27 +94,27 @@ const StyledPullDownMenu = styled.li`
   }
 `;
 
-const PullDownMenu = styled(StyledPullDownMenu)<PullDownProps>`
+const PullDownMenuItem = styled(StyledPullDownMenu)<PullDownProps>`
   background-color: ${({ backgroundColor }) =>
     paletteDict[Constant.PullDownBackColor[backgroundColor]]};
 `;
 
-const PullDownMenuItem = (props: { value: string; name: IconList }) => {
+const PullDownMenu = (props: { value: string; name: IconList }) => {
   return (
     <>
-      <PullDownMenu color="1" backgroundColor="1">
+      <PullDownMenuItem color="1" backgroundColor="1">
         <PullDownIconWrapper>
           <Icon name={props.name} width="s" height="m" />
         </PullDownIconWrapper>
         <Text color="2" size="1">
           {props.value}
         </Text>
-      </PullDownMenu>
+      </PullDownMenuItem>
     </>
   );
 };
 
-const PullDownWrapper = styled.div`
+export const PullDownWrapper = styled.div`
   background-color: ${paletteDict.base};
   width: 259px;
   border-radius: 3px;
