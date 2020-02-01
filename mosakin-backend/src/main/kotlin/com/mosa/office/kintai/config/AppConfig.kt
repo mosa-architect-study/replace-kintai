@@ -12,17 +12,20 @@ import org.jetbrains.exposed.sql.Database
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.PropertySource
 import org.springframework.core.io.ClassPathResource
 import javax.annotation.PostConstruct
 
 const val GOOGLE_AUTH_CREDENTIAL_JSON = "GOOGLE_AUTH_CREDENTIAL_JSON"
 
 @Configuration
+@PropertySource("classpath:/.deploy.properties",ignoreResourceNotFound = true)
 class AppConfig(
     @Value("\${env.datasource.url}") private val url: String,
     @Value("\${env.datasource.driverClassName}") private val driverClassName : String,
     @Value("\${env.datasource.user:#{''}}") private val user : String,
-    @Value("\${env.datasource.password:#{''}}") private val password : String
+    @Value("\${env.datasource.password:#{''}}") private val password : String,
+    @Value("\${deploy.version:#{null}}") private val deployVersion : String?
 ) {
 
     @PostConstruct
@@ -30,6 +33,12 @@ class AppConfig(
         println("DB Connect to $url")
         Database.connect(url,driverClassName,user,password)
     }
+
+    @PostConstruct
+    fun printDeployVersion() {
+        println("VERSION: $deployVersion")
+    }
+
 
     @Bean
     fun authorizedUserIdService(
