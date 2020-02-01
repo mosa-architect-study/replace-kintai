@@ -16,7 +16,8 @@ jobs:
     - name: Install Heroku Java
       run: heroku plugins:install java
     - name: Deploy Heroku
-      run: BACKEND_VERSION=${GITHUB_REF/refs\/tags\//} ./scripts/deploy-dev-backend.sh
+      run: ./scripts/deploy-backend.sh
       env:
         HEROKU_APP: mosakin-ktln-trial
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        BACKEND_VERSION: ${GITHUB_REF/refs\/tags\//}
