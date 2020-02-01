@@ -1,5 +1,6 @@
 package com.mosa.office.kintai.config
 
+import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
@@ -13,12 +14,13 @@ import javax.servlet.http.HttpServletResponse
 @Component
 @WebFilter("/*")
 class AddVersionResponseHeaderFilter(
-    @Value("\${deploy.version:#{null}}") private val deployVersion : String?
+    @Value("\${deploy.version:#{null}}") private val deployVersion : String?,
+    private val logger : Logger
 ) : Filter {
 
     @PostConstruct
     fun printDeployVersion() {
-        println("VERSION: $deployVersion")
+        logger.info("Kintai App Version: $deployVersion")
     }
 
     override fun doFilter(request: ServletRequest, response: ServletResponse, chain: FilterChain) {
