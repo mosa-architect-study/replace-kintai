@@ -1,34 +1,26 @@
 package com.mosa.office.kintai.config
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.io.ClassPathResource
-import java.io.BufferedReader
-import java.io.InputStream
+import org.springframework.context.annotation.PropertySource
+import org.springframework.core.env.Environment
 
-const val SLACK_MESSAGE_WEBHOOK_URL = "SLACK_MESSAGE_WEBHOOK_URL"  // 本番用
 const val SLACK_MESSAGE_WEBHOOK_URL_TEST = "SLACK_MESSAGE_WEBHOOK_URL_TEST" // テスト用
-
 @Configuration
+@PropertySource("secret/$SLACK_MESSAGE_WEBHOOK_URL_TEST.properties")
 class SlackConfig(
-        @Value("\${secret.$SLACK_MESSAGE_WEBHOOK_URL:#{null}}") private  val urlStr: String?,
-        @Value("\${secret.$SLACK_MESSAGE_WEBHOOK_URL_TEST:#{null}}") private  val testUrlStr: String?,
-        @Value("secret/$SLACK_MESSAGE_WEBHOOK_URL_TEST.json") private val testClassPath : ClassPathResource
+        @Value("\${secret.$SLACK_MESSAGE_WEBHOOK_URL_TEST:#{null}}") private  val testUrlStr: String?
 ) {
-
+    @Autowired
+    private val environment: Environment? = null
 
     @Bean
     fun slack (
     ) : String? {
         return testUrlStr ?: // HEROKUからは環境変数でJSONが渡ってくるはず。。
-        if(testClassPath.exists()) {
-            val reader = BufferedReader(testClassPath.inputStream.reader())
-            val sb = StringBuilder()
-            sb.append(reader.readLine())
-            sb.toString()
-        } else
-            return null
+        (environment?.getProperty("url") ?: return null)
     }
 }
 
