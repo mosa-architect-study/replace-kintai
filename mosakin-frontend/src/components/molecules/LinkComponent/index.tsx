@@ -8,7 +8,7 @@ interface LinkProps {
   to: string;
 }
 
-export const LinkComponent: React.FC<LinkProps> = ({ to, name }) => {
+export const IconLink: React.FC<LinkProps> = ({ to, name }) => {
   return (
     <>
       <Link to={to}>

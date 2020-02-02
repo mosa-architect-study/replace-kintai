@@ -1,9 +1,9 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { LinkComponent } from ".";
+import { IconLink } from ".";
 import { MemoryRouter as Router, Route } from "react-router-dom";
 
-storiesOf("molecules/LinkComponent", module).add("LinkComponent", () => {
+storiesOf("molecules/IconLink", module).add("IconLink", () => {
   const UpdatePage = () => {
     return (
       <>
@@ -21,8 +21,8 @@ storiesOf("molecules/LinkComponent", module).add("LinkComponent", () => {
   return (
     <>
       <Router>
-        <LinkComponent to="./edit" name="pencilThin" />
-        <LinkComponent to="./delete" name="xMark" />
+        <IconLink to="./update" name="pencilThin" />
+        <IconLink to="./delete" name="xMark" />
         <Route path="/update" component={UpdatePage} />
         <Route path="/delete" component={DeletePage} />
       </Router>
