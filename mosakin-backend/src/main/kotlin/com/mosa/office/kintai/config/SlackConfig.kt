@@ -9,7 +9,7 @@ import org.springframework.core.env.Environment
 
 const val SLACK_MESSAGE_WEBHOOK_URL_TEST = "SLACK_MESSAGE_WEBHOOK_URL_TEST" // テスト用
 @Configuration
-@PropertySource("secret/$SLACK_MESSAGE_WEBHOOK_URL_TEST.properties")
+@PropertySource("classpath:secret/$SLACK_MESSAGE_WEBHOOK_URL_TEST.properties")
 class SlackConfig(
         @Value("\${secret.$SLACK_MESSAGE_WEBHOOK_URL_TEST:#{null}}") private  val testUrlStr: String?
 ) {
@@ -17,10 +17,10 @@ class SlackConfig(
     private val environment: Environment? = null
 
     @Bean
-    fun slack (
+    fun slackMessage (
     ) : String? {
         return testUrlStr ?: // HEROKUからは環境変数でJSONが渡ってくるはず。。
-        (environment?.getProperty("url") ?: return null)
+        (environment?.getProperty("url") ?: return "")
     }
 }
 
