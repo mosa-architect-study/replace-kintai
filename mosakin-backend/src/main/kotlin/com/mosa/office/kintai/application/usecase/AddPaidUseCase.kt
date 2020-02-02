@@ -1,5 +1,6 @@
 package com.mosa.office.kintai.application.usecase
 
+import com.mosa.office.kintai.application.model.SlackAddPaidInfo
 import com.mosa.office.kintai.application.service.CurrentUserService
 import com.mosa.office.kintai.application.service.SlackService
 import com.mosa.office.kintai.application.service.UniqueIdGenerator
@@ -37,9 +38,14 @@ class AddPaidUseCase(
         transaction.start {
             paidService.add(paid)
         }
+        val sLackMessage = SlackAddPaidInfo(
+                input.paidAcquisitionDate,
+                input.paidTimeType,
+                input.paidReason
+        )
         // TODO Slackへの通知
         // TODO 送る文字列の作成
-        slackService.postAddSlackMessage(input)
+        slackService.postAddSlackMessage(sLackMessage)
     }
 
 }
