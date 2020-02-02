@@ -8,7 +8,7 @@ export interface TextProps {
   size: TextSize;
 }
 
-//TODO: サイズ増やしたい(プルダウン pc:xs sp:22px)
+//TODO: サイズ増やしたい(プルダウン pc:xs sp:22px/h1|h2|h3...)
 const pcSizeDict: { [P in TextSize]: string } = {
   1: fontSizeDict._18px,
   2: fontSizeDict._20px,
