@@ -9,7 +9,7 @@ import org.springframework.core.env.Environment
 
 const val SLACK_MESSAGE_WEBHOOK_URL_TEST = "SLACK_MESSAGE_WEBHOOK_URL_TEST" // テスト用
 @Configuration
-@PropertySource("classpath:secret/$SLACK_MESSAGE_WEBHOOK_URL_TEST.properties")
+@PropertySource(value= ["classpath:secret/$SLACK_MESSAGE_WEBHOOK_URL_TEST.properties"], ignoreResourceNotFound=true)
 class SlackConfig(
         @Value("\${secret.$SLACK_MESSAGE_WEBHOOK_URL_TEST:#{null}}") private  val testUrlStr: String?
 ) {
