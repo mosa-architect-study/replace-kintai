@@ -1,11 +1,12 @@
 package com.mosa.office.kintai.application.usecase
 
+import com.mosa.office.kintai.application.model.SlackAddPaidInfo
 import com.mosa.office.kintai.application.service.CurrentUserService
+import com.mosa.office.kintai.application.service.SlackService
 import com.mosa.office.kintai.application.service.UniqueIdGenerator
 import com.mosa.office.kintai.application.transaction.TransactionBoundary
 import com.mosa.office.kintai.domain.model.Paid
 import com.mosa.office.kintai.domain.model.PaidTimeType
-import com.mosa.office.kintai.domain.model.User
 import com.mosa.office.kintai.domain.service.PaidService
 import org.springframework.stereotype.Component
 import java.time.LocalDate
@@ -18,7 +19,8 @@ class AddPaidUseCase(
     private val paidService : PaidService,
     private val idGene : UniqueIdGenerator,
     private val transaction : TransactionBoundary,
-    private val currentUserService: CurrentUserService
+    private val currentUserService: CurrentUserService,
+    private val slackService: SlackService
 ) {
     /**
      * @param input 追加する有給
@@ -36,7 +38,14 @@ class AddPaidUseCase(
         transaction.start {
             paidService.add(paid)
         }
+        val sLackMessage = SlackAddPaidInfo(
+                input.paidAcquisitionDate,
+                input.paidTimeType,
+                input.paidReason
+        )
         // TODO Slackへの通知
+        // TODO 送る文字列の作成
+        slackService.postAddSlackMessage(sLackMessage)
     }
 
 }
