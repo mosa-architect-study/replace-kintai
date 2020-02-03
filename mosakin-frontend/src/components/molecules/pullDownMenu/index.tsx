@@ -89,7 +89,7 @@ const StyledPullDownMenu = styled.li`
     padding: 0 25%;
   }
   &:hover {
-    background-color: ${paletteDict.accent};
+    background-color: ${paletteDict.whitesmoke};
     transition-duration: 0.5s;
   }
 `;
