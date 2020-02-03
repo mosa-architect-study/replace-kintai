@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse
 @Component
 @WebFilter("/*")
 class AddVersionResponseHeaderFilter(
-    @Value("\${deploy.version:#{null}}") private val deployVersion : String?,
+    @Value("\${deploy.version}") private val deployVersion : String,
     private val logger : Logger
 ) : Filter {
 
