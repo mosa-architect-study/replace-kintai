@@ -1,11 +1,17 @@
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.language.jvm.tasks.ProcessResources
 
 plugins {
+	id("java")
 	id("org.springframework.boot") version "2.2.0.RELEASE"
 	id("io.spring.dependency-management") version "1.0.8.RELEASE"
 	kotlin("jvm") version "1.3.50"
 	kotlin("plugin.spring") version "1.3.50"
+
 }
+
+
 
 group = "com.mosa.office"
 version = project.findProperty("VERSION") ?: "NO_VERSION_SPECIFIED"
@@ -37,6 +43,12 @@ dependencies {
 	compile("org.jetbrains.exposed","exposed","0.17.7")
 	compile("com.h2database","h2", "1.4.199")
 	runtime("org.postgresql","postgresql","42.2.5")
+}
+
+(tasks.getByName("processResources") as ProcessResources).apply {
+	filesMatching("**/application-deploy.properties") {
+		expand(mutableMapOf("version" to version))
+	}
 }
 
 tasks.withType<Test> {

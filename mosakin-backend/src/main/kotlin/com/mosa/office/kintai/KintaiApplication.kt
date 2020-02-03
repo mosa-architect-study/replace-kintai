@@ -5,7 +5,7 @@ import org.springframework.boot.runApplication
 import org.springframework.context.annotation.PropertySource
 
 @SpringBootApplication
-@PropertySource("classpath:/.deploy.properties",ignoreResourceNotFound = true)
+@PropertySource("classpath:/application-deploy.properties")
 class KintaiApplication
 
 fun main(args: Array<String>) {
