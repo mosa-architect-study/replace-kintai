@@ -7,31 +7,21 @@ import { Icon } from "@/components/atoms/icon";
 export const SpHeader = () => {
   return (
     <SpHeaderWrapper>
-      <IconWrapper>
-        <Icon height="l" width="l" name="mosakin" />
-      </IconWrapper>
-      <UserIconWrapper>
-        <UserIcon />
-      </UserIconWrapper>
+      <Icon height="l" width="l" name="mosakin" />
+      <UserIcon />
     </SpHeaderWrapper>
   );
 };
 
 const SpHeaderWrapper = styled.div`
   display: flex;
+  position: fixed;
+  width: 100%;
   height: 70px;
   padding: 0 5%;
   background-color: ${paletteDict.base};
   justify-content: space-between;
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
   align-items: center;
-`;
-
-const UserIconWrapper = styled.div`
-  display: flex;
   line-height: 0;
-  align-items: center;
+  top: 0;
 `;
