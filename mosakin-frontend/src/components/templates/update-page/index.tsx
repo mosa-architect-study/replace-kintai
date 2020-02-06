@@ -64,7 +64,7 @@ export const UpdatePage = (props: UpdatePaidViewModel) => (
     <ButtonArea>
       <Button backgroundColor="1" width="s" height="s" onClick={props.onSubmit}>
         <Text color="2" size="1">
-          更新
+          変更
         </Text>
       </Button>
     </ButtonArea>
