@@ -8,9 +8,12 @@ storiesOf("templates/UpdatePage", module).add("UpdatePage", () => {
   const [paidTimeValue, paidTimeOnChange] = React.useState("ALL_DAY");
   const [reasonValue, reasonSetValue] = React.useState("間違えました");
   const updateData = {
+    paidId: "1",
     userName: "芳賀樹生",
+    beforeValue: dateValue,
     dateValue: dateValue,
     dateOnChange: dateSetValue,
+    beforePaidTimeValue: paidTimeValue,
     paidTimeValue: paidTimeValue,
     paidTimeOnChange: paidTimeOnChange,
     reasonValue: reasonValue,
