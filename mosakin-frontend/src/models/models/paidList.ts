@@ -19,3 +19,10 @@ export interface PaidListItem {
 }
 
 export type PaidTimeType = "ALL_DAY" | "AM" | "PM";
+
+// FIXME: もっといい置き場ないかな
+export const paidTimeTypeToString: Record<PaidTimeType, string> = {
+  ALL_DAY: "全日",
+  AM: "午前",
+  PM: "午後"
+};
