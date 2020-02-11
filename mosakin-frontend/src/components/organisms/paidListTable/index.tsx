@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { PaidListHeader, PaidListRow } from "../../molecules/paidListRow";
-import { PaidListItem } from "@/models/models/paidList";
+import {
+  PaidListHeader,
+  PaidListRow,
+  PaidListRowProps
+} from "../../molecules/paidListRow";
 import { Card } from "../../atoms/card";
 
 const StyledTable = styled.table`
@@ -17,7 +20,7 @@ const StyledCard = styled(Card)`
 `;
 
 type PaidListProps = {
-  list: PaidListItem[];
+  list: PaidListRowProps[];
 };
 
 export const PaidListTable: React.FC<PaidListProps> = ({ list }) => (
@@ -26,8 +29,8 @@ export const PaidListTable: React.FC<PaidListProps> = ({ list }) => (
       <StyledTable>
         <tbody>
           <PaidListHeader></PaidListHeader>
-          {list.map(item => (
-            <PaidListRow key={item.paidId} {...item}></PaidListRow>
+          {list.map(row => (
+            <PaidListRow key={row.item.paidId} {...row}></PaidListRow>
           ))}
         </tbody>
       </StyledTable>

@@ -18,6 +18,11 @@ export interface PaidListItem {
   paidTimeType: PaidTimeType;
 }
 
+export interface PaidListMenu {
+  onEditButtonClick(): void;
+  onDeleteButtonClick(): void;
+}
+
 export type PaidTimeType = "ALL_DAY" | "AM" | "PM";
 
 // FIXME: もっといい置き場ないかな

@@ -3,7 +3,11 @@ import styled from "@emotion/styled";
 import { paletteDict } from "@/common/theme";
 import { Text } from "../../atoms/text";
 import { Icon } from "../../atoms/icon";
-import { PaidListItem, paidTimeTypeToString } from "@/models/models/paidList";
+import {
+  PaidListItem,
+  paidTimeTypeToString,
+  PaidListMenu
+} from "@/models/models/paidList";
 import dayjs from "dayjs";
 
 const StyledTableRow = styled.tr`
@@ -21,6 +25,11 @@ const StyledTableDataIcon = styled.td`
   line-height: 0;
   padding: 0 14px;
   text-align: center;
+  &:active {
+    background-color: ${paletteDict.light};
+  }
+  border-radius: 2px;
+  cursor: pointer;
 `;
 
 const TextWithLineHeight = styled(Text)`
@@ -36,29 +45,29 @@ const StyledTableHead = styled.th`
   min-width: 100px;
 `;
 
-export type PaidListRowProps = PaidListItem;
+export type PaidListRowProps = {
+  item: PaidListItem;
+  menu: PaidListMenu;
+};
 
-export const PaidListRow: React.FC<PaidListRowProps> = ({
-  paidAcquisitionDate,
-  paidTimeType
-}) => (
+export const PaidListRow: React.FC<PaidListRowProps> = ({ item, menu }) => (
   <StyledTableRow>
     <StyledTableData>
       <TextWithLineHeight color="1" size="2">
-        {dayjs(paidAcquisitionDate).format(
+        {dayjs(item.paidAcquisitionDate).format(
           "YYYY/MM/DD"
         ) /* FIXME: 後々共通化等したい*/}
       </TextWithLineHeight>
     </StyledTableData>
     <StyledTableData>
       <TextWithLineHeight color="1" size="2">
-        {paidTimeTypeToString[paidTimeType]}
+        {paidTimeTypeToString[item.paidTimeType]}
       </TextWithLineHeight>
     </StyledTableData>
-    <StyledTableDataIcon>
+    <StyledTableDataIcon onClick={menu.onEditButtonClick}>
       <Icon name="pencilThin" width="m" height="m"></Icon>
     </StyledTableDataIcon>
-    <StyledTableDataIcon>
+    <StyledTableDataIcon onClick={menu.onDeleteButtonClick}>
       <Icon name="xMark" width="m" height="m"></Icon>
     </StyledTableDataIcon>
   </StyledTableRow>

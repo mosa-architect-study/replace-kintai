@@ -1,6 +1,7 @@
 import React from "react";
 import { PaidListRow, PaidListHeader } from ".";
 import styled from "@emotion/styled";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "molecules/PaidListRow"
@@ -15,14 +16,26 @@ export const normal = () => (
     <tbody>
       <PaidListHeader></PaidListHeader>
       <PaidListRow
-        paidId="0"
-        paidAcquisitionDate="2020/02/11"
-        paidTimeType="AM"
+        item={{
+          paidId: "0",
+          paidAcquisitionDate: "2020/02/11",
+          paidTimeType: "AM"
+        }}
+        menu={{
+          onDeleteButtonClick: action("onDeleteButtonClick"),
+          onEditButtonClick: action("onEditButtonClick")
+        }}
       ></PaidListRow>
       <PaidListRow
-        paidId="1"
-        paidAcquisitionDate="2020/02/11"
-        paidTimeType="PM"
+        item={{
+          paidId: "1",
+          paidAcquisitionDate: "2020/02/11",
+          paidTimeType: "PM"
+        }}
+        menu={{
+          onDeleteButtonClick: action("onDeleteButtonClick"),
+          onEditButtonClick: action("onEditButtonClick")
+        }}
       ></PaidListRow>
     </tbody>
   </StyledTable>
