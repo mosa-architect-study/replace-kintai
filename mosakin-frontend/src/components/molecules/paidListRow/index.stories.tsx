@@ -16,7 +16,7 @@ export const normal = () => (
     <tbody>
       <PaidListHeader></PaidListHeader>
       <PaidListRow
-        item={{
+        paid={{
           paidId: "0",
           paidAcquisitionDate: "2020/02/11",
           paidTimeType: "AM"
@@ -27,7 +27,7 @@ export const normal = () => (
         }}
       ></PaidListRow>
       <PaidListRow
-        item={{
+        paid={{
           paidId: "1",
           paidAcquisitionDate: "2020/02/11",
           paidTimeType: "PM"

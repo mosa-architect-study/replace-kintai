@@ -46,22 +46,22 @@ const StyledTableHead = styled.th`
 `;
 
 export type PaidListRowProps = {
-  item: PaidListItem;
+  paid: PaidListItem;
   menu: PaidListMenu;
 };
 
-export const PaidListRow: React.FC<PaidListRowProps> = ({ item, menu }) => (
+export const PaidListRow: React.FC<PaidListRowProps> = ({ paid, menu }) => (
   <StyledTableRow>
     <StyledTableData>
       <TextWithLineHeight color="1" size="2">
-        {dayjs(item.paidAcquisitionDate).format(
+        {dayjs(paid.paidAcquisitionDate).format(
           "YYYY/MM/DD"
         ) /* FIXME: 後々共通化等したい*/}
       </TextWithLineHeight>
     </StyledTableData>
     <StyledTableData>
       <TextWithLineHeight color="1" size="2">
-        {paidTimeTypeToString[item.paidTimeType]}
+        {paidTimeTypeToString[paid.paidTimeType]}
       </TextWithLineHeight>
     </StyledTableData>
     <StyledTableDataIcon onClick={menu.onEditButtonClick}>

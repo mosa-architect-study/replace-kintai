@@ -20,17 +20,17 @@ const StyledCard = styled(Card)`
 `;
 
 type PaidListProps = {
-  list: PaidListRowProps[];
+  rows: PaidListRowProps[];
 };
 
-export const PaidListTable: React.FC<PaidListProps> = ({ list }) => (
+export const PaidListTable: React.FC<PaidListProps> = ({ rows }) => (
   <StyledCard>
     <TableWrapper>
       <StyledTable>
         <tbody>
           <PaidListHeader></PaidListHeader>
-          {list.map(row => (
-            <PaidListRow key={row.item.paidId} {...row}></PaidListRow>
+          {rows.map(row => (
+            <PaidListRow key={row.paid.paidId} {...row}></PaidListRow>
           ))}
         </tbody>
       </StyledTable>

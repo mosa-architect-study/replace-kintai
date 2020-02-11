@@ -36,14 +36,14 @@ const mockList: PaidListItem[] = [
   }
 ];
 
-const rows: PaidListRowProps[] = mockList.map<PaidListRowProps>(item => ({
-  item,
+const rows: PaidListRowProps[] = mockList.map<PaidListRowProps>(paid => ({
+  paid,
   menu: {
-    onDeleteButtonClick: action("DELETE:" + item.paidId),
-    onEditButtonClick: action("EDITE:" + item.paidId)
+    onDeleteButtonClick: action("DELETE:" + paid.paidId),
+    onEditButtonClick: action("EDITE:" + paid.paidId)
   }
 }));
 
 export const sample: React.FC = () => (
-  <PaidListTable list={rows}></PaidListTable>
+  <PaidListTable rows={rows}></PaidListTable>
 );
