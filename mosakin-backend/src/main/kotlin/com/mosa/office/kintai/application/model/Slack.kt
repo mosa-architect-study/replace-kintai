@@ -13,4 +13,12 @@ data class SlackAddPaidInfo(
         val paidReason : String
 )
 
+data class SlackUpdatePaidInfo(
+        val beforePaidAcquisitionDate : LocalDate,
+        val paidAcquisitionDate : LocalDate,
+        val beforePaidTimeType: PaidTimeType,
+        val paidTimeType : PaidTimeType,
+        val paidReason : String
+)
+
 class SlackMessageException : Exception()
