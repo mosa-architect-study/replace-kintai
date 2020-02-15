@@ -6,6 +6,7 @@ import com.mosa.office.kintai.application.service.SlackService
 import com.mosa.office.kintai.application.service.UniqueIdGenerator
 import com.mosa.office.kintai.application.transaction.TransactionBoundary
 import com.mosa.office.kintai.domain.model.Paid
+import com.mosa.office.kintai.domain.model.PaidRepository
 import com.mosa.office.kintai.domain.model.PaidTimeType
 import com.mosa.office.kintai.domain.service.PaidService
 import org.springframework.stereotype.Component
@@ -20,7 +21,8 @@ class AddPaidUseCase(
     private val idGene : UniqueIdGenerator,
     private val transaction : TransactionBoundary,
     private val currentUserService: CurrentUserService,
-    private val slackService: SlackService
+    private val slackService: SlackService,
+    private val paidRepository: PaidRepository
 ) {
     /**
      * @param input 追加する有給
@@ -36,7 +38,8 @@ class AddPaidUseCase(
         )
         // トランザクション境界を設定
         transaction.start {
-            paidService.add(paid)
+            paidService.assertNotDuplicated(paid)
+            paidRepository.add(paid)
         }
         val sLackMessage = SlackAddPaidInfo(
                 input.paidAcquisitionDate,
