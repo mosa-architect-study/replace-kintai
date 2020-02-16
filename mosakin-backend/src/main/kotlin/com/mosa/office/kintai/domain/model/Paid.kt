@@ -17,6 +17,13 @@ enum class PaidTimeType {
     internal fun isDuplicated (other:PaidTimeType): Boolean {
         return other == this || other == ALL_DAY || this == ALL_DAY;
     }
+    fun toDays() : Double {
+        return when(this) {
+            AM -> 0.5
+            PM -> 0.5
+            ALL_DAY -> 1.0
+        }
+    }
 }
 
 open class HasPaidTime internal constructor(
