@@ -6,8 +6,8 @@ export const HeaderWrapper = styled.div`
   position: fixed;
   width: 100%;
   height: 70px;
-  padding-left: 2.5%;
-  padding-right: 4%;
+  padding-left: 8px;
+  padding-right: 50px;
   background-color: ${paletteDict.base};
   border-bottom: 1px solid ${paletteDict.white};
   justify-content: space-between;
@@ -15,6 +15,7 @@ export const HeaderWrapper = styled.div`
   line-height: 0;
   @media (max-width: ${bp}) {
     height: 80px;
-    padding: 0 5%;
+    padding-left: 4px;
+    padding-right: 16px;
   }
 `;
