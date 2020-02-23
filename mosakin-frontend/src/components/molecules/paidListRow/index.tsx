@@ -4,9 +4,8 @@ import { paletteDict } from "@/common/theme";
 import { Text } from "../../atoms/text";
 import { Icon } from "../../atoms/icon";
 import {
-  PaidListItem,
   paidTimeTypeToString,
-  PaidListMenu
+  PaidListRowViewModel
 } from "@/models/models/paidList";
 import dayjs from "dayjs";
 
@@ -45,12 +44,7 @@ const StyledTableHead = styled.th`
   min-width: 100px;
 `;
 
-export type PaidListRowProps = {
-  paid: PaidListItem;
-  menu: PaidListMenu;
-};
-
-export const PaidListRow: React.FC<PaidListRowProps> = ({ paid, menu }) => (
+export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
   <StyledTableRow>
     <StyledTableData>
       <TextWithLineHeight color="1" size="2">

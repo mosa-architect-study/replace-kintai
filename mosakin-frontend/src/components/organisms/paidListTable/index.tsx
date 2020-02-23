@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import {
-  PaidListHeader,
-  PaidListRow,
-  PaidListRowProps
-} from "../../molecules/paidListRow";
+import { PaidListHeader, PaidListRow } from "../../molecules/paidListRow";
 import { Card } from "../../atoms/card";
+import { PaidListRowViewModel } from "@/models/models/paidList";
 
 const StyledTable = styled.table`
   border-collapse: collapse;
@@ -16,7 +13,7 @@ const TableWrapper = styled.div`
 `;
 
 type PaidListProps = {
-  rows: PaidListRowProps[];
+  rows: PaidListRowViewModel[];
 };
 
 export const PaidListTable: React.FC<PaidListProps> = ({ rows }) => (

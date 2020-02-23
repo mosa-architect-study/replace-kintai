@@ -1,7 +1,6 @@
 import React from "react";
 import { PaidListTable } from ".";
-import { PaidListItem } from "@/models/models/paidList";
-import { PaidListRowProps } from "@/components/molecules/paidListRow";
+import { PaidListItem, PaidListRowViewModel } from "@/models/models/paidList";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -36,13 +35,15 @@ const mockList: PaidListItem[] = [
   }
 ];
 
-const rows: PaidListRowProps[] = mockList.map<PaidListRowProps>(paid => ({
-  paid,
-  menu: {
-    onDeleteButtonClick: action("DELETE:" + paid.paidId),
-    onEditButtonClick: action("EDITE:" + paid.paidId)
-  }
-}));
+const rows: PaidListRowViewModel[] = mockList.map<PaidListRowViewModel>(
+  paid => ({
+    paid,
+    menu: {
+      onDeleteButtonClick: action("DELETE:" + paid.paidId),
+      onEditButtonClick: action("EDITE:" + paid.paidId)
+    }
+  })
+);
 
 export const sample: React.FC = () => (
   <PaidListTable rows={rows}></PaidListTable>
