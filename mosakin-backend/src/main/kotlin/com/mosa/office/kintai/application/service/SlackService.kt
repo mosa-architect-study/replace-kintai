@@ -4,6 +4,7 @@ import com.mosa.office.kintai.application.model.SlackAddPaidInfo
 import com.mosa.office.kintai.application.model.SlackUpdatePaidInfo
 import com.mosa.office.kintai.application.model.SlackMessageException
 import com.mosa.office.kintai.config.SlackConfig
+import com.mosa.office.kintai.util.MapperUtil
 import org.slf4j.Logger
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -15,19 +16,20 @@ import java.net.URI
 @Service
 class SlackService(
     private val slackConfig: SlackConfig,
-    private val logger: Logger
+    private val logger: Logger,
+    private val mapperUtil: MapperUtil
 )
 {
 
     // TODO 送る文字列の作成
     fun postAddSlackMessage(input: SlackAddPaidInfo) {
-        val text = SlackMessageProperty(" \n新規： *" + "ユーザー名" + "*\n日時： *" + input.paidAcquisitionDate + " (" +  ")" + "  [" + input.paidTimeType + "]*\n```\n" + input.paidReason + "```");
+        val text = SlackMessageProperty(" \n新規： *" + "ユーザー名" + "*\n日時： *" + input.paidAcquisitionDate + " (" + mapperUtil.getWeek(input.paidAcquisitionDate) + ")" + "  [" + mapperUtil.timeZoneString(input.paidTimeType) + "]*\n```\n" + input.paidReason + "```");
         postMessage(text)
     }
 
     // TODO 送る文字列の作成
     fun postUpdateSlackMessage(input: SlackUpdatePaidInfo) {
-        val text = SlackMessageProperty(" \n更新： *" + "ユーザー名" + "*\n更新前日時： *" + input.beforePaidAcquisitionDate + " (" + ")" + "  [" + input.beforePaidTimeType + "]*\n更新後日時： *" + input.paidAcquisitionDate + " (" + ")" + "  [" + input.paidTimeType + "]*\n```\n" + input.paidReason + "```");
+        val text = SlackMessageProperty(" \n更新： *" + "ユーザー名" + "*\n更新前日時： *" + input.beforePaidAcquisitionDate + " (" + mapperUtil.getWeek(input.paidAcquisitionDate) + ")" + "  [" + mapperUtil.timeZoneString(input.beforePaidTimeType) + "]*\n更新後日時： *" + input.paidAcquisitionDate + " (" + mapperUtil.getWeek(input.paidAcquisitionDate) + ")" + "  [" + mapperUtil.timeZoneString(input.paidTimeType) + "]*\n```\n" + input.paidReason + "```");
         postMessage(text)
     }
 
