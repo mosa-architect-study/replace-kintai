@@ -1,11 +1,16 @@
 import { DateValue } from "./common";
 
 export interface PaidListViewModel {
-  list: PaidListItem[];
-  header: PaidListHeader;
+  list: PaidListRowViewModel[];
+  header: PaidListHeaderViewModel;
 }
 
-export interface PaidListHeader {
+export interface PaidListRowViewModel {
+  paid: PaidListItem;
+  menu: PaidListMenu;
+}
+
+export interface PaidListHeaderViewModel {
   carryForward: number;
   annualPaidNumber: number;
   leftPaidNumber: number;

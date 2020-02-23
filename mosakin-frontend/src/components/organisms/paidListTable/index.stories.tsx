@@ -5,7 +5,7 @@ import { PaidListRowProps } from "@/components/molecules/paidListRow";
 import { action } from "@storybook/addon-actions";
 
 export default {
-  title: "oragnisms/PaidListTable"
+  title: "organisms/PaidListTable"
 };
 
 const mockList: PaidListItem[] = [

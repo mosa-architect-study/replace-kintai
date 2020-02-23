@@ -15,16 +15,12 @@ const TableWrapper = styled.div`
   padding: 14px 33px;
 `;
 
-const StyledCard = styled(Card)`
-  width: 603px;
-`;
-
 type PaidListProps = {
   rows: PaidListRowProps[];
 };
 
 export const PaidListTable: React.FC<PaidListProps> = ({ rows }) => (
-  <StyledCard>
+  <Card>
     <TableWrapper>
       <StyledTable>
         <tbody>
@@ -35,5 +31,5 @@ export const PaidListTable: React.FC<PaidListProps> = ({ rows }) => (
         </tbody>
       </StyledTable>
     </TableWrapper>
-  </StyledCard>
+  </Card>
 );

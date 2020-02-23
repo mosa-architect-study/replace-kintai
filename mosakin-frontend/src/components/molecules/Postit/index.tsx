@@ -66,10 +66,6 @@ const PinWrapper = styled.div`
   align-items: center;
 `;
 
-export const Wrapper = styled.div`
-  display: flex;
-`;
-
 export const Postit = (props: PostitProps) => (
   <StyledPostit>
     <PinWrapper>

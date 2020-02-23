@@ -1,7 +1,7 @@
 import { usePaidList } from "../../hooks/usePaidList";
 
 import React from "react";
-import { PaidListTemplate } from "../templates/PaidList";
+import { PaidListTemplate } from "../templates/list-page";
 
 /**
  * Pageはhooksから取得したデータをコンポーネントに流す。
