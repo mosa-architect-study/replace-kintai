@@ -23,12 +23,13 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
         header,
         list: list.map<PaidListRowViewModel>(item => ({
           paid: item,
+          // FIXME: メニューが押された時の挙動
           menu: {
             onDeleteButtonClick() {
-              console.log(item);
+              console.log("delete", item);
             },
             onEditButtonClick() {
-              console.log(item);
+              console.log("edit", item);
             }
           }
         }))
