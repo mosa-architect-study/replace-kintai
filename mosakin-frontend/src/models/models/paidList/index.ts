@@ -1,4 +1,4 @@
-import { DateValue } from "./common";
+import { DateValue } from "../common";
 
 export interface PaidListViewModel {
   list: PaidListRowViewModel[];
