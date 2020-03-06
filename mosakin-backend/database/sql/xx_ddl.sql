@@ -14,7 +14,7 @@ CREATE TABLE user_info (
 );
 
 CREATE TABLE annual_paid_number (
-    annual_paid_number_id VARCHAR(255),
+    annual_paid_number_id serial,
     user_id VARCHAR(255) NOT NULL,
     fiscal_year INTEGER,
     paid_acquisition_date DOUBLE PRECISION,
@@ -25,7 +25,7 @@ CREATE TABLE annual_paid_number (
 );
 
 CREATE TABLE paid_info (
-    paid_id VARCHAR(255),
+    paid_id serial,
     user_id VARCHAR(255) NOT NULL,
     paid_acquisition_date DATE,
     paid_time_type VARCHAR(8),
