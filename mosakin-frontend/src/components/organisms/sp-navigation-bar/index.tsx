@@ -41,6 +41,7 @@ export const SpNavigationBar: React.FC<MenuProps> = ({ menus }) => {
 const StyledList = styled.li`
   display: inline-block;
   height: 80px;
+  width: 100%;
   padding: 0 1.5%;
   &:hover {
     transition-duration: 0.5s;
