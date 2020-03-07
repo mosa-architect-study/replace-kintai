@@ -22,3 +22,9 @@ export const size3 = (): JSX.Element => (
     Text 3
   </Text>
 );
+
+export const size4 = (): JSX.Element => (
+  <Text color="1" size="4">
+    Text 4
+  </Text>
+);

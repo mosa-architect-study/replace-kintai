@@ -17,6 +17,9 @@ const StyledTableData = styled.td`
   font-family: inter;
   /* transform: translateY(5px); */
   padding: 0 14px;
+  @media (max-width: 480px) {
+    padding: inherit;
+  }
   text-align: center;
 `;
 
@@ -41,28 +44,44 @@ const StyledTableHead = styled.th`
   font-weight: initial;
   padding: 0 14px;
   text-align: center;
+  /* FIXME min-widthってどうよ */
+  min-width: 160px;
+  @media (max-width: 480px) {
+    min-width: inherit;
+  }
+`;
+
+const StyledTableMenuHead = styled.th`
+  font-family: inter;
+  line-height: 34px;
+  font-weight: initial;
+  text-align: center;
+  /* FIXME min-widthってどうよ */
   min-width: 100px;
+  @media (max-width: 480px) {
+    min-width: inherit;
+  }
 `;
 
 export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
   <StyledTableRow>
     <StyledTableData>
-      <TextWithLineHeight color="1" size="2">
+      <TextWithLineHeight color="1" size="0">
         {dayjs(paid.paidAcquisitionDate).format(
           "YYYY/MM/DD"
         ) /* FIXME: 後々共通化等したい*/}
       </TextWithLineHeight>
     </StyledTableData>
     <StyledTableData>
-      <TextWithLineHeight color="1" size="2">
+      <TextWithLineHeight color="1" size="0">
         {paidTimeTypeToString[paid.paidTimeType]}
       </TextWithLineHeight>
     </StyledTableData>
     <StyledTableDataIcon onClick={menu.onEditButtonClick}>
-      <Icon name="pencilThin" width="m" height="m"></Icon>
+      <Icon name="pencilThin" width="s" height="s"></Icon>
     </StyledTableDataIcon>
     <StyledTableDataIcon onClick={menu.onDeleteButtonClick}>
-      <Icon name="xMark" width="m" height="m"></Icon>
+      <Icon name="xMark" width="s" height="s"></Icon>
     </StyledTableDataIcon>
   </StyledTableRow>
 );
@@ -70,24 +89,24 @@ export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
 export const PaidListHeader: React.FC = () => (
   <tr>
     <StyledTableHead>
-      <Text color="3" size="2">
-        有給取得日
+      <Text color="3" size="1">
+        取得日
       </Text>
     </StyledTableHead>
     <StyledTableHead>
-      <Text color="3" size="2">
-        有給取得種別
+      <Text color="3" size="1">
+        取得種別
       </Text>
     </StyledTableHead>
-    <StyledTableHead>
-      <Text color="3" size="2">
+    <StyledTableMenuHead>
+      <Text color="3" size="1">
         編集
       </Text>
-    </StyledTableHead>
-    <StyledTableHead>
-      <Text color="3" size="2">
+    </StyledTableMenuHead>
+    <StyledTableMenuHead>
+      <Text color="3" size="1">
         削除
       </Text>
-    </StyledTableHead>
+    </StyledTableMenuHead>
   </tr>
 );

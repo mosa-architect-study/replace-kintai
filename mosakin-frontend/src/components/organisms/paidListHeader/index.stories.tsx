@@ -1,6 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { PaidListHeader } from ".";
+import { header } from "@/models/models/paidList/mock";
 import styled from "@emotion/styled";
 
 const Content = styled.div`
@@ -9,11 +10,6 @@ const Content = styled.div`
 
 storiesOf("organisms/PaidListHeader", module).add("header", () => (
   <Content>
-    <PaidListHeader
-      annualPaidNumber={10}
-      currentPaidAcquisitionNumber={5}
-      leftPaidNumber={5}
-      carryForward={0}
-    ></PaidListHeader>
+    <PaidListHeader {...header}></PaidListHeader>
   </Content>
 ));
