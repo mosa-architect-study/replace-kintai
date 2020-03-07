@@ -20,8 +20,8 @@ const InputDiv = styled.div`
   display: inline-block;
   vertical-align: middle;
   @media (max-width: 480px) {
-    margin-left: 40px;
-    display: block;
+    display: flex;
+    justify-content: center;
   }
 `;
 const OuterDiv = styled.div`
@@ -36,7 +36,9 @@ const OuterDiv = styled.div`
 export const DateInputArea = (props: DateInputAreaProps) => (
   <OuterDiv>
     <TitleDiv>
-      <Caption lv="h2">日付</Caption>
+      <Caption lv="h2" color="1">
+        日付
+      </Caption>
     </TitleDiv>
     <InputDiv>
       <InputDate value={props.value} onChange={props.onChange}></InputDate>

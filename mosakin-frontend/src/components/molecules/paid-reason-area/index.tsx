@@ -26,7 +26,9 @@ const OuterDiv = styled.div`
 export const PaidReasonArea = (props: PaidReasonAreaProps) => (
   <OuterDiv>
     <TitleDiv>
-      <Caption lv="h2">有給所得理由</Caption>
+      <Caption lv="h2" color="1">
+        有給所得理由
+      </Caption>
     </TitleDiv>
     <InputDiv>
       <TextArea value={props.value} onChange={props.onChange}></TextArea>

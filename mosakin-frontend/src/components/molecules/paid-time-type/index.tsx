@@ -20,8 +20,8 @@ const InputDiv = styled.div`
   display: inline-block;
   vertical-align: middle;
   @media (max-width: 480px) {
-    margin-left: 40px;
-    display: block;
+    display: flex;
+    justify-content: center;
   }
 `;
 const OuterDiv = styled.div`
@@ -36,7 +36,9 @@ const OuterDiv = styled.div`
 export const PaidTimeType = (props: PaidTimeTypeProps) => (
   <OuterDiv>
     <TitleDiv>
-      <Caption lv="h2">有給時間種別</Caption>
+      <Caption lv="h2" color="1">
+        有給時間種別
+      </Caption>
     </TitleDiv>
     <InputDiv>
       <Toggles

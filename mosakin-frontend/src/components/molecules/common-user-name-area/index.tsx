@@ -4,7 +4,7 @@ import { Caption } from "../../atoms/caption";
 import { Text } from "../../atoms/text";
 
 export interface CommonUserNameAreaProps {
-  value: string;
+  value?: string;
 }
 
 const CaptionDiv = styled.div`
@@ -13,9 +13,8 @@ const CaptionDiv = styled.div`
 const TextDiv = styled.div`
   vertical-align: middle;
   width: 295px;
-  text-align: left;
   @media (max-width: 480px) {
-    width: 146px;
+    width: 160px;
   }
 `;
 const OuterDiv = styled.div`
@@ -23,17 +22,18 @@ const OuterDiv = styled.div`
   display: flex;
   justify-content: space-between;
   @media (max-width: 480px) {
-    max-width: 256px;
   }
 `;
 
 export const CommonUserNameArea = (props: CommonUserNameAreaProps) => (
   <OuterDiv>
     <CaptionDiv>
-      <Caption lv="h2">対象ユーザ</Caption>
+      <Caption lv="h2" color="1">
+        対象ユーザ
+      </Caption>
     </CaptionDiv>
     <TextDiv>
-      <Text color="1" size="2">
+      <Text color="1" size="3">
         {props.value}
       </Text>
     </TextDiv>
