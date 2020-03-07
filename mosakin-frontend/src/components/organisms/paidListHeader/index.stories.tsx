@@ -8,7 +8,7 @@ const Content = styled.div`
   width: 500px;
 `;
 
-storiesOf("organisms/PaidListHeader", module).add("header", () => (
+storiesOf("organisms/PaidListHeader", module).add("Header", () => (
   <Content>
     <PaidListHeader {...header}></PaidListHeader>
   </Content>

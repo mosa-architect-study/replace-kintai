@@ -1,7 +1,8 @@
-import { Modal, useModalClose } from ".";
 import React from "react";
+import { storiesOf } from "@storybook/react";
 import styled from "@emotion/styled";
 import { css } from "emotion";
+import { Modal, useModalClose } from ".";
 
 const contentClass = css`
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
@@ -39,7 +40,7 @@ const ModalContent = () => {
   );
 };
 
-export const modalTest = (): JSX.Element => {
+const ModalTest = (): JSX.Element => {
   const [isOpen, _toggle] = React.useState(false);
   const toggle = (boo: boolean) => {
     console.log("modal change", boo);
@@ -58,3 +59,5 @@ export const modalTest = (): JSX.Element => {
     </>
   );
 };
+
+storiesOf("organisms/Modal", module).add("ModalTest", () => <ModalTest />);
