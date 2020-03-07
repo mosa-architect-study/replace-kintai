@@ -11,15 +11,17 @@ interface PostitProps {
 
 const StyledPostit = styled.div`
   display: grid;
-  height: 92px;
-  margin-right: 2px;
-  padding: 0 1.5%;
+  min-height: 92px;
+  min-width: 130px;
+  margin: 0 1px;
+  padding: 0 5px;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid ${paletteDict.border};
   background: ${paletteDict.white};
   @media (max-width: 480px) {
-    height: 82px;
+    min-height: 82px;
+    min-width: 60px;
   }
 `;
 
@@ -72,7 +74,7 @@ export const Postit = (props: PostitProps) => (
       <Pin />
     </PinWrapper>
     <TextWrapper>
-      <Caption color="2" lv="h5">
+      <Caption color="2" lv="h4">
         {props.title}
       </Caption>
       <Text color="1" size="1">

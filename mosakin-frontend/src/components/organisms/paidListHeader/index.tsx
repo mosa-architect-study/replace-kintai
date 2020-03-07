@@ -18,9 +18,6 @@ export const PaidListHeader: React.FC<PaidListHeaderViewModel> = ({
     <Postit title="繰越分" number={String(carryForward)} />
     <Postit title="年次有給数" number={String(annualPaidNumber)} />
     <Postit title="残有給数" number={String(leftPaidNumber)} />
-    <Postit
-      title="現有給取得数"
-      number={String(currentPaidAcquisitionNumber)}
-    />
+    <Postit title="取得数" number={String(currentPaidAcquisitionNumber)} />
   </Wrapper>
 );
