@@ -10,6 +10,7 @@ import {
 
 const StyledWrapper = styled.div`
   display: inline-block;
+  font-size: 0;
 `;
 
 const StyledIcon = styled.img<IconSizeProps>`

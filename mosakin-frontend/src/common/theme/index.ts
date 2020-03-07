@@ -7,7 +7,7 @@ export type Palette =
   | "black"
   | "red"
   | "whitesmoke";
-export type FontSize = "_18px" | "_20px" | "_24px" | "_30px";
+export type FontSize = "_14px" | "_18px" | "_20px" | "_24px" | "_30px";
 
 export interface PaletteProps {
   color: Palette;
@@ -33,6 +33,7 @@ export const paletteDict: { [P in Palette]: string } = {
 };
 
 export const fontSizeDict: { [P in FontSize]: string } = {
+  _14px: "14px",
   _18px: "18px",
   _20px: "20px",
   _24px: "24px",
