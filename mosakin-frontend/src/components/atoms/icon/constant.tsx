@@ -42,8 +42,8 @@ export const PcIconSizeDict: { [P in IconSize]: string } = {
 
 export const SpIconSizeDict: { [P in IconSize]: string } = {
   //FIX ME どっかで調整する
-  s: "30px",
-  m: "38px",
+  s: "22px",
+  m: "28px",
   l: "40px"
 };
 
