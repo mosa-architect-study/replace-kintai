@@ -72,7 +72,7 @@ export const Postit = (props: PostitProps) => (
       <Pin />
     </PinWrapper>
     <TextWrapper>
-      <Caption color="2" lv="h4">
+      <Caption color="2" lv="h5">
         {props.title}
       </Caption>
       <Text color="1" size="1">
