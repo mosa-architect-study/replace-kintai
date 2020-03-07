@@ -14,6 +14,7 @@ const IconDiv = styled.div`
 const TitleDiv = styled.div`
   display: inline-block;
   vertical-align: top;
+  padding-right: 61px;
 `;
 
 const OuterDiv = styled.div`
@@ -26,7 +27,7 @@ export const PageTitle = (props: PageTitleProps) => (
       <Icon name="pageTitle" width="l" height="l"></Icon>
     </IconDiv>
     <TitleDiv>
-      <Caption lv="h3" color="1">
+      <Caption lv="h2" color="1">
         {props.title}
       </Caption>
     </TitleDiv>

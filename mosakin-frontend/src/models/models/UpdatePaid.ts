@@ -7,7 +7,7 @@ export interface UpdatePaidViewModel {
 
 export interface UpdatePaidItem {
   paidId: string;
-  userName: string;
+  userName?: string;
   beforeValue: DateValue;
   dateValue: DateValue;
   dateOnChange: (value: string) => void;
