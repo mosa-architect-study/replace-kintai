@@ -24,13 +24,13 @@ class SlackService(
 
     // TODO 送る文字列の作成
     fun postAddSlackMessage(input: SlackAddPaidInfo) {
-        val text = SlackMessageProperty(" \n新規： *" + "ユーザー名" + "*\n日時： *" + input.paidAcquisitionDate + " (" + getWeek(input.paidAcquisitionDate) + ")" + "  [" + timeZoneString(input.paidTimeType) + "]*\n```\n" + input.paidReason + "```");
+        val text = SlackMessageProperty(" \n新規： *${"ユーザー名"}*\n日時： *${input.paidAcquisitionDate} (${getWeek(input.paidAcquisitionDate)})  [${timeZoneString(input.paidTimeType)}]*\n```\n${input.paidReason}```");
         postMessage(text)
     }
 
     // TODO 送る文字列の作成
     fun postUpdateSlackMessage(input: SlackUpdatePaidInfo) {
-        val text = SlackMessageProperty(" \n更新： *" + "ユーザー名" + "*\n更新前日時： *" + input.beforePaidAcquisitionDate + " (" + getWeek(input.paidAcquisitionDate) + ")" + "  [" + timeZoneString(input.beforePaidTimeType) + "]*\n更新後日時： *" + input.paidAcquisitionDate + " (" + getWeek(input.paidAcquisitionDate) + ")" + "  [" + timeZoneString(input.paidTimeType) + "]*\n```\n" + input.paidReason + "```");
+        val text = SlackMessageProperty(" \n更新： *${"ユーザー名"}*\n更新前日時： *${input.beforePaidAcquisitionDate} (${getWeek(input.paidAcquisitionDate)})  [${timeZoneString(input.beforePaidTimeType)}]*\n更新後日時： *${input.paidAcquisitionDate} (${getWeek(input.paidAcquisitionDate)})  [${timeZoneString(input.paidTimeType)}]*\n```\n${input.paidReason}```");
         postMessage(text)
     }
 
