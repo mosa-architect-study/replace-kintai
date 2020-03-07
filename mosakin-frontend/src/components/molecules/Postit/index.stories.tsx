@@ -1,6 +1,7 @@
 import React from "react";
-import { Postit, Wrapper } from "./index";
+import { Postit } from "./index";
 import { storiesOf } from "@storybook/react";
+import styled from "@emotion/styled";
 
 //NOTE: 残有給数->remainingPaid ユビキタスなかったからとりあえず
 const paid = {
@@ -10,18 +11,14 @@ const paid = {
   currentPaidAcquisitionNumber: "4"
 };
 
+const Wrapper = styled.div`
+  display: flex;
+`;
+
 storiesOf("molecules/Postit", module).add("postit", () => {
   return (
-    <div>
-      <Wrapper>
-        <Postit title="繰越分" number={paid.carryForward} />
-        <Postit title="年次有給数" number={paid.annualPaidNumber} />
-        <Postit title="残有給数" number={paid.remainingPaid} />
-        <Postit
-          title="現有給取得数"
-          number={paid.currentPaidAcquisitionNumber}
-        />
-      </Wrapper>
-    </div>
+    <Wrapper>
+      <Postit title="繰越分" number={paid.carryForward} />
+    </Wrapper>
   );
 });
