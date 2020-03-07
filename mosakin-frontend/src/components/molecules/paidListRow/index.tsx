@@ -16,16 +16,17 @@ const StyledTableRow = styled.tr`
 const StyledTableData = styled.td`
   font-family: inter;
   /* transform: translateY(5px); */
-  padding: 0 14px;
+  padding: 16px 14px 0 14px;
   @media (max-width: 480px) {
-    padding: inherit;
+    padding: 24px 0 0;
   }
   text-align: center;
 `;
 
 const StyledTableDataIcon = styled.td`
-  line-height: 0;
+  line-height: 14px;
   padding: 0 14px;
+  vertical-align: bottom;
   text-align: center;
   &:active {
     background-color: ${paletteDict.light};
@@ -66,14 +67,14 @@ const StyledTableMenuHead = styled.th`
 export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
   <StyledTableRow>
     <StyledTableData>
-      <TextWithLineHeight color="1" size="0">
+      <TextWithLineHeight color="1" size="1">
         {dayjs(paid.paidAcquisitionDate).format(
           "YYYY/MM/DD"
         ) /* FIXME: 後々共通化等したい*/}
       </TextWithLineHeight>
     </StyledTableData>
     <StyledTableData>
-      <TextWithLineHeight color="1" size="0">
+      <TextWithLineHeight color="1" size="1">
         {paidTimeTypeToString[paid.paidTimeType]}
       </TextWithLineHeight>
     </StyledTableData>

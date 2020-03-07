@@ -11,7 +11,7 @@ const StyledTable = styled.table`
 const TableWrapper = styled.div`
   padding: 14px 33px;
   @media (max-width: 480px) {
-    padding: 14px 19px;
+    padding: 14px 11px;
   }
 `;
 
