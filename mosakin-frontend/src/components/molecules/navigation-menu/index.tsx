@@ -40,7 +40,7 @@ const SpNavigationMenu = (props: { value: string; name: IconList }) => {
     <>
       <SpNavigationMenuWrapper>
         <Icon name={props.name} width="l" height="l" />
-        <Text color="2" size="1">
+        <Text color="2" size="0">
           {props.value}
         </Text>
       </SpNavigationMenuWrapper>
