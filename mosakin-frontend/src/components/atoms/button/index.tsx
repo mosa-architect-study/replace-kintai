@@ -1,12 +1,13 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import * as Constant from "./constant";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, Palette } from "@/common/theme";
 
 interface ButtonProps {
   backgroundColor: Constant.ButtonBackColorType;
   width: Constant.ButtonWidthType;
   height: Constant.ButtonHeightType;
+  color: Palette;
   onClick: () => void;
   children: React.ReactNode;
 }
@@ -16,6 +17,7 @@ const StyledButton = styled.button<ButtonProps>`
   width: ${({ width }) => Constant.ButtonWidth[width]};
   height: ${({ height }) => Constant.ButtonHeight[height]};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: ${({ color }): string => paletteDict[color]};
   border-radius: 10px;
   background-color: ${({ backgroundColor }) =>
     paletteDict[Constant.ButtonBackColor[backgroundColor]]};
@@ -45,7 +47,7 @@ const StyledButton = styled.button<ButtonProps>`
 `;
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const { backgroundColor, width, height, onClick, children } = props;
+  const { backgroundColor, width, height, color, onClick, children } = props;
   return (
     <div>
       <StyledButton
@@ -53,6 +55,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
         backgroundColor={backgroundColor}
         width={width}
         height={height}
+        color={color}
         onClick={onClick}
       >
         {children}

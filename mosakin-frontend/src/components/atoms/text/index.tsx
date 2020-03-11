@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
-import { paletteDict, fontSizeDict } from "@/common/theme";
+import { fontSizeDict, paletteDict } from "@/common/theme";
 
 export type TextSize = "0" | "1" | "2" | "3";
-export type TextFontColorType = "1" | "2" | "3";
 export interface TextProps {
-  color: TextFontColorType;
   size: TextSize;
 }
 
@@ -15,13 +13,7 @@ const pcSizeDict: { [P in TextSize]: string } = {
   2: fontSizeDict._20px,
   3: fontSizeDict._24px
 };
-const textFontColor: { [P in TextFontColorType]: string } = {
-  1: paletteDict.black,
-  2: paletteDict.white,
-  3: paletteDict.base
-};
 
 export const Text = styled.p<TextProps>`
-  color: ${({ color }): string => textFontColor[color]};
   font-size: ${({ size }): string => pcSizeDict[size]};
 `;

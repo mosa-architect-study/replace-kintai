@@ -14,10 +14,14 @@ const useRedirectOnLogin = () => {
 export const LoginPage: React.FC = () => {
   useRedirectOnLogin();
   return (
-    <Button backgroundColor="1" onClick={login} height="s" width="s">
-      <Text color="2" size="1">
-        Login
-      </Text>
+    <Button
+      backgroundColor="1"
+      onClick={login}
+      height="s"
+      width="s"
+      color="white"
+    >
+      <Text size="1">Login</Text>
     </Button>
   );
 };

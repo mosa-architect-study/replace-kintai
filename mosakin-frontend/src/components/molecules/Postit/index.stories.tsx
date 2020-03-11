@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-storiesOf("molecules/Postit", module).add("postit", () => {
+storiesOf("molecules/Postit", module).add("Postit", () => {
   return (
     <Wrapper>
       <Postit title="繰越分" number={paid.carryForward} />
