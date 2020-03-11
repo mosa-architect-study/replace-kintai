@@ -52,10 +52,14 @@ export const UseInfo = () => {
           <img style={{ height: "44px" }} src={user.photoURL}></img>
         )}
         <div>
-          <Button onClick={_logout} backgroundColor="1" height="s" width="s">
-            <Text color="2" size="1">
-              Logout
-            </Text>
+          <Button
+            onClick={_logout}
+            backgroundColor="1"
+            height="s"
+            width="s"
+            color="base"
+          >
+            <Text size="1">Logout</Text>
           </Button>
         </div>
       </UserInfoWrapper>

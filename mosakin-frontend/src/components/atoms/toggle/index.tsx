@@ -31,7 +31,8 @@ const Label = styled.label<Labelprops>`
   border-right: solid 1px ${paletteDict.border};
   background-color: ${({ selected }): string =>
     selected ? paletteDict.light : paletteDict.white};
-  color: ${paletteDict.black};
+  color: ${({ selected }): string =>
+    selected ? paletteDict.white : paletteDict.black};
   cursor: pointer;
   :first-child {
     border-radius: 30px 0 0 30px;
@@ -50,9 +51,7 @@ const Toggle = (props: Toggleprops): JSX.Element => (
     <Input type="radio"></Input>
     <TextWrapper>
       {/* FIX ME */}
-      <Text color="1" size={props.size}>
-        {props.label}
-      </Text>
+      <Text size={props.size}>{props.label}</Text>
     </TextWrapper>
   </Label>
 );

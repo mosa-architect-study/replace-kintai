@@ -62,10 +62,14 @@ export const CreatePage = (props: NewPaidViewModel) => (
       ></PaidReasonArea>
     </PaidReasonDiv>
     <ButtonArea>
-      <Button backgroundColor="1" width="s" height="s" onClick={props.onSubmit}>
-        <Text color="2" size="1">
-          登録
-        </Text>
+      <Button
+        backgroundColor="1"
+        width="s"
+        height="s"
+        color="white"
+        onClick={props.onSubmit}
+      >
+        <Text size="1">登録</Text>
       </Button>
     </ButtonArea>
   </OuterDiv>

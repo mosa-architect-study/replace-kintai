@@ -19,6 +19,7 @@ const StyledPostit = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid ${paletteDict.border};
   background: ${paletteDict.white};
+  color: ${paletteDict.black};
   @media (max-width: 480px) {
     min-height: 82px;
     min-width: 60px;
@@ -77,9 +78,7 @@ export const Postit = (props: PostitProps) => (
       <Caption color="2" lv="h4">
         {props.title}
       </Caption>
-      <Text color="1" size="1">
-        {props.number}日
-      </Text>
+      <Text size="1">{props.number}日</Text>
     </TextWrapper>
   </StyledPostit>
 );

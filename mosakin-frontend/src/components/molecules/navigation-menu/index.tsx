@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { Icon } from "@/components/atoms/icon";
 import { IconList } from "@/components/atoms/icon/constant";
 import { Text } from "@/components/atoms/text";
+import { paletteDict } from "@/common/theme";
 
 export const NavigationMenu = (props: { value: string; name: IconList }) => {
   return (
@@ -17,9 +18,7 @@ const PcNavigationMenu = (props: { value: string }) => {
   return (
     <>
       <PcNavigationMenuWrapper>
-        <Text color="2" size="1">
-          {props.value}
-        </Text>
+        <Text size="1">{props.value}</Text>
       </PcNavigationMenuWrapper>
     </>
   );
@@ -30,6 +29,7 @@ const PcNavigationMenuWrapper = styled.div`
   height: 100%;
   align-items: center;
   text-decoration: none;
+  color: ${paletteDict.white};
   @media (max-width: 480px) {
     display: none;
   }
@@ -40,9 +40,7 @@ const SpNavigationMenu = (props: { value: string; name: IconList }) => {
     <>
       <SpNavigationMenuWrapper>
         <Icon name={props.name} width="l" height="l" />
-        <Text color="2" size="0">
-          {props.value}
-        </Text>
+        <Text size="0">{props.value}</Text>
       </SpNavigationMenuWrapper>
     </>
   );
@@ -50,6 +48,7 @@ const SpNavigationMenu = (props: { value: string; name: IconList }) => {
 
 const SpNavigationMenuWrapper = styled.div`
   display: none;
+  color: ${paletteDict.white};
   @media (max-width: 480px) {
     display: grid;
     height: 100%;

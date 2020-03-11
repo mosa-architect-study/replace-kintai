@@ -66,9 +66,7 @@ export const PullDownUser = (props: { value: string }) => {
   return (
     <>
       <PullDownUserItem color="1" backgroundColor="1">
-        <Text color="2" size="1">
-          {props.value}
-        </Text>
+        <Text size="1">{props.value}</Text>
       </PullDownUserItem>
       <PullDownBorder />
     </>
@@ -106,9 +104,7 @@ const PullDownMenu = (props: { value: string; name: IconList }) => {
         <PullDownIconWrapper>
           <Icon name={props.name} width="s" height="m" />
         </PullDownIconWrapper>
-        <Text color="2" size="1">
-          {props.value}
-        </Text>
+        <Text size="1">{props.value}</Text>
       </PullDownMenuItem>
     </>
   );

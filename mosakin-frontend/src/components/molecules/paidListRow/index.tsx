@@ -37,6 +37,7 @@ const StyledTableDataIcon = styled.td`
 
 const TextWithLineHeight = styled(Text)`
   line-height: 34px;
+  color: ${paletteDict.black};
 `;
 
 const StyledTableHead = styled.th`
@@ -45,6 +46,7 @@ const StyledTableHead = styled.th`
   font-weight: initial;
   padding: 0 14px;
   text-align: center;
+  color: ${paletteDict.base};
   /* FIXME min-widthってどうよ */
   min-width: 160px;
   @media (max-width: 480px) {
@@ -57,6 +59,7 @@ const StyledTableMenuHead = styled.th`
   line-height: 34px;
   font-weight: initial;
   text-align: center;
+  color: ${paletteDict.base};
   /* FIXME min-widthってどうよ */
   min-width: 100px;
   @media (max-width: 480px) {
@@ -67,14 +70,14 @@ const StyledTableMenuHead = styled.th`
 export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
   <StyledTableRow>
     <StyledTableData>
-      <TextWithLineHeight color="1" size="1">
+      <TextWithLineHeight size="1">
         {dayjs(paid.paidAcquisitionDate).format(
           "YYYY/MM/DD"
         ) /* FIXME: 後々共通化等したい*/}
       </TextWithLineHeight>
     </StyledTableData>
     <StyledTableData>
-      <TextWithLineHeight color="1" size="1">
+      <TextWithLineHeight size="1">
         {paidTimeTypeToString[paid.paidTimeType]}
       </TextWithLineHeight>
     </StyledTableData>
@@ -90,24 +93,16 @@ export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
 export const PaidListHeader: React.FC = () => (
   <tr>
     <StyledTableHead>
-      <Text color="3" size="1">
-        取得日
-      </Text>
+      <Text size="1">取得日</Text>
     </StyledTableHead>
     <StyledTableHead>
-      <Text color="3" size="1">
-        取得種別
-      </Text>
+      <Text size="1">取得種別</Text>
     </StyledTableHead>
     <StyledTableMenuHead>
-      <Text color="3" size="1">
-        編集
-      </Text>
+      <Text size="1">編集</Text>
     </StyledTableMenuHead>
     <StyledTableMenuHead>
-      <Text color="3" size="1">
-        削除
-      </Text>
+      <Text size="1">削除</Text>
     </StyledTableMenuHead>
   </tr>
 );

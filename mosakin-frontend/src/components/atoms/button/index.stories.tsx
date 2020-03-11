@@ -11,9 +11,10 @@ storiesOf("atoms/Button", module).add("Button", () => {
         backgroundColor="1"
         width="s"
         height="s"
+        color="white"
         onClick={action("clicked: button")}
       >
-        <Text color="2" size="1">
+        <Text color="white" size="1">
           ボタン
         </Text>
       </Button>
@@ -22,9 +23,10 @@ storiesOf("atoms/Button", module).add("Button", () => {
         backgroundColor="2"
         width="l"
         height="l"
+        color="base"
         onClick={action("clicked: button2")}
       >
-        <Text color="3" size="1">
+        <Text color="base" size="1">
           ボタン2
         </Text>
       </Button>
