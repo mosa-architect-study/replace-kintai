@@ -18,3 +18,20 @@ interface LoadableViewModelOnFetched<T> extends LoadableViewModelBase {
 interface LoadableViewModelOnLoading extends LoadableViewModelBase {
   status: "Loading";
 }
+
+export interface PaidViewModel {
+  carryForward: number;
+  annualPaidNumber: number;
+}
+
+export interface PaidItem extends PaidListItem {
+  reasonValue: string;
+}
+
+export interface PaidListItem {
+  paidId: string;
+  paidAcquisitionDate: DateValue;
+  paidTimeType: string | PaidTimeType;
+}
+
+export type PaidTimeType = "ALL_DAY" | "AM" | "PM";

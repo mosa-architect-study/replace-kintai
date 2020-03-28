@@ -4,6 +4,7 @@ import {
 } from "../models/models/UpdatePaid";
 import { useState } from "react";
 import { axios } from "@/common/api/axios";
+import { PaidItem } from "@/models/models/common";
 
 export const useUpdatePaid = (): UpdatePaidViewModel => {
   // TODO どう前画面からデータをうけとるか
@@ -11,17 +12,17 @@ export const useUpdatePaid = (): UpdatePaidViewModel => {
   const userName = "芳賀樹生";
   const beforeValue = "2019-07-22";
   const beforePaidTimeValue = "ALL_DAY";
-  const [dateValue, dateSetValue] = useState("2019-07-22");
-  const [paidTimeValue, paidTimeOnChange] = useState("ALL_DAY");
+  const [paidAcquisitionDate, dateSetValue] = useState("2019-07-22");
+  const [paidTimeType, paidTimeOnChange] = useState("ALL_DAY");
   const [reasonValue, reasonSetValue] = useState("データを更新するよ");
-  const updateData: UpdatePaidItem = {
+  const updateData: UpdatePaidItem & PaidItem = {
     paidId: paidId,
     userName: userName,
     beforeValue: beforeValue,
-    dateValue: dateValue,
+    paidAcquisitionDate: paidAcquisitionDate,
     dateOnChange: dateSetValue,
     beforePaidTimeValue: beforePaidTimeValue,
-    paidTimeValue: paidTimeValue,
+    paidTimeType: paidTimeType,
     paidTimeOnChange: paidTimeOnChange,
     reasonValue: reasonValue,
     reasonOnChange: reasonSetValue,
@@ -32,9 +33,9 @@ export const useUpdatePaid = (): UpdatePaidViewModel => {
       .post(`/update`, {
         paidId: updateData.paidId,
         beforeAcquisitionDate: updateData.beforeValue,
-        paidAcquisitionDate: updateData.dateValue,
+        paidAcquisitionDate: updateData.paidAcquisitionDate,
         beforePaidTimeType: updateData.beforePaidTimeValue,
-        paidTimeType: paidTimeValue,
+        paidTimeType: paidTimeType,
         paidReason: reasonValue
       })
       .then(res => {

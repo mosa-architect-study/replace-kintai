@@ -45,13 +45,13 @@ export const UpdatePage = (props: UpdatePaidViewModel) => (
     )}
     <InnerDiv>
       <DateInputArea
-        value={props.data.dateValue}
+        value={props.data.paidAcquisitionDate}
         onChange={props.data.dateOnChange}
       ></DateInputArea>
     </InnerDiv>
     <InnerDiv>
       <PaidTimeType
-        value={props.data.paidTimeValue}
+        value={props.data.paidTimeType}
         onClick={props.data.paidTimeOnChange}
       ></PaidTimeType>
     </InnerDiv>

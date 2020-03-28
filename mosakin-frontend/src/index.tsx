@@ -11,7 +11,10 @@ import { UseInfo } from "./sample/login";
 import { NotFoundPage } from "./components/pages/404";
 import { LoginPage } from "./components/pages/LoginPage";
 
+const PaidContext = React.createContext("");
+
 export const App: React.FC = () => {
+  const paidContext = React.useContext(PaidContext);
   return (
     <Router>
       <ul>

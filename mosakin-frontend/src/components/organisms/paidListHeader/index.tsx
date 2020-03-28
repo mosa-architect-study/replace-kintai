@@ -2,13 +2,16 @@ import React from "react";
 import { PaidListHeaderViewModel } from "../../../models/models/paidList";
 import { Postit } from "../../molecules/Postit";
 import styled from "@emotion/styled";
+import { PaidViewModel } from "@/models/models/common";
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-export const PaidListHeader: React.FC<PaidListHeaderViewModel> = ({
+export const PaidListHeader: React.FC<
+  PaidListHeaderViewModel & PaidViewModel
+> = ({
   annualPaidNumber,
   currentPaidAcquisitionNumber,
   leftPaidNumber,

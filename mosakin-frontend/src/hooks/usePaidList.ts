@@ -1,7 +1,10 @@
-import { LoadableViewModel } from "../models/models/common";
+import {
+  LoadableViewModel,
+  PaidItem,
+  PaidViewModel
+} from "../models/models/common";
 import {
   PaidListViewModel,
-  PaidListItem,
   PaidListHeaderViewModel,
   PaidListRowViewModel
 } from "../models/models/paidList";
@@ -14,8 +17,8 @@ import { axios } from "@/common/api/axios";
  */
 export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
   const [data, setData] = useState<{
-    list: PaidListItem[];
-    header: PaidListHeaderViewModel;
+    list: PaidItem[];
+    header: PaidListHeaderViewModel & PaidViewModel;
   }>();
 
   useEffect(() => {

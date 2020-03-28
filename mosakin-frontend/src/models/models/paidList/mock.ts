@@ -1,5 +1,6 @@
-import { PaidListItem, PaidListRowViewModel, PaidListHeaderViewModel } from ".";
+import { PaidListRowViewModel, PaidListHeaderViewModel } from ".";
 import { action } from "@storybook/addon-actions";
+import { PaidListItem, PaidViewModel } from "@/models/models/common";
 
 export const paidList: PaidListItem[] = [
   {
@@ -38,7 +39,7 @@ export const rows: PaidListRowViewModel[] = paidList.map<PaidListRowViewModel>(
   })
 );
 
-export const header: PaidListHeaderViewModel = {
+export const header: PaidListHeaderViewModel & PaidViewModel = {
   annualPaidNumber: 10,
   currentPaidAcquisitionNumber: 5,
   leftPaidNumber: 5,

@@ -1,20 +1,16 @@
-import { DateValue } from "./common";
+import { DateValue, PaidItem } from "./common";
 
 export interface UpdatePaidViewModel {
-  data: UpdatePaidItem;
+  data: UpdatePaidItem & PaidItem;
   onSubmit: () => void;
 }
 
 export interface UpdatePaidItem {
-  paidId: string;
   userName?: string;
   beforeValue: DateValue;
-  dateValue: DateValue;
   dateOnChange: (value: string) => void;
   beforePaidTimeValue: string;
-  paidTimeValue: string;
   paidTimeOnChange: (value: string) => void;
-  reasonValue: string;
   reasonOnChange: (value: string) => void;
   adminFlg: boolean;
 }
