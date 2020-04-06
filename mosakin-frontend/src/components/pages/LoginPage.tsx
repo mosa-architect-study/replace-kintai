@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { Button } from "@/components/atoms/button";
-import { Text } from "@/components/atoms/text";
 import { getUser, login } from "@/common/auth/wappers";
 import { useHistory } from "react-router-dom";
+import { Login } from "@/components/molecules/login";
 
 const useRedirectOnLogin = () => {
   const history = useHistory();
@@ -13,15 +12,5 @@ const useRedirectOnLogin = () => {
 
 export const LoginPage: React.FC = () => {
   useRedirectOnLogin();
-  return (
-    <Button
-      backgroundColor="1"
-      onClick={login}
-      height="s"
-      width="s"
-      color="white"
-    >
-      <Text size="1">Login</Text>
-    </Button>
-  );
+  return <Login onClick={login} />;
 };
