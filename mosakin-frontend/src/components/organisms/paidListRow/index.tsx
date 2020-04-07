@@ -1,5 +1,5 @@
 import React from "react";
-import { PaidListRowContents } from "@/components/molecules/paidListRow/index2";
+import { PaidListRowContents } from "@/components/molecules/paidListRowContents";
 import { PaidListRowViewModel } from "@/models/models/paidList";
 
 type PaidListRowProps = {
