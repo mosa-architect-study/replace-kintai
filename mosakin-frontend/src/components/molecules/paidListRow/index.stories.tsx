@@ -1,7 +1,9 @@
 import React from "react";
-import { PaidListRow, PaidListHeader } from ".";
 import styled from "@emotion/styled";
 import { action } from "@storybook/addon-actions";
+import { PaidListRow, PaidListHeader } from ".";
+import { PaidListRowContents } from "./index2";
+import { paidList } from "@/models/models/paidList/mock";
 
 export default {
   title: "molecules/PaidListRow"
@@ -10,6 +12,16 @@ export default {
 const StyledTable = styled.table`
   border-collapse: collapse;
 `;
+
+export const ex = () => (
+  <PaidListRowContents
+    paid={paidList[0]}
+    menu={{
+      onDeleteButtonClick: action("onDeleteButtonClick"),
+      onEditButtonClick: action("onEditButtonClick")
+    }}
+  />
+);
 
 export const normal = () => (
   <StyledTable>
