@@ -7,7 +7,6 @@ import { PaidListPage } from "./components/pages/PaidListPage";
 import { NewPaidPage } from "./components/pages/NewPaidPage";
 import { UpdatePaidPage } from "./components/pages/UpdatePaidPage";
 import { AdminPage } from "./components/pages/AdminPage";
-// import { UseInfo } from "./sample/login";
 import { NotFoundPage } from "./components/pages/404";
 import { LoginPage } from "./components/pages/LoginPage";
 import { LoginContextProvider } from "./components/context/LoginContext";
