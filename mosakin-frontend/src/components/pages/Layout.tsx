@@ -2,7 +2,7 @@ import React from "react";
 import { Logo } from "../atoms/logo";
 import styled from "@emotion/styled";
 import { paletteDict } from "@/common/theme";
-import { useLoginInfo } from "@/hooks/useLoginStatus";
+import { useLoginInfo } from "@/hooks/useLoginInfo";
 import { Button } from "../atoms/button";
 import { Text } from "../atoms/text";
 import { User } from "@/models/models/User";
