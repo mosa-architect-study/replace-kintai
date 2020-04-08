@@ -76,10 +76,7 @@ const StyledLine = styled.div`
   ${StyledMarginBottom};
 `;
 
-export const PaidListRowContents: React.FC<PaidListRowViewModel> = ({
-  paid,
-  menu
-}) => (
+export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
   <Card>
     <StyledPaidListRowContentsWrapper>
       <StyledTextWrapper>

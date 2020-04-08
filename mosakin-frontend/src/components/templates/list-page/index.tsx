@@ -4,7 +4,7 @@ import { bp } from "@/common/theme";
 import { LoadableViewModel } from "../../../models/models/common";
 import { PaidListViewModel } from "../../../models/models/paidList";
 import { PaidListHeader } from "../../organisms/paidListHeader";
-import { PaidListRow } from "../../organisms/paidListRow";
+import { PaidListRows } from "../../organisms/paidListRows";
 import { PageTitle } from "../../molecules/pageTitle";
 
 const OuterDiv = styled.div`
@@ -49,7 +49,7 @@ export const PaidListTemplate: React.FC<
         <HeaderWrapper>
           <PaidListHeader {...model.data.header}></PaidListHeader>
         </HeaderWrapper>
-        <PaidListRow rows={model.data.list}></PaidListRow>
+        <PaidListRows rows={model.data.list}></PaidListRows>
       </OuterDiv>
     );
   }
