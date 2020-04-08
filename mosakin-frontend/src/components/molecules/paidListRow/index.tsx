@@ -1,108 +1,110 @@
 import React from "react";
+import { css } from "@emotion/core";
 import styled from "@emotion/styled";
-import { paletteDict, bp } from "@/common/theme";
-import { Text } from "../../atoms/text";
-import { Icon } from "../../atoms/icon";
+import { paletteDict } from "@/common/theme";
+import { Text } from "@/components/atoms/text";
+import { Icon } from "@/components/atoms/icon";
+import { Card } from "@/components/atoms/card";
 import {
   paidTimeTypeToString,
   PaidListRowViewModel
 } from "@/models/models/paidList";
 import dayjs from "dayjs";
 
-const StyledTableRow = styled.tr`
-  border-bottom: solid 1px ${paletteDict.border};
-`;
+// 共通化
 
-const StyledTableData = styled.td`
-  font-family: inter;
-  /* transform: translateY(5px); */
-  padding: 16px 14px 0 14px;
-  @media (max-width: ${bp}) {
-    padding: 24px 0 0;
+const StyledSideMargin = () => css`
+  margin-right: 40px;
+  :last-child {
+    margin: 0;
   }
-  text-align: center;
 `;
 
-const StyledTableDataIcon = styled.td`
-  line-height: 14px;
-  padding: 0 14px;
-  vertical-align: bottom;
-  text-align: center;
-  &:active {
-    background-color: ${paletteDict.light};
+const StyledMarginBottom = () => css`
+  margin-bottom: 10px;
+`;
+
+// 以下コンポーネント
+
+const StyledPaidListRowContentsWrapper = styled.div`
+  margin: 25px;
+  ${StyledMarginBottom};
+`;
+
+const StyledTextWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  ${StyledMarginBottom};
+`;
+
+const StyledPaidAcquisitionDateTextWrapper = styled.div`
+  ::before {
+    content: "有給取得日";
+    display: block;
+    color: ${paletteDict.base};
+    ${StyledMarginBottom};
   }
-  border-radius: 2px;
-  cursor: pointer;
-`;
-
-const TextWithLineHeight = styled(Text)`
-  line-height: 34px;
   color: ${paletteDict.black};
+  ${StyledSideMargin};
+  /* ここだけ隣同士の距離をとりたい */
+  margin-right: 60px;
 `;
 
-const StyledTableHead = styled.th`
-  font-family: inter;
-  line-height: 34px;
-  font-weight: initial;
-  padding: 0 14px;
-  text-align: center;
-  color: ${paletteDict.base};
-  /* FIXME min-widthってどうよ */
-  min-width: 160px;
-  @media (max-width: ${bp}) {
-    min-width: inherit;
+const StyledPaidTimeTypeTextWrapper = styled.div`
+  ::before {
+    content: "有給時間種別";
+    display: block;
+    color: ${paletteDict.base};
+    ${StyledMarginBottom};
   }
+  color: ${paletteDict.black};
+  ${StyledSideMargin};
 `;
 
-const StyledTableMenuHead = styled.th`
-  font-family: inter;
-  line-height: 34px;
-  font-weight: initial;
-  text-align: center;
-  color: ${paletteDict.base};
-  /* FIXME min-widthってどうよ */
-  min-width: 100px;
-  @media (max-width: ${bp}) {
-    min-width: inherit;
-  }
+const StyledIconWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const StyledIconMargin = styled.div`
+  cursor: pointer;
+  ${StyledSideMargin};
+`;
+
+const StyledLine = styled.div`
+  border-bottom: solid 1px ${paletteDict.border};
+  ${StyledMarginBottom};
 `;
 
 export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
-  <StyledTableRow>
-    <StyledTableData>
-      <TextWithLineHeight size="1">
-        {dayjs(paid.paidAcquisitionDate).format(
-          "YYYY/MM/DD"
-        ) /* FIXME: 後々共通化等したい*/}
-      </TextWithLineHeight>
-    </StyledTableData>
-    <StyledTableData>
-      <TextWithLineHeight size="1">
-        {paidTimeTypeToString[paid.paidTimeType]}
-      </TextWithLineHeight>
-    </StyledTableData>
-    <StyledTableDataIcon onClick={menu.onEditButtonClick}>
-      <Icon name="pencilThin" width="s" height="s"></Icon>
-    </StyledTableDataIcon>
-    <StyledTableDataIcon onClick={menu.onDeleteButtonClick}>
-      <Icon name="xMark" width="s" height="s"></Icon>
-    </StyledTableDataIcon>
-  </StyledTableRow>
-);
+  <Card>
+    <StyledPaidListRowContentsWrapper>
+      <StyledTextWrapper>
+        <StyledPaidAcquisitionDateTextWrapper>
+          {/* FIX ME: サイズは暫定 */}
+          <Text size="3">
+            {/* FIXME: 後々共通化等したい */}
+            {dayjs(paid.paidAcquisitionDate).format("YYYY/MM/DD")}
+          </Text>
+        </StyledPaidAcquisitionDateTextWrapper>
 
-export const PaidListHeader: React.FC = () => (
-  <tr>
-    <StyledTableHead>
-      <Text size="1">取得日</Text>
-    </StyledTableHead>
-    <StyledTableHead>
-      <Text size="1">取得種別</Text>
-    </StyledTableHead>
-    <StyledTableMenuHead>
-      <Text size="1">編集</Text>
-    </StyledTableMenuHead>
-    <StyledTableMenuHead>
-      <Text size="1">削除</Text>
-    </StyledTableMenuHead>
-  </tr>
+        <StyledPaidTimeTypeTextWrapper>
+          {/* FIX ME: サイズは暫定 */}
+          <Text size="3">{paidTimeTypeToString[paid.paidTimeType]}</Text>
+        </StyledPaidTimeTypeTextWrapper>
+      </StyledTextWrapper>
+
+      <StyledLine />
+
+      <StyledIconWrapper>
+        <StyledIconMargin onClick={menu.onEditButtonClick}>
+          <Icon name="pencilThin" width="m" height="m"></Icon>
+        </StyledIconMargin>
+
+        <StyledIconMargin onClick={menu.onDeleteButtonClick}>
+          <Icon name="xMark" width="m" height="m"></Icon>
+        </StyledIconMargin>
+      </StyledIconWrapper>
+    </StyledPaidListRowContentsWrapper>
+  </Card>
 );
