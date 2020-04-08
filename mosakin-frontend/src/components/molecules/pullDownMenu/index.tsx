@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import * as Constant from "./constant";
 import { Text } from "@/components/atoms/text";
 import { Icon } from "@/components/atoms/icon";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, bp } from "@/common/theme";
 import { IconList } from "@/components/atoms/icon/constant";
 
 interface PullDownProps {
@@ -50,7 +50,7 @@ const StyledPullDownUser = styled.div`
   list-style: none;
   border-radius: 3px 3px 0px 0px;
   color: ${paletteDict.white};
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 433px;
     height: 66px;
     border-radius: 0px;
@@ -81,7 +81,7 @@ const StyledPullDownMenu = styled.li`
   padding: 0 15%;
   border-radius: 3px;
   color: ${paletteDict.white};
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 433px;
     height: 64px;
     padding: 0 25%;
@@ -115,7 +115,7 @@ export const PullDownWrapper = styled.div`
   width: 259px;
   border-radius: 3px;
   list-style: none;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 433px;
   }
 `;

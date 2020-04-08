@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, bp } from "@/common/theme";
 import { Button } from "@/components/atoms/button";
 import { Text } from "@/components/atoms/text";
 import brand from "@/static/logo_fixme.svg";
@@ -42,7 +42,7 @@ const StyledLogin = styled.div`
     border-bottom-left-radius: 100px 50px;
     filter: blur(1px);
   }
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 90%;
     height: 80%;
   }
@@ -56,7 +56,7 @@ const StyledContentsWrapper = styled.div`
 const StyledLogoWrapper = styled.div`
   width: 100%;
   margin-bottom: 40vh;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 90%;
     margin-bottom: 25vh;
   }

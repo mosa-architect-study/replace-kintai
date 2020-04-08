@@ -1,7 +1,8 @@
 import React from "react";
+import styled from "@emotion/styled";
+import { bp } from "@/common/theme";
 import { LoadableViewModel } from "../../../models/models/common";
 import { PaidListViewModel } from "../../../models/models/paidList";
-import styled from "@emotion/styled";
 import { PaidListHeader } from "../../organisms/paidListHeader";
 import { PaidListTable } from "../../organisms/paidListTable";
 import { PageTitle } from "../../molecules/pageTitle";
@@ -9,7 +10,7 @@ import { PageTitle } from "../../molecules/pageTitle";
 const OuterDiv = styled.div`
   width: 603px;
   margin: auto;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 90%;
     margin: auto;
   }

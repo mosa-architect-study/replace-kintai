@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Icon } from "@/components/atoms/icon";
 import { IconList } from "@/components/atoms/icon/constant";
 import { Text } from "@/components/atoms/text";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, bp } from "@/common/theme";
 
 export const NavigationMenu = (props: { value: string; name: IconList }) => {
   return (
@@ -30,7 +30,7 @@ const PcNavigationMenuWrapper = styled.div`
   align-items: center;
   text-decoration: none;
   color: ${paletteDict.white};
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     display: none;
   }
 `;
@@ -49,7 +49,7 @@ const SpNavigationMenu = (props: { value: string; name: IconList }) => {
 const SpNavigationMenuWrapper = styled.div`
   display: none;
   color: ${paletteDict.white};
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     display: grid;
     height: 100%;
     align-items: center;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "@emotion/styled";
+import { bp } from "@/common/theme";
 import { Caption } from "../../atoms/caption";
 import { Toggles } from "../../molecules/toggles";
 
@@ -11,7 +12,7 @@ export interface PaidTimeTypeProps {
 const TitleDiv = styled.div`
   display: inline-block;
   vertical-align: middle;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     display: block;
     margin-bottom: 18px;
   }
@@ -19,7 +20,7 @@ const TitleDiv = styled.div`
 const InputDiv = styled.div`
   display: inline-block;
   vertical-align: middle;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     display: flex;
     justify-content: center;
   }
@@ -28,7 +29,7 @@ const OuterDiv = styled.div`
   max-width: 479px;
   display: flex;
   justify-content: space-between;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     display: block;
   }
 `;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "@emotion/styled";
+import { bp } from "@/common/theme";
 import { Caption } from "../../atoms/caption";
 import { TextArea } from "../../atoms/textArea";
 
@@ -11,7 +12,7 @@ export interface PaidReasonAreaProps {
 const TitleDiv = styled.div`
   display: block;
   margin-bottom: 6px;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     margin-bottom: 18px;
   }
 `;

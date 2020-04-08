@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, bp } from "@/common/theme";
 import { Text } from "../../atoms/text";
 import { Icon } from "../../atoms/icon";
 import {
@@ -17,7 +17,7 @@ const StyledTableData = styled.td`
   font-family: inter;
   /* transform: translateY(5px); */
   padding: 16px 14px 0 14px;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     padding: 24px 0 0;
   }
   text-align: center;
@@ -49,7 +49,7 @@ const StyledTableHead = styled.th`
   color: ${paletteDict.base};
   /* FIXME min-widthってどうよ */
   min-width: 160px;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     min-width: inherit;
   }
 `;
@@ -62,7 +62,7 @@ const StyledTableMenuHead = styled.th`
   color: ${paletteDict.base};
   /* FIXME min-widthってどうよ */
   min-width: 100px;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     min-width: inherit;
   }
 `;

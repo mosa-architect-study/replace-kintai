@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
 const StyledIcon = styled.img<IconSizeProps>`
   width: ${({ width }): string => PcIconSizeDict[width]};
   height: ${({ height }): string => PcIconSizeDict[height]};
-  @media (max-width: ${bp}px) {
+  @media (max-width: ${bp}) {
     width: ${({ width }): string => SpIconSizeDict[width]};
     height: ${({ height }): string => SpIconSizeDict[height]};
   }
