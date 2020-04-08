@@ -39,3 +39,6 @@ export const fontSizeDict: { [P in FontSize]: string } = {
   _24px: "24px",
   _30px: "30px"
 };
+
+// media queries breakpoints
+export const bp = "480px";

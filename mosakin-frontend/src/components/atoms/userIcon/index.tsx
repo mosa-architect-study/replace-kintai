@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { IconListDict } from "../icon/constant";
 import { IconProps, userIconSizeDict } from "./constant";
+import { bp } from "@/common/theme";
 
 const StyledWrapper = styled.div`
   position: relative;
@@ -14,7 +15,7 @@ const StyledUserIcon = styled.img<IconProps>`
   border: solid 1px;
   width: ${userIconSizeDict["l"]};
   height: ${userIconSizeDict["l"]};
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: ${userIconSizeDict["s"]};
     height: ${userIconSizeDict["s"]};
   }

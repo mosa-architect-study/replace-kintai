@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, bp } from "@/common/theme";
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   line-height: 0;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     height: 80px;
     padding: 0 5%;
   }

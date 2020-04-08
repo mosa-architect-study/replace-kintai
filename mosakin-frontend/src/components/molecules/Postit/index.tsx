@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, bp } from "@/common/theme";
 import { Text } from "@/components/atoms/text";
 import { Caption } from "@/components/atoms/caption";
 
@@ -20,7 +20,7 @@ const StyledPostit = styled.div`
   border: 1px solid ${paletteDict.border};
   background: ${paletteDict.white};
   color: ${paletteDict.black};
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     min-height: 82px;
     min-width: 60px;
   }
@@ -38,7 +38,7 @@ const PinRound = styled.div`
   border: 1px solid ${paletteDict.border};
   box-sizing: border-box;
   border-radius: 50%;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 10px;
     height: 10px;
   }
@@ -49,7 +49,7 @@ const PinBorder = styled.div`
   height: 0px;
   border: 1px solid ${paletteDict.black};
   transform: matrix(0.8, -1.2, 0.3, 0.8, -4, -1.2);
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     transform: matrix(0.8, -1, 0.1, 0.5, -3, -1.2);
   }
 `;

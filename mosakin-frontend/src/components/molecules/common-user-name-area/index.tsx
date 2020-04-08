@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import { Caption } from "../../atoms/caption";
 import { Text } from "../../atoms/text";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, bp } from "@/common/theme";
 
 export interface CommonUserNameAreaProps {
   value?: string;
@@ -15,7 +15,7 @@ const TextDiv = styled.div`
   vertical-align: middle;
   width: 295px;
   color: ${paletteDict.black};
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 160px;
   }
 `;
@@ -23,7 +23,7 @@ const OuterDiv = styled.div`
   max-width: 479px;
   display: flex;
   justify-content: space-between;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
   }
 `;
 

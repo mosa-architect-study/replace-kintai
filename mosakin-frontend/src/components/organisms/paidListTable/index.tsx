@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { bp } from "@/common/theme";
 import { PaidListHeader, PaidListRow } from "../../molecules/paidListRow";
 import { Card } from "../../atoms/card";
 import { PaidListRowViewModel } from "@/models/models/paidList";
@@ -10,7 +11,7 @@ const StyledTable = styled.table`
 
 const TableWrapper = styled.div`
   padding: 14px 33px;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     padding: 14px 11px;
   }
 `;

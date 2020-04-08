@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "@emotion/styled";
+import { bp } from "@/common/theme";
 import { PageTitle } from "../../molecules/pageTitle";
 import { CommonUserNameArea } from "../../molecules/common-user-name-area";
 import { DateInputArea } from "../../molecules/date-input-area";
@@ -24,7 +25,7 @@ const PaidReasonDiv = styled.div`
 const OuterDiv = styled.div`
   width: 479px;
   margin: auto;
-  @media (max-width: 480px) {
+  @media (max-width: ${bp}) {
     width: 90%;
     margin: auto;
   }
