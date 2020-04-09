@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { paletteDict, bp } from "@/common/theme";
 import { ModalState } from "./useModalAnimation";
 
 export const ANIMATION_MS = 300;
@@ -20,7 +21,22 @@ const ModalBackground = styled.div<ModalBackgroundProps>`
 `;
 
 const ModalContent = styled.div`
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 75%;
+  height: 90%;
+  margin: auto;
+  /* FIX ME: paddingは仮. コンテンツを入れたときに修正してください */
+  padding: 50px 100px;
+  overflow: auto;
+  border-radius: 10px;
+  background: ${paletteDict.white};
+  @media (max-width: ${bp}) {
+    width: 90%;
+  }
 `;
 
 const ModalWapper = styled.div<{ trans: ModalState }>`
@@ -48,7 +64,7 @@ export type ModalRendererPropsFromParent = React.PropsWithChildren<{
 export const ModalRenderer: React.FC<ModalRendererProps> = ({
   trans,
   onClickBackground,
-  backgroundColor = "rgba(0, 0, 0, 0.5)",
+  backgroundColor = "rgba(196, 196, 196, 0.7)",
   children,
   contentClass
 }) => {
