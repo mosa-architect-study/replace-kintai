@@ -18,7 +18,7 @@ jobs:
     - name: Unit Test
       run: |
         cd mosakin-frontend
-        npm ci
+        sh ./scripts/npminstall-rockjson-check.sh
         npm run build:dev
         npm test
         npm run lint

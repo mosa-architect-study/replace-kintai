@@ -17,7 +17,7 @@ jobs:
     - name: Deploy Firebase Hosting
       run: |
         cd mosakin-frontend
-        sh npminstall-rockjson-check.sh
+        npm i
         npm test
         npm run build:dev
         npm run deploy:dev
