@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { fontSizeDict, paletteDict } from "@/common/theme";
+import { fontSizeDict } from "@/common/theme";
 
 export type TextSize = "0" | "1" | "2" | "3";
 export interface TextProps {
