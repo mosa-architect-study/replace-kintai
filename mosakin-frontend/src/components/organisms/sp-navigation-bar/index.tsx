@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { paletteDict } from "@/common/theme";
+import { paletteDict, bp } from "@/common/theme";
 import { NavigationMenu } from "@/components/molecules/navigation-menu/index";
 import { IconList } from "@/components/atoms/icon/constant";
 
@@ -29,11 +29,7 @@ export const SpNavigationBar: React.FC<MenuProps> = ({ menus }) => {
   ));
   return (
     <ul>
-      <SpNavigationBarWrapper>
-        <BlankMenu />
-        {menuItemList}
-        <BlankMenu />
-      </SpNavigationBarWrapper>
+      <SpNavigationBarWrapper>{menuItemList}</SpNavigationBarWrapper>
     </ul>
   );
 };
@@ -54,17 +50,16 @@ const StyledLink = styled(Link)`
 `;
 
 const SpNavigationBarWrapper = styled.div`
-  display: flex;
-  position: fixed;
-  width: 100%;
-  padding: 0 2.5%;
-  background-color: ${paletteDict.base};
-  text-align: center;
-  justify-content: space-between;
-  line-height: 0;
-  bottom: 0;
+  display: none;
+  @media (max-width: ${bp}) {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    padding: 0 5px;
+    background-color: ${paletteDict.base};
+    text-align: center;
+    justify-content: space-between;
+    line-height: 0;
+    bottom: 0;
+  }
 `;
-
-const BlankMenu = () => {
-  return <div />;
-};

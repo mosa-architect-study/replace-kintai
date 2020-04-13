@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Text } from "@/components/atoms/text";
-import { bp, paletteDict } from "@/common/theme";
+import { paletteDict } from "@/common/theme";
 
 interface ErrorObject {
   content: string;

@@ -24,7 +24,7 @@ export type Menus = {
 
 export const PullDownMenuList: React.FC<MenusProps> = ({ menus }) => {
   const menuItemList = menus.map((menu: Menus) => (
-    <li key={menu.id}>
+    <div key={menu.id}>
       <StyledLink to={`/${menu.id}`}>
         <PullDownMenu
           key={menu.id}
@@ -32,7 +32,7 @@ export const PullDownMenuList: React.FC<MenusProps> = ({ menus }) => {
           name={menu.iconName}
         />
       </StyledLink>
-    </li>
+    </div>
   ));
   return <ul>{menuItemList}</ul>;
 };
@@ -47,7 +47,6 @@ const StyledPullDownUser = styled.div`
   align-items: center;
   width: 259px;
   height: 57px;
-  list-style: none;
   border-radius: 3px 3px 0px 0px;
   color: ${paletteDict.white};
   @media (max-width: ${bp}) {

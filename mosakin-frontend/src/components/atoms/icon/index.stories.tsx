@@ -14,6 +14,7 @@ storiesOf("atoms/Icon", module).add("Icon", () => (
       <Icon name="logout" width="l" height="l"></Icon>
       <Icon name="pen" width="l" height="l"></Icon>
       <Icon name="user" width="l" height="l"></Icon>
+      <Icon name="mosakin" width="l" height="l"></Icon>
     </IconBackColor>
     <Icon name="pencilThin" width="l" height="l"></Icon>
     <Icon name="xMark" width="l" height="l"></Icon>
