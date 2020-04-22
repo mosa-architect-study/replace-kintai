@@ -20,6 +20,7 @@ export interface PaidListHeaderViewModel {
 export interface AllUserPaidListHeaderViewModel
   extends PaidListHeaderViewModel {
   name: string;
+  src: string;
   onEditButtonClick(): void;
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { paletteDict } from "@/common/theme";
@@ -60,12 +61,20 @@ const StyledBodyTableTr = styled.tr`
 `;
 
 const StyledBodyTableTd = styled.td`
-  padding: 5px 5px 5px 15px;
+  padding: 6px 6px 6px 15px;
   color: ${paletteDict.black};
 `;
 
-const StyledIconMargin = styled.div`
+const StyledIcon = styled.div`
   cursor: pointer;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${paletteDict.base};
+  &:hover {
+    color: ${paletteDict.light};
+  }
 `;
 
 // ヘッダーラベルは固定
@@ -90,7 +99,9 @@ const PaidTableHeader: React.FC = () => {
 const PaidTableBody: React.FC<PaidTableProps> = ({ userDate }) => {
   const data = userDate.map((paidData, index) => (
     <StyledBodyTableTr key={index}>
-      <StyledBodyTableTd>{paidData.name}</StyledBodyTableTd>
+      <StyledBodyTableTd>
+        <StyledLink to={paidData.src}>{paidData.name}</StyledLink>
+      </StyledBodyTableTd>
       <StyledBodyTableTd>{paidData.carryForward}</StyledBodyTableTd>
       <StyledBodyTableTd>{paidData.annualPaidNumber}</StyledBodyTableTd>
       <StyledBodyTableTd>{paidData.leftPaidNumber}</StyledBodyTableTd>
@@ -98,9 +109,9 @@ const PaidTableBody: React.FC<PaidTableProps> = ({ userDate }) => {
         {paidData.currentPaidAcquisitionNumber}
       </StyledBodyTableTd>
       <StyledBodyTableTd>
-        <StyledIconMargin onClick={paidData.onEditButtonClick}>
+        <StyledIcon onClick={paidData.onEditButtonClick}>
           <Icon name="pencilThin" width="m" height="m"></Icon>
-        </StyledIconMargin>
+        </StyledIcon>
       </StyledBodyTableTd>
     </StyledBodyTableTr>
   ));
