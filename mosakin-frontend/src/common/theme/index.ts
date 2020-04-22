@@ -1,4 +1,5 @@
 export type Palette =
+  | "superlight"
   | "light"
   | "base"
   | "accent"
@@ -18,6 +19,7 @@ export interface SizeProps {
 }
 
 export const paletteDict: { [P in Palette]: string } = {
+  superlight: "rgba(229, 233, 238, 1)",
   // 薄い青 ボタンに使用
   light: "rgba(147, 193, 238, 1)",
   // 標準色 ヘッダやプルダウンに使用
