@@ -1,0 +1,35 @@
+left to right direction
+hide circle
+hide method
+hide empty members
+
+'-はメンバー +は列挙体の1列挙
+
+class Paid {
+  - paid acquisition date : Date
+  - paid time type : PaidTimeType
+  - paid reason : String
+}
+
+enum PaidTimeType {
+  + ALL_DAY
+  + AM
+  + PM
+}
+
+class User {
+  - user id : String
+  - user name : String
+  - admin flag : AdminFlg
+}
+
+class UserPaidSummary {
+  - paid number : Number
+  - annual paid number : Number
+  - carry forward : Number
+  - current paid acquisition number : Number
+  - annual fixed paid acquisition number : Number
+}
+
+User "1" o-- "n" UserPaidSummary
+User "1" o-- "n" Paid
