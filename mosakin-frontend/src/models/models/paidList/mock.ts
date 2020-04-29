@@ -1,4 +1,9 @@
-import { PaidListItem, PaidListRowViewModel, PaidListHeaderViewModel } from ".";
+import {
+  PaidListItem,
+  PaidListRowViewModel,
+  PaidListHeaderViewModel,
+  AllUserPaidListHeaderViewModel
+} from ".";
 import { action } from "@storybook/addon-actions";
 
 export const paidList: PaidListItem[] = [
@@ -44,3 +49,105 @@ export const header: PaidListHeaderViewModel = {
   leftPaidNumber: 5,
   carryForward: 3
 };
+
+export const userData: AllUserPaidListHeaderViewModel[] = [
+  {
+    name: "がーすー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE")
+  },
+  {
+    name: "がーすー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE")
+  },
+  {
+    name: "がーすー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE")
+  },
+  {
+    name: "がーすー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE")
+  },
+  {
+    name: "がーすー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE")
+  },
+  {
+    name: "がーすー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE")
+  },
+  {
+    name: "がーすー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE")
+  },
+  {
+    name: "がーすー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE")
+  },
+  {
+    name: "ハギー",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE:2")
+  },
+  {
+    name: "omi",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE:3")
+  },
+  {
+    name: "猛者勤怠筋肉太郎",
+    src: "/test",
+    carryForward: 10,
+    annualPaidNumber: 5,
+    leftPaidNumber: 5,
+    currentPaidAcquisitionNumber: 3,
+    onEditButtonClick: action("EDITE:4")
+  }
+];

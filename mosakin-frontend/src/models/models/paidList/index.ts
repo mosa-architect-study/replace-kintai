@@ -17,6 +17,13 @@ export interface PaidListHeaderViewModel {
   currentPaidAcquisitionNumber: number;
 }
 
+export interface AllUserPaidListHeaderViewModel
+  extends PaidListHeaderViewModel {
+  name: string;
+  src: string;
+  onEditButtonClick(): void;
+}
+
 export interface PaidListItem {
   paidId: string;
   paidAcquisitionDate: DateValue;
