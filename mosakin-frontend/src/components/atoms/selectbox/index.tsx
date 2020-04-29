@@ -4,7 +4,7 @@ import { paletteDict } from "@/common/theme";
 
 interface SelectBoxProps {
   list: { label: string; value: string }[];
-  selectVal: string;
+  value: string;
   onChange: (value: string) => void;
 }
 
@@ -36,14 +36,10 @@ const StyledSelectBox = styled.select`
 `;
 
 export const SelectBox: React.FC<SelectBoxProps> = props => {
-  const { list, selectVal, onChange } = props;
+  const { list, value, onChange } = props;
   return (
     <StyledSelectBoxWrapper>
-      <StyledSelectBox
-        name="paid"
-        value={selectVal}
-        onChange={e => onChange(e.target.value)}
-      >
+      <StyledSelectBox value={value} onChange={e => onChange(e.target.value)}>
         {list.map((listData, index) => (
           <option key={index} value={listData.value}>
             {listData.label}

@@ -22,7 +22,7 @@ storiesOf("atoms/SelectBox", module).add("SelectBox", () => {
 
   return (
     <div style={{ margin: "5px" }}>
-      <SelectBox list={list} selectVal={value} onChange={setValue} />
+      <SelectBox list={list} value={value} onChange={setValue} />
     </div>
   );
 });
