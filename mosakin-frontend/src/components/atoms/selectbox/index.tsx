@@ -40,8 +40,8 @@ export const SelectBox: React.FC<SelectBoxProps> = props => {
   return (
     <StyledSelectBoxWrapper>
       <StyledSelectBox value={value} onChange={e => onChange(e.target.value)}>
-        {list.map((listData, index) => (
-          <option key={index} value={listData.value}>
+        {list.map(listData => (
+          <option key={listData.value} value={listData.value}>
             {listData.label}
           </option>
         ))}
