@@ -15,7 +15,7 @@ storiesOf("organisms/PaidTable", module).add("PaidTable", () => {
   return (
     <>
       <Router>
-        <PaidTable userDate={userData} />
+        <PaidTable users={userData} />
         <Switch>
           {userData.map((paidData, index) => (
             <Route key={index} path={paidData.src} render={() => <A />} />

@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { paletteDict } from "@/common/theme";
-import {
-  AllUserPaidListHeaderViewModel,
-  tableHeaderLabelList
-} from "@/models/models/paidList";
+import { AllUserPaidListHeaderViewModel } from "@/models/models/paidList";
 import { Icon } from "@/components/atoms/icon";
 
 interface PaidTableProps {
-  userDate: AllUserPaidListHeaderViewModel[];
+  users: AllUserPaidListHeaderViewModel[];
 }
 
 const StyledPaidTableWrapper = styled.div`
@@ -78,26 +75,22 @@ const StyledLink = styled(Link)`
 `;
 
 // ヘッダーラベルは固定
-// もっときれいにかけそう（どなたか）
 const PaidTableHeader: React.FC = () => {
-  const label = tableHeaderLabelList.map((label, index) => (
-    <tr key={index}>
-      <StyledHeadTableTh>{label.name}</StyledHeadTableTh>
-      <StyledHeadTableTh>{label.carryForward}</StyledHeadTableTh>
-      <StyledHeadTableTh>{label.annualPaidNumber}</StyledHeadTableTh>
-      <StyledHeadTableTh>{label.leftPaidNumber}</StyledHeadTableTh>
-      <StyledHeadTableTh>
-        {label.currentPaidAcquisitionNumber}
-      </StyledHeadTableTh>
-      <StyledHeadTableTh>{label.exit}</StyledHeadTableTh>
+  return (
+    <tr>
+      <StyledHeadTableTh>氏名</StyledHeadTableTh>
+      <StyledHeadTableTh>繰越分</StyledHeadTableTh>
+      <StyledHeadTableTh>年次有給数</StyledHeadTableTh>
+      <StyledHeadTableTh>残有給数</StyledHeadTableTh>
+      <StyledHeadTableTh>現有給取得数</StyledHeadTableTh>
+      <StyledHeadTableTh>編集</StyledHeadTableTh>
     </tr>
-  ));
-  return <>{label}</>;
+  );
 };
 
 // データを詰める
-const PaidTableBody: React.FC<PaidTableProps> = ({ userDate }) => {
-  const data = userDate.map((paidData, index) => (
+const PaidTableBody: React.FC<PaidTableProps> = ({ users }) => {
+  const data = users.map((paidData, index) => (
     <StyledBodyTableTr key={index}>
       <StyledBodyTableTd>
         <StyledLink to={paidData.src}>{paidData.name}</StyledLink>
@@ -119,7 +112,7 @@ const PaidTableBody: React.FC<PaidTableProps> = ({ userDate }) => {
 };
 
 export const PaidTable: React.FC<PaidTableProps> = (props: PaidTableProps) => {
-  const { userDate } = props;
+  const { users: userDate } = props;
   return (
     <StyledPaidTableWrapper>
       <StyledHeadTable>
@@ -131,7 +124,7 @@ export const PaidTable: React.FC<PaidTableProps> = (props: PaidTableProps) => {
       <StyledBodyTableWrapperScrollBox>
         <StyledBodyTable>
           <tbody>
-            <PaidTableBody userDate={userDate} />
+            <PaidTableBody users={userDate} />
           </tbody>
         </StyledBodyTable>
       </StyledBodyTableWrapperScrollBox>
