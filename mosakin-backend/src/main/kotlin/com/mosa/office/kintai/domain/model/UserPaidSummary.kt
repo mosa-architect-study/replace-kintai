@@ -5,7 +5,7 @@ class UserAnnualPaid(
     val carryForward:PaidNumber
 )
 
-class PaidNumber(val doubleValue: Double) {
+class PaidNumber(override val value: Double) : ValueObject<Double> {
 
     companion object {
         fun fromTimeTypes(timeTypes: List<PaidTimeType>):PaidNumber{
@@ -19,14 +19,16 @@ class PaidNumber(val doubleValue: Double) {
             return PaidNumber(timeTypes.fold(0.0) { prev, cur -> timeTypeToDaysNumber(cur) + prev })
         }
     }
+
+
 }
 
 infix fun PaidNumber.plus(other : PaidNumber): PaidNumber{
-    return PaidNumber(other.doubleValue + doubleValue)
+    return PaidNumber(other.value + value)
 }
 
 infix fun PaidNumber.minus(other : PaidNumber): PaidNumber{
-    return PaidNumber(doubleValue - other.doubleValue)
+    return PaidNumber(value - other.value)
 }
 
 interface UserAnnualPaidRepository {
