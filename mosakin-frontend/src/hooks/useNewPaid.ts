@@ -1,13 +1,15 @@
-import { NewPaidViewModel, NewPaidItem } from "../models/models/newPaid";
 import { useState } from "react";
 import { axios } from "@/common/api/axios";
+import { NewPaidViewModel, NewPaidItem } from "@/models/models/newPaid";
+import { convertStatusIntoMessage } from "@/hooks/useErrorInfo";
 
 export const useNewPaid = (): NewPaidViewModel => {
-  const [dateValue, dateSetValue] = useState("2019-07-22");
-  const [paidTimeValue, paidTimeOnChange] = useState("ALL_DAY");
-  const [reasonValue, reasonSetValue] = useState(
-    "ここは新規申請画面だよ！ｵｼﾞサンも、会社🏢、休んじゃおうｶﾅ〜🛌ﾅﾝﾁｬｯﾃ(^o^)😘"
-  );
+  const [dateValue, dateSetValue] = useState("");
+  const [paidTimeValue, paidTimeOnChange] = useState("");
+  const [reasonValue, reasonSetValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // FIXME: 管理者情報を取得して表示する処理を追記してください
   const createData: NewPaidItem = {
     userName: "芳賀樹生",
     dateValue: dateValue,
@@ -27,7 +29,17 @@ export const useNewPaid = (): NewPaidViewModel => {
       })
       .then(res => {
         console.log(res);
+        setErrorMessage("");
+      })
+      .catch(error => {
+        setErrorMessage(convertStatusIntoMessage(error.response.status));
       });
   };
-  return { data: createData, onSubmit: onSubmit };
+  return {
+    data: createData,
+    errors: {
+      errors: errorMessage ? [{ content: errorMessage }] : []
+    },
+    onSubmit: onSubmit
+  };
 };
