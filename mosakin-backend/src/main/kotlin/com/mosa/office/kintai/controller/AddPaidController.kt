@@ -12,20 +12,19 @@ import org.springframework.web.bind.annotation.RestController
 class AddPaidController(private val useCase: AddPaidUseCase) {
 
     @PostMapping("/add")
-    fun add(@RequestBody input:AddPaidInputDto): String {
-        // TODO アクセスしてきたユーザー情報の取得 UseCaseでやるべきか？
+    fun add(@RequestBody input:AddPaidInputDto): AddPaidMessage {
         try {
             useCase.add(input)
-        } catch(e:Exception) {
-            println(e)
-            return when(e){
-                // TODO ここら辺はうまくException Handlerとかに逃がしたい
-                is DuplicatedPaidException -> "君の登録しようとしてる有給は他の有給と日付が被っているよ！"
-                is SlackMessageException -> "slackが送れないよ!"
-                else -> throw e
-            }
+        } catch(e:DuplicatedPaidException) {
+            return AddPaidMessage.DUPLICATED
+        } catch (e:SlackMessageException) {
+            return AddPaidMessage.NOTIFICATION_FAILED
         }
-        return "追加したよ！"
+        return AddPaidMessage.SUCCESS
     }
 
+}
+
+enum class AddPaidMessage{
+    SUCCESS,NOTIFICATION_FAILED,DUPLICATED
 }
