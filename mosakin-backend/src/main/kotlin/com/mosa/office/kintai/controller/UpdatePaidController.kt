@@ -11,19 +11,20 @@ import org.springframework.web.bind.annotation.RestController
 class UpdatePaidController(private val useCase: UpdatePaidUseCase) {
 
     @PostMapping("/update")
-    fun update(@RequestBody updatePaidInputDto : UpdatePaidInputDto) : UpdatePaidModel {
+    fun update(@RequestBody updatePaidInputDto : UpdatePaidInputDto) : UpdatePaidMessage {
         try {
             useCase.update(updatePaidInputDto)
-        } catch(e:Exception) {
-            println(e)
-            return when(e){
-                // TODO 更新内容が変わっていなかったらエラーにしたい
-                is SlackMessageException -> UpdatePaidModel(false, "slackが送れないよ!")
-                else -> throw e
-            }
+        } catch(e:SlackMessageException) {
+           return UpdatePaidMessage.SUCCESS
+        } catch (e:SlackMessageException) {
+            return UpdatePaidMessage.NOTIFICATION_FAILED
         }
-        return UpdatePaidModel(true, "更新されたよ！")
+        return UpdatePaidMessage.SUCCESS
     }
 }
 
 data class UpdatePaidModel(val noticeResult: Boolean, val message: String)
+
+enum class UpdatePaidMessage{
+    SUCCESS,NOTIFICATION_FAILED,DUPLICATED
+}
