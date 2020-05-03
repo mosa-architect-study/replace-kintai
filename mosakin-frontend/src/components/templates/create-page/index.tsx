@@ -1,14 +1,15 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { bp } from "@/common/theme";
-import { PageTitle } from "../../molecules/pageTitle";
-import { CommonUserNameArea } from "../../molecules/common-user-name-area";
-import { DateInputArea } from "../../molecules/date-input-area";
-import { PaidTimeType } from "../../molecules/paid-time-type";
-import { PaidReasonArea } from "../../molecules/paid-reason-area";
-import { Button } from "../../atoms/button";
-import { Text } from "../../atoms/text/index";
-import { NewPaidViewModel } from "../../../models/models/newPaid";
+import { PageTitle } from "@/components/molecules/pageTitle";
+import { CommonUserNameArea } from "@/components/molecules/common-user-name-area";
+import { DateInputArea } from "@/components/molecules/date-input-area";
+import { ErrorBox } from "@/components/molecules/error-box";
+import { PaidTimeType } from "@/components/molecules/paid-time-type";
+import { PaidReasonArea } from "@/components/molecules/paid-reason-area";
+import { Button } from "@/components/atoms/button";
+import { Text } from "@/components/atoms/text/index";
+import { NewPaidViewModel } from "@/models/models/newPaid";
 
 const TitleArea = styled.div`
   text-align: center;
@@ -44,6 +45,9 @@ export const CreatePage = (props: NewPaidViewModel) => (
         <CommonUserNameArea value={props.data.userName}></CommonUserNameArea>
       </InnerDiv>
     )}
+
+    <ErrorBox errors={props.errors.errors} />
+
     <InnerDiv>
       <DateInputArea
         value={props.data.dateValue}
