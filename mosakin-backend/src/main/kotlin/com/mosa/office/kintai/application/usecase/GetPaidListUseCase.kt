@@ -2,27 +2,26 @@ package com.mosa.office.kintai.application.usecase
 
 import com.mosa.office.kintai.application.service.CurrentUserService
 import com.mosa.office.kintai.application.transaction.TransactionBoundary
-import com.mosa.office.kintai.domain.model.Paid
-import com.mosa.office.kintai.domain.model.PaidRepository
+import com.mosa.office.kintai.domain.model.*
 import org.springframework.stereotype.Component
 
 @Component
 class GetPaidListUseCase(
     private val repository: PaidRepository,
     private val transaction : TransactionBoundary,
-    private val currentUserService: CurrentUserService
+    private val currentUserService: CurrentUserService,
+    private val userAnnualPaidRepository: UserAnnualPaidRepository
 ) {
 
     fun getPaidSummary() : PaidListSummary {
         return transaction.start {
             val list = repository.getAllByUserId(currentUserService.getUser())
-            val currentPaidAcquisitionNumber = list
-                .map { it.paidTimeType.toDays() }
-                .fold(0.0) { cur, prev -> cur + prev }
+            val userAnnualPaid = userAnnualPaidRepository.get(currentUserService.getUser(),2020) //TODO
+            val currentPaidAcquisitionNumber = PaidNumber.fromTimeTypes(list.map { it.paidTimeType })
             val header = PaidListSummaryHeader(
-                5.0 /* FIXME */,
-                13.0 /* FIXME */,
-                13.0 - currentPaidAcquisitionNumber,
+                userAnnualPaid.carryForward,
+                userAnnualPaid.annualPaidNumber,
+                userAnnualPaid.annualPaidNumber minus currentPaidAcquisitionNumber,
                 currentPaidAcquisitionNumber
             )
             PaidListSummary(header,list.map { PaidListSummaryListItem(it) })
@@ -31,10 +30,10 @@ class GetPaidListUseCase(
 }
 
 data class PaidListSummaryHeader(
-    val carryForward : Double,
-    val annualPaidNumber : Double,
-    val leftPaidNumber: Double,
-    val currentPaidAcquisitionNumber: Double
+    val carryForward : PaidNumber,
+    val annualPaidNumber : PaidNumber,
+    val leftPaidNumber: PaidNumber,
+    val currentPaidAcquisitionNumber: PaidNumber
 )
 
 class PaidListSummaryListItem(
