@@ -9,3 +9,7 @@ data class User(
 enum class AdminFlg {
     ADMIN,COMMON
 }
+
+interface UserRepository {
+    fun getUser(id:String):User
+}

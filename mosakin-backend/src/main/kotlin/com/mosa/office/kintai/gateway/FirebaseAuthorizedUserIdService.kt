@@ -10,13 +10,12 @@ class FirebaseAuthorizedUserIdService(
     private val firebaseAuth: FirebaseAuth
 ) : AuthorizedUserIdService {
     override fun getUserId(token:String): AuthorizationResult {
-        println(token);
-        try {
-            firebaseAuth.verifyIdToken(token)
+        println(token); //FIXME
+        return try {
+            val res = firebaseAuth.verifyIdToken(token)
+            Authorized(res.email) //EmailをIDとする。
         } catch (e : IllegalArgumentException) {
-            return UnAuthorized
+            UnAuthorized
         }
-        // TODO ユーザーIDの取得
-        return Authorized("00000001")
     }
 }
