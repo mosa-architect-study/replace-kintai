@@ -11,5 +11,5 @@ enum class AdminFlg {
 }
 
 interface UserRepository {
-    fun getUser(id:String):User
+    fun getUser(id:String):User?
 }
