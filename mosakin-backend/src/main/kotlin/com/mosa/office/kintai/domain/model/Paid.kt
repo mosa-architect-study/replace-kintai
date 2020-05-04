@@ -17,6 +17,14 @@ enum class PaidTimeType {
     internal fun isDuplicated (other:PaidTimeType): Boolean {
         return other == this || other == ALL_DAY || this == ALL_DAY;
     }
+    companion object {
+        fun of(str: String):PaidTimeType? {
+            return values().find {
+                it.toString() == str
+            }
+        }
+
+    }
 }
 
 

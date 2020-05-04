@@ -9,7 +9,6 @@ import com.mosa.office.kintai.util.jodaLocalDateTimeToJavaTImeLocalDate
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 
@@ -28,40 +27,27 @@ class PaidRepositoryImpl : PaidRepository {
     override fun add(paid: Paid) {
 
         PaidTable.insert {
+            it[PaidTable.id] = paid.paidId
             it[PaidTable.userId] = paid.paidAcquisitionUserId
-            it[PaidTable.comment] = paid.paidReason
-            it[PaidTable.timeType] = toPaidTimeTypeDb[paid.paidTimeType] ?: throw Exception("予期せぬエラー")
+            it[PaidTable.reason] = paid.paidReason
+            it[PaidTable.timeType] = paid.paidTimeType.toString()
             it[PaidTable.acquisitionDate] = javaLocalDateToJodaDateTime(paid.paidAcquisitionDate)
         }
 
     }
 }
 
-// DBで持っているIntとPaidTimeTypeのマッピング
-private val toPaidTimeType = mutableMapOf<Int,PaidTimeType>(
-    0 to PaidTimeType.ALL_DAY,
-    1 to PaidTimeType.AM,
-    2 to PaidTimeType.PM
-)
-
-private val toPaidTimeTypeDb = mutableMapOf<PaidTimeType,Int>(
-    PaidTimeType.ALL_DAY to 0,
-    PaidTimeType.AM to 1,
-    PaidTimeType.PM to 2
-)
-
-
-
-
 // Exposedで取得した行データをドメインモデルに詰め替えする。
 private fun convertToPaid(it:ResultRow):Paid {
     return Paid(
-        it[PaidTable.id].value.toString(),
+        it[PaidTable.id].toString(),
         LocalDate.from(jodaLocalDateTimeToJavaTImeLocalDate(it[PaidTable.acquisitionDate])),
-        toPaidTimeType[it[PaidTable.timeType]]  ?: throw Exception("不正なtimeTypeがDBから検出されました。"),
+        PaidTimeType.of(it[PaidTable.timeType]) ?: throw PaidRepositoryImplException("不正なPaidTimeType ${it[PaidTable.timeType]} がDBに登録されています。"),
         it[PaidTable.userId],
-        it[PaidTable.comment]
+        it[PaidTable.reason]
     )
 }
+
+class PaidRepositoryImplException(msg:String) : Exception(msg)
 
 
