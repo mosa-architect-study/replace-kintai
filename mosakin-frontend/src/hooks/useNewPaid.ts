@@ -3,12 +3,13 @@ import { axios } from "@/common/api/axios";
 import { NewPaidViewModel, NewPaidItem } from "@/models/models/newPaid";
 import { convertStatusIntoMessage } from "@/hooks/useErrorInfo";
 import { useLoginInfo } from "@/context/LoginContext";
+import { ErrorObject } from "@/models/models/error";
 
 export const useNewPaid = (): NewPaidViewModel => {
   const [dateValue, dateSetValue] = useState("");
   const [paidTimeValue, paidTimeOnChange] = useState("");
   const [reasonValue, reasonSetValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errors, setErrors] = useState<ErrorObject[]>([]);
   const user = useLoginInfo();
 
   const createData: NewPaidItem = {
@@ -29,18 +30,19 @@ export const useNewPaid = (): NewPaidViewModel => {
         paidReason: reasonValue
       })
       .then(res => {
-        console.log(res);
-        setErrorMessage("");
+        setErrors([]);
       })
       .catch(error => {
-        setErrorMessage(convertStatusIntoMessage(error.response.status));
+        setErrors([
+          {
+            content: convertStatusIntoMessage(error.response.status)
+          }
+        ]);
       });
   };
   return {
     data: createData,
-    errors: {
-      errors: errorMessage ? [{ content: errorMessage }] : []
-    },
+    errors,
     onSubmit: onSubmit
   };
 };

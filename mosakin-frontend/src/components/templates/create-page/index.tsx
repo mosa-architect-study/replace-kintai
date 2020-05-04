@@ -46,7 +46,7 @@ export const CreatePage = (props: NewPaidViewModel) => (
       </InnerDiv>
     )}
 
-    <ErrorBox errors={props.errors.errors} />
+    <ErrorBox errors={props.errors} />
 
     <InnerDiv>
       <DateInputArea

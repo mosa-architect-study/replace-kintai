@@ -1,9 +1,9 @@
 import { DateValue } from "./common";
-import { ErrorBoxProps } from "@/components/molecules/error-box";
+import { ErrorObject } from "./error";
 
 export interface NewPaidViewModel {
   data: NewPaidItem;
-  errors: ErrorBoxProps;
+  errors: ErrorObject[];
   onSubmit: () => void;
 }
 

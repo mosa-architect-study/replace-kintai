@@ -2,10 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import { Text } from "@/components/atoms/text";
 import { paletteDict } from "@/common/theme";
-
-interface ErrorObject {
-  content: string;
-}
+import { ErrorObject } from "@/models/models/error";
 
 export interface ErrorBoxProps {
   errors: ErrorObject[];

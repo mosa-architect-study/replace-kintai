@@ -4,3 +4,7 @@ export const ErrorList = {
   500: "サーバーエラーにより通信に失敗しました",
   unknown: "不明なエラーです"
 };
+
+export interface ErrorObject {
+  content: string;
+}
