@@ -2,7 +2,7 @@ import React from "react";
 import { Logo } from "../atoms/logo";
 import styled from "@emotion/styled";
 import { paletteDict } from "@/common/theme";
-import { useLoginInfo } from "@/hooks/useLoginInfo";
+import { useLoginInfo } from "@/context/LoginContext";
 import { Button } from "../atoms/button";
 import { Text } from "../atoms/text";
 import { User } from "@/models/models/User";
@@ -49,6 +49,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = ({ user, onLogoutClick }) => {
         <Text size="1">Logout</Text>
       </Button>
       <p>こんにちは！{user.name}さん</p>
+      <p>権限：{user.role}</p>
     </>
   );
 };

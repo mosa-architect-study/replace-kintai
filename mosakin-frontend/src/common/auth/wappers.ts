@@ -8,7 +8,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 /**
  * Firebase Userを取得します
  */
-export const getUser = (): Promise<firebase.User | null> => {
+export const getAuthorizedUser = (): Promise<firebase.User | null> => {
   const user = firebase.auth().currentUser;
   if (user) {
     return Promise.resolve(user);
