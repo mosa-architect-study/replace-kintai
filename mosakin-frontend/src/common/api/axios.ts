@@ -1,12 +1,12 @@
 import Axios from "axios";
 import { BACKEND_SERVICE_BASE_URL } from "@/constants/enviroment";
-import { getUser } from "../auth/wappers";
+import { getAuthorizedUser } from "../auth/wappers";
 
 const axios = Axios.create({
   baseURL: BACKEND_SERVICE_BASE_URL
 });
 axios.interceptors.request.use(async config => {
-  const user = await getUser();
+  const user = await getAuthorizedUser();
   if (!user) {
     throw new Error("未ログインのユーザーがAPIアクセスしようとしてるよ！");
   }

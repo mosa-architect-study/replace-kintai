@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { LoginStatusOnLogin, LoginStatus } from "@/models/models/User";
 import { LoadableViewModel } from "@/models/models/common";
-import { getUser, logout } from "@/common/auth/wappers";
+import { getAuthorizedUser, logout } from "@/common/auth/wappers";
 import fallbackPhoto from "@/static/mosakin.png";
+import { axios } from "@/common/api/axios";
+import { useContext } from "react";
 
 const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
   const [loginStatus, setLoginStatus] = useState<LoginStatus>();
   useEffect(() => {
-    getUser().then(res => {
-      if (res && res.displayName) {
+    (async () => {
+      const userPromise = getAuthorizedUser();
+      const appUserPromise = axios.get("/user");
+      const appUser = await appUserPromise.catch(() => null); //TODO: エラーハンドル
+      const user = await userPromise;
+      if (user && appUser) {
         setLoginStatus({
           login: true,
           user: {
-            name: res.displayName,
-            photoURL: res.photoURL || fallbackPhoto,
-            role: "ADMIN" //FIXME
+            name: appUser.data.name,
+            photoURL: user.photoURL || fallbackPhoto,
+            role: appUser.data.adminFlag //FIXME
           },
           logout() {
             logout();
@@ -28,7 +34,7 @@ const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
           login: false
         });
       }
-    });
+    })();
   }, []);
 
   return loginStatus
@@ -80,4 +86,9 @@ export const LoginContextProvider: React.FC<LoginContextProviderProps> = ({
     );
   }
   return <LoadingPage />;
+};
+
+// ログイン情報を取得できる
+export const useLoginInfo: () => LoginStatusOnLogin = () => {
+  return useContext(LoginStatusContext)();
 };

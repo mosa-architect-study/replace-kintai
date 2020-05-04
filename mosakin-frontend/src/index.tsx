@@ -9,7 +9,7 @@ import { UpdatePaidPage } from "./components/pages/UpdatePaidPage";
 import { AdminPage } from "./components/pages/AdminPage";
 import { NotFoundPage } from "./components/pages/404";
 import { LoginPage } from "./components/pages/LoginPage";
-import { LoginContextProvider } from "./components/context/LoginContext";
+import { LoginContextProvider } from "./context/LoginContext";
 import { Layout } from "./components/pages/Layout";
 
 const LoadingPageFIXME = () => <p>Loading</p>;
