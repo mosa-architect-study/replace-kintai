@@ -18,7 +18,7 @@ const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
         setLoginStatus({
           login: true,
           user: {
-            name: appUser.data.name,
+            name: appUser.data.userName,
             photoURL: user.photoURL || fallbackPhoto,
             role: appUser.data.adminFlag //FIXME
           },
