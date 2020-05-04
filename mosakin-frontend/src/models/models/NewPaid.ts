@@ -1,7 +1,9 @@
 import { DateValue } from "./common";
+import { ErrorObject } from "./error";
 
 export interface NewPaidViewModel {
   data: NewPaidItem;
+  errors: ErrorObject[];
   onSubmit: () => void;
 }
 
