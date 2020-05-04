@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { axios } from "@/common/api/axios";
 import { NewPaidViewModel, NewPaidItem } from "@/models/models/newPaid";
-import { convertStatusIntoMessage } from "@/hooks/useErrorInfo";
 import { useLoginInfo } from "@/context/LoginContext";
 import { ErrorObject } from "@/models/models/error";
 
@@ -30,12 +29,40 @@ export const useNewPaid = (): NewPaidViewModel => {
         paidReason: reasonValue
       })
       .then(res => {
-        setErrors([]);
+        // 正常に処理ができていれば業務エラーでも200で返ってくる
+        switch (res.data) {
+          case "SUCCESS":
+            setErrors([]);
+            break;
+          case "DUPLICATED":
+            setErrors([
+              {
+                content: "DUPLICATED"
+              }
+            ]);
+            break;
+          case "NOTIFICATION_FAILED":
+            setErrors([
+              {
+                content: "NOTIFICATION_FAILED"
+              }
+            ]);
+            break;
+          default:
+            // APIから返ってくるメッセージが予想外なパターン
+            setErrors([
+              {
+                content: "UNEXPECTED_ERROR"
+              }
+            ]);
+            break;
+        }
       })
-      .catch(error => {
+      .catch(e => {
+        console.log(e);
         setErrors([
           {
-            content: convertStatusIntoMessage(error.response.status)
+            content: "UNEXPECTED_ERROR"
           }
         ]);
       });
