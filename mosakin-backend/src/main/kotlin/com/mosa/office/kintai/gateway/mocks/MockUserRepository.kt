@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class MockUserRepository : UserRepository {
     override fun getUser(id: String): User {
         return User(
-            id.replaceAfter("@","").replace("@","") + "さん",
+            id.replaceAfter("@","").replace("@","") ,
             id,
             if(id.endsWith("@gmail.com")) AdminFlg.COMMON else AdminFlg.ADMIN)
     }
