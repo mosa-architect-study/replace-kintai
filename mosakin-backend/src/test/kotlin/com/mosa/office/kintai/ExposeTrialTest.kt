@@ -2,7 +2,7 @@ package com.mosa.office.kintai
 
 import org.assertj.core.api.Assertions.assertThat
 import org.h2.jdbcx.JdbcDataSource
-import org.jetbrains.exposed.dao.IntIdTable
+import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeAll

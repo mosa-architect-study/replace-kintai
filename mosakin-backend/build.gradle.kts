@@ -26,7 +26,8 @@ configurations {
 
 repositories {
 	mavenCentral()
-	maven(url = "https://dl.bintray.com/kotlin/exposed")
+	jcenter()
+//	maven(url = "https://dl.bintray.com/kotlin/exposed")
 }
 
 dependencies {
@@ -40,7 +41,10 @@ dependencies {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
 	testCompile("org.assertj:assertj-core:3.9.0")
-	compile("org.jetbrains.exposed","exposed","0.17.7")
+	compile("org.jetbrains.exposed", "exposed-core", "0.23.1")
+	compile("org.jetbrains.exposed", "exposed-dao", "0.23.1")
+	compile("org.jetbrains.exposed", "exposed-jdbc", "0.23.1")
+	compile("org.jetbrains.exposed:exposed-java-time:0.21.1")
 	compile("com.h2database","h2", "1.4.199")
 	runtime("org.postgresql","postgresql","42.2.5")
 }

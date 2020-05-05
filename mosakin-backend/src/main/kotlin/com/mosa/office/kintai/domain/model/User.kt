@@ -7,7 +7,13 @@ data class User(
 )
 
 enum class AdminFlg {
-    ADMIN,COMMON
+    ADMIN,COMMON;
+    companion object {
+        fun of(str: String):AdminFlg?{
+            return values().find { it.toString() == str }
+        }
+    }
+
 }
 
 interface UserRepository {
