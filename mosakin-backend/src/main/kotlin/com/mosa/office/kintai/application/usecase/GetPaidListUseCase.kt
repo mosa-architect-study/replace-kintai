@@ -4,6 +4,8 @@ import com.mosa.office.kintai.application.service.CurrentUserService
 import com.mosa.office.kintai.application.transaction.TransactionBoundary
 import com.mosa.office.kintai.domain.model.*
 import org.springframework.stereotype.Component
+import java.time.LocalDate
+import java.util.*
 
 @Component
 class GetPaidListUseCase(
@@ -16,7 +18,11 @@ class GetPaidListUseCase(
     fun getPaidSummary() : PaidListSummary {
         return transaction.start {
             val list = repository.getAllByUserId(currentUserService.getUser())
-            val userAnnualPaid = userAnnualPaidRepository.get(currentUserService.getUser(),2020) //TODO
+            val userAnnualPaid = userAnnualPaidRepository
+                .get(
+                    currentUserService.getUser(),
+                    LocalDate.now().year /* TODO ユーザーが入力した年数で表示 */
+                ) ?: UserAnnualPaid(PaidNumber(0.0),PaidNumber(0.0)) //TODO とりあえず0を埋めてるけど、例外でもいい気がする
             val currentPaidAcquisitionNumber = PaidNumber.fromTimeTypes(list.map { it.paidTimeType })
             val header = PaidListSummaryHeader(
                 userAnnualPaid.carryForward,

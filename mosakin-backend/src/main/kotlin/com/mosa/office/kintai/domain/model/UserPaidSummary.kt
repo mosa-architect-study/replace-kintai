@@ -32,7 +32,7 @@ infix fun PaidNumber.minus(other : PaidNumber): PaidNumber{
 }
 
 interface UserAnnualPaidRepository {
-    fun get(user:String,year:Number):UserAnnualPaid
+    fun get(user:String,year:Int):UserAnnualPaid?
 }
 
 
