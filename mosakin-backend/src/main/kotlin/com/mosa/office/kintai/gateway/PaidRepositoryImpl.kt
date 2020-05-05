@@ -31,7 +31,7 @@ class PaidRepositoryImpl : PaidRepository {
             it[PaidTable.userId] = paid.paidAcquisitionUserId
             it[PaidTable.reason] = paid.paidReason
             it[PaidTable.timeType] = paid.paidTimeType.toString()
-            it[PaidTable.acquisitionDate] = javaLocalDateToJodaDateTime(paid.paidAcquisitionDate)
+            it[PaidTable.acquisitionDate] = paid.paidAcquisitionDate
         }
 
     }
@@ -41,7 +41,7 @@ class PaidRepositoryImpl : PaidRepository {
 private fun convertToPaid(it:ResultRow):Paid {
     return Paid(
         it[PaidTable.id].toString(),
-        LocalDate.from(jodaLocalDateTimeToJavaTImeLocalDate(it[PaidTable.acquisitionDate])),
+        LocalDate.from(it[PaidTable.acquisitionDate]),
         PaidTimeType.of(it[PaidTable.timeType]) ?: throw PaidRepositoryImplException("不正なPaidTimeType ${it[PaidTable.timeType]} がDBに登録されています。"),
         it[PaidTable.userId],
         it[PaidTable.reason]
