@@ -5,11 +5,9 @@ import { paletteDict } from "@/common/theme";
 import { Text } from "@/components/atoms/text";
 import { Icon } from "@/components/atoms/icon";
 import { Card } from "@/components/atoms/card";
-import {
-  paidTimeTypeToString,
-  PaidListRowViewModel
-} from "@/models/models/paidList";
+import { PaidListRowViewModel } from "@/models/models/paidList";
 import dayjs from "dayjs";
+import { paidTimeTypeToString } from "@/models/models/common";
 
 // 共通化
 

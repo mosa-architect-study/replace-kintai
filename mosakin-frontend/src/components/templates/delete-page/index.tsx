@@ -4,22 +4,28 @@ import { paletteDict, bp } from "@/common/theme";
 import { Button } from "@/components/atoms/button";
 import { Caption } from "@/components/atoms/caption";
 import { Text } from "@/components/atoms/text";
-import { DateValue } from "@/models/models/common";
+import {
+  DateValue,
+  PaidTimeType,
+  paidTimeTypeToString
+} from "@/models/models/common";
 import { PageTitle } from "@/components/molecules/pageTitle";
 import { CommonUserNameArea } from "@/components/molecules/common-user-name-area";
 import { PaidReasonArea } from "../../molecules/paid-reason-area";
+import dayjs from "dayjs";
 
 interface DeleteTemplateProps {
-  userData: {
-    paidId: string;
-    userName: string;
-    paidTimeType: string;
-    paidAcquisitionDate: DateValue;
-    paidReason: string;
-    adminFlg: boolean;
-  };
+  userData: DeleteTemplateItemProps;
   onSubmit: () => void;
-  reasonOnChange: () => void;
+}
+
+export interface DeleteTemplateItemProps {
+  paidId: string;
+  userName: string;
+  paidTimeType: PaidTimeType;
+  paidAcquisitionDate: DateValue;
+  paidReason: string;
+  adminFlg: boolean;
 }
 
 const OuterDiv = styled.div`
@@ -89,9 +95,9 @@ const ButtonWrapper = styled.div`
   justify-content: center;
 `;
 
-//FIXME:PaidReasonAreaのonChange={reasonOnChange}はエラー消すためとりあえず。なんとか出来たらなんとかする
+//FIXME:PaidReasonAreaのonChange={onSubmit}はエラー消すためとりあえず。なんとか出来たらなんとかする
 export const DeleteTemplate: React.FC<DeleteTemplateProps> = props => {
-  const { userData, onSubmit, reasonOnChange } = props;
+  const { userData, onSubmit } = props;
   return (
     <div>
       <OuterDiv>
@@ -108,7 +114,9 @@ export const DeleteTemplate: React.FC<DeleteTemplateProps> = props => {
             日付
           </Caption>
           <PaidAcquisitionDateTextWrapper>
-            <Text size="1">{userData.paidAcquisitionDate} </Text>
+            <Text size="1">
+              {dayjs(userData.paidAcquisitionDate).format("YYYY/MM/DD")}
+            </Text>
           </PaidAcquisitionDateTextWrapper>
         </PaidAcquisitionDateWrapper>
         <PaidTimeTypeWrapper>
@@ -116,14 +124,11 @@ export const DeleteTemplate: React.FC<DeleteTemplateProps> = props => {
             有給時間種別
           </Caption>
           <PaidTimeTypeTextWrapper>
-            <Text size="1">{userData.paidTimeType} </Text>
+            <Text size="1">{paidTimeTypeToString[userData.paidTimeType]}</Text>
           </PaidTimeTypeTextWrapper>
         </PaidTimeTypeWrapper>
         <PaidReasonWrapper>
-          <PaidReasonArea
-            value={userData.paidReason}
-            onChange={reasonOnChange}
-          />
+          <PaidReasonArea value={userData.paidReason} onChange={onSubmit} />
         </PaidReasonWrapper>
         <ButtonWrapper>
           <Button

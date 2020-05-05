@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { DeleteTemplate } from ".";
+import { DeleteTemplate, DeleteTemplateItemProps } from ".";
 import { Modal } from "@/components/organisms/modal";
 import { Button } from "@/components/atoms/button";
 import { action } from "@storybook/addon-actions";
@@ -14,10 +14,10 @@ storiesOf("templates/DeletePage", module).add("DeletePage(admin)", () => (
 ));
 
 const DeleteModalContent = () => {
-  const userData = {
+  const userData: DeleteTemplateItemProps = {
     paidId: "1",
     userName: "名前",
-    paidTimeType: "前日",
+    paidTimeType: "AM",
     paidAcquisitionDate: "20200505",
     paidReason: "休む",
     adminFlg: false
@@ -54,10 +54,10 @@ const DeleteModal = (): JSX.Element => {
 };
 
 const AdminDeleteModalContent = () => {
-  const userData = {
+  const userData: DeleteTemplateItemProps = {
     paidId: "1",
     userName: "名前",
-    paidTimeType: "前日",
+    paidTimeType: "ALL_DAY",
     paidAcquisitionDate: "20200505",
     paidReason: "休む",
     adminFlg: true
