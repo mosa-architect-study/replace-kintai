@@ -30,42 +30,57 @@ export const useUpdatePaid = (): UpdatePaidViewModel => {
   };
   const onSubmit = () => {
     axios
-      .post(`/update`, {
-        paidId: updateData.paidId,
-        beforeAcquisitionDate: updateData.beforeAcquisitionDate,
-        paidAcquisitionDate: updateData.dateValue,
-        beforePaidTimeType: updateData.beforePaidTimeType,
-        paidTimeType: paidTimeValue,
-        paidReason: reasonValue
-      })
+      .post(
+        `/update`,
+        {
+          paidId: updateData.paidId,
+          beforeAcquisitionDate: updateData.beforeAcquisitionDate,
+          paidAcquisitionDate: updateData.dateValue,
+          beforePaidTimeType: updateData.beforePaidTimeType,
+          paidTimeType: paidTimeValue,
+          paidReason: reasonValue
+        },
+        {
+          validateStatus: function(status) {
+            return status < 500;
+          }
+        }
+      )
       .then(res => {
-        console.log(res);
-        switch (res.data) {
-          case "SUCCESS":
-            setErrors([]);
-            break;
-          case "DUPLICATED":
-            setErrors([
-              {
-                content: "DUPLICATED"
-              }
-            ]);
-            break;
-          case "NOTIFICATION_FAILED":
-            setErrors([
-              {
-                content: "NOTIFICATION_FAILED"
-              }
-            ]);
-            break;
-          default:
-            // APIから返ってくるメッセージが予想外なパターン
-            setErrors([
-              {
-                content: "UNEXPECTED_ERROR"
-              }
-            ]);
-            break;
+        if (res.status === 500) {
+          setErrors([
+            {
+              content: "INTERNAL_SEWRVER_ERROR"
+            }
+          ]);
+        } else {
+          switch (res.data) {
+            case "SUCCESS":
+              setErrors([]);
+              break;
+            case "DUPLICATED":
+              setErrors([
+                {
+                  content: "DUPLICATED"
+                }
+              ]);
+              break;
+            case "NOTIFICATION_FAILED":
+              setErrors([
+                {
+                  content: "NOTIFICATION_FAILED"
+                }
+              ]);
+              break;
+            default:
+              // APIから返ってくるメッセージが予想外なパターン
+              setErrors([
+                {
+                  content: "UNEXPECTED_ERROR"
+                }
+              ]);
+              break;
+          }
         }
       })
       .catch(e => {

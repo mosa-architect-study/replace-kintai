@@ -22,10 +22,34 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
 
   useEffect(() => {
     axios
-      .get("/list")
+      .get("/list", {
+        validateStatus: function(status) {
+          return status < 500;
+        }
+      })
       .then(res => {
         setData(res.data);
-        setErrors([]);
+        if (res.status === 500) {
+          setErrors([
+            {
+              content: "INTERNAL_SEWRVER_ERROR"
+            }
+          ]);
+        } else {
+          switch (res.data) {
+            case "SUCCESS":
+              setErrors([]);
+              break;
+            default:
+              // APIから返ってくるメッセージが予想外なパターン
+              setErrors([
+                {
+                  content: "UNEXPECTED_ERROR"
+                }
+              ]);
+              break;
+          }
+        }
       })
       .catch(e => {
         console.log(e);
