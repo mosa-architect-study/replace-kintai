@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import { Caption } from "../../atoms/caption";
 import { Icon } from "../../atoms/icon";
+import { bp } from "@/common/theme";
 
 export interface PageTitleProps {
   title: string;
@@ -10,11 +11,13 @@ export interface PageTitleProps {
 const IconDiv = styled.div`
   display: inline-block;
   margin-right: 27px;
+  @media (max-width: ${bp}) {
+    margin-right: 20px;
+  }
 `;
 const TitleDiv = styled.div`
   display: inline-block;
   vertical-align: top;
-  padding-right: 61px;
 `;
 
 const OuterDiv = styled.div`
