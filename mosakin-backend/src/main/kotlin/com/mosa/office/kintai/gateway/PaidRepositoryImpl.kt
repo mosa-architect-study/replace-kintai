@@ -4,8 +4,6 @@ import com.mosa.office.kintai.domain.model.Paid
 import com.mosa.office.kintai.domain.model.PaidRepository
 import com.mosa.office.kintai.domain.model.PaidTimeType
 import com.mosa.office.kintai.gateway.table.PaidTable
-import com.mosa.office.kintai.util.javaLocalDateToJodaDateTime
-import com.mosa.office.kintai.util.jodaLocalDateTimeToJavaTImeLocalDate
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
