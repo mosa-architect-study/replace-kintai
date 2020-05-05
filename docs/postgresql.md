@@ -11,7 +11,7 @@ cd mosakin-backend/database
 # PostgresqlのDockerコンテナの起動 -dはバックグラウンドモード
 docker-compose up -d 
 # DBにサンプルデータが挿入されていることを確認
-docker-compose exec postgres bash -c 'psql -U postgres -c "select * from m_user"' 
+docker-compose exec postgres bash -c 'psql -U postgres -c "select * from user_info"' 
 # DockerコンテナのStop
 docker-compose stop 
 # Dockerコンテナの削除
