@@ -6,6 +6,7 @@ import { PaidListViewModel } from "../../../models/models/paidList";
 import { PaidListHeader } from "../../organisms/paidListHeader";
 import { PaidListRows } from "../../organisms/paidListRows";
 import { PageTitle } from "../../molecules/pageTitle";
+import { ErrorBox } from "@/components/molecules/error-box";
 
 const OuterDiv = styled.div`
   width: 603px;
@@ -24,6 +25,10 @@ const TitleArea = styled.div`
 const HeaderWrapper = styled.div`
   width: 100%;
   margin-bottom: 38px;
+`;
+
+const StyledErrorBoxWrapper = styled.div`
+  margin-bottom: 30px;
 `;
 
 /**
@@ -46,6 +51,11 @@ export const PaidListTemplate: React.FC<
         <TitleArea>
           <PageTitle title="有給取得一覧"></PageTitle>
         </TitleArea>
+
+        <StyledErrorBoxWrapper>
+          <ErrorBox errors={model.data.errors} />
+        </StyledErrorBoxWrapper>
+
         <HeaderWrapper>
           <PaidListHeader {...model.data.header}></PaidListHeader>
         </HeaderWrapper>

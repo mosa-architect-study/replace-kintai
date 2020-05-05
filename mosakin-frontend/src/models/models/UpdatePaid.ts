@@ -1,17 +1,19 @@
 import { DateValue } from "./common";
+import { ErrorObject } from "@/models/models/error";
 
 export interface UpdatePaidViewModel {
   data: UpdatePaidItem;
   onSubmit: () => void;
+  errors: ErrorObject[];
 }
 
 export interface UpdatePaidItem {
   paidId: string;
   userName?: string;
-  beforeValue: DateValue;
+  beforeAcquisitionDate: DateValue;
   dateValue: DateValue;
   dateOnChange: (value: string) => void;
-  beforePaidTimeValue: string;
+  beforePaidTimeType: string;
   paidTimeValue: string;
   paidTimeOnChange: (value: string) => void;
   reasonValue: string;

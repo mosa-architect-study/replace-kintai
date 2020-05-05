@@ -34,10 +34,10 @@ const Label = styled.label<Labelprops>`
   color: ${({ selected }): string =>
     selected ? paletteDict.white : paletteDict.black};
   cursor: pointer;
-  :first-child {
+  :first-of-type {
     border-radius: 30px 0 0 30px;
   }
-  :last-child {
+  :last-of-type {
     border-radius: 0 30px 30px 0;
   }
   :hover {

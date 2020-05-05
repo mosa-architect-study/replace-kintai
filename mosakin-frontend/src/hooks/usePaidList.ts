@@ -5,6 +5,7 @@ import {
   PaidListHeaderViewModel,
   PaidListRowViewModel
 } from "../models/models/paidList";
+import { ErrorObject } from "@/models/models/error";
 import { useState, useEffect } from "react";
 import { axios } from "@/common/api/axios";
 
@@ -17,11 +18,23 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
     list: PaidListItem[];
     header: PaidListHeaderViewModel;
   }>();
+  const [errors, setErrors] = useState<ErrorObject[]>([]);
 
   useEffect(() => {
-    axios.get("/list").then(res => {
-      setData(res.data);
-    });
+    axios
+      .get("/list")
+      .then(res => {
+        setData(res.data);
+        setErrors([]);
+      })
+      .catch(e => {
+        console.log(e);
+        setErrors([
+          {
+            content: "UNEXPECTED_ERROR"
+          }
+        ]);
+      });
   }, []);
 
   return data
@@ -40,7 +53,8 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
                 console.log("edit", item);
               }
             }
-          }))
+          })),
+          errors
         }
       }
     : {

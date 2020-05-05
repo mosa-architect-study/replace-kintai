@@ -35,18 +35,25 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
+const StyledErrorBoxWrapper = styled.div`
+  margin-bottom: 30px;
+`;
+
 export const CreatePage = (props: NewPaidViewModel) => (
   <OuterDiv>
     <TitleArea>
       <PageTitle title="新規申請"></PageTitle>
     </TitleArea>
+
+    <StyledErrorBoxWrapper>
+      <ErrorBox errors={props.errors} />
+    </StyledErrorBoxWrapper>
+
     {props.data.adminFlg && (
       <InnerDiv>
         <CommonUserNameArea value={props.data.userName}></CommonUserNameArea>
       </InnerDiv>
     )}
-
-    <ErrorBox errors={props.errors} />
 
     <InnerDiv>
       <DateInputArea

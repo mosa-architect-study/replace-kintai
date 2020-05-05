@@ -4,6 +4,7 @@ import { bp } from "@/common/theme";
 import { PageTitle } from "../../molecules/pageTitle";
 import { CommonUserNameArea } from "../../molecules/common-user-name-area";
 import { DateInputArea } from "../../molecules/date-input-area";
+import { ErrorBox } from "@/components/molecules/error-box";
 import { PaidTimeType } from "../../molecules/paid-time-type";
 import { PaidReasonArea } from "../../molecules/paid-reason-area";
 import { Button } from "../../atoms/button";
@@ -34,11 +35,20 @@ const ButtonArea = styled.div`
   text-align: center;
 `;
 
+const StyledErrorBoxWrapper = styled.div`
+  margin-bottom: 30px;
+`;
+
 export const UpdatePage = (props: UpdatePaidViewModel) => (
   <OuterDiv>
     <TitleArea>
       <PageTitle title="登録変更申請"></PageTitle>
     </TitleArea>
+
+    <StyledErrorBoxWrapper>
+      <ErrorBox errors={props.errors} />
+    </StyledErrorBoxWrapper>
+
     {props.data.adminFlg && (
       <InnerDiv>
         <CommonUserNameArea value={props.data.userName}></CommonUserNameArea>
