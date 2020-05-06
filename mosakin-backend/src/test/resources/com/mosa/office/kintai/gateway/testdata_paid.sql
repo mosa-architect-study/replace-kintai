@@ -1,0 +1,2 @@
+INSERT INTO paid_info(paid_id,user_id,paid_acquisition_date,paid_time_type,paid_reason) VALUES ('hoge','00000001','2020-05-06','AM','頭痛い');
+INSERT INTO paid_info(paid_id,user_id,paid_acquisition_date,paid_time_type,paid_reason) VALUES ('fuga','00000002','2020-05-06','ALL_DAY','お腹痛い');

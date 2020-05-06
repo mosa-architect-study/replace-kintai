@@ -1,27 +1,18 @@
 package com.mosa.office.kintai.gateway
 
-import com.mosa.office.kintai.gateway.table.UserAnnualPaidTable
 import org.assertj.core.api.Assertions.assertThat
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
 internal class UserAnnualPaidRepositoryImplTest {
 
-
-    companion object {
-        @BeforeAll
-        @JvmStatic
-        fun initDataSource () {
-            val url = "jdbc:h2:mem:;MODE=PostgreSQL;INIT=RUNSCRIPT FROM './database/sql/01_ddl.sql'\\;RUNSCRIPT FROM 'classpath:com/mosa/office/kintai/gateway/insert.sql'"
-            Database.connect(url,"org.h2.Driver");
-        }
-    }
-
     @Test
     fun select() {
-
+        initH2DataSource(
+            "classpath:com/mosa/office/kintai/gateway/testdata_user.sql",
+            "classpath:com/mosa/office/kintai/gateway/testdata_annual_paid_number.sql"
+        )
         val repository = UserAnnualPaidRepositoryImpl()
         transaction {
             addLogger(StdOutSqlLogger)

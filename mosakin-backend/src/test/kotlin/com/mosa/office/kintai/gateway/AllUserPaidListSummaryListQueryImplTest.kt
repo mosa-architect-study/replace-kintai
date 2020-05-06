@@ -10,26 +10,19 @@ import org.junit.jupiter.api.Test
 
 class AllUserPaidListSummaryListQueryImplTest {
 
-    companion object {
-        @BeforeAll
-        @JvmStatic
-        fun initDataSource () {
-            val url = "jdbc:h2:mem:;MODE=PostgreSQL;INIT=RUNSCRIPT FROM './database/sql/01_ddl.sql'\\;RUNSCRIPT FROM 'classpath:com/mosa/office/kintai/gateway/insert.sql'"
-            Database.connect(url,"org.h2.Driver");
-        }
-
-    }
-
     @Test
     fun get() {
-
+        initH2DataSource(
+            "classpath:com/mosa/office/kintai/gateway/testdata_user.sql",
+            "classpath:com/mosa/office/kintai/gateway/testdata_annual_paid_number.sql"
+        )
         val repository = AllUserPaidListSummaryListQueryImpl()
         transaction {
             addLogger(StdOutSqlLogger)
-            val res = repository.get(2020)
-            assertThat(res.size).isEqualTo(2)
+            val res1 = repository.get(2020)
+            assertThat(res1.size).isEqualTo(2)
+            val res2 = repository.get(2019)
+            assertThat(res2.size).isEqualTo(1)
         }
-
-
     }
 }
