@@ -1,4 +1,4 @@
-CREATE TABLE role_info (
+CREATE force TABLE role_info (
     role_id INTEGER,
     role_name VARCHAR(255) NOT NULL,
     PRIMARY KEY(role_id)
