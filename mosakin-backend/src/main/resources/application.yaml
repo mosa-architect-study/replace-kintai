@@ -7,5 +7,5 @@ spring:
     throw-exception-if-no-handler-found: true
 env:
   datasource:
-    url: jdbc:h2:mem:;MODE=PostgreSQL;INIT=RUNSCRIPT FROM './database/sql/01_ddl.sql'\;RUNSCRIPT FROM './database/sql/02_sampledata.sql'
+    url: jdbc:h2:mem:;MODE=PostgreSQL;INIT=RUNSCRIPT FROM './database/sql/01_ddl.sql'\;RUNSCRIPT FROM './database/sql/02_masterdata.sql'\;RUNSCRIPT FROM './database/sql/03_sampledata.sql'
     driverClassName: org.h2.Driver
