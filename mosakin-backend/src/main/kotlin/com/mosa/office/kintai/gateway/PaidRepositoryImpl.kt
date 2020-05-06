@@ -7,6 +7,7 @@ import com.mosa.office.kintai.gateway.table.PaidTable
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.selectAll
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 
@@ -32,6 +33,11 @@ class PaidRepositoryImpl : PaidRepository {
             it[PaidTable.acquisitionDate] = paid.paidAcquisitionDate
         }
 
+    }
+
+    override fun getAll(): List<Paid> {
+        val query = PaidTable.selectAll()
+        return query.map { convertToPaid(it) }
     }
 }
 

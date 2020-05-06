@@ -1,14 +1,14 @@
 package com.mosa.office.kintai.gateway
 
-import com.mosa.office.kintai.gateway.table.UserAnnualPaidTable
 import org.assertj.core.api.Assertions.assertThat
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.StdOutSqlLogger
+import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
-internal class UserAnnualPaidRepositoryImplTest {
-
+class AllUserPaidListSummaryListQueryImplTest {
 
     companion object {
         @BeforeAll
@@ -17,19 +17,19 @@ internal class UserAnnualPaidRepositoryImplTest {
             val url = "jdbc:h2:mem:;MODE=PostgreSQL;INIT=RUNSCRIPT FROM './database/sql/01_ddl.sql'\\;RUNSCRIPT FROM 'classpath:com/mosa/office/kintai/gateway/insert.sql'"
             Database.connect(url,"org.h2.Driver");
         }
+
     }
 
     @Test
-    fun select() {
+    fun get() {
 
-        val repository = UserAnnualPaidRepositoryImpl()
+        val repository = AllUserPaidListSummaryListQueryImpl()
         transaction {
             addLogger(StdOutSqlLogger)
-            val res = repository.get("00000001",2020)!!
-            assertThat(res.annualPaidNumber.value).isEqualTo(15.0)
-            assertThat(res.carryForward.value).isEqualTo(1.0)
+            val res = repository.get(2020)
+            assertThat(res.size).isEqualTo(2)
         }
+
+
     }
-
-
 }
