@@ -21,6 +21,7 @@ const StyledButton = styled.button<ButtonProps>`
   border-radius: 10px;
   background-color: ${({ backgroundColor }) =>
     paletteDict[Constant.ButtonBackColor[backgroundColor]]};
+  z-index: 0;
   &:hover {
     transition-duration: 0.5s;
     &::before {

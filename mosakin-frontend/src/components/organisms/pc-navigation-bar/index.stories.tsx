@@ -3,40 +3,25 @@ import { MemoryRouter as Router, Route, Switch } from "react-router-dom";
 import { storiesOf } from "@storybook/react";
 import { PcNavigationBar } from "./index";
 
-//TODO: 文字被らないようにするには
 storiesOf("organisms/NavigationBar", module).add("PcNavigationBar", () => {
   const A = () => {
     return (
       <>
-        <p>
-          <br />
-          <br />
-          <br />
-          <br />
-          新規申請がくるよ
-        </p>
+        <p>新規申請</p>
       </>
     );
   };
   const B = () => {
     return (
       <>
-        <br />
-        <br />
-        <br />
-        <br />
-        <p>有給取得一覧がくるよ</p>
+        <p>有給取得一覧</p>
       </>
     );
   };
   const C = () => {
     return (
       <>
-        <br />
-        <br />
-        <br />
-        <br />
-        <p>全ユーザ有給取得一覧がくるよ</p>
+        <p>全ユーザ有給取得一覧</p>
       </>
     );
   };
@@ -46,21 +31,24 @@ storiesOf("organisms/NavigationBar", module).add("PcNavigationBar", () => {
         <PcNavigationBar
           menus={[
             {
-              id: "a",
+              manuId: "a",
               menuItem: "新規申請",
               iconName: "pen"
             },
             {
-              id: "b",
+              manuId: "b",
               menuItem: "有給取得一覧",
               iconName: "file"
-            },
-            {
-              id: "c",
-              menuItem: "(全)有給取得一覧",
-              iconName: "folder"
             }
           ]}
+          adminMenus={[
+            {
+              adminMenuId: "c",
+              adminMenuItem: "(全)有給取得一覧",
+              adminIconName: "folder"
+            }
+          ]}
+          adminFlg={"COMMON"}
         />
         <Switch>
           <Route path="/a" component={A} />
@@ -72,3 +60,64 @@ storiesOf("organisms/NavigationBar", module).add("PcNavigationBar", () => {
     </>
   );
 });
+
+storiesOf("organisms/NavigationBar", module).add(
+  "PcNavigationBar(admin)",
+  () => {
+    const A = () => {
+      return (
+        <>
+          <p>新規申請</p>
+        </>
+      );
+    };
+    const B = () => {
+      return (
+        <>
+          <p>有給取得</p>
+        </>
+      );
+    };
+    const C = () => {
+      return (
+        <>
+          <p>全ユーザ有給取得一覧</p>
+        </>
+      );
+    };
+    return (
+      <>
+        <Router>
+          <PcNavigationBar
+            menus={[
+              {
+                manuId: "a",
+                menuItem: "新規申請",
+                iconName: "pen"
+              },
+              {
+                manuId: "b",
+                menuItem: "有給取得一覧",
+                iconName: "file"
+              }
+            ]}
+            adminMenus={[
+              {
+                adminMenuId: "c",
+                adminMenuItem: "(全)有給取得一覧",
+                adminIconName: "folder"
+              }
+            ]}
+            adminFlg={"ADMIN"}
+          />
+          <Switch>
+            <Route path="/a" component={A} />
+            <Route path="/b" component={B} />
+            <Route path="/c" component={C} />
+          </Switch>
+        </Router>
+        spモードにしたら消えます
+      </>
+    );
+  }
+);
