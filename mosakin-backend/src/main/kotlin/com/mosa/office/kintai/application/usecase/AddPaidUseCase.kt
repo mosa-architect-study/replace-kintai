@@ -1,7 +1,6 @@
 package com.mosa.office.kintai.application.usecase
 
 import com.mosa.office.kintai.application.model.SlackAddPaidInfo
-import com.mosa.office.kintai.application.service.CurrentUserService
 import com.mosa.office.kintai.application.service.SlackService
 import com.mosa.office.kintai.application.service.UniqueIdGenerator
 import com.mosa.office.kintai.application.transaction.TransactionBoundary
