@@ -9,12 +9,10 @@ import org.springframework.stereotype.Component
 
 @Component
 class GetUserUseCase(
-    private val currentUserService: CurrentUserService,
     private val userRepository: UserRepository,
     private val transactionBoundary: TransactionBoundary
 ) {
-    fun getUser() : User? {
-        val id = currentUserService.getUser();
+    fun getUser(id: String) : User? {
         return  transactionBoundary.start { userRepository.getUser(id) };
     }
 }

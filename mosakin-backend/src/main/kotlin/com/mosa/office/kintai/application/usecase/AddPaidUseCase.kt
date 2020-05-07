@@ -20,20 +20,19 @@ class AddPaidUseCase(
     private val paidService : PaidService,
     private val idGene : UniqueIdGenerator,
     private val transaction : TransactionBoundary,
-    private val currentUserService: CurrentUserService,
     private val slackService: SlackService,
     private val paidRepository: PaidRepository
 ) {
     /**
      * @param input 追加する有給
      */
-    fun add(input: AddPaidInputDto) {
+    fun add(userId: String, input: AddPaidInputDto) {
         // TODO userをどう受け取るか考える
         val paid = Paid(
             idGene.generate(), // 採番はApplication層でやりたい
             input.paidAcquisitionDate,
             input.paidTimeType,
-            currentUserService.getUser(),
+                userId,
             input.paidReason
         )
         // トランザクション境界を設定

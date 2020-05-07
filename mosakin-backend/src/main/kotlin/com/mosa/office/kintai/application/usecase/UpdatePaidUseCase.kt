@@ -17,13 +17,13 @@ import java.time.LocalDate
 class UpdatePaidUseCase(
     private val idGene : UniqueIdGenerator,
     private val transaction : TransactionBoundary,
-    private val currentUserService: CurrentUserService,
+
     private val slackService: SlackService
 ) {
     /**
      * @param input 更新する有給
      */
-    fun update(input: UpdatePaidInputDto) {
+    fun update(userId: String,input: UpdatePaidInputDto) {
         // TODO userをどう受け取るか考える
         val paid = UpdatePaid(
             input.paidId,
@@ -31,7 +31,7 @@ class UpdatePaidUseCase(
             input.paidAcquisitionDate,
             input.beforePaidTimeType,
             input.paidTimeType,
-            currentUserService.getUser(),
+                userId,
             input.paidReason
         )
         // トランザクション境界を設定

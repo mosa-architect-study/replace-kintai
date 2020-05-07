@@ -23,26 +23,20 @@ fun calcPaidSummaryHeader(paidList:List<Paid>,userAnnualPaid: UserAnnualPaid):Pa
 class GetPaidListUseCase(
     private val repository: PaidRepository,
     private val transaction : TransactionBoundary,
-    private val currentUserService: CurrentUserService,
     private val userAnnualPaidRepository: UserAnnualPaidRepository
 ) {
-
-    fun getPaidSummary() : PaidListSummary {
+    fun getPaidSummary(userId:String) : PaidListSummary {
         return transaction.start {
-            val list = repository.getAllByUserId(currentUserService.getUser())
+            val list = repository.getAllByUserId(userId)
             val userAnnualPaid = userAnnualPaidRepository
-                .get(
-                    currentUserService.getUser(),
-                    LocalDate.now().year /* TODO ユーザーが入力した年数で表示 */
-                ) ?: UserAnnualPaid(PaidNumber(0.0),PaidNumber(0.0)) //TODO とりあえず0を埋めてるけど、例外でもいい気がする
+                .get(userId, LocalDate.now().year /* TODO ユーザーが入力した年数で表示 */)
+                    ?: UserAnnualPaid(PaidNumber(0.0),PaidNumber(0.0)) //TODO とりあえず0を埋めてるけど、例外でもいい気がする
             PaidListSummary(
                 calcPaidSummaryHeader(list,userAnnualPaid),
                 list.map { PaidListSummaryListItem(it) }
             )
         }
     }
-
-
 }
 
 //CQRSパターン
@@ -50,16 +44,10 @@ class GetPaidListUseCase(
 class GetAllUserPaidListUseCase(
     private val query: AllUserPaidListSummaryListQuery,
     private val transaction : TransactionBoundary,
-    private val currentUserService: CurrentUserService,
-    private val userRepository: UserRepository,
     private val paidRepository: PaidRepository
 ){
-    fun getAllUserPaidSummary() : List<AllUserPaidListSummaryItem> {
+    fun getAllUserPaidSummary(userId:String) : List<AllUserPaidListSummaryItem> {
         return transaction.start {
-            // FIXME 管理者系の処理は共通化したい
-            val userId = currentUserService.getUser()
-            val user = userRepository.getUser(userId)
-            if(user?.adminFlag != AdminFlg.ADMIN) throw AuthenticationException()
 
             val paidMap = paidRepository
                 .getAll()
