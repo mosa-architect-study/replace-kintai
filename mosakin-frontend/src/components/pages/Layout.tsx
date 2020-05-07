@@ -1,21 +1,15 @@
 import React from "react";
-import { Logo } from "../atoms/logo";
-import styled from "@emotion/styled";
-import { paletteDict } from "@/common/theme";
 import { useLoginInfo } from "@/context/LoginContext";
 import { Button } from "../atoms/button";
 import { Text } from "../atoms/text";
 import { User } from "@/models/models/User";
-
-const HeaderFixme = () => (
-  <IconBackColor>
-    <Logo></Logo>
-  </IconBackColor>
-);
-
-const IconBackColor = styled.div`
-  background-color: ${paletteDict.base};
-`;
+import {
+  PcNavigationBar,
+  Menu,
+  AdminMenu
+} from "@/components/organisms/pc-navigation-bar";
+import { SpNavigationBar } from "@/components/organisms/sp-navigation-bar";
+import { SpHeader } from "@/components/organisms/sp-header";
 
 export const Layout: React.FC = ({ children }) => {
   const loginstatus = useLoginInfo();
@@ -36,9 +30,38 @@ interface LayoutHeaderProps {
 }
 
 const LayoutHeader: React.FC<LayoutHeaderProps> = ({ user, onLogoutClick }) => {
+  const menus: Menu[] = [
+    {
+      manuId: "new",
+      menuItem: "新規申請",
+      iconName: "pen"
+    },
+    {
+      manuId: "update",
+      menuItem: "有給取得一覧",
+      iconName: "file"
+    }
+  ];
+  const adminMenus: AdminMenu[] = [
+    {
+      adminMenuId: "admin",
+      adminMenuItem: "(全)有給取得一覧",
+      adminIconName: "folder"
+    }
+  ];
   return (
     <>
-      <HeaderFixme></HeaderFixme>
+      <PcNavigationBar
+        menus={menus}
+        adminMenus={adminMenus}
+        adminFlg={user.role}
+      />
+      <SpHeader />
+      <SpNavigationBar
+        menus={menus}
+        adminMenus={adminMenus}
+        adminFlg={user.role}
+      />
       <Button
         onClick={onLogoutClick}
         backgroundColor="1"

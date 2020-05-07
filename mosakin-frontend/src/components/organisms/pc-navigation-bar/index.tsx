@@ -6,31 +6,55 @@ import { Logo } from "@/components/atoms/logo";
 import { UserIcon } from "@/components/atoms/userIcon";
 import { IconList } from "@/components/atoms/icon/constant";
 import { HeaderWrapper } from "@/components/molecules/header";
-import { NavigationMenu } from "@/components/molecules/navigation-menu/index";
+import { NavigationMenu } from "@/components/molecules/navigation-menu";
 import {
   PullDownWrapper,
   PullDownUser,
   PullDownMenuList
 } from "@/components/molecules/pull-down-menu";
+import { UserRole } from "@/models/models/User";
 
 type MenuProps = {
   menus: Menu[];
+  adminMenus: AdminMenu[];
+  adminFlg: UserRole;
 };
 
-type Menu = {
-  id: string;
+export type Menu = {
+  manuId: string;
   menuItem: string;
   iconName: IconList;
 };
 
-export const PcNavigationBar: React.FC<MenuProps> = ({ menus }) => {
+export type AdminMenu = {
+  adminMenuId: string;
+  adminMenuItem: string;
+  adminIconName: IconList;
+};
+
+export const PcNavigationBar: React.FC<MenuProps> = ({
+  menus,
+  adminMenus,
+  adminFlg
+}) => {
   const menuItemList = menus.map((menu: Menu) => (
-    <StyledList key={menu.id}>
-      <StyledLink to={`/${menu.id}`}>
+    <StyledList key={menu.manuId}>
+      <StyledLink to={`/${menu.manuId}`}>
         <NavigationMenu
-          key={menu.id}
+          key={menu.manuId}
           value={menu.menuItem}
           name={menu.iconName}
+        />
+      </StyledLink>
+    </StyledList>
+  ));
+  const adminMenuItemList = adminMenus.map((adminMenu: AdminMenu) => (
+    <StyledList key={adminMenu.adminMenuId}>
+      <StyledLink to={`/${adminMenu.adminMenuId}`}>
+        <NavigationMenu
+          key={adminMenu.adminMenuId}
+          value={adminMenu.adminMenuItem}
+          name={adminMenu.adminIconName}
         />
       </StyledLink>
     </StyledList>
@@ -42,6 +66,7 @@ export const PcNavigationBar: React.FC<MenuProps> = ({ menus }) => {
         <HeaderWrapper>
           <Logo />
           {menuItemList}
+          {adminFlg === "ADMIN" && <>{adminMenuItemList}</>}
           <UserIconWrapper onClick={() => setShow(!show)}>
             <UserIcon />
           </UserIconWrapper>
@@ -53,6 +78,7 @@ export const PcNavigationBar: React.FC<MenuProps> = ({ menus }) => {
 };
 
 const PcNavigationBarWrapper = styled.div`
+  padding-bottom: 70px;
   @media (max-width: ${bp}) {
     display: none;
   }

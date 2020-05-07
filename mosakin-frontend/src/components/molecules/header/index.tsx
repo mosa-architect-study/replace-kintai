@@ -13,6 +13,7 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   line-height: 0;
+  z-index: 1000;
   @media (max-width: ${bp}) {
     height: 80px;
     padding-left: 4px;
