@@ -17,7 +17,7 @@ class UpdatePaidController(
     @PostMapping("/update")
     fun update(@RequestBody updatePaidInputDto : UpdatePaidInputDto) : UpdatePaidMessage {
         try {
-            useCase.update(currentUserService.getUser(), updatePaidInputDto)
+            useCase.update(currentUserService.getUserId(), updatePaidInputDto)
         } catch(e:SlackMessageException) {
            return UpdatePaidMessage.SUCCESS
         } catch (e:SlackMessageException) {

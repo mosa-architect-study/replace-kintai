@@ -1,5 +1,6 @@
 package com.mosa.office.kintai.config
 
+import com.mosa.office.kintai.application.service.AuthenticationException
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

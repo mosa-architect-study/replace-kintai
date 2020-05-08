@@ -18,7 +18,7 @@ class AddPaidController(
     @PostMapping("/add")
     fun add(@RequestBody input:AddPaidInputDto): AddPaidMessage {
         try {
-            useCase.add(currentUserService.getUser(),input)
+            useCase.add(currentUserService.getUserId(),input)
         } catch(e:DuplicatedPaidException) {
             return AddPaidMessage.DUPLICATED
         } catch (e:SlackMessageException) {
