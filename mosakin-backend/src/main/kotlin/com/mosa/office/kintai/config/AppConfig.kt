@@ -4,6 +4,7 @@ import com.google.auth.oauth2.GoogleCredentials
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.mosa.office.kintai.application.service.AdminAuthorizationService
 import com.mosa.office.kintai.application.service.AuthorizationRepository
 import com.mosa.office.kintai.application.service.CurrentUserService
 import com.mosa.office.kintai.gateway.FirebaseAuthorizationRepository
@@ -53,8 +54,8 @@ class AppConfig(
     }
 
     @Bean
-    fun authenticationInterceptor(service: CurrentUserService) : AuthenticationInterceptor {
-        return AuthenticationInterceptor(service);
+    fun authenticationInterceptor(service: CurrentUserService,adminAuthorizationService: AdminAuthorizationService) : AuthenticationInterceptor {
+        return AuthenticationInterceptor(service,adminAuthorizationService);
     }
 
     @Bean

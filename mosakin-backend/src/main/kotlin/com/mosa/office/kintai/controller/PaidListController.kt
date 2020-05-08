@@ -21,7 +21,6 @@ class PaidListController(
 
     @GetMapping("/admin/list")
     fun getAllPaidList() : List<AllUserPaidListSummaryItem> {
-        adminAuthorizationService.assertAdminUser();
         return getAllUserPaidListUseCase.getAllUserPaidSummary(currentUserService.getUserId());
     }
 
