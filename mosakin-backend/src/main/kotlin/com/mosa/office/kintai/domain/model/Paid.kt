@@ -52,6 +52,7 @@ open class HasPaidTime internal constructor(
 interface PaidRepository {
     fun getAllByUserId(userId:String) : List<Paid>
     fun add(paid: Paid);
+    fun update(paid: Paid);
     fun getAll() : List<Paid>;
 }
 

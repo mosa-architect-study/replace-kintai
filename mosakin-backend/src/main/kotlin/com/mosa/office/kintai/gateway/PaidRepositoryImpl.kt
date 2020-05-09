@@ -5,10 +5,7 @@ import com.mosa.office.kintai.domain.model.PaidRepository
 import com.mosa.office.kintai.domain.model.PaidTimeType
 import com.mosa.office.kintai.gateway.mapper.mapToPaid
 import com.mosa.office.kintai.gateway.table.PaidTable
-import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.*
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 
@@ -34,6 +31,16 @@ class PaidRepositoryImpl : PaidRepository {
             it[acquisitionDate] = paid.paidAcquisitionDate
         }
 
+    }
+
+    override fun update(paid: Paid) {
+        PaidTable.update({
+            PaidTable.id eq paid.paidId
+        }) {
+            it[reason] = paid.paidReason
+            it[timeType] = paid.paidTimeType.toString()
+            it[acquisitionDate] = paid.paidAcquisitionDate
+        }
     }
 
     override fun getAll(): List<Paid> {
