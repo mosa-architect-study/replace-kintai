@@ -34,13 +34,15 @@ class PaidRepositoryImpl : PaidRepository {
     }
 
     override fun update(paid: Paid) {
-        PaidTable.update({
-            PaidTable.id eq paid.paidId
+        val res = PaidTable.update({
+            (PaidTable.id eq paid.paidId) and
+                    (PaidTable.userId eq paid.paidAcquisitionUserId) //他人のユーザー有給を変更できないように
         }) {
             it[reason] = paid.paidReason
             it[timeType] = paid.paidTimeType.toString()
             it[acquisitionDate] = paid.paidAcquisitionDate
         }
+        if(res != 1) throw Exception("更新に失敗しました。") //FIXME: ResourceNotFoundとかで404返すべき？
     }
 
     override fun getAll(): List<Paid> {
