@@ -13,15 +13,14 @@ import org.springframework.stereotype.Component
 class PaidService (
     private val repository : PaidRepository
 ) {
-
     /**
      * 重複する有給がないかチェックして例外を投げる
      */
     fun assertNotDuplicated(paid: Paid) {
-        val paidList = repository.getAllByUserId(paid.paidAcquisitionUserId)
+        val paidList = repository
+                .getAllByUserId(paid.paidAcquisitionUserId)
+                .filter { it.paidId != paid.paidId } //更新処理の際に更新前の有給が重複チェックで引っかかるので、自分自身は外す。
         // 重複する有給がないかチェックして例外を投げる
         paidList.forEach(paid::assertNotDuplicated)
     }
-
-
 }

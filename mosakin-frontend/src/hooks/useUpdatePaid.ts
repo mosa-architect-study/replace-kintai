@@ -35,7 +35,8 @@ export const useUpdatePaid = (): UpdatePaidViewModel => {
         paidAcquisitionDate: updateData.dateValue,
         beforePaidTimeType: updateData.beforePaidTimeValue,
         paidTimeType: paidTimeValue,
-        paidReason: reasonValue
+        paidReason: reasonValue,
+        paidAcquisitionUserId: "mosaarchitect.study@gmail.com" //TODO: 渡ってきた有給のIDを使おう
       })
       .then(res => {
         console.log(res);

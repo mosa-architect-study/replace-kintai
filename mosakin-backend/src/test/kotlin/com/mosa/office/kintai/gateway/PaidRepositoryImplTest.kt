@@ -67,5 +67,31 @@ internal class PaidRepositoryImplTest {
 
     }
 
+    @Test
+    fun update() {
+        initH2DataSource(
+                "classpath:com/mosa/office/kintai/gateway/testdata_user.sql",
+                "classpath:com/mosa/office/kintai/gateway/testdata_paid.sql"
+        )
+        val repository = PaidRepositoryImpl()
+        transaction {
+            addLogger(StdOutSqlLogger)
+            repository.update(
+                    Paid(
+                            "hoge",
+                            LocalDate.of(2020,5,6),
+                            PaidTimeType.ALL_DAY,
+                            "00000001",
+                            "腹痛がひどすぎるため全休"
+                    )
+            )
+            val res = PaidTable.select { PaidTable.id eq "hoge" }.first()
+            assertThat(res[PaidTable.timeType]).isEqualTo("ALL_DAY")
+            assertThat(res[PaidTable.reason]).isEqualTo("腹痛がひどすぎるため全休")
+        }
+
+
+    }
+
 
 }

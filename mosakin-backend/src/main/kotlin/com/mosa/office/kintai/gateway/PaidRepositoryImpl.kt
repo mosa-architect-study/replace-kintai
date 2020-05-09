@@ -5,10 +5,7 @@ import com.mosa.office.kintai.domain.model.PaidRepository
 import com.mosa.office.kintai.domain.model.PaidTimeType
 import com.mosa.office.kintai.gateway.mapper.mapToPaid
 import com.mosa.office.kintai.gateway.table.PaidTable
-import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.*
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 
@@ -34,6 +31,18 @@ class PaidRepositoryImpl : PaidRepository {
             it[acquisitionDate] = paid.paidAcquisitionDate
         }
 
+    }
+
+    override fun update(paid: Paid) {
+        val res = PaidTable.update({
+            (PaidTable.id eq paid.paidId) and
+                    (PaidTable.userId eq paid.paidAcquisitionUserId) //他人のユーザー有給を変更できないように
+        }) {
+            it[reason] = paid.paidReason
+            it[timeType] = paid.paidTimeType.toString()
+            it[acquisitionDate] = paid.paidAcquisitionDate
+        }
+        if(res != 1) throw Exception("更新に失敗しました。") //FIXME: ResourceNotFoundとかで404返すべき？
     }
 
     override fun getAll(): List<Paid> {

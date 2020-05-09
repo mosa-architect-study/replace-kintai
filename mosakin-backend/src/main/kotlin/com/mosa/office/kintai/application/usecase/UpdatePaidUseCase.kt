@@ -2,10 +2,12 @@ package com.mosa.office.kintai.application.usecase
 
 import com.mosa.office.kintai.application.model.SlackUpdatePaidInfo
 import com.mosa.office.kintai.application.service.SlackService
-import com.mosa.office.kintai.application.service.UniqueIdGenerator
 import com.mosa.office.kintai.application.transaction.TransactionBoundary
 import com.mosa.office.kintai.domain.model.HasPaidTime
+import com.mosa.office.kintai.domain.model.Paid
+import com.mosa.office.kintai.domain.model.PaidRepository
 import com.mosa.office.kintai.domain.model.PaidTimeType
+import com.mosa.office.kintai.domain.service.PaidService
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 
@@ -14,38 +16,36 @@ import java.time.LocalDate
  */
 @Component
 class UpdatePaidUseCase(
-    private val idGene : UniqueIdGenerator,
     private val transaction : TransactionBoundary,
-
+    private val paidRepository: PaidRepository,
+    private val paidService: PaidService,
     private val slackService: SlackService
 ) {
     /**
      * @param input 更新する有給
      */
-    fun update(userId: String,input: UpdatePaidInputDto) {
+    fun update(input: UpdatePaidInputDto) {
         // TODO userをどう受け取るか考える
-        val paid = UpdatePaid(
+        val paid = Paid(
             input.paidId,
-            input.beforeAcquisitionDate,
             input.paidAcquisitionDate,
-            input.beforePaidTimeType,
             input.paidTimeType,
-                userId,
+                input.paidAcquisitionUserId,
             input.paidReason
         )
         // トランザクション境界を設定
         transaction.start {
-            // TODO update処理
-            // updateService.update(paid)
+            paidService.assertNotDuplicated(paid)
+            paidRepository.update(paid)
         }
-        val sLackMessage = SlackUpdatePaidInfo(
+        val slackMessage = SlackUpdatePaidInfo(
                 input.beforeAcquisitionDate,
                 input.paidAcquisitionDate,
                 input. beforePaidTimeType,
                 input.paidTimeType,
                 input.paidReason
         )
-        slackService.postUpdateSlackMessage(sLackMessage)
+        slackService.postUpdateSlackMessage(slackMessage)
     }
 
 }
@@ -56,14 +56,6 @@ class UpdatePaidInputDto(
     val paidAcquisitionDate : LocalDate,
     val beforePaidTimeType: PaidTimeType,
     val paidTimeType : PaidTimeType,
+    val paidAcquisitionUserId : String,
     val paidReason : String
 )
-class UpdatePaid (
-        val paidId : String,
-        val beforePaidAcquisitionDate: LocalDate,
-        override val paidAcquisitionDate : LocalDate,
-        val beforePaidTimeType : PaidTimeType,
-        override val paidTimeType : PaidTimeType,
-        val paidAcquisitionUserId : String,
-        val paidReason : String
-)  : HasPaidTime(paidAcquisitionDate,paidTimeType)
