@@ -93,5 +93,22 @@ internal class PaidRepositoryImplTest {
 
     }
 
+    @Test
+    fun delete() {
+        initH2DataSource(
+                "classpath:com/mosa/office/kintai/gateway/testdata_user.sql",
+                "classpath:com/mosa/office/kintai/gateway/testdata_paid.sql"
+        )
+        val repository = PaidRepositoryImpl()
+        transaction {
+            addLogger(StdOutSqlLogger)
+            repository.delete("hoge")
+            val res = PaidTable.select { PaidTable.id eq "hoge" }
+            assertThat(res.count()).isEqualTo(0)
+        }
+
+
+    }
+
 
 }
