@@ -53,6 +53,7 @@ interface PaidRepository {
     fun getAllByUserId(userId:String) : List<Paid>
     fun add(paid: Paid);
     fun update(paid: Paid);
+    fun delete(paidId: String);
     fun getAll() : List<Paid>;
 }
 
