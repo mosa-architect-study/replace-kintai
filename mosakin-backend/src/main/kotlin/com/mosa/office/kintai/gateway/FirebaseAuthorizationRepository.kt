@@ -6,9 +6,17 @@ import com.mosa.office.kintai.application.service.Authorized
 import com.mosa.office.kintai.application.service.AuthorizationRepository
 import com.mosa.office.kintai.application.service.UnAuthorized
 import com.mosa.office.kintai.util.CacheMan
+import org.slf4j.Logger
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
+import org.springframework.stereotype.Component
+import org.springframework.web.context.annotation.RequestScope
 
+@Component
+@ConditionalOnBean(FirebaseAuth::class)
+@RequestScope
 class FirebaseAuthorizationRepository(
-    private val firebaseAuth: FirebaseAuth
+    private val firebaseAuth: FirebaseAuth,
+    private val logger: Logger
 ) : AuthorizationRepository {
 
     private val cacheMan = CacheMan<AuthorizationResult>();
@@ -16,8 +24,8 @@ class FirebaseAuthorizationRepository(
     override fun getUserId(token:String): AuthorizationResult {
         return cacheMan.getCacheOrElse {
             try {
-                println(token); //FIXME
                 val res = firebaseAuth.verifyIdToken(token)
+                logger.debug("$res.emailからのアクセス")
                 Authorized(res.email) //EmailをIDとする。
             } catch (e: IllegalArgumentException) {
                 UnAuthorized
