@@ -19,7 +19,7 @@ export const NotFoundPage: React.FC = () => {
   return (
     <NotFoundWrapper>
       <NotFoundTitle>Not Found</NotFoundTitle>
-      <MosakinHouse src={mosakin}></MosakinHouse>;
+      <MosakinHouse src={mosakin}></MosakinHouse>
     </NotFoundWrapper>
   );
 };

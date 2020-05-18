@@ -20,7 +20,7 @@ const DeleteModalContent = () => {
     paidTimeType: "AM",
     paidAcquisitionDate: "20200505",
     paidReason: "休む",
-    adminFlg: false
+    adminFlg: "COMMON"
   };
   return (
     <section>
@@ -60,7 +60,7 @@ const AdminDeleteModalContent = () => {
     paidTimeType: "ALL_DAY",
     paidAcquisitionDate: "20200505",
     paidReason: "休む",
-    adminFlg: true
+    adminFlg: "ADMIN"
   };
   return (
     <section>
