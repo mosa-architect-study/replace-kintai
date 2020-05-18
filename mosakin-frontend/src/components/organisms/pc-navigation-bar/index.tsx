@@ -7,17 +7,15 @@ import { UserIcon } from "@/components/atoms/userIcon";
 import { IconList } from "@/components/atoms/icon/constant";
 import { HeaderWrapper } from "@/components/molecules/header";
 import { NavigationMenu } from "@/components/molecules/navigation-menu";
-import {
-  PullDownWrapper,
-  PullDownUser,
-  PullDownMenuList
-} from "@/components/molecules/pull-down-menu";
-import { UserRole } from "@/models/models/User";
+import { HeaderPullDown } from "@/components/molecules/pull-down-menu";
+import { User, UserRole } from "@/models/models/User";
 
-type MenuProps = {
+type NavigationBarProps = {
   menus: Menu[];
   adminMenus: AdminMenu[];
   adminFlg: UserRole;
+  user: User;
+  onClick: () => void;
 };
 
 export type Menu = {
@@ -32,10 +30,12 @@ export type AdminMenu = {
   adminIconName: IconList;
 };
 
-export const PcNavigationBar: React.FC<MenuProps> = ({
+export const PcNavigationBar: React.FC<NavigationBarProps> = ({
   menus,
   adminMenus,
-  adminFlg
+  adminFlg,
+  user,
+  onClick
 }) => {
   const menuItemList = menus.map((menu: Menu) => (
     <StyledList key={menu.manuId}>
@@ -71,7 +71,9 @@ export const PcNavigationBar: React.FC<MenuProps> = ({
             <UserIcon />
           </UserIconWrapper>
         </HeaderWrapper>
-        <PullDownPosition>{show ? <PullDown /> : null}</PullDownPosition>
+        <PcPullDownPosition>
+          {show ? <HeaderPullDown user={user} onClick={onClick} /> : null}
+        </PcPullDownPosition>
       </PcNavigationBarWrapper>
     </ul>
   );
@@ -106,30 +108,8 @@ const UserIconWrapper = styled.button`
   }
 `;
 
-const PullDownPosition = styled.div`
+const PcPullDownPosition = styled.div`
   position: absolute;
   right: 0;
   top: 70px;
 `;
-
-const PullDown = () => {
-  const users = {
-    userName: "ユーザ1"
-  };
-  return (
-    <>
-      <PullDownWrapper>
-        <PullDownUser value={users.userName} />
-        <PullDownMenuList
-          menus={[
-            {
-              id: "login",
-              menuItem: "ログアウト",
-              iconName: "logout"
-            }
-          ]}
-        />
-      </PullDownWrapper>
-    </>
-  );
-};

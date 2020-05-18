@@ -6,28 +6,29 @@ import { Text } from "@/components/atoms/text";
 import { Icon } from "@/components/atoms/icon";
 import { paletteDict, bp } from "@/common/theme";
 import { IconList } from "@/components/atoms/icon/constant";
-
+import { User, UserRole } from "@/models/models/User";
 interface PullDownProps {
   color: Constant.PullDownFontColorType;
   backgroundColor: Constant.PullDownBackColorType;
 }
 
-type MenusProps = {
+interface MenusProps {
   menus: Menus[];
-};
+}
 
-export type Menus = {
-  id: string;
+export interface Menus {
+  menuId: string;
   menuItem: string;
   iconName: IconList;
-};
+  onClick?: () => void;
+}
 
 export const PullDownMenuList: React.FC<MenusProps> = ({ menus }) => {
   const menuItemList = menus.map((menu: Menus) => (
-    <div key={menu.id}>
-      <StyledLink to={`/${menu.id}`}>
+    <div key={menu.menuId}>
+      <StyledLink to={`/${menu.menuId}`} onClick={menu.onClick}>
         <PullDownMenu
-          key={menu.id}
+          key={menu.menuId}
           value={menu.menuItem}
           name={menu.iconName}
         />
@@ -61,11 +62,22 @@ const PullDownUserItem = styled(StyledPullDownUser)<PullDownProps>`
     paletteDict[Constant.PullDownBackColor[backgroundColor]]};
 `;
 
-export const PullDownUser = (props: { value: string }) => {
+interface PullDownUserProps {
+  value: string;
+  adminFlg: UserRole;
+}
+
+export const PullDownUser: React.FC<PullDownUserProps> = ({
+  value,
+  adminFlg
+}) => {
   return (
     <>
       <PullDownUserItem color="1" backgroundColor="1">
-        <Text size="1">{props.value}</Text>
+        <Text size="1">
+          {value}
+          {adminFlg === "ADMIN" && <>(Admin)</>}
+        </Text>
       </PullDownUserItem>
       <PullDownBorder />
     </>
@@ -75,6 +87,7 @@ export const PullDownUser = (props: { value: string }) => {
 const StyledPullDownMenu = styled.li`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 259px;
   height: 46px;
   padding: 0 15%;
@@ -96,14 +109,19 @@ const PullDownMenuItem = styled(StyledPullDownMenu)<PullDownProps>`
     paletteDict[Constant.PullDownBackColor[backgroundColor]]};
 `;
 
-const PullDownMenu = (props: { value: string; name: IconList }) => {
+interface PullDownMenuProps {
+  value: string;
+  name: IconList;
+}
+
+const PullDownMenu: React.FC<PullDownMenuProps> = ({ value, name }) => {
   return (
     <>
       <PullDownMenuItem color="1" backgroundColor="1">
         <PullDownIconWrapper>
-          <Icon name={props.name} width="s" height="m" />
+          <Icon name={name} width="s" height="m" />
         </PullDownIconWrapper>
-        <Text size="1">{props.value}</Text>
+        <Text size="1">{value}</Text>
       </PullDownMenuItem>
     </>
   );
@@ -116,6 +134,7 @@ export const PullDownWrapper = styled.div`
   list-style: none;
   @media (max-width: ${bp}) {
     width: 433px;
+    border-radius: 0px;
   }
 `;
 
@@ -130,8 +149,42 @@ const PullDownBorder = styled.div`
   &:before {
     content: "";
     height: 1px;
-    width: 85%;
+    width: 217px;
     bottom: 0;
     background: ${paletteDict.white};
+    @media (max-width: ${bp}) {
+      width: 363px;
+    }
   }
 `;
+
+interface HeaderPullDownProps {
+  user: User;
+  onClick: () => void;
+}
+
+// SqHeaderとPcNavigationBarで使用してる。置き場所ここでいいかはわからない
+export const HeaderPullDown: React.FC<HeaderPullDownProps> = ({
+  user,
+  onClick
+}) => {
+  return (
+    <>
+      <PullDownWrapper>
+        <PullDownUser value={user.name} adminFlg={user.role} />
+        <PullDownMenuList
+          menus={[
+            {
+              menuId: "logout",
+              menuItem: "ログアウト",
+              iconName: "logout",
+              onClick: () => {
+                onClick();
+              }
+            }
+          ]}
+        />
+      </PullDownWrapper>
+    </>
+  );
+};

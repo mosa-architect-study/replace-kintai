@@ -12,11 +12,36 @@ storiesOf("molecules/PullDown", module).add("PullDown", () => {
     <>
       <Router>
         <PullDownWrapper>
-          <PullDownUser value={users.userName} />
+          <PullDownUser value={users.userName} adminFlg="COMMON" />
           <PullDownMenuList
             menus={[
               {
-                id: "login",
+                menuId: "login",
+                menuItem: "ログアウト",
+                iconName: "logout"
+              }
+            ]}
+          />
+        </PullDownWrapper>
+        <Route exact path="/login" component={LoginPage} />
+      </Router>
+    </>
+  );
+});
+
+storiesOf("molecules/PullDown", module).add("PullDown(admin)", () => {
+  const users = {
+    userName: "ユーザ2"
+  };
+  return (
+    <>
+      <Router>
+        <PullDownWrapper>
+          <PullDownUser value={users.userName} adminFlg="ADMIN" />
+          <PullDownMenuList
+            menus={[
+              {
+                menuId: "login",
                 menuItem: "ログアウト",
                 iconName: "logout"
               }
