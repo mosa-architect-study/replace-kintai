@@ -36,6 +36,7 @@ const Label = styled.label<Labelprops>`
   cursor: pointer;
   :first-child {
     border-radius: 30px 0 0 30px;
+    border-left: solid 1px ${paletteDict.border};
   }
   :last-child {
     border-radius: 0 30px 30px 0;

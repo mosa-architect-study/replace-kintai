@@ -11,6 +11,7 @@ import {
 } from "@/models/models/common";
 import { PageTitle } from "@/components/molecules/pageTitle";
 import { CommonUserNameArea } from "@/components/molecules/common-user-name-area";
+import { UserRole } from "@/models/models/User";
 import { PaidReasonArea } from "../../molecules/paid-reason-area";
 import dayjs from "dayjs";
 
@@ -25,7 +26,7 @@ export interface DeleteTemplateItemProps {
   paidTimeType: PaidTimeType;
   paidAcquisitionDate: DateValue;
   paidReason: string;
-  adminFlg: boolean;
+  adminFlg: UserRole;
 }
 
 const OuterDiv = styled.div`
@@ -104,7 +105,7 @@ export const DeleteTemplate: React.FC<DeleteTemplateProps> = props => {
         <TitleWrapper>
           <PageTitle title="削除申請" />
         </TitleWrapper>
-        {props.userData.adminFlg && (
+        {props.userData.adminFlg == "ADMIN" && (
           <UserNameWrapper>
             <CommonUserNameArea value={props.userData.userName} />
           </UserNameWrapper>

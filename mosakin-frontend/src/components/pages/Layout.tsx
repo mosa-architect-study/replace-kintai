@@ -18,8 +18,9 @@ export const Layout: React.FC = ({ children }) => {
       <LayoutHeader
         user={loginstatus.user}
         onLogoutClick={loginstatus.logout}
-      ></LayoutHeader>
+      />
       {children}
+      <LayoutFooter user={loginstatus.user} />
     </>
   );
 };
@@ -28,40 +29,41 @@ interface LayoutHeaderProps {
   user: User;
   onLogoutClick: () => void;
 }
+interface LayoutFooterProps {
+  user: User;
+}
+
+const menus: Menu[] = [
+  {
+    manuId: "new",
+    menuItem: "新規申請",
+    iconName: "pen"
+  },
+  {
+    manuId: "",
+    menuItem: "有給取得一覧",
+    iconName: "file"
+  }
+];
+const adminMenus: AdminMenu[] = [
+  {
+    adminMenuId: "admin",
+    adminMenuItem: "(全)有給取得一覧",
+    adminIconName: "folder"
+  }
+];
 
 const LayoutHeader: React.FC<LayoutHeaderProps> = ({ user, onLogoutClick }) => {
-  const menus: Menu[] = [
-    {
-      manuId: "new",
-      menuItem: "新規申請",
-      iconName: "pen"
-    },
-    {
-      manuId: "update",
-      menuItem: "有給取得一覧",
-      iconName: "file"
-    }
-  ];
-  const adminMenus: AdminMenu[] = [
-    {
-      adminMenuId: "admin",
-      adminMenuItem: "(全)有給取得一覧",
-      adminIconName: "folder"
-    }
-  ];
   return (
     <>
       <PcNavigationBar
         menus={menus}
         adminMenus={adminMenus}
         adminFlg={user.role}
+        user={user}
+        onClick={onLogoutClick}
       />
-      <SpHeader />
-      <SpNavigationBar
-        menus={menus}
-        adminMenus={adminMenus}
-        adminFlg={user.role}
-      />
+      <SpHeader adminFlg={user.role} user={user} onClick={onLogoutClick} />
       <Button
         onClick={onLogoutClick}
         backgroundColor="1"
@@ -73,6 +75,18 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = ({ user, onLogoutClick }) => {
       </Button>
       <p>こんにちは！{user.name}さん</p>
       <p>権限：{user.role}</p>
+    </>
+  );
+};
+
+const LayoutFooter: React.FC<LayoutFooterProps> = ({ user }) => {
+  return (
+    <>
+      <SpNavigationBar
+        menus={menus}
+        adminMenus={adminMenus}
+        adminFlg={user.role}
+      />
     </>
   );
 };

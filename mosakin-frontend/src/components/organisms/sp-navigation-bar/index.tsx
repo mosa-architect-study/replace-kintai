@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import { UserRole } from "@/models/models/User";
 import { paletteDict, bp } from "@/common/theme";
 import { NavigationMenu } from "@/components/molecules/navigation-menu/index";
 import { IconList } from "@/components/atoms/icon/constant";
-import { UserRole } from "@/models/models/User";
 
 type MenuProps = {
   menus: Menu[];
@@ -53,10 +53,12 @@ export const SpNavigationBar: React.FC<MenuProps> = ({
   ));
   return (
     <ul>
-      <SpNavigationBarWrapper>
-        {menuItemList}
-        {adminFlg === "ADMIN" && <>{adminMenuItemList}</>}
-      </SpNavigationBarWrapper>
+      <OuterDiv>
+        <SpNavigationBarWrapper>
+          {menuItemList}
+          {adminFlg === "ADMIN" && <>{adminMenuItemList}</>}
+        </SpNavigationBarWrapper>
+      </OuterDiv>
     </ul>
   );
 };
@@ -89,5 +91,11 @@ const SpNavigationBarWrapper = styled.div`
     line-height: 0;
     bottom: 0;
     z-index: 1000;
+  }
+`;
+
+const OuterDiv = styled.div`
+  @media (max-width: ${bp}) {
+    padding-bottom: 80px;
   }
 `;
