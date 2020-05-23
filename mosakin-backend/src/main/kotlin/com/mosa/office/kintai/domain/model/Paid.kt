@@ -8,7 +8,20 @@ class Paid (
     override val paidTimeType : PaidTimeType,
     val paidAcquisitionUserId : String,
     val paidReason : String
-)  : HasPaidTime(paidAcquisitionDate,paidTimeType)
+)  : HasPaidTime(paidAcquisitionDate,paidTimeType) {
+    fun assertCanRead(user: User) {
+        if(user.adminFlag == AdminFlg.ADMIN || user.userId == this.paidAcquisitionUserId){
+            return;
+        }
+        throw DomainAuthorizationException();
+    }
+    fun assertCanWrite(user: User) {
+        if(user.adminFlag == AdminFlg.ADMIN || user.userId == this.paidAcquisitionUserId){
+            return;
+        }
+        throw DomainAuthorizationException();
+    }
+}
 
 class DuplicatedPaidException : Exception()
 
