@@ -1,8 +1,7 @@
 package com.mosa.office.kintai.domain.service
 
-import com.mosa.office.kintai.domain.model.Paid
-import com.mosa.office.kintai.domain.model.PaidRepository
-import com.mosa.office.kintai.domain.model.User
+import com.mosa.office.kintai.domain.model.*
+import com.mosa.office.kintai.domain.shared.DomainAuthorizationException
 import org.springframework.stereotype.Component
 
 /**
@@ -11,7 +10,8 @@ import org.springframework.stereotype.Component
  */
 @Component
 class PaidService (
-    private val repository : PaidRepository
+    private val repository : PaidRepository,
+    private val userRepository: UserRepository
 ) {
     /**
      * 重複する有給がないかチェックして例外を投げる
@@ -23,4 +23,10 @@ class PaidService (
         // 重複する有給がないかチェックして例外を投げる
         paidList.forEach(paid::assertNotDuplicated)
     }
+
+    fun assertCanUpdateOrDelete(paid: Paid,updatedBy: String) {
+        val user = userRepository.getUser(updatedBy)
+        (user?.let { paid.canAccess(it) } ?: false) || throw DomainAuthorizationException()
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.mosa.office.kintai.config
 
 import com.mosa.office.kintai.application.service.AuthenticationException
+import com.mosa.office.kintai.domain.shared.DomainAuthorizationException
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,5 +22,10 @@ class AppExceptionHandler : ResponseEntityExceptionHandler() {
     @ExceptionHandler(AuthenticationException::class)
     fun handleAuthenticationException(ex: AuthenticationException,request :WebRequest) : ResponseEntity<Any> {
         return super.handleExceptionInternal(ex,"Authentication Error", HttpHeaders.EMPTY, HttpStatus.FORBIDDEN,request)
+    }
+
+    @ExceptionHandler(DomainAuthorizationException::class)
+    fun handleDomainAuthorizationException(ex: DomainAuthorizationException,request :WebRequest) : ResponseEntity<Any> {
+        return super.handleExceptionInternal(ex,"Authorization Error", HttpHeaders.EMPTY, HttpStatus.NOT_FOUND,request)
     }
 }
