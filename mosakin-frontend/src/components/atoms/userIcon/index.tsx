@@ -11,8 +11,7 @@ const StyledWrapper = styled.div`
 const StyledUserIcon = styled.img<IconProps>`
   display: inline-block;
   border-radius: 50%;
-  background: white;
-  border: solid 1px;
+  border: none;
   width: ${userIconSizeDict["l"]};
   height: ${userIconSizeDict["l"]};
   @media (max-width: ${bp}) {

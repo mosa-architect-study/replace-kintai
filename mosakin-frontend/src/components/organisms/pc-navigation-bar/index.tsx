@@ -68,7 +68,7 @@ export const PcNavigationBar: React.FC<NavigationBarProps> = ({
           {menuItemList}
           {adminFlg === "ADMIN" && <>{adminMenuItemList}</>}
           <UserIconWrapper onClick={() => setShow(!show)}>
-            <UserIcon />
+            <UserIcon url={user.photoURL} />
           </UserIconWrapper>
         </HeaderWrapper>
         <PcPullDownPosition>
