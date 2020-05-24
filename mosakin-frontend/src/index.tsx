@@ -18,20 +18,6 @@ export const App: React.FC = () => {
     <Router>
       <LoginContextProvider LoginPage={LoginPage} LoadingPage={PageLoading}>
         <Layout>
-          <ul>
-            <li>
-              <Link to="/">TOP</Link>
-            </li>
-            <li>
-              <Link to="/new">新規申請</Link>
-            </li>
-            <li>
-              <Link to="/update">登録変更申請</Link>
-            </li>
-            <li>
-              <Link to="/admin">管理画面</Link>
-            </li>
-          </ul>
           <Switch>
             <Route exact path="/" component={PaidListPage} />
             <Route path="/new" component={NewPaidPage} />

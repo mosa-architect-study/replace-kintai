@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import * as Constant from "./constant";
 import { Text } from "@/components/atoms/text";
@@ -26,7 +25,12 @@ export interface Menus {
 export const PullDownMenuList: React.FC<MenusProps> = ({ menus }) => {
   const menuItemList = menus.map((menu: Menus) => (
     <div key={menu.menuId}>
-      <StyledLink to={`/${menu.menuId}`} onClick={menu.onClick}>
+      <StyledLink
+        onClick={e => {
+          e.preventDefault();
+          menu.onClick && menu.onClick();
+        }}
+      >
         <PullDownMenu
           key={menu.menuId}
           value={menu.menuItem}
@@ -38,7 +42,7 @@ export const PullDownMenuList: React.FC<MenusProps> = ({ menus }) => {
   return <ul>{menuItemList}</ul>;
 };
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   text-decoration: none;
 `;
 

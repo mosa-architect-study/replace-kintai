@@ -1,7 +1,5 @@
 import React from "react";
 import { useLoginInfo } from "@/context/LoginContext";
-import { Button } from "../atoms/button";
-import { Text } from "../atoms/text";
 import { User } from "@/models/models/User";
 import {
   PcNavigationBar,
@@ -35,14 +33,14 @@ interface LayoutFooterProps {
 
 const menus: Menu[] = [
   {
-    manuId: "new",
-    menuItem: "新規申請",
-    iconName: "pen"
-  },
-  {
     manuId: "",
     menuItem: "有給取得一覧",
     iconName: "file"
+  },
+  {
+    manuId: "new",
+    menuItem: "新規申請",
+    iconName: "pen"
   }
 ];
 const adminMenus: AdminMenu[] = [
@@ -64,17 +62,6 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = ({ user, onLogoutClick }) => {
         onClick={onLogoutClick}
       />
       <SpHeader adminFlg={user.role} user={user} onClick={onLogoutClick} />
-      <Button
-        onClick={onLogoutClick}
-        backgroundColor="1"
-        height="s"
-        width="s"
-        color="white"
-      >
-        <Text size="1">Logout</Text>
-      </Button>
-      <p>こんにちは！{user.name}さん</p>
-      <p>権限：{user.role}</p>
     </>
   );
 };
