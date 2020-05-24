@@ -18,18 +18,16 @@ class UpdatePaidController(
 
     @PostMapping("/update")
     fun update(@RequestBody updatePaidInputDto : UpdatePaidInputDto) : UpdatePaidMessage {
-
-        //自分以外の有給は変更できない。
-        if(currentUserService.getUserId() != updatePaidInputDto.paidAcquisitionUserId) throw AuthenticationException()
-
         try {
-            useCase.update(updatePaidInputDto)
+            useCase.update(
+                updatePaidInputDto,
+                currentUserService.getUserId()
+            )
         } catch(e:DuplicatedPaidException) {
            return UpdatePaidMessage.DUPLICATED
         } catch (e:SlackMessageException) {
             return UpdatePaidMessage.NOTIFICATION_FAILED
         }
-
         return UpdatePaidMessage.SUCCESS
     }
 }

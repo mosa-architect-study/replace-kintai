@@ -1,11 +1,14 @@
 package com.mosa.office.kintai.domain.model
 
+import com.mosa.office.kintai.domain.shared.ValueObject
+
 class UserAnnualPaid(
     val annualPaidNumber:PaidNumber,
     val carryForward:PaidNumber
 )
 
-class PaidNumber(override val value: Double) : ValueObject<Double> {
+class PaidNumber(override val value: Double) :
+    ValueObject<Double> {
 
     companion object {
         fun fromTimeTypes(timeTypes: List<PaidTimeType>):PaidNumber{

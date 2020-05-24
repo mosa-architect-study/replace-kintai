@@ -45,13 +45,20 @@ class PaidRepositoryImpl : PaidRepository {
         if(res != 1) throw Exception("更新に失敗しました。") //FIXME: ResourceNotFoundとかで404返すべき？
     }
 
-    override fun delete(paidId: String) {
-        val res = PaidTable.deleteWhere { PaidTable.id eq paidId }
+    override fun delete(paid: Paid) {
+        val res = PaidTable.deleteWhere { PaidTable.id eq paid.paidId }
         if(res != 1) throw Exception("削除に失敗しました。") //FIXME: ResourceNotFoundとかで404返すべき？
     }
 
     override fun getAll(): List<Paid> {
         val query = PaidTable.selectAll()
         return query.map { mapToPaid(it) }
+    }
+
+    override fun getById(paidId: String): Paid? {
+        val query = PaidTable.select {
+            PaidTable.id eq paidId
+        }
+        return query.firstOrNull()?.let { mapToPaid(it) }
     }
 }

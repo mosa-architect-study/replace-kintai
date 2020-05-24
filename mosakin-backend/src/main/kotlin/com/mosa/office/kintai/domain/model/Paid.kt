@@ -1,14 +1,19 @@
 package com.mosa.office.kintai.domain.model
 
+import com.mosa.office.kintai.domain.shared.DomainAuthorizationException
 import java.time.LocalDate
 
 class Paid (
     val paidId : String,
-    override val paidAcquisitionDate : LocalDate,
-    override val paidTimeType : PaidTimeType,
+    override var paidAcquisitionDate : LocalDate,
+    override var paidTimeType : PaidTimeType,
     val paidAcquisitionUserId : String,
     val paidReason : String
-)  : HasPaidTime(paidAcquisitionDate,paidTimeType)
+)  : HasPaidTime(paidAcquisitionDate,paidTimeType) {
+    fun canAccess(user: User):Boolean {
+        return user.adminFlag == AdminFlg.ADMIN || user.userId == this.paidAcquisitionUserId
+    }
+}
 
 class DuplicatedPaidException : Exception()
 
@@ -23,7 +28,6 @@ enum class PaidTimeType {
                 it.toString() == str
             }
         }
-
     }
 }
 
@@ -53,7 +57,8 @@ interface PaidRepository {
     fun getAllByUserId(userId:String) : List<Paid>
     fun add(paid: Paid);
     fun update(paid: Paid);
-    fun delete(paidId: String);
+    fun delete(paid: Paid);
     fun getAll() : List<Paid>;
+    fun getById(paidId:String) : Paid?
 }
 
