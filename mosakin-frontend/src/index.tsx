@@ -11,16 +11,12 @@ import { NotFoundPage } from "./components/pages/404";
 import { LoginPage } from "./components/pages/LoginPage";
 import { LoginContextProvider } from "./context/LoginContext";
 import { Layout } from "./components/pages/Layout";
-
-const LoadingPageFIXME = () => <p>Loading</p>;
+import { PageLoading } from "@/components/organisms/pageLoading";
 
 export const App: React.FC = () => {
   return (
     <Router>
-      <LoginContextProvider
-        LoginPage={LoginPage}
-        LoadingPage={LoadingPageFIXME}
-      >
+      <LoginContextProvider LoginPage={LoginPage} LoadingPage={PageLoading}>
         <Layout>
           <ul>
             <li>
