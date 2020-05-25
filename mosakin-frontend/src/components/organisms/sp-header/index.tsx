@@ -20,7 +20,7 @@ export const SpHeader: React.FC<SpHeaderProps> = ({ user, onClick }) => {
       <HeaderWrapper>
         <Logo />
         <UserIconWrapper onClick={() => setShow(!show)}>
-          <UserIcon />
+          <UserIcon url={user.photoURL} />
         </UserIconWrapper>
         <SpPullDownPosition>
           {show ? <HeaderPullDown user={user} onClick={onClick} /> : null}
