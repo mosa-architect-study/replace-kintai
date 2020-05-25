@@ -6,6 +6,7 @@ import { PaidListViewModel } from "../../../models/models/paidList";
 import { PaidListHeader } from "../../organisms/paidListHeader";
 import { PaidListRows } from "../../organisms/paidListRows";
 import { PageTitle } from "../../molecules/pageTitle";
+import { Loading } from "@/components/molecules/loading";
 
 const OuterDiv = styled.div`
   width: 603px;
@@ -38,7 +39,7 @@ export const PaidListTemplate: React.FC<
   LoadableViewModel<PaidListViewModel>
 > = model => {
   if (model.status == "Loading") {
-    return <p>Loading...</p>;
+    return <Loading />;
   } else {
     // TODO: JSON.stringifyはあくまで仮
     return (
