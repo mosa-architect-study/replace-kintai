@@ -3,6 +3,8 @@ import { axios } from "@/common/api/axios";
 import { NewPaidViewModel, NewPaidItem } from "@/models/models/newPaid";
 import { useLoginInfo } from "@/context/LoginContext";
 import { ErrorObject } from "@/models/models/error";
+import { useToast } from "@/context/ToastContext";
+import { useHistory } from "react-router-dom";
 
 export const useNewPaid = (): NewPaidViewModel => {
   const [dateValue, dateSetValue] = useState("");
@@ -10,6 +12,7 @@ export const useNewPaid = (): NewPaidViewModel => {
   const [reasonValue, reasonSetValue] = useState("");
   const [errors, setErrors] = useState<ErrorObject[]>([]);
   const user = useLoginInfo();
+  const { showToast } = useToast();
 
   const createData: NewPaidItem = {
     userName: user.user.name,
@@ -33,6 +36,10 @@ export const useNewPaid = (): NewPaidViewModel => {
         switch (res.data) {
           case "SUCCESS":
             setErrors([]);
+            showToast({
+              type: "SUCCESS",
+              message: "登録したよ❤️" //TODO:
+            });
             break;
           case "DUPLICATED":
             setErrors([

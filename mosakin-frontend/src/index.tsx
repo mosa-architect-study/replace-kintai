@@ -12,21 +12,24 @@ import { LoginPage } from "./components/pages/LoginPage";
 import { LoginContextProvider } from "./context/LoginContext";
 import { Layout } from "./components/pages/Layout";
 import { PageLoading } from "@/components/organisms/pageLoading";
+import { ToastContextProvider } from "./context/ToastContext";
 
 export const App: React.FC = () => {
   return (
     <Router>
-      <LoginContextProvider LoginPage={LoginPage} LoadingPage={PageLoading}>
-        <Layout>
-          <Switch>
-            <Route exact path="/" component={PaidListPage} />
-            <Route path="/new" component={NewPaidPage} />
-            <Route path="/update" component={UpdatePaidPage} />
-            <Route path="/admin" component={AdminPage} />
-            <Route component={NotFoundPage}></Route>
-          </Switch>
-        </Layout>
-      </LoginContextProvider>
+      <ToastContextProvider>
+        <LoginContextProvider LoginPage={LoginPage} LoadingPage={PageLoading}>
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={PaidListPage} />
+              <Route path="/new" component={NewPaidPage} />
+              <Route path="/update" component={UpdatePaidPage} />
+              <Route path="/admin" component={AdminPage} />
+              <Route component={NotFoundPage}></Route>
+            </Switch>
+          </Layout>
+        </LoginContextProvider>
+      </ToastContextProvider>
     </Router>
   );
 };

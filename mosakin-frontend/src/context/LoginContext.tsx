@@ -5,22 +5,42 @@ import { getAuthorizedUser, logout } from "@/common/auth/wappers";
 import fallbackPhoto from "@/static/mosakin.png";
 import { axios } from "@/common/api/axios";
 import { useContext } from "react";
+import { useToast } from "./ToastContext";
 
 const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
   const [loginStatus, setLoginStatus] = useState<LoginStatus>();
+  const { showToast } = useToast();
   useEffect(() => {
     (async () => {
-      const userPromise = getAuthorizedUser();
-      const appUserPromise = axios.get("/user");
-      const appUser = await appUserPromise.catch(() => null); //TODO: エラーハンドル
-      const user = await userPromise;
-      if (user && appUser) {
+      //ログインしてるかどうか
+      const user = await getAuthorizedUser();
+      if (!user) {
+        setLoginStatus({
+          login: false
+        });
+        return;
+      }
+      //ログインしたユーザーがシステムユーザーかどうか
+      const appUser = await axios.get("/user").catch(e => {
+        showToast({
+          type: "ERROR",
+          message:
+            e.response && e.response.status === 403
+              ? `【 ${user.email} 】はシステムユーザーではありません。`
+              : "通信エラーです。"
+        });
+        logout();
+        setLoginStatus({
+          login: false
+        });
+      });
+      if (appUser) {
         setLoginStatus({
           login: true,
           user: {
             name: appUser.data.userName,
             photoURL: user.photoURL || fallbackPhoto,
-            role: appUser.data.adminFlag //FIXME
+            role: appUser.data.adminFlag
           },
           logout() {
             logout();
@@ -28,10 +48,6 @@ const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
               login: false
             });
           }
-        });
-      } else {
-        setLoginStatus({
-          login: false
         });
       }
     })();

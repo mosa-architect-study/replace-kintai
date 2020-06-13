@@ -3,13 +3,7 @@ import styled from "@emotion/styled";
 import { css, SerializedStyles } from "@emotion/core";
 import { ToastComponent, PropsToastReceives } from "react-hooks-toasting";
 import { paletteDict, fontSizeDict } from "@/common/theme";
-
-type ToastType = "ERROR" | "SUCCESS";
-
-interface ToastProps {
-  message: string;
-  type: ToastType;
-}
+import { ToastType, ToastProps } from "@/models/models/toast";
 
 interface DivProps {
   type: ToastType;
@@ -25,11 +19,11 @@ const animationStyleMap: Record<
     opacity: 1;
   `,
   exiting: css`
-    transform: translateX(400px);
+    transform: translateX(1000px);
     opacity: 0;
   `,
   entering: css`
-    transform: translateX(400px);
+    transform: translateX(1000px);
     opacity: 0;
   `
 };
@@ -48,6 +42,7 @@ const StyledDiv = styled.div<DivProps>`
   position: fixed;
   margin-top: 30px;
   right: 0px;
+  z-index: 1001;
   /** animation */
   transition: transform 500ms, opacity 1000ms, top 500ms;
   ${({ status }) => animationStyleMap[status]}
@@ -55,7 +50,7 @@ const StyledDiv = styled.div<DivProps>`
   ${({ type }) => typeToColorMap[type]}
   color: ${paletteDict.white};
   font-size: ${fontSizeDict._18px};
-  max-width: 330px;
+  max-width: 1000px;
   white-space: nowrap;
   border-radius: 5px;
   cursor: pointer;
