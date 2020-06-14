@@ -17,7 +17,8 @@ storiesOf("molecules/Toast", module).add("PullDown", () => {
         onClick={() => {
           dispatch({
             type: "SUCCESS",
-            message: "処理に成功しました。"
+            message:
+              "処理に成功しました。長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い文章"
           });
         }}
         backgroundColor="1"
