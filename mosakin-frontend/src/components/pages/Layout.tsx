@@ -4,7 +4,7 @@ import { User } from "@/models/User";
 import {
   PcNavigationBar,
   Menu,
-  AdminMenu
+  AdminMenu,
 } from "@/components/organisms/pc-navigation-bar";
 import { SpNavigationBar } from "@/components/organisms/sp-navigation-bar";
 import { SpHeader } from "@/components/organisms/sp-header";
@@ -35,20 +35,20 @@ const menus: Menu[] = [
   {
     manuId: "",
     menuItem: "有給取得一覧",
-    iconName: "file"
+    iconName: "file",
   },
   {
     manuId: "new",
     menuItem: "新規申請",
-    iconName: "pen"
-  }
+    iconName: "pen",
+  },
 ];
 const adminMenus: AdminMenu[] = [
   {
     adminMenuId: "admin",
     adminMenuItem: "(全)有給取得一覧",
-    adminIconName: "folder"
-  }
+    adminIconName: "folder",
+  },
 ];
 
 const LayoutHeader: React.FC<LayoutHeaderProps> = ({ user, onLogoutClick }) => {

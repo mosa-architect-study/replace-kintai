@@ -2,7 +2,7 @@ import {
   PaidListItem,
   PaidListRowViewModel,
   PaidListHeaderViewModel,
-  AllUserPaidListHeaderViewModel
+  AllUserPaidListHeaderViewModel,
 } from ".";
 import { action } from "@storybook/addon-actions";
 
@@ -10,36 +10,36 @@ export const paidList: PaidListItem[] = [
   {
     paidAcquisitionDate: "2020-02-10",
     paidTimeType: "ALL_DAY",
-    paidId: "0"
+    paidId: "0",
   },
   {
     paidAcquisitionDate: "2020-02-11",
     paidTimeType: "AM",
-    paidId: "1"
+    paidId: "1",
   },
   {
     paidAcquisitionDate: "2020-02-10",
     paidTimeType: "ALL_DAY",
-    paidId: "2"
+    paidId: "2",
   },
   {
     paidAcquisitionDate: "2020-02-10",
     paidTimeType: "ALL_DAY",
-    paidId: "3"
+    paidId: "3",
   },
   {
     paidAcquisitionDate: "2020-02-10",
     paidTimeType: "ALL_DAY",
-    paidId: "4"
-  }
+    paidId: "4",
+  },
 ];
 export const rows: PaidListRowViewModel[] = paidList.map<PaidListRowViewModel>(
   paid => ({
     paid,
     menu: {
       onDeleteButtonClick: action("DELETE:" + paid.paidId),
-      onEditButtonClick: action("EDITE:" + paid.paidId)
-    }
+      onEditButtonClick: action("EDITE:" + paid.paidId),
+    },
   })
 );
 
@@ -47,7 +47,7 @@ export const header: PaidListHeaderViewModel = {
   annualPaidNumber: 10,
   currentPaidAcquisitionNumber: 5,
   leftPaidNumber: 5,
-  carryForward: 3
+  carryForward: 3,
 };
 
 export const userData: AllUserPaidListHeaderViewModel[] = [
@@ -58,7 +58,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE")
+    onEditButtonClick: action("EDITE"),
   },
   {
     name: "がーすー",
@@ -67,7 +67,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE")
+    onEditButtonClick: action("EDITE"),
   },
   {
     name: "がーすー",
@@ -76,7 +76,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE")
+    onEditButtonClick: action("EDITE"),
   },
   {
     name: "がーすー",
@@ -85,7 +85,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE")
+    onEditButtonClick: action("EDITE"),
   },
   {
     name: "がーすー",
@@ -94,7 +94,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE")
+    onEditButtonClick: action("EDITE"),
   },
   {
     name: "がーすー",
@@ -103,7 +103,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE")
+    onEditButtonClick: action("EDITE"),
   },
   {
     name: "がーすー",
@@ -112,7 +112,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE")
+    onEditButtonClick: action("EDITE"),
   },
   {
     name: "がーすー",
@@ -121,7 +121,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE")
+    onEditButtonClick: action("EDITE"),
   },
   {
     name: "ハギー",
@@ -130,7 +130,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE:2")
+    onEditButtonClick: action("EDITE:2"),
   },
   {
     name: "omi",
@@ -139,7 +139,7 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE:3")
+    onEditButtonClick: action("EDITE:3"),
   },
   {
     name: "猛者勤怠筋肉太郎",
@@ -148,6 +148,6 @@ export const userData: AllUserPaidListHeaderViewModel[] = [
     annualPaidNumber: 5,
     leftPaidNumber: 5,
     currentPaidAcquisitionNumber: 3,
-    onEditButtonClick: action("EDITE:4")
-  }
+    onEditButtonClick: action("EDITE:4"),
+  },
 ];

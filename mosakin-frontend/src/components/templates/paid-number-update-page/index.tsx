@@ -81,7 +81,7 @@ const StyledInputWrapper = styled.div`
 const InputNumberArea: React.FC<InputNumberAreaProps> = ({
   label,
   value,
-  onChange
+  onChange,
 }) => {
   return (
     <StyledWrapper>
@@ -98,15 +98,13 @@ const InputNumberArea: React.FC<InputNumberAreaProps> = ({
   );
 };
 
-export const PaidNumberUpdatePage: React.FC<
-  PaidNumberUpdatePageProps
-> = props => {
+export const PaidNumberUpdatePage: React.FC<PaidNumberUpdatePageProps> = props => {
   const {
     userData,
     onCancel,
     onSubmit,
     annualPaidNumberOnChange,
-    carryForwardOnChange
+    carryForwardOnChange,
   } = props;
   return (
     <div>

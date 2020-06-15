@@ -73,7 +73,7 @@ interface PullDownUserProps {
 
 export const PullDownUser: React.FC<PullDownUserProps> = ({
   value,
-  adminFlg
+  adminFlg,
 }) => {
   return (
     <>
@@ -170,7 +170,7 @@ interface HeaderPullDownProps {
 // SqHeaderとPcNavigationBarで使用してる。置き場所ここでいいかはわからない
 export const HeaderPullDown: React.FC<HeaderPullDownProps> = ({
   user,
-  onClick
+  onClick,
 }) => {
   return (
     <>
@@ -184,8 +184,8 @@ export const HeaderPullDown: React.FC<HeaderPullDownProps> = ({
               iconName: "logout",
               onClick: () => {
                 onClick();
-              }
-            }
+              },
+            },
           ]}
         />
       </PullDownWrapper>

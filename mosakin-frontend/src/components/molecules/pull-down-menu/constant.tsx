@@ -6,11 +6,11 @@ export type PullDownBackColorType = "1";
 export const PullDownFontColor: {
   [P in PullDownFontColorType]: Palette;
 } = {
-  1: "white"
+  1: "white",
 };
 
 export const PullDownBackColor: {
   [P in PullDownBackColorType]: Palette;
 } = {
-  1: "base"
+  1: "base",
 };

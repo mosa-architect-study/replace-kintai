@@ -12,7 +12,7 @@ storiesOf("templates/PaidNumberUpdatePage", module).add(
     const userData = {
       name: "腹へった〜",
       carryForward,
-      annualPaidNumber
+      annualPaidNumber,
     };
 
     return (

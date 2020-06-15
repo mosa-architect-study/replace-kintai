@@ -35,7 +35,7 @@ export const PcNavigationBar: React.FC<NavigationBarProps> = ({
   adminMenus,
   adminFlg,
   user,
-  onClick
+  onClick,
 }) => {
   const menuItemList = menus.map((menu: Menu) => (
     <StyledList key={menu.manuId}>

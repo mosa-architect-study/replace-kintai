@@ -3,7 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 export default {
-  title: "atoms/Card"
+  title: "atoms/Card",
 };
 
 const Content = styled.div`

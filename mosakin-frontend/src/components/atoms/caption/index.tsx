@@ -4,7 +4,7 @@ import {
   CaptionLevel,
   CaptionColorType,
   captionLevelToFrontSize,
-  captionColor
+  captionColor,
 } from "./constant";
 import { paletteDict, fontSizeDict } from "@/common/theme";
 

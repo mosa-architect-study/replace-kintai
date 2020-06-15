@@ -8,7 +8,7 @@ const paid = {
   carryForward: "1",
   annualPaidNumber: "2",
   remainingPaid: "3",
-  currentPaidAcquisitionNumber: "4"
+  currentPaidAcquisitionNumber: "4",
 };
 
 const Wrapper = styled.div`

@@ -3,7 +3,7 @@ import { BACKEND_SERVICE_BASE_URL } from "@/constants/enviroment";
 import { getAuthorizedUser } from "../auth/wappers";
 
 const axios = Axios.create({
-  baseURL: BACKEND_SERVICE_BASE_URL
+  baseURL: BACKEND_SERVICE_BASE_URL,
 });
 axios.interceptors.request.use(async config => {
   const user = await getAuthorizedUser();

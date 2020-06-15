@@ -14,7 +14,7 @@ storiesOf("templates/CreatePage", module).add("CreatePage", () => {
     paidTimeOnChange: paidTimeOnChange,
     reasonValue: reasonValue,
     reasonOnChange: reasonSetValue,
-    adminFlg: false
+    adminFlg: false,
   };
   const onSubmit = () => action("ポチッとな");
   return (
@@ -36,7 +36,7 @@ storiesOf("templates/CreatePage", module).add("CreatePage(admin)", () => {
     paidTimeOnChange: paidTimeOnChange,
     reasonValue: reasonValue,
     reasonOnChange: reasonSetValue,
-    adminFlg: true
+    adminFlg: true,
   };
   const onSubmit = () => action("ポチッとな");
   return (

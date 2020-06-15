@@ -10,18 +10,18 @@ storiesOf("molecules/Toggles", module).add("Toggles", () => {
         {
           value: "all-day",
           label: "全日",
-          size: "1"
+          size: "1",
         },
         {
           value: "am",
           label: "午前",
-          size: "1"
+          size: "1",
         },
         {
           value: "pm",
           label: "午後",
-          size: "1"
-        }
+          size: "1",
+        },
       ]}
       value={value}
       onClick={setState}

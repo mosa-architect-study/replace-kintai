@@ -3,7 +3,7 @@ import {
   useEffect,
   EffectCallback,
   DependencyList,
-  useState
+  useState,
 } from "react";
 
 // componentDidUpdate的な
@@ -33,6 +33,6 @@ export const useSmartState = <T>(init: T) => {
     },
     updateWithoutRender(next: T) {
       stateRef.current = next;
-    }
+    },
   };
 };

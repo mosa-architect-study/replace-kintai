@@ -2,7 +2,7 @@ import { Text } from ".";
 import React from "react";
 
 export default {
-  title: "atoms/Text"
+  title: "atoms/Text",
 };
 
 export const size4 = (): JSX.Element => <Text size="0">Text 0</Text>;

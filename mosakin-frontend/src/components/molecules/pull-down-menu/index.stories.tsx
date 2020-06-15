@@ -6,7 +6,7 @@ import { storiesOf } from "@storybook/react";
 
 storiesOf("molecules/PullDown", module).add("PullDown", () => {
   const users = {
-    userName: "ユーザ1"
+    userName: "ユーザ1",
   };
   return (
     <>
@@ -18,8 +18,8 @@ storiesOf("molecules/PullDown", module).add("PullDown", () => {
               {
                 menuId: "login",
                 menuItem: "ログアウト",
-                iconName: "logout"
-              }
+                iconName: "logout",
+              },
             ]}
           />
         </PullDownWrapper>
@@ -31,7 +31,7 @@ storiesOf("molecules/PullDown", module).add("PullDown", () => {
 
 storiesOf("molecules/PullDown", module).add("PullDown(admin)", () => {
   const users = {
-    userName: "ユーザ2"
+    userName: "ユーザ2",
   };
   return (
     <>
@@ -43,8 +43,8 @@ storiesOf("molecules/PullDown", module).add("PullDown(admin)", () => {
               {
                 menuId: "login",
                 menuItem: "ログアウト",
-                iconName: "logout"
-              }
+                iconName: "logout",
+              },
             ]}
           />
         </PullDownWrapper>

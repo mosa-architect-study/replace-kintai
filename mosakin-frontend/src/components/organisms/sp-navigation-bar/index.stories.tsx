@@ -34,20 +34,20 @@ storiesOf("organisms/NavigationBar", module).add("SpNavigationBar", () => {
             {
               manuId: "a",
               menuItem: "新規申請",
-              iconName: "pen"
+              iconName: "pen",
             },
             {
               manuId: "b",
               menuItem: "有給取得一覧",
-              iconName: "file"
-            }
+              iconName: "file",
+            },
           ]}
           adminMenus={[
             {
               adminMenuId: "c",
               adminMenuItem: "(全)有給取得一覧",
-              adminIconName: "folder"
-            }
+              adminIconName: "folder",
+            },
           ]}
           adminFlg={"COMMON"}
         />
@@ -94,20 +94,20 @@ storiesOf("organisms/NavigationBar", module).add(
               {
                 manuId: "a",
                 menuItem: "新規申請",
-                iconName: "pen"
+                iconName: "pen",
               },
               {
                 manuId: "b",
                 menuItem: "有給取得一覧",
-                iconName: "file"
-              }
+                iconName: "file",
+              },
             ]}
             adminMenus={[
               {
                 adminMenuId: "c",
                 adminMenuItem: "(全)有給取得一覧",
-                adminIconName: "folder"
-              }
+                adminIconName: "folder",
+              },
             ]}
             adminFlg={"ADMIN"}
           />

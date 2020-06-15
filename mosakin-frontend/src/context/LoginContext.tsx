@@ -16,7 +16,7 @@ const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
       const user = await getAuthorizedUser();
       if (!user) {
         setLoginStatus({
-          login: false
+          login: false,
         });
         return;
       }
@@ -27,11 +27,11 @@ const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
           message:
             e.response && e.response.status === 403
               ? `【 ${user.email} 】はシステムユーザーではありません。`
-              : "通信エラーです。"
+              : "通信エラーです。",
         });
         logout();
         setLoginStatus({
-          login: false
+          login: false,
         });
       });
       if (appUser) {
@@ -40,14 +40,14 @@ const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
           user: {
             name: appUser.data.userName,
             photoURL: user.photoURL || fallbackPhoto,
-            role: appUser.data.adminFlag
+            role: appUser.data.adminFlag,
           },
           logout() {
             logout();
             setLoginStatus({
-              login: false
+              login: false,
             });
-          }
+          },
         });
       }
     })();
@@ -56,10 +56,10 @@ const useLoginStatus = (): LoadableViewModel<LoginStatus> => {
   return loginStatus
     ? {
         status: "Fetched",
-        data: loginStatus
+        data: loginStatus,
       }
     : {
-        status: "Loading"
+        status: "Loading",
       };
 };
 
@@ -86,7 +86,7 @@ interface LoginContextProviderProps {
 export const LoginContextProvider: React.FC<LoginContextProviderProps> = ({
   children,
   LoginPage,
-  LoadingPage
+  LoadingPage,
 }) => {
   const loginStatus = useLoginStatus();
   if (loginStatus.status === "Fetched") {

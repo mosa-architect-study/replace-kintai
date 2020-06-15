@@ -6,7 +6,7 @@ import {
   IconSizeProps,
   PcIconSizeDict,
   SpIconSizeDict,
-  IconListDict
+  IconListDict,
 } from "./constant";
 
 const StyledWrapper = styled.div`

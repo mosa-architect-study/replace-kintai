@@ -35,9 +35,9 @@ const HeaderWrapper = styled.div`
  *
  * @param model ViewModel
  */
-export const PaidListTemplate: React.FC<
-  LoadableViewModel<PaidListViewModel>
-> = model => {
+export const PaidListTemplate: React.FC<LoadableViewModel<
+  PaidListViewModel
+>> = model => {
   if (model.status == "Loading") {
     return <Loading />;
   } else {

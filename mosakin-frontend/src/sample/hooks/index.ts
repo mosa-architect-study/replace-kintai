@@ -6,6 +6,6 @@ export const useHoge = (
   const [flg, setFlg] = React.useState(init);
   return {
     flg,
-    toggle: (): void => setFlg(prev => !prev)
+    toggle: (): void => setFlg(prev => !prev),
   };
 };

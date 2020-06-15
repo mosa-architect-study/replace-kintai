@@ -8,7 +8,7 @@ import { Button } from "@/components/atoms/button";
 storiesOf("molecules/Toast", module).add("PullDown", () => {
   const { dispatch, renderToast } = useToasting(ToastItem, {
     exitingMS: 1000,
-    displayMS: 15000
+    displayMS: 15000,
   });
 
   return (
@@ -18,7 +18,7 @@ storiesOf("molecules/Toast", module).add("PullDown", () => {
           dispatch({
             type: "SUCCESS",
             message:
-              "処理に成功しました。長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い文章"
+              "処理に成功しました。長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い文章",
           });
         }}
         backgroundColor="1"
@@ -32,7 +32,7 @@ storiesOf("molecules/Toast", module).add("PullDown", () => {
         onClick={() => {
           dispatch({
             type: "ERROR",
-            message: "処理に失敗しました。"
+            message: "処理に失敗しました。",
           });
         }}
         backgroundColor="2"

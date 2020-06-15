@@ -9,7 +9,7 @@ const wrapStubParent = (initial: boolean) => {
   const status = useModalAnimation(isOpen, TIME);
   return {
     status,
-    change
+    change,
   };
 };
 
