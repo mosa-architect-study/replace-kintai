@@ -67,7 +67,7 @@
     "build:dev": "rm -rf ./dist && webpack && build-storybook -o dist/storybook",
     "deploy:dev": "firebase deploy --project mosakin-trial --token $FIREBASE_TOKEN",
     "dev": "webpack-dev-server",
-    "lint": "eslint '**/*.+(ts|tsx)'",
+    "lint": "eslint '**/*.+(ts|tsx|js)'",
     "local": "BACKEND_SERVICE_BASE_URL='http://localhost:8080' webpack-dev-server",
     "serve": "serve dist",
     "storybook": "start-storybook -p 6006",
