@@ -7,7 +7,7 @@ const merge = require("webpack-merge");
 const base = require("./webpack.config.base");
 
 const config = {
-  mode: "development",
+  mode: process.env.NODE_ENV,
   entry: {
     main: ["@babel/polyfill", file("src", "index.tsx")]
   },
