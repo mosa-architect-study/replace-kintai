@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { bp } from "@/common/theme";
-import { LoadableViewModel } from "../../../models/models/common";
-import { PaidListViewModel } from "../../../models/models/paidList";
+import { LoadableViewModel } from "../../../models/common";
+import { PaidListViewModel } from "../../../models/paidList";
 import { PaidListHeader } from "../../organisms/paidListHeader";
 import { PaidListRows } from "../../organisms/paidListRows";
 import { PageTitle } from "../../molecules/pageTitle";

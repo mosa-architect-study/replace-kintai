@@ -1,5 +1,5 @@
 import React from "react";
-import { PaidListHeaderViewModel } from "../../../models/models/paidList";
+import { PaidListHeaderViewModel } from "../../../models/paidList";
 import { Postit } from "../../molecules/Postit";
 import styled from "@emotion/styled";
 

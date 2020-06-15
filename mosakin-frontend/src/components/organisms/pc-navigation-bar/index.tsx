@@ -8,7 +8,7 @@ import { IconList } from "@/components/atoms/icon/constant";
 import { HeaderWrapper } from "@/components/molecules/header";
 import { NavigationMenu } from "@/components/molecules/navigation-menu";
 import { HeaderPullDown } from "@/components/molecules/pull-down-menu";
-import { User, UserRole } from "@/models/models/User";
+import { User, UserRole } from "@/models/User";
 
 type NavigationBarProps = {
   menus: Menu[];

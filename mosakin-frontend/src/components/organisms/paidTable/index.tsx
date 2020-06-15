@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { paletteDict } from "@/common/theme";
-import { AllUserPaidListHeaderViewModel } from "@/models/models/paidList";
+import { AllUserPaidListHeaderViewModel } from "@/models/paidList";
 import { Icon } from "@/components/atoms/icon";
 
 interface PaidTableProps {

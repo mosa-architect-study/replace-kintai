@@ -1,10 +1,10 @@
-import { LoadableViewModel } from "../models/models/common";
+import { LoadableViewModel } from "../models/common";
 import {
   PaidListViewModel,
   PaidListItem,
   PaidListHeaderViewModel,
   PaidListRowViewModel
-} from "../models/models/paidList";
+} from "../models/paidList";
 import { useState, useEffect } from "react";
 import { axios } from "@/common/api/axios";
 

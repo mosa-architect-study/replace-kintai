@@ -1,7 +1,4 @@
-import {
-  UpdatePaidViewModel,
-  UpdatePaidItem
-} from "../models/models/UpdatePaid";
+import { UpdatePaidViewModel, UpdatePaidItem } from "../models/UpdatePaid";
 import { useState } from "react";
 import { axios } from "@/common/api/axios";
 

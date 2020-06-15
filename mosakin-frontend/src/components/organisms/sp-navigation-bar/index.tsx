@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { UserRole } from "@/models/models/User";
+import { UserRole } from "@/models/User";
 import { paletteDict, bp } from "@/common/theme";
 import { NavigationMenu } from "@/components/molecules/navigation-menu/index";
 import { IconList } from "@/components/atoms/icon/constant";

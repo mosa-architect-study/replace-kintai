@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { User, UserRole } from "@/models/models/User";
+import { User, UserRole } from "@/models/User";
 import { bp } from "@/common/theme";
 import { HeaderWrapper } from "@/components/molecules/header";
 import { UserIcon } from "@/components/atoms/userIcon";

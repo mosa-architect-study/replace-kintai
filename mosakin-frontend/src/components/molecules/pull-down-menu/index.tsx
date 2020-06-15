@@ -5,7 +5,7 @@ import { Text } from "@/components/atoms/text";
 import { Icon } from "@/components/atoms/icon";
 import { paletteDict, bp } from "@/common/theme";
 import { IconList } from "@/components/atoms/icon/constant";
-import { User, UserRole } from "@/models/models/User";
+import { User, UserRole } from "@/models/User";
 interface PullDownProps {
   color: Constant.PullDownFontColorType;
   backgroundColor: Constant.PullDownBackColorType;

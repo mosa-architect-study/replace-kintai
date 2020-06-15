@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { css, SerializedStyles } from "@emotion/core";
 import { ToastComponent, PropsToastReceives } from "react-hooks-toasting";
 import { paletteDict, fontSizeDict, bp } from "@/common/theme";
-import { ToastType, ToastProps } from "@/models/models/toast";
+import { ToastType, ToastProps } from "@/models/toast";
 
 interface DivProps {
   type: ToastType;

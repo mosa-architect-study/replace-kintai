@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { LoginStatusOnLogin, LoginStatus } from "@/models/models/User";
-import { LoadableViewModel } from "@/models/models/common";
+import { LoginStatusOnLogin, LoginStatus } from "@/models/User";
+import { LoadableViewModel } from "@/models/common";
 import { getAuthorizedUser, logout } from "@/common/auth/wappers";
 import fallbackPhoto from "@/static/mosakin.png";
 import { axios } from "@/common/api/axios";

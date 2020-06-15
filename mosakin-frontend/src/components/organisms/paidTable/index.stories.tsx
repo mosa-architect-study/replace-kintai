@@ -2,7 +2,7 @@ import React from "react";
 import { MemoryRouter as Router, Route, Switch } from "react-router-dom";
 import { storiesOf } from "@storybook/react";
 import { PaidTable } from ".";
-import { userData } from "@/models/models/paidList/mock";
+import { userData } from "@/models/paidList/mock";
 
 storiesOf("organisms/PaidTable", module).add("PaidTable", () => {
   const A = () => {
