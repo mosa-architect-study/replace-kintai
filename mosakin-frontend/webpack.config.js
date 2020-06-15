@@ -9,26 +9,26 @@ const base = require("./webpack.config.base");
 const config = {
   mode: process.env.NODE_ENV,
   entry: {
-    main: ["@babel/polyfill", file("src", "index.tsx")]
+    main: [file("src", "index.tsx")],
   },
   output: {
     path: file("dist"),
-    filename: "[name].[hash].js"
+    filename: "[name].[hash].js",
   },
   devServer: {
     port: 3000,
     historyApiFallback: true,
-    open: false
+    open: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: file("src", "index.html"),
-      filename: "index.html"
+      filename: "index.html",
     }),
     new webpack.EnvironmentPlugin({
-      BACKEND_SERVICE_BASE_URL: "https://mosakin-ktln-trial.herokuapp.com"
-    })
-  ]
+      BACKEND_SERVICE_BASE_URL: "https://mosakin-ktln-trial.herokuapp.com",
+    }),
+  ],
 };
 
 module.exports = merge(base, config);
