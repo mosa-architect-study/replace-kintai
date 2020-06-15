@@ -64,7 +64,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "build:dev": "rm -rf ./dist && webpack && build-storybook -o dist/storybook",
+    "build:dev": "rm -rf ./dist && NODE_ENV=production webpack && build-storybook -o dist/storybook",
     "deploy:dev": "firebase deploy --project mosakin-trial --token $FIREBASE_TOKEN",
     "dev": "webpack-dev-server",
     "lint": "eslint '**/*.+(ts|tsx|js)'",
