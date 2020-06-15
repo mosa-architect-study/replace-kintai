@@ -23,7 +23,7 @@ const StyledInputNumber = styled.input`
 
 export const InputNumber: React.FC<InputNumberProps> = ({
   value,
-  onChange
+  onChange,
 }) => {
   return (
     <StyledInputNumber

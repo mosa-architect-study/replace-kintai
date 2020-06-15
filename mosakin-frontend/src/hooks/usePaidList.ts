@@ -3,7 +3,7 @@ import {
   PaidListViewModel,
   PaidListItem,
   PaidListHeaderViewModel,
-  PaidListRowViewModel
+  PaidListRowViewModel,
 } from "../models/paidList";
 import { useState, useEffect } from "react";
 import { axios } from "@/common/api/axios";
@@ -38,12 +38,12 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
               },
               onEditButtonClick() {
                 console.log("edit", item);
-              }
-            }
-          }))
-        }
+              },
+            },
+          })),
+        },
       }
     : {
-        status: "Loading"
+        status: "Loading",
       };
 };

@@ -47,18 +47,18 @@ export const PaidTimeType = (props: PaidTimeTypeProps) => (
           {
             value: "ALL_DAY",
             label: "全日",
-            size: "1"
+            size: "1",
           },
           {
             value: "AM",
             label: "午前",
-            size: "1"
+            size: "1",
           },
           {
             value: "PM",
             label: "午後",
-            size: "1"
-          }
+            size: "1",
+          },
         ]}
         value={props.value}
         onClick={props.onClick}

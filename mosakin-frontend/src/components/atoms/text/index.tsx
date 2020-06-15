@@ -11,7 +11,7 @@ const pcSizeDict: { [P in TextSize]: string } = {
   0: fontSizeDict._14px,
   1: fontSizeDict._18px,
   2: fontSizeDict._20px,
-  3: fontSizeDict._24px
+  3: fontSizeDict._24px,
 };
 
 export const Text = styled.p<TextProps>`

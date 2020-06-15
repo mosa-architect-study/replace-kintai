@@ -31,7 +31,7 @@ export const paletteDict: { [P in Palette]: string } = {
   black: "rgba(134, 129, 129, 1)",
   red: "rgba(221, 68, 68, 1)",
   // ホバー用
-  whitesmoke: "rgba(245, 245, 245, 0.3)"
+  whitesmoke: "rgba(245, 245, 245, 0.3)",
 };
 
 export const fontSizeDict: { [P in FontSize]: string } = {
@@ -39,7 +39,7 @@ export const fontSizeDict: { [P in FontSize]: string } = {
   _18px: "18px",
   _20px: "20px",
   _24px: "24px",
-  _30px: "30px"
+  _30px: "30px",
 };
 
 // media queries breakpoints

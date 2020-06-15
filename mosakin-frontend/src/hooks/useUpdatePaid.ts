@@ -22,7 +22,7 @@ export const useUpdatePaid = (): UpdatePaidViewModel => {
     paidTimeOnChange: paidTimeOnChange,
     reasonValue: reasonValue,
     reasonOnChange: reasonSetValue,
-    adminFlg: true
+    adminFlg: true,
   };
   const onSubmit = () => {
     axios
@@ -33,7 +33,7 @@ export const useUpdatePaid = (): UpdatePaidViewModel => {
         beforePaidTimeType: updateData.beforePaidTimeValue,
         paidTimeType: paidTimeValue,
         paidReason: reasonValue,
-        paidAcquisitionUserId: "mosaarchitect.study@gmail.com" //TODO: 渡ってきた有給のIDを使おう
+        paidAcquisitionUserId: "mosaarchitect.study@gmail.com", //TODO: 渡ってきた有給のIDを使おう
       })
       .then(res => {
         console.log(res);

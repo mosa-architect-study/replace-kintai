@@ -3,7 +3,7 @@ import { useModalAnimation } from "./useModalAnimation";
 import {
   ModalRenderer,
   ANIMATION_MS,
-  ModalRendererPropsFromParent
+  ModalRendererPropsFromParent,
 } from "./renderer";
 import { ModalCloseProvider, useModalClose } from "./close";
 
@@ -18,7 +18,7 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   isOpen,
   contentClass,
-  backgroundColor
+  backgroundColor,
 }) => {
   const trans = useModalAnimation(isOpen, ANIMATION_MS);
   return (

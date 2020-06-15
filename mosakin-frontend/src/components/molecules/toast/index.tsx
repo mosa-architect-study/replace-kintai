@@ -24,7 +24,7 @@ const animationStyleMap: Record<
   entering: css`
     transform: translateX(1000px);
     opacity: 0;
-  `
+  `,
 };
 
 const typeToColorMap: Record<ToastType, SerializedStyles> = {
@@ -33,7 +33,7 @@ const typeToColorMap: Record<ToastType, SerializedStyles> = {
   `,
   SUCCESS: css`
     background-color: ${paletteDict.light};
-  `
+  `,
 };
 
 const StyledDiv = styled.div<DivProps>`
@@ -67,14 +67,14 @@ export const ToastItem: ToastComponent<ToastProps> = ({
   body,
   status,
   remove,
-  position
+  position,
 }) => (
   <StyledDiv
     onClick={remove}
     type={body.type}
     status={status}
     style={{
-      top: `${position * 50}px`
+      top: `${position * 50}px`,
     }}
   >
     {body.message}

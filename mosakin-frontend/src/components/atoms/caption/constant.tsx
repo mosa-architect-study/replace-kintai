@@ -8,10 +8,10 @@ export const captionLevelToFrontSize: { [P in CaptionLevel]: FontSize } = {
   h2: "_24px",
   h3: "_20px",
   h4: "_18px",
-  h5: "_14px"
+  h5: "_14px",
 };
 
 export const captionColor: { [P in CaptionColorType]: Palette } = {
   1: "black",
-  2: "base"
+  2: "base",
 };

@@ -10,7 +10,7 @@ storiesOf("molecules/PaidListRow", module).add("PaidListRow", () => {
       paid={paidList[0]}
       menu={{
         onDeleteButtonClick: action("onDeleteButtonClick"),
-        onEditButtonClick: action("onEditButtonClick")
+        onEditButtonClick: action("onEditButtonClick"),
       }}
     />
   );

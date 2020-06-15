@@ -4,11 +4,11 @@ import { ErrorBox } from ".";
 
 const errs = [
   {
-    content: "エラーです"
+    content: "エラーです",
   },
   {
-    content: "エラーです２"
-  }
+    content: "エラーです２",
+  },
 ];
 
 storiesOf("molecules/ErrorBox", module).add("ErrorBox", () => {

@@ -7,5 +7,5 @@ export interface IconProps {
 export const userIconSizeDict: { [P in IconSize]: string } = {
   // FIX ME
   l: "62px",
-  s: "62px"
+  s: "62px",
 };

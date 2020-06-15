@@ -66,7 +66,7 @@ export const ModalRenderer: React.FC<ModalRendererProps> = ({
   onClickBackground,
   backgroundColor = "rgba(196, 196, 196, 0.7)",
   children,
-  contentClass
+  contentClass,
 }) => {
   return (
     <ModalWapper trans={trans}>

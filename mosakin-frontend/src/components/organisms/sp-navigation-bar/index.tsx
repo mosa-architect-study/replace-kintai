@@ -27,7 +27,7 @@ type AdminMenu = {
 export const SpNavigationBar: React.FC<MenuProps> = ({
   menus,
   adminMenus,
-  adminFlg
+  adminFlg,
 }) => {
   const menuItemList = menus.map((menu: Menu) => (
     <StyledList key={menu.manuId}>

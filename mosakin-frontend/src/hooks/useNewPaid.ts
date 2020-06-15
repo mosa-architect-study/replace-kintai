@@ -22,14 +22,14 @@ export const useNewPaid = (): NewPaidViewModel => {
     paidTimeOnChange: paidTimeOnChange,
     reasonValue: reasonValue,
     reasonOnChange: reasonSetValue,
-    adminFlg: user.user.role === "ADMIN"
+    adminFlg: user.user.role === "ADMIN",
   };
   const onSubmit = () => {
     axios
       .post(`/add`, {
         paidAcquisitionDate: createData.dateValue,
         paidTimeType: paidTimeValue,
-        paidReason: reasonValue
+        paidReason: reasonValue,
       })
       .then(res => {
         // 正常に処理ができていれば業務エラーでも200で返ってくる
@@ -38,29 +38,29 @@ export const useNewPaid = (): NewPaidViewModel => {
             setErrors([]);
             showToast({
               type: "SUCCESS",
-              message: "登録したよ❤️" //TODO:
+              message: "登録したよ❤️", //TODO:
             });
             break;
           case "DUPLICATED":
             setErrors([
               {
-                content: "DUPLICATED"
-              }
+                content: "DUPLICATED",
+              },
             ]);
             break;
           case "NOTIFICATION_FAILED":
             setErrors([
               {
-                content: "NOTIFICATION_FAILED"
-              }
+                content: "NOTIFICATION_FAILED",
+              },
             ]);
             break;
           default:
             // APIから返ってくるメッセージが予想外なパターン
             setErrors([
               {
-                content: "UNEXPECTED_ERROR"
-              }
+                content: "UNEXPECTED_ERROR",
+              },
             ]);
             break;
         }
@@ -69,14 +69,14 @@ export const useNewPaid = (): NewPaidViewModel => {
         console.log(e);
         setErrors([
           {
-            content: "UNEXPECTED_ERROR"
-          }
+            content: "UNEXPECTED_ERROR",
+          },
         ]);
       });
   };
   return {
     data: createData,
     errors,
-    onSubmit: onSubmit
+    onSubmit: onSubmit,
   };
 };

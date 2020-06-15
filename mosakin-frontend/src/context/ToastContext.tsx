@@ -10,7 +10,7 @@ export interface ToastContextValue {
 const ToastContext = React.createContext<ToastContextValue>({
   showToast() {
     throw new Error("ToastContextProviderが設定されてません");
-  }
+  },
 });
 
 export const useToast = () => useContext(ToastContext);
@@ -18,12 +18,12 @@ export const useToast = () => useContext(ToastContext);
 export const ToastContextProvider: React.FC = ({ children }) => {
   const { dispatch, renderToast } = useToasting(ToastItem, {
     exitingMS: 1000,
-    displayMS: 15000
+    displayMS: 15000,
   });
 
   const contextValue = useMemo<ToastContextValue>(() => {
     return {
-      showToast: dispatch
+      showToast: dispatch,
     };
   }, [dispatch]);
 

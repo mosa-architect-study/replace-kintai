@@ -39,14 +39,14 @@ export const PcIconSizeDict: { [P in IconSize]: string } = {
   //FIX ME どっかで調整する
   s: "18px",
   m: "22px",
-  l: "34px"
+  l: "34px",
 };
 
 export const SpIconSizeDict: { [P in IconSize]: string } = {
   //FIX ME どっかで調整する
   s: "22px",
   m: "28px",
-  l: "40px"
+  l: "40px",
 };
 
 export const IconListDict: { [P in IconList]: string } = {
@@ -60,5 +60,5 @@ export const IconListDict: { [P in IconList]: string } = {
   user: user,
   xMark: xMark,
   pageTitle: pageTitle,
-  mosakin: mosakin
+  mosakin: mosakin,
 };

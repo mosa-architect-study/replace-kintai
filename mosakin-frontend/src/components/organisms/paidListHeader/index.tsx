@@ -12,7 +12,7 @@ export const PaidListHeader: React.FC<PaidListHeaderViewModel> = ({
   annualPaidNumber,
   currentPaidAcquisitionNumber,
   leftPaidNumber,
-  carryForward
+  carryForward,
 }) => (
   <Wrapper>
     <Postit title="繰越分" number={String(carryForward)} />
