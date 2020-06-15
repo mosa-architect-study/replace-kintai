@@ -9,7 +9,7 @@ const base = require("./webpack.config.base");
 const config = {
   mode: process.env.NODE_ENV,
   entry: {
-    main: ["@babel/polyfill", file("src", "index.tsx")],
+    main: [file("src", "index.tsx")],
   },
   output: {
     path: file("dist"),
