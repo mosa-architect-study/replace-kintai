@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoginInfo } from "@/context/LoginContext";
-import { User } from "@/models/models/User";
+import { User } from "@/models/User";
 import {
   PcNavigationBar,
   Menu,

@@ -1,6 +1,6 @@
 import React from "react";
 import { PaidListRow } from "@/components/molecules/paidListRow";
-import { PaidListRowViewModel } from "@/models/models/paidList";
+import { PaidListRowViewModel } from "@/models/paidList";
 
 type PaidListRowsProps = {
   rows: PaidListRowViewModel[];

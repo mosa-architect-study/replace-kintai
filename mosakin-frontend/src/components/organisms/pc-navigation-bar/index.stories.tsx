@@ -3,7 +3,7 @@ import { MemoryRouter as Router, Route, Switch } from "react-router-dom";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { PcNavigationBar } from "./index";
-import { User } from "@/models/models/User";
+import { User } from "@/models/User";
 
 const user1: User = { name: "ユーザ名1", photoURL: "", role: "COMMON" };
 const user2: User = { name: "ユーザ名2", photoURL: "", role: "ADMIN" };

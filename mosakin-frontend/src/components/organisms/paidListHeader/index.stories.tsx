@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { PaidListHeader } from ".";
-import { header } from "@/models/models/paidList/mock";
+import { header } from "@/models/paidList/mock";
 import styled from "@emotion/styled";
 
 const Content = styled.div`

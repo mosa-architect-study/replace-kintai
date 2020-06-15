@@ -4,14 +4,10 @@ import { paletteDict, bp } from "@/common/theme";
 import { Button } from "@/components/atoms/button";
 import { Caption } from "@/components/atoms/caption";
 import { Text } from "@/components/atoms/text";
-import {
-  DateValue,
-  PaidTimeType,
-  paidTimeTypeToString
-} from "@/models/models/common";
+import { DateValue, PaidTimeType, paidTimeTypeToString } from "@/models/common";
 import { PageTitle } from "@/components/molecules/pageTitle";
 import { CommonUserNameArea } from "@/components/molecules/common-user-name-area";
-import { UserRole } from "@/models/models/User";
+import { UserRole } from "@/models/User";
 import { PaidReasonArea } from "../../molecules/paid-reason-area";
 import dayjs from "dayjs";
 

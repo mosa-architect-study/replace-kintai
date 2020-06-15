@@ -1,7 +1,7 @@
 import React, { useMemo, useContext } from "react";
 import { useToasting } from "react-hooks-toasting";
 import { ToastItem } from "@/components/molecules/toast";
-import { ToastProps } from "@/models/models/toast";
+import { ToastProps } from "@/models/toast";
 
 export interface ToastContextValue {
   showToast(props: ToastProps): void;

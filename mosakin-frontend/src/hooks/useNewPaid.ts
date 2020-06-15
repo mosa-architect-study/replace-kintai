@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { axios } from "@/common/api/axios";
-import { NewPaidViewModel, NewPaidItem } from "@/models/models/newPaid";
+import { NewPaidViewModel, NewPaidItem } from "@/models/newPaid";
 import { useLoginInfo } from "@/context/LoginContext";
-import { ErrorObject } from "@/models/models/error";
+import { ErrorObject } from "@/models/error";
 import { useToast } from "@/context/ToastContext";
 import { useHistory } from "react-router-dom";
 

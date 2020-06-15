@@ -8,7 +8,7 @@ import { PaidTimeType } from "../../molecules/paid-time-type";
 import { PaidReasonArea } from "../../molecules/paid-reason-area";
 import { Button } from "../../atoms/button";
 import { Text } from "../../atoms/text/index";
-import { UpdatePaidViewModel } from "../../../models/models/updatePaid";
+import { UpdatePaidViewModel } from "../../../models/updatePaid";
 
 const TitleArea = styled.div`
   text-align: center;
