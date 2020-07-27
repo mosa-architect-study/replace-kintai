@@ -1,8 +1,10 @@
 import { DateValue } from "./common";
+import { ErrorObject } from "@/models/error";
 
 export interface UpdatePaidViewModel {
   data: UpdatePaidItem;
   onSubmit: () => void;
+  errors: ErrorObject[]
 }
 
 export interface UpdatePaidItem {
