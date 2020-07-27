@@ -42,8 +42,7 @@ const Label = styled.label<Labelprops>`
     border-radius: 0 30px 30px 0;
   }
   :hover {
-    background-color: ${({ selected }): string =>
-    selected ? paletteDict.light : paletteDict.whitesmoke};
+    background-color: ${({ selected }): string => selected ? paletteDict.light : paletteDict.whitesmoke};
   }
 `;
 
