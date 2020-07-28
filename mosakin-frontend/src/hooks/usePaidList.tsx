@@ -5,9 +5,11 @@ import {
   PaidListHeaderViewModel,
   PaidListRowViewModel,
 } from "../models/paidList";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { axios } from "@/common/api/axios";
 import { ErrorObject } from "@/models/error";
+import { useModal } from "@/hooks/useModal";
+import { DeletePaidPage } from "@/components/pages/DeletePaidPage";
 
 /**
  * hooksのサンプル
@@ -19,6 +21,7 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
     header: PaidListHeaderViewModel;
   }>();
   const [errors, setErrors] = useState<ErrorObject[]>([]);
+  const modalStatus = useModal();
 
   useEffect(() => {
     axios
@@ -64,13 +67,16 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
           header: data.header,
           list: data.list.map<PaidListRowViewModel>(item => ({
             paid: item,
-            // FIXME: メニューが押された時の挙動
             menu: {
               onDeleteButtonClick() {
                 console.log("delete", item);
+                modalStatus.setModalState(true);
+                console.log(modalStatus.isModalOpen);
+                <DeletePaidPage />;
               },
               onEditButtonClick() {
                 console.log("edit", item);
+                modalStatus.setModalState(true);
               },
             },
           })),

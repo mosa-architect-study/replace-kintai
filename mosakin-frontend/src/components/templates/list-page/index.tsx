@@ -6,6 +6,7 @@ import { PaidListViewModel } from "../../../models/paidList";
 import { PaidListHeader } from "../../organisms/paidListHeader";
 import { PaidListRows } from "../../organisms/paidListRows";
 import { PageTitle } from "../../molecules/pageTitle";
+import { ErrorBox } from "@/components/molecules/error-box";
 import { Loading } from "@/components/molecules/loading";
 
 const OuterDiv = styled.div`
@@ -47,6 +48,9 @@ export const PaidListTemplate: React.FC<LoadableViewModel<
         <TitleArea>
           <PageTitle title="有給取得一覧"></PageTitle>
         </TitleArea>
+
+        <ErrorBox errors={model.data.errors} />
+
         <HeaderWrapper>
           <PaidListHeader {...model.data.header}></PaidListHeader>
         </HeaderWrapper>

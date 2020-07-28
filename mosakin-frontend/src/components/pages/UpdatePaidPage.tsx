@@ -6,7 +6,11 @@ export const UpdatePaidPage: React.FC = () => {
   const model = useUpdatePaid();
   return (
     <div>
-      <UpdatePage data={model.data} onSubmit={model.onSubmit}></UpdatePage>
+      <UpdatePage
+        data={model.data}
+        onSubmit={model.onSubmit}
+        errors={model.errors}
+      ></UpdatePage>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import "./static/global.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { PaidListPage } from "./components/pages/PaidListPage";
 import { NewPaidPage } from "./components/pages/NewPaidPage";
-import { UpdatePaidPage } from "./components/pages/UpdatePaidPage";
+// import { UpdatePaidPage } from "./components/pages/UpdatePaidPage";
 import { AdminPage } from "./components/pages/AdminPage";
 import { NotFoundPage } from "./components/pages/404";
 import { LoginPage } from "./components/pages/LoginPage";
@@ -23,7 +23,7 @@ export const App: React.FC = () => {
             <Switch>
               <Route exact path="/" component={PaidListPage} />
               <Route path="/new" component={NewPaidPage} />
-              <Route path="/update" component={UpdatePaidPage} />
+              {/* <Route path="/update" component={UpdatePaidPage} /> */}
               <Route path="/admin" component={AdminPage} />
               <Route component={NotFoundPage}></Route>
             </Switch>
