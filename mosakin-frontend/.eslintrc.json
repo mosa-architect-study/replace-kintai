@@ -1,33 +1,38 @@
 {
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:prettier/recommended",
-      "prettier/@typescript-eslint",
-      "plugin:react/recommended"
-    ],
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "env": { "browser": true, "node": true, "es6": true },
-    "parserOptions": {
-      "sourceType": "module"
-    },
-    "rules": {
-      "react/prop-types":0,
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "arrowParens":"avoid"
-        }
-      ]
-    },
-    "settings": {
-      "react":{
-        "version": "detect"
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/prop-types": 0,
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "prettier/prettier": [
+      "error",
+      {
+        "arrowParens": "avoid"
       }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     }
   }
+}

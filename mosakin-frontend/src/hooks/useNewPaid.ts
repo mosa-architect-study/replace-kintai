@@ -4,7 +4,7 @@ import { NewPaidViewModel, NewPaidItem } from "@/models/newPaid";
 import { useLoginInfo } from "@/context/LoginContext";
 import { ErrorObject } from "@/models/error";
 import { useToast } from "@/context/ToastContext";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 export const useNewPaid = (): NewPaidViewModel => {
   const [dateValue, dateSetValue] = useState("");
@@ -26,43 +26,59 @@ export const useNewPaid = (): NewPaidViewModel => {
   };
   const onSubmit = () => {
     axios
-      .post(`/add`, {
-        paidAcquisitionDate: createData.dateValue,
-        paidTimeType: paidTimeValue,
-        paidReason: reasonValue,
-      })
+      .post(
+        `/add`,
+        {
+          paidAcquisitionDate: createData.dateValue,
+          paidTimeType: paidTimeValue,
+          paidReason: reasonValue,
+        },
+        {
+          validateStatus: function (status) {
+            return status < 500;
+          },
+        }
+      )
       .then(res => {
-        // 正常に処理ができていれば業務エラーでも200で返ってくる
-        switch (res.data) {
-          case "SUCCESS":
-            setErrors([]);
-            showToast({
-              type: "SUCCESS",
-              message: "登録したよ❤️", //TODO:
-            });
-            break;
-          case "DUPLICATED":
-            setErrors([
-              {
-                content: "DUPLICATED",
-              },
-            ]);
-            break;
-          case "NOTIFICATION_FAILED":
-            setErrors([
-              {
-                content: "NOTIFICATION_FAILED",
-              },
-            ]);
-            break;
-          default:
-            // APIから返ってくるメッセージが予想外なパターン
-            setErrors([
-              {
-                content: "UNEXPECTED_ERROR",
-              },
-            ]);
-            break;
+        if (res.status === 500) {
+          setErrors([
+            {
+              content: "INTERNAL_SEWRVER_ERROR",
+            },
+          ]);
+        } else {
+          // 正常に処理ができていれば業務エラーでも200で返ってくる
+          switch (res.data) {
+            case "SUCCESS":
+              setErrors([]);
+              showToast({
+                type: "SUCCESS",
+                message: "登録したよ❤️", //TODO:
+              });
+              break;
+            case "DUPLICATED":
+              setErrors([
+                {
+                  content: "DUPLICATED",
+                },
+              ]);
+              break;
+            case "NOTIFICATION_FAILED":
+              setErrors([
+                {
+                  content: "NOTIFICATION_FAILED",
+                },
+              ]);
+              break;
+            default:
+              // APIから返ってくるメッセージが予想外なパターン
+              setErrors([
+                {
+                  content: "UNEXPECTED_ERROR",
+                },
+              ]);
+              break;
+          }
         }
       })
       .catch(e => {

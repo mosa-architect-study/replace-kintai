@@ -1,8 +1,10 @@
 import { DateValue, PaidTimeType } from "../common";
+import { ErrorObject } from "@/models/error";
 
 export interface PaidListViewModel {
   list: PaidListRowViewModel[];
   header: PaidListHeaderViewModel;
+  errors: ErrorObject[];
 }
 
 export interface PaidListRowViewModel {
