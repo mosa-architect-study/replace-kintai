@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "ress";
 import "./static/global.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { PaidListPage } from "./components/pages/PaidListPage";
 import { NewPaidPage } from "./components/pages/NewPaidPage";
 import { UpdatePaidPage } from "./components/pages/UpdatePaidPage";

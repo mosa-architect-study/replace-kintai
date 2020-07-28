@@ -29,26 +29,29 @@ export const useUpdatePaid = (): UpdatePaidViewModel => {
   };
   const onSubmit = () => {
     axios
-      .post(`/update`, {
-        paidId: updateData.paidId,
-        beforeAcquisitionDate: updateData.beforeValue,
-        paidAcquisitionDate: updateData.dateValue,
-        beforePaidTimeType: updateData.beforePaidTimeValue,
-        paidTimeType: paidTimeValue,
-        paidReason: reasonValue,
-        paidAcquisitionUserId: "mosaarchitect.study@gmail.com", //TODO: 渡ってきた有給のIDを使おう
-      },
+      .post(
+        `/update`,
+        {
+          paidId: updateData.paidId,
+          beforeAcquisitionDate: updateData.beforeValue,
+          paidAcquisitionDate: updateData.dateValue,
+          beforePaidTimeType: updateData.beforePaidTimeValue,
+          paidTimeType: paidTimeValue,
+          paidReason: reasonValue,
+          paidAcquisitionUserId: "mosaarchitect.study@gmail.com", //TODO: 渡ってきた有給のIDを使おう
+        },
         {
           validateStatus: function (status) {
             return status < 500;
-          }
-        })
+          },
+        }
+      )
       .then(res => {
         if (res.status === 500) {
           setErrors([
             {
-              content: "INTERNAL_SEWRVER_ERROR"
-            }
+              content: "INTERNAL_SEWRVER_ERROR",
+            },
           ]);
         } else {
           switch (res.data) {
@@ -58,32 +61,35 @@ export const useUpdatePaid = (): UpdatePaidViewModel => {
             case "DUPLICATED":
               setErrors([
                 {
-                  content: "DUPLICATED"
-                }
+                  content: "DUPLICATED",
+                },
               ]);
               break;
             case "NOTIFICATION_FAILED":
               setErrors([
                 {
-                  content: "NOTIFICATION_FAILED"
-                }
+                  content: "NOTIFICATION_FAILED",
+                },
               ]);
               break;
             default:
               // APIから返ってくるメッセージが予想外なパターン
               setErrors([
                 {
-                  content: "UNEXPECTED_ERROR"
-                }
+                  content: "UNEXPECTED_ERROR",
+                },
               ]);
               break;
           }
         }
-      }).catch(e => {
+      })
+      .catch(e => {
         console.log(e);
-        setErrors([{
-          content: "UNEXPECTED_ERROR"
-        }]);
+        setErrors([
+          {
+            content: "UNEXPECTED_ERROR",
+          },
+        ]);
       });
   };
   return { data: updateData, onSubmit: onSubmit, errors };

@@ -4,7 +4,7 @@ import { NewPaidViewModel, NewPaidItem } from "@/models/newPaid";
 import { useLoginInfo } from "@/context/LoginContext";
 import { ErrorObject } from "@/models/error";
 import { useToast } from "@/context/ToastContext";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 export const useNewPaid = (): NewPaidViewModel => {
   const [dateValue, dateSetValue] = useState("");
@@ -26,7 +26,8 @@ export const useNewPaid = (): NewPaidViewModel => {
   };
   const onSubmit = () => {
     axios
-      .post(`/add`,
+      .post(
+        `/add`,
         {
           paidAcquisitionDate: createData.dateValue,
           paidTimeType: paidTimeValue,
@@ -35,13 +36,16 @@ export const useNewPaid = (): NewPaidViewModel => {
         {
           validateStatus: function (status) {
             return status < 500;
-          }
-        })
+          },
+        }
+      )
       .then(res => {
         if (res.status === 500) {
-          setErrors([{
-            content: "INTERNAL_SEWRVER_ERROR"
-          }]);
+          setErrors([
+            {
+              content: "INTERNAL_SEWRVER_ERROR",
+            },
+          ]);
         } else {
           // 正常に処理ができていれば業務エラーでも200で返ってくる
           switch (res.data) {

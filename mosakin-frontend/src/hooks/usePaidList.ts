@@ -21,16 +21,19 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
   const [errors, setErrors] = useState<ErrorObject[]>([]);
 
   useEffect(() => {
-    axios.get("/list",
-      {
+    axios
+      .get("/list", {
         validateStatus: function (status) {
           return status < 500;
-        }
-      }).then(res => {
+        },
+      })
+      .then(res => {
         if (res.status === 500) {
-          setErrors([{
-            content: "INTERNAL_SEWRVER_ERROR"
-          }]);
+          setErrors([
+            {
+              content: "INTERNAL_SEWRVER_ERROR",
+            },
+          ]);
         } else {
           switch (res.data) {
             case "SUCCESS":
@@ -41,41 +44,44 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
               // APIから返ってくるメッセージが予想外なパターン
               setErrors([
                 {
-                  content: "UNEXPECTED_ERROR"
-                }
+                  content: "UNEXPECTED_ERROR",
+                },
               ]);
               break;
           }
         }
-      }).catch(e => {
+      })
+      .catch(e => {
         console.log(e);
-        setErrors([{
-          content: "UNEXPECTED_ERROR"
-        }]);
+        setErrors([
+          {
+            content: "UNEXPECTED_ERROR",
+          },
+        ]);
       });
   }, []);
 
   return data
     ? {
-      status: "Fetched",
-      data: {
-        header: data.header,
-        list: data.list.map<PaidListRowViewModel>(item => ({
-          paid: item,
-          // FIXME: メニューが押された時の挙動
-          menu: {
-            onDeleteButtonClick() {
-              console.log("delete", item);
+        status: "Fetched",
+        data: {
+          header: data.header,
+          list: data.list.map<PaidListRowViewModel>(item => ({
+            paid: item,
+            // FIXME: メニューが押された時の挙動
+            menu: {
+              onDeleteButtonClick() {
+                console.log("delete", item);
+              },
+              onEditButtonClick() {
+                console.log("edit", item);
+              },
             },
-            onEditButtonClick() {
-              console.log("edit", item);
-            },
-          },
-        })),
-        errors
+          })),
+          errors,
+        },
       }
-    }
     : {
-      status: "Loading",
-    };
+        status: "Loading",
+      };
 };

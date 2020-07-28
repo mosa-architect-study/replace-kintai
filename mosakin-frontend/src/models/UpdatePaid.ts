@@ -4,7 +4,7 @@ import { ErrorObject } from "@/models/error";
 export interface UpdatePaidViewModel {
   data: UpdatePaidItem;
   onSubmit: () => void;
-  errors: ErrorObject[]
+  errors: ErrorObject[];
 }
 
 export interface UpdatePaidItem {
