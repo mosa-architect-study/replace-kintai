@@ -4,32 +4,19 @@ import { paletteDict, bp } from "@/common/theme";
 import { Button } from "@/components/atoms/button";
 import { Caption } from "@/components/atoms/caption";
 import { Text } from "@/components/atoms/text";
-import { DateValue, PaidTimeType, paidTimeTypeToString } from "@/models/common";
 import { PageTitle } from "@/components/molecules/pageTitle";
 import { CommonUserNameArea } from "@/components/molecules/common-user-name-area";
-import { UserRole } from "@/models/User";
-import { PaidReasonArea } from "../../molecules/paid-reason-area";
+import { PaidReasonArea } from "@/components/molecules/paid-reason-area";
+import { ErrorBox } from "@/components/molecules/error-box";
+import { DeletePaidViewModel } from "@/models/DeletePaid";
 import dayjs from "dayjs";
 
-interface DeleteTemplateProps {
-  userData: DeleteTemplateItemProps;
-  onSubmit: () => void;
-}
-
-export interface DeleteTemplateItemProps {
-  paidId: string;
-  userName: string;
-  paidTimeType: PaidTimeType;
-  paidAcquisitionDate: DateValue;
-  paidReason: string;
-  adminFlg: UserRole;
-}
-
 const OuterDiv = styled.div`
-  width: 460px;
+  width: 479px;
   margin: auto;
   @media (max-width: ${bp}) {
-    width: 350px;
+    width: 90%;
+    margin: auto;
   }
 `;
 
@@ -87,47 +74,52 @@ const PaidReasonWrapper = styled.div`
   }
 `;
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+const ButtonArea = styled.div`
+  text-align: center;
 `;
 
-//FIXME:PaidReasonAreaのonChange={onSubmit}はエラー消すためとりあえず。なんとか出来たらなんとかする
-export const DeleteTemplate: React.FC<DeleteTemplateProps> = props => {
-  const { userData, onSubmit } = props;
+export const DeletePage: React.FC<DeletePaidViewModel> = props => {
+  const { data, onSubmit, errors } = props;
   return (
     <div>
       <OuterDiv>
         <TitleWrapper>
           <PageTitle title="削除申請" />
         </TitleWrapper>
-        {props.userData.adminFlg == "ADMIN" && (
+        {data.adminFlg && (
           <UserNameWrapper>
-            <CommonUserNameArea value={props.userData.userName} />
+            <CommonUserNameArea value={data.userName} />
           </UserNameWrapper>
         )}
+
+        <ErrorBox errors={errors} />
+
         <PaidAcquisitionDateWrapper>
           <Caption lv="h2" color="1">
             日付
           </Caption>
           <PaidAcquisitionDateTextWrapper>
-            <Text size="1">
-              {dayjs(userData.paidAcquisitionDate).format("YYYY/MM/DD")}
-            </Text>
+            <Text size="1">{dayjs(data.dateValue).format("YYYY/MM/DD")}</Text>
           </PaidAcquisitionDateTextWrapper>
         </PaidAcquisitionDateWrapper>
+
         <PaidTimeTypeWrapper>
           <Caption lv="h2" color="1">
             有給時間種別
           </Caption>
           <PaidTimeTypeTextWrapper>
-            <Text size="1">{paidTimeTypeToString[userData.paidTimeType]}</Text>
+            <Text size="1">{data.paidTimeValue}</Text>
           </PaidTimeTypeTextWrapper>
         </PaidTimeTypeWrapper>
+
         <PaidReasonWrapper>
-          <PaidReasonArea value={userData.paidReason} onChange={onSubmit} />
+          <PaidReasonArea
+            value={data.reasonValue}
+            onChange={data.reasonOnChange}
+          />
         </PaidReasonWrapper>
-        <ButtonWrapper>
+
+        <ButtonArea>
           <Button
             backgroundColor="1"
             width="s"
@@ -137,7 +129,7 @@ export const DeleteTemplate: React.FC<DeleteTemplateProps> = props => {
           >
             <Text size="1">登録</Text>
           </Button>
-        </ButtonWrapper>
+        </ButtonArea>
       </OuterDiv>
     </div>
   );

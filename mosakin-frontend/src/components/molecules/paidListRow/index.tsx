@@ -87,7 +87,7 @@ export const PaidListRow: React.FC<PaidListRowViewModel> = ({ paid, menu }) => (
         </StyledPaidAcquisitionDateTextWrapper>
 
         <StyledPaidTimeTypeTextWrapper>
-          {/* FIX ME: サイズは暫定 */}
+          {/* FIXME: サイズは暫定 */}
           <Text size="3">{paidTimeTypeToString[paid.paidTimeType]}</Text>
         </StyledPaidTimeTypeTextWrapper>
       </StyledTextWrapper>

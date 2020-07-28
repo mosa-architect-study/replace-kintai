@@ -1,9 +1,10 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { DeleteTemplate, DeleteTemplateItemProps } from ".";
+import { DeletePage } from ".";
 import { Modal } from "@/components/organisms/modal";
 import { Button } from "@/components/atoms/button";
 import { action } from "@storybook/addon-actions";
+import { DeletePaidItem } from "@/models/DeletePaid";
 
 storiesOf("templates/DeletePage", module).add("DeletePage", () => (
   <DeleteModal />
@@ -14,17 +15,22 @@ storiesOf("templates/DeletePage", module).add("DeletePage(admin)", () => (
 ));
 
 const DeleteModalContent = () => {
-  const userData: DeleteTemplateItemProps = {
+  const userData: DeletePaidItem = {
     paidId: "1",
     userName: "名前",
-    paidTimeType: "AM",
-    paidAcquisitionDate: "20200505",
-    paidReason: "休む",
-    adminFlg: "COMMON",
+    paidTimeValue: "AM",
+    dateValue: "20200505",
+    reasonValue: "休む",
+    reasonOnChange: action("Change: reason"),
+    adminFlg: false,
   };
   return (
     <section>
-      <DeleteTemplate userData={userData} onSubmit={action("Click: Submit")} />
+      <DeletePage
+        data={userData}
+        onSubmit={action("Click: Submit")}
+        errors={[]}
+      />
     </section>
   );
 };
@@ -54,17 +60,22 @@ const DeleteModal = (): JSX.Element => {
 };
 
 const AdminDeleteModalContent = () => {
-  const userData: DeleteTemplateItemProps = {
+  const userData: DeletePaidItem = {
     paidId: "1",
     userName: "名前",
-    paidTimeType: "ALL_DAY",
-    paidAcquisitionDate: "20200505",
-    paidReason: "休む",
-    adminFlg: "ADMIN",
+    paidTimeValue: "ALL_DAY",
+    dateValue: "20200505",
+    reasonValue: "休む",
+    reasonOnChange: action("Change: reason"),
+    adminFlg: true,
   };
   return (
     <section>
-      <DeleteTemplate userData={userData} onSubmit={action("Click: Submit")} />
+      <DeletePage
+        data={userData}
+        onSubmit={action("Click: Submit")}
+        errors={[]}
+      />
     </section>
   );
 };

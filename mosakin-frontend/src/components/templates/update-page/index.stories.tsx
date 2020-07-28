@@ -22,7 +22,11 @@ storiesOf("templates/UpdatePage", module).add("UpdatePage", () => {
   const onSubmit = () => action("ポチッとな");
   return (
     <div>
-      <UpdatePage data={updateData} onSubmit={onSubmit}></UpdatePage>
+      <UpdatePage
+        data={updateData}
+        onSubmit={onSubmit}
+        errors={[]}
+      ></UpdatePage>
     </div>
   );
 });
@@ -47,7 +51,11 @@ storiesOf("templates/UpdatePage", module).add("UpdatePage(admin)", () => {
   const onSubmit = () => action("ポチッとな");
   return (
     <div>
-      <UpdatePage data={updateData} onSubmit={onSubmit}></UpdatePage>
+      <UpdatePage
+        data={updateData}
+        onSubmit={onSubmit}
+        errors={[]}
+      ></UpdatePage>
     </div>
   );
 });

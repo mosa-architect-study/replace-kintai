@@ -5,6 +5,7 @@ import {
   AllUserPaidListHeaderViewModel,
 } from ".";
 import { action } from "@storybook/addon-actions";
+import { ErrorObject } from "@/models/error";
 
 export const paidList: PaidListItem[] = [
   {
@@ -49,6 +50,8 @@ export const header: PaidListHeaderViewModel = {
   leftPaidNumber: 5,
   carryForward: 3,
 };
+
+export const errors: ErrorObject[] = <ErrorObject[]>[];
 
 export const userData: AllUserPaidListHeaderViewModel[] = [
   {
