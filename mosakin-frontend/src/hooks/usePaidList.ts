@@ -59,25 +59,25 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
 
   return data
     ? {
-      status: "Fetched",
-      data: {
-        header: data.header,
-        list: data.list.map<PaidListRowViewModel>(item => ({
-          paid: item,
-          // FIXME: メニューが押された時の挙動
-          menu: {
-            onDeleteButtonClick() {
-              console.log("delete", item);
+        status: "Fetched",
+        data: {
+          header: data.header,
+          list: data.list.map<PaidListRowViewModel>(item => ({
+            paid: item,
+            // FIXME: メニューが押された時の挙動
+            menu: {
+              onDeleteButtonClick() {
+                console.log("delete", item);
+              },
+              onEditButtonClick() {
+                console.log("edit", item);
+              },
             },
-            onEditButtonClick() {
-              console.log("edit", item);
-            },
-          },
-        })),
-        errors,
-      },
-    }
+          })),
+          errors,
+        },
+      }
     : {
-      status: "Loading",
-    };
+        status: "Loading",
+      };
 };
