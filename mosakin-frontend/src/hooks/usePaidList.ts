@@ -34,21 +34,17 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
               content: "INTERNAL_SEWRVER_ERROR",
             },
           ]);
+        }
+        if (res.data) {
+          setErrors([]);
+          setData(res.data);
         } else {
-          switch (res.data) {
-            case "SUCCESS":
-              setErrors([]);
-              setData(res.data);
-              break;
-            default:
-              // APIから返ってくるメッセージが予想外なパターン
-              setErrors([
-                {
-                  content: "UNEXPECTED_ERROR",
-                },
-              ]);
-              break;
-          }
+          // APIから返ってくるメッセージが予想外なパターン
+          setErrors([
+            {
+              content: "UNEXPECTED_ERROR",
+            },
+          ]);
         }
       })
       .catch(e => {
@@ -63,25 +59,25 @@ export const usePaidList = (): LoadableViewModel<PaidListViewModel> => {
 
   return data
     ? {
-        status: "Fetched",
-        data: {
-          header: data.header,
-          list: data.list.map<PaidListRowViewModel>(item => ({
-            paid: item,
-            // FIXME: メニューが押された時の挙動
-            menu: {
-              onDeleteButtonClick() {
-                console.log("delete", item);
-              },
-              onEditButtonClick() {
-                console.log("edit", item);
-              },
+      status: "Fetched",
+      data: {
+        header: data.header,
+        list: data.list.map<PaidListRowViewModel>(item => ({
+          paid: item,
+          // FIXME: メニューが押された時の挙動
+          menu: {
+            onDeleteButtonClick() {
+              console.log("delete", item);
             },
-          })),
-          errors,
-        },
-      }
+            onEditButtonClick() {
+              console.log("edit", item);
+            },
+          },
+        })),
+        errors,
+      },
+    }
     : {
-        status: "Loading",
-      };
+      status: "Loading",
+    };
 };
